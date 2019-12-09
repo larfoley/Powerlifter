@@ -3,20 +3,33 @@
   width: $app-navbar-width;
   position: fixed;
   bottom: 0;
-  top: 0;
+  top: $app-toolbar-height;
   color: $app-navbar-text-color;
   flex-direction: column;
 
-  &__item {
+  &__link {
     height: $app-toolbar-height;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    text-decoration: none;
+    color: $app-navbar-text-color;
+    border-left: 4px solid $app-navbar-bg-color;
+    border-right: 4px solid $app-navbar-bg-color;
+
+    &.active, &:hover {
+      color: white;
+      border-left: 4px solid $primary-color;
+    }
+  }
+
+  &__text {
+    margin-top: 7px;
+    font-size: 13px;
   }
 }
 
-.app-navbar ~ .app-container,
-.app-navbar ~ .app-toolbar {
+.app-navbar ~ .app-container {
   margin-left: $app-navbar-width;
 }

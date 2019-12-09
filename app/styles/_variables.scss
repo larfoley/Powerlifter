@@ -1,13 +1,19 @@
 $primary-color: #ff7675;
 $app-bg-color: #f4f8f7;
-$app-toolbar-bg-color: #20313b;
-$app-toolbar-text-color: white;
+
+$app-toolbar-bg-color: white;
+$app-toolbar-text-color: #2e2e2e;
 $app-toolbar-height: 70px;
-$app-navbar-width: 100px;
-$app-navbar-bg-color: darken($app-toolbar-bg-color, 0%);
-$app-navbar-text-color: gray;
+
+$app-navbar-width: 80px;
+$app-navbar-bg-color: lighten(#20313b, 3%);
+// $app-navbar-bg-color: white;
+$app-navbar-text-color: #a0aabf;
+$app-navbar-active-text-color: $primary-color;
 
 $input-bg-color: #f4f8f7;
 
 $page-container-max-width: 800px;
 $page-container-width: 90%;
+
+$muted-text: #616770;

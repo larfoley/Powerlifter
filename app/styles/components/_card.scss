@@ -1,0 +1,35 @@
+.card {
+  margin-bottom: 2em;
+  background: #fff;
+  border-radius: 4px;
+
+  &, &__list {
+    box-shadow: 0 2px 0 rgba(0,0,0,0.06);
+  }
+
+  &__body, &__item {
+    padding: 2em;
+  }
+}
+
+.card-item {
+  display: flex;
+  background-color: white;
+  padding: 1.5em;
+
+  &__left {
+    flex: 0;
+    display: flex;
+    margin-right: .5em;
+  }
+
+  &__middle {
+    flex-grow: 1;
+  }
+
+  &__right {
+    flex: 1;
+    display: flex;
+    justify-content: flex-end;
+  }
+}

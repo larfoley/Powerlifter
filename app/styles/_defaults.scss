@@ -1,0 +1,20 @@
+html {
+  box-sizing: border-box;
+}
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+body {
+ margin: 0;
+ font-family: 'Gotham Pro Regular';
+ background-color: $app-bg-color;
+}
+
+img {
+  max-width: 100%;
+}
+
+a {
+  color: white;
+}

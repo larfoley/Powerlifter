@@ -1,0 +1,22 @@
+.app-navbar {
+  background-color: $app-navbar-bg-color;
+  width: $app-navbar-width;
+  position: fixed;
+  bottom: 0;
+  top: 0;
+  color: $app-navbar-text-color;
+  flex-direction: column;
+
+  &__item {
+    height: $app-toolbar-height;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+.app-navbar ~ .app-container,
+.app-navbar ~ .app-toolbar {
+  margin-left: $app-navbar-width;
+}

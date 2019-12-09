@@ -1,0 +1,79 @@
+<AppNavbar />
+<AppToolbar>
+  <span class="badge__container">
+    <i class="app-toolbar__item fas fa-bell"></i>
+    <span class="badge__count">3</span>
+  </span>
+  <i class="app-toolbar__item fas fa-edit"></i>
+  {{#link-to 'posts.new'}}
+    <i class="app-toolbar__item fas fa-plus"></i>
+  {{/link-to}}
+  <i class="app-toolbar__item fas fa-ellipsis-v"></i>
+</AppToolbar>
+<AppContainer>
+  <PageContainer>
+    <style media="screen">
+
+      .pb-cards {
+        display: flex;
+      }
+
+      .pb-card {
+        flex: 1;
+        margin: 1em;
+        border-radius: 4px;
+        /* color: white; */
+        padding: 1em;
+        background-color: white;
+        border-top-right-radius: 4px;
+        border-top-left-radius: 4px;
+        border-top: 5px solid;
+      }
+
+      .pb-card--squat {
+        border-color: #e74c3c
+      }
+
+      .pb-card--bench {
+        border-color: #3498db;
+      }
+
+      .pb-card--deadlift {
+        border-color: #f1c40f;
+      }
+
+      .pb-card__weight {
+        font-weight: bold;
+        font-size: 2em;
+      }
+    </style>
+    <span>One Rep Maxes</span>
+    <div class="pb-cards">
+      <div class="pb-card pb-card--squat">
+        <small>Squat </small>
+        <div class="pb-card__weight">
+          120kg
+        </div>
+      </div>
+      <div class="pb-card pb-card--bench">
+        <small>Bench</small>
+        <div class="pb-card__weight">
+          70kg
+        </div>
+      </div>
+      <div class="pb-card pb-card--deadlift">
+        <small>Deadlift</small>
+        <div class="pb-card__weight">
+          200kg
+        </div>
+      </div>
+    </div>
+    <div class="card">
+      <p>Post something...</p>
+      <FaIcon @icon="plus" />
+    </div>
+    <Post @avatar="https://i.pravatar.cc/400?img=34" />
+    <Post @avatar="https://i.pravatar.cc/400?img=35" />
+    <Post @avatar="https://i.pravatar.cc/400?img=36" />
+  </PageContainer>
+</AppContainer>

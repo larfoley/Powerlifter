@@ -3,6 +3,7 @@
 module.exports = function(environment) {
   let ENV = {
     modulePrefix: 'powerlifting',
+    // podModulePrefix: 'powerlifting/pods',
     environment,
     rootURL: '/',
     locationType: 'auto',
@@ -46,6 +47,11 @@ module.exports = function(environment) {
   if (environment === 'production') {
     // here you can enable a production-specific feature
   }
+
+  ENV['ember-cli-mirage'] = {
+    trackRequests: true
+  };
+
 
   return ENV;
 };

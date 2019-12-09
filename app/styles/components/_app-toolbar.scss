@@ -1,0 +1,48 @@
+.app-toolbar {
+  font-size: 1.3em;
+  margin: auto;
+  background-color: $app-toolbar-bg-color;
+  color: $app-toolbar-text-color;
+  box-shadow: 0px 2px 4px -1px rgba(0,0,0,0.2), 0px 4px 5px 0px rgba(0,0,0,0.14), 0px 1px 10px 0px rgba(0,0,0,0.12);
+
+  &__container {
+    max-width: $page-container-max-width;
+    width: $page-container-width;
+    height: $app-toolbar-height;
+    margin: auto;
+    display: flex;
+    align-items: center;
+  }
+
+  &__left, &__right {
+    display: flex;
+  }
+
+  &__left {
+    flex: 3;
+  }
+
+  &__right {
+    flex: 2;
+    justify-content: flex-end;
+  }
+
+  &__title {
+    max-width: 220px;
+    display: inline-block;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    font-weight: bold;
+    font-size: 1.5em;
+  }
+
+  &__item {
+    margin: 0 .5em;
+    align-self: center;
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+}

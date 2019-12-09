@@ -1,0 +1,13 @@
+<div class="app-toolbar__container">
+  <div class="app-toolbar__left">
+    {{#if this.showBackButton}}
+      <i {{action 'goBack'}} class="app-toolbar__item fas fa-arrow-left"></i>
+    {{/if}}
+    <span class="app-toolbar__item app-toolbar__title">
+      {{this.title}}
+    </span>
+  </div>
+  <div class="app-toolbar__right">
+    {{yield}}
+  </div>
+</div>

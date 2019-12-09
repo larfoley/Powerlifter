@@ -1,0 +1,15 @@
+form {
+  width: 500px;
+  text-align: center;
+  margin: 4em auto;
+}
+
+input {
+  background-color: $input-bg-color;
+  padding: 1.2em 1.5em;
+  width: 100%;
+  border-radius: 50px;
+  display: block;
+  margin-bottom: 1.7em;
+  border: none;
+}

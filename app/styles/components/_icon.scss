@@ -1,0 +1,20 @@
+.fa-circle {
+  color: transparent;
+  transition: .3s;
+}
+
+.fa-stack:hover .fa-circle  {
+  color: white;
+}
+
+.fa-stack:hover .fa-stack-1x  {
+  color: $primary-color;
+}
+
+.icon-primary .fa-circle {
+  color: $primary-color;
+}
+
+.icon-primary {
+  color: white;
+}

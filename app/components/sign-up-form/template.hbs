@@ -1,0 +1,11 @@
+<div class="">
+  <h1>Create Free Account</h1>
+  <Input @placeholder="Username" @value={{this.user.username}} />
+  <Input @placeholder="Email" type="email" @value={{this.user.username}} />
+  <Input @placeholder="Password" @value={{this.user.username}} />
+  <Input @placeholder="Confirm Password" type="password" @value={{this.user.username}} />
+  <Input @id="admin-checkbox" @type="checkbox" @name="isAdmin" @checked={{this.isAdmin}} />
+  <span>Agree to terms and conditions</span>
+  <FaIcon @icon="check-square" @prefix="far"/>
+  <Button @text="Submit"/>
+</div>

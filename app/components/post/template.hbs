@@ -1,0 +1,48 @@
+<style media="screen">
+.post {
+  margin-bottom: 2em;
+}
+
+.post__header {
+  display: flex;
+  background-color: white;
+  padding: 1.5em;
+}
+
+.left {
+  flex: 0;
+  display: flex;
+  margin-right: .5em;
+}
+
+.middle {
+  flex-grow: 1;
+}
+
+.right {
+  flex: 1;
+  display: flex;
+  justify-content: flex-end;
+}
+</style>
+<div class="post">
+  <div class="post__header">
+    <div class="left">
+      <span>
+        <img class="avatar" src="{{this.avatar}}" alt="">
+      </span>
+    </div>
+    <div class="middle">
+      <span>
+        <div class="title">Lar foley</div>
+        <span class="sub-title">12/2/1990</span>
+      </span>
+    </div>
+    <div class="right">
+      <FaIcon class="s" @icon="ellipsis-v"/>
+    </div>
+  </div>
+  <div class="post__body">
+    <img src="https://images.unsplash.com/photo-1562886889-52933f35430b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1489&q=80" alt="">
+  </div>
+</div>

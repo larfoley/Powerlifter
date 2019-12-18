@@ -1,0 +1,21 @@
+<AppToolbar @title="Squats">
+</AppToolbar>
+<AppContainer>
+  <div class="tabs-menu">
+    <div class="tabs-menu__container">
+      <div class="tabs-menu__item">
+        <LinkTo class="tabs-menu__link" @route="exercises.exercise.records" @model="squat">
+          Records
+        </LinkTo>
+      </div>
+      <div class="tabs-menu__item">
+        <LinkTo class="tabs-menu__link" @route="exercises.exercise.goals" @model="squat">
+          Goals
+        </LinkTo>
+      </div>
+    </div>
+  </div>
+  <PageContainer>
+    {{outlet}}
+  </PageContainer>
+</AppContainer>

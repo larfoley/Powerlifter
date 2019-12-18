@@ -3,20 +3,39 @@
   width: $app-navbar-width;
   position: fixed;
   bottom: 0;
+  // top: $app-toolbar-height;
   top: 0;
+  z-index: 200;
   color: $app-navbar-text-color;
   flex-direction: column;
 
-  &__item {
+  &__link {
     height: $app-toolbar-height;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    text-decoration: none;
+    color: $app-navbar-text-color;
+    // border-left: 4px solid $app-navbar-bg-color;
+    // border-right: 4px solid $app-navbar-bg-color;
+
+    &.active {
+      border-left: 4px solid $primary-color;
+    }
+
+    &:hover {
+      color: white;
+      background-color: lighten($app-navbar-bg-color, 5%);
+    }
+  }
+
+  &__text {
+    margin-top: 3px;
+    font-size: 12px;
   }
 }
 
-.app-navbar ~ .app-container,
-.app-navbar ~ .app-toolbar {
+.app-navbar ~ .app-container {
   margin-left: $app-navbar-width;
 }

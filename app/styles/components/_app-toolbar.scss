@@ -2,16 +2,22 @@
   font-size: 1.3em;
   margin: auto;
   background-color: $app-toolbar-bg-color;
-  color: $app-toolbar-text-color;
-  box-shadow: 0px 2px 4px -1px rgba(0,0,0,0.2), 0px 4px 5px 0px rgba(0,0,0,0.14), 0px 1px 10px 0px rgba(0,0,0,0.12);
+  // box-shadow: 0px 2px 4px -1px rgba(0,0,0,0.2), 0px 4px 5px 0px rgba(0,0,0,0.14), 0px 1px 10px 0px rgba(0,0,0,0.12);
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1;
+  padding-left: $app-navbar-width;
 
   &__container {
-    max-width: $page-container-max-width;
-    width: $page-container-width;
+    // max-width: $app-toolbar-max-width;
+    // width: $page-container-width;
     height: $app-toolbar-height;
     margin: auto;
     display: flex;
     align-items: center;
+    width: $page-container-width;
+    max-width: $page-container-max-width;
   }
 
   &__left, &__right {
@@ -34,15 +40,29 @@
     white-space: nowrap;
     overflow: hidden;
     font-weight: bold;
-    font-size: 1.5em;
+    font-size: 1.2em;
   }
 
   &__item {
     margin: 0 .5em;
     align-self: center;
+    color: $app-toolbar-text-color;
+
+    &.app-toolbar__title {
+      margin-left: 0;
+    }
 
     &:hover {
       cursor: pointer;
     }
+  }
+
+  &__text {
+    margin: 0 .5em;
+  }
+
+  & + .app-container {
+    position: relative;
+    top: $app-toolbar-height;
   }
 }

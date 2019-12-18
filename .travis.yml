@@ -29,6 +29,7 @@ install:
 
 before_deploy:
   - npm run build
+  - mv dist/index.html dist/200.html
 
 deploy:
   provider: surge

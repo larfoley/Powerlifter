@@ -1,0 +1,11 @@
+<AppToolbar @title="Excercises">
+</AppToolbar>
+<AppContainer>
+  <PageContainer>
+    <h1>Chose Exercise</h1>
+    {{#each this.model as |exercise|}}
+      <ExerciseLink @exercise={{exercise}} />
+    {{/each}}
+  </PageContainer>
+</AppContainer>
+{{outlet}}

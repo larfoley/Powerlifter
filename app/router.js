@@ -16,4 +16,18 @@ Router.map(function() {
   this.route('posts', function() {
     this.route('new');
   });
+  this.route('exercises', function() {
+    this.route('exercise', { path: '/:exercise_id' }, function() {
+      this.route('goals', function() {
+        this.route('new');
+      });
+      this.route('records', function() {
+        this.route('new');
+        this.route('record');
+        this.route('edit');
+      });
+    });
+    this.route('all');
+    this.route('new');
+  });
 });

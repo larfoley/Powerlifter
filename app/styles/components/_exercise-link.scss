@@ -1,0 +1,12 @@
+.exercise-link {
+  &__link {
+    color: black;
+    text-decoration: none;
+    padding: 1em;
+    display: block;
+  }
+
+  &__text {
+    margin: 0;
+  }
+}

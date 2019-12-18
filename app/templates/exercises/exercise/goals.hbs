@@ -1,0 +1,10 @@
+<h1>Goals</h1>
+<LinkTo @route='exercises.exercise.goals.new'  >
+  New
+</LinkTo>
+
+{{#each this.model as |goal|}}
+  <Goal @goal={{goal}} />
+{{/each}}
+
+{{outlet}}

@@ -1,19 +1,22 @@
 $primary-color: #ff7675;
 $app-bg-color: #f4f8f7;
 
-$app-toolbar-bg-color: white;
-$app-toolbar-text-color: #2e2e2e;
-$app-toolbar-height: 70px;
+$app-toolbar-text-color: white;
+$app-toolbar-height: 65px;
+$app-toolbar-max-width: 800px;
+$app-toolbar-margin: 800px;
 
 $app-navbar-width: 80px;
 $app-navbar-bg-color: lighten(#20313b, 3%);
+// $app-toolbar-bg-color: lighten($app-navbar-bg-color, 5%);
+$app-toolbar-bg-color: #ee5253;
 // $app-navbar-bg-color: white;
 $app-navbar-text-color: #a0aabf;
 $app-navbar-active-text-color: $primary-color;
 
 $input-bg-color: #f4f8f7;
 
-$page-container-max-width: 800px;
-$page-container-width: 90%;
+$page-container-max-width: 1200px;
+$page-container-width: 95%;
 
 $muted-text: #616770;

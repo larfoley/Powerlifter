@@ -26,4 +26,6 @@ export default function() {
   */
 
   this.post('/users');
+  this.get('/exercises');
+  this.resource('goals');
 }

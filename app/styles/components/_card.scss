@@ -3,6 +3,10 @@
   background: #fff;
   border-radius: 4px;
 
+  &__body {
+    padding: 2em;
+  }
+
   &, &__list {
     box-shadow: 0 2px 0 rgba(0,0,0,0.06);
   }

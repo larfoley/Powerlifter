@@ -57,6 +57,7 @@
     "ember-simple-auth": "^2.1.0",
     "ember-source": "~3.14.1",
     "ember-toastr": "^2.0.1",
+    "ember-web-app": "^3.0.1",
     "ember-welcome-page": "^4.0.0",
     "eslint-plugin-ember": "^7.1.0",
     "eslint-plugin-node": "^10.0.0",

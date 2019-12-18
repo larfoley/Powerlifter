@@ -3,7 +3,7 @@
     <div class="card__body">
       <div class="form-field">
         <label>Weight</label>
-        <Input @value="" />
+        <Input />
       </div>
       <div class="form-field">
         <label>Reps</label>
@@ -13,14 +13,14 @@
         <FileUpload @name="photos"
                   @accept="image/*"
                   @onfileadd={{route-action "uploadImage"}} as |queue|>
-        <a class="button">
-          {{#if queue.files.length}}
-            Uploading...
-          {{else}}
-            Upload Video
-          {{/if}}
-        </a>
-      </FileUpload>
+          <a class="button">
+            {{#if queue.files.length}}
+              Uploading...
+            {{else}}
+              Upload Video
+            {{/if}}
+          </a>
+        </FileUpload>
         <FileDropzone @name="photos" as |dropzone queue|>
           {{#if dropzone.active}}
             {{#if dropzone.valid}}
@@ -31,7 +31,7 @@
           {{else if queue.files.length}}
             Uploading {{queue.files.length}} files. ({{queue.progress}}%)
             {{#each queue.files as |file|}}
-              <img src={{file.url}} alt={{file.name}} />
+              <img src={{file.url}} alt={{file.name}} >
             {{/each}}
           {{else}}
             <h4>Upload File</h4>
@@ -44,26 +44,21 @@
                           @accept="video/*"
                           @multiple={{true}}
                           @onfileadd={{route-action "uploadImage"}} >
-                <a tabindex=0>Add an Image.</a>
+                <a tabindex={{0}}>Add an Image.</a>
               </FileUpload>
             </p>
           {{/if}}
         </FileDropzone>
-        {{log 1}}
-        {{#each (file-queue name='photos') as |queue|}}
-        {{log queue}}
-        {{#each queue.files as |file|}}
-          <img src={{file.url}} alt={{file.name}} />
-          {{progress-bar progress=file.progress}}
+        {{#each (file-queue name="photos") as |queue|}}
+          {{#each queue.files as |file|}}
+            <img src={{file.url}} alt={{file.name}} >
+            {{progress-bar progress=file.progress}}
+          {{/each}}
         {{/each}}
-      {{/each}}
       </div>
       <div class="form-field">
         <button type="button" name="button">Submit</button>
       </div>
-
     </div>
   </div>
-
-
 </PageOverlay>

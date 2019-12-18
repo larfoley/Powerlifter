@@ -3,7 +3,8 @@ import { task } from 'ember-concurrency';
 import { get, set } from '@ember/object';
 
 export default Route.extend({
-  uploadPhoto: task(function * (file) {
+  // yield * removed
+  uploadPhoto: task(function  (file) {
     let product = this.modelFor('product');
     let photo = this.store.createRecord('photo', {
       product,

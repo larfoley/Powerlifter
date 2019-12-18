@@ -34,3 +34,4 @@ deploy:
   provider: surge
   project: ./dist
   skip_cleanup: true
+  domain: powerlifter.surge.sh

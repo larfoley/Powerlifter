@@ -17,6 +17,8 @@ export default Route.extend(ApplicationRouteMixin, {
   },
 
   _loadCurrentUser() {
-    return this.get('currentUser').load().catch(() => this.get('session').invalidate());
+    return this.get('currentUser').load().catch(() => {
+      this.get('session').invalidate()
+    });
   }
 });

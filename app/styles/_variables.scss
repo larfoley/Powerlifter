@@ -1,5 +1,6 @@
 $primary-color: #ff7675;
 $app-bg-color: #f4f8f7;
+$primary: "red";
 
 $app-toolbar-text-color: white;
 $app-toolbar-height: 65px;
@@ -14,9 +15,11 @@ $app-toolbar-bg-color: #ee5253;
 $app-navbar-text-color: #a0aabf;
 $app-navbar-active-text-color: $primary-color;
 
-$input-bg-color: #f4f8f7;
+$input-bg-color: #e8ebed;
 
 $page-container-max-width: 1200px;
 $page-container-width: 95%;
 
 $muted-text: #616770;
+
+$error-colors: #cc0000;

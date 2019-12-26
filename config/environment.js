@@ -3,7 +3,6 @@
 module.exports = function(environment) {
   let ENV = {
     modulePrefix: 'powerlifting',
-    // podModulePrefix: 'powerlifting/pods',
     environment,
     rootURL: '/',
     locationType: 'auto',
@@ -41,6 +40,10 @@ module.exports = function(environment) {
     // ENV.APP.LOG_TRANSITIONS = true;
     // ENV.APP.LOG_TRANSITIONS_INTERNAL = true;
     // ENV.APP.LOG_VIEW_LOOKUPS = true;
+    ENV['ember-cli-mirage'] = {
+      trackRequests: true,
+      enabled: true
+    };
   }
 
   if (environment === 'test') {
@@ -61,14 +64,6 @@ module.exports = function(environment) {
       enabled: true
     };
   }
-
-  ENV['ember-cli-mirage'] = {
-     enabled: true
-   };
-
-  ENV['ember-cli-mirage'] = {
-    trackRequests: true
-  };
 
 
   return ENV;

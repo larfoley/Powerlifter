@@ -8,5 +8,9 @@ export default ApplicationAdapter.extend({
     }
 
     return this._super(...arguments);
+  },
+
+  urlForCreateRecord() {
+    return `${this.host}/sign-up`
   }
 });

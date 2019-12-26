@@ -8,9 +8,9 @@ export default Route.extend(UnauthenticatedRouteMixin, {
 
   actions: {
     willTransition() {
-      this.store.peekAll('branch').forEach((branch) => {
-        if (branch.get('isNew')) {
-          branch.rollbackAttributes()
+      this.store.peekAll('user').forEach((user) => {
+        if (user.get('isNew')) {
+          user.rollbackAttributes()
         }
       });
     }

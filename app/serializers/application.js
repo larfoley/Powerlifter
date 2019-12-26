@@ -1,6 +1,8 @@
-import DataTableSerializerMixin from 'ember-data-table/mixins/serializer';
-
 import RESTSerializer from '@ember-data/serializer/rest';
+import config from '../config/environment';
 
-export default RESTSerializer.extend(DataTableSerializerMixin, {
+const primaryKey = config['ember-cli-mirage'].enabled || config.environment === 'test' ? "id" : "_id"
+
+export default RESTSerializer.extend({
+  primaryKey
 });

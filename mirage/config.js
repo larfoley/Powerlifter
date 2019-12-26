@@ -25,7 +25,23 @@ export default function() {
     https://www.ember-cli-mirage.com/docs/route-handlers/shorthands
   */
 
-  this.post('/users');
+  this.post('/sign-up', (schema, request) => {
+    let user = JSON.parse(request.requestBody).user
+
+    return schema.users.create(user);
+  });
+  this.get('/users/me', (schema) => {
+    return schema.users.create({
+      username: "current",
+      email: "current@mail.com"
+    })
+  })
   this.get('/exercises');
   this.resource('goals');
+  this.post('/token', () => {
+    return {
+      "access_token":"2YotnFZFEjr1zCsicMWpAA",
+      "token_type":"bearer",
+    }
+  })
 }

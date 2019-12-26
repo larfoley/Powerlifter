@@ -8,9 +8,9 @@ export default Component.extend({
 
   submit(e) {
     e.preventDefault()
-    const toast = get(this, 'toast');
-    const goal = get(this, 'goal');
-    const router = get(this, 'router');
+    const toast = this.toast;
+    const goal = this.goal;
+    const router = this.router;
 
     goal.save()
       .then(() => {

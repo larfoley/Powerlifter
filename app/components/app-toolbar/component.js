@@ -20,7 +20,7 @@ export default Component.extend({
     },
 
     invalidateSession() {
-      this.get('session').invalidate();
+      this.session.invalidate();
     }
   }
 });

@@ -8,7 +8,7 @@ export default Controller.extend({
 
   actions: {
     async authenticate(identification, password) {
-      const toast = get(this, 'toast');
+      const toast = this.toast;
 
       try {
         await this.session.authenticate('authenticator:oauth2-password-grant', identification, password);

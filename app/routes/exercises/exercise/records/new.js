@@ -30,7 +30,7 @@ export default Route.extend({
 
   actions: {
     uploadImage(file) {
-      get(this, 'uploadPhoto').perform(file);
+      this.uploadPhoto.perform(file);
       file.readAsDataURL().then(function (url) {
         file.set('url', url);
       });

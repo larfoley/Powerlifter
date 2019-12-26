@@ -52,7 +52,7 @@
         {{#each (file-queue name="photos") as |queue|}}
           {{#each queue.files as |file|}}
             <img src={{file.url}} alt={{file.name}} >
-            {{progress-bar progress=file.progress}}
+            <ProgressBar @progress={{file.progress}} />
           {{/each}}
         {{/each}}
       </div>

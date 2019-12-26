@@ -1,11 +1,26 @@
-<div class="">
-  <h1>Create Free Account</h1>
-  <Input @placeholder="Username" @value={{this.user.username}} />
-  <Input @placeholder="Email" type="email" @value={{this.user.username}} />
-  <Input @placeholder="Password" @value={{this.user.username}} />
-  <Input @placeholder="Confirm Password" type="password" @value={{this.user.username}} />
-  <Input @id="admin-checkbox" @type="checkbox" @name="isAdmin" @checked={{this.isAdmin}} />
-  <span>Agree to terms and conditions</span>
-  <FaIcon @icon="check-square" @prefix="far"/>
-  <Button @text="Submit"/>
-</div>
+<form>
+  <div class="card">
+    <div class="card__body">
+      <TextInput
+        @value={{this.user.username}}
+        @label="Username"
+        @errors={{this.user.errors.username}}
+      />
+      <TextInput
+        @value={{this.user.email}}
+        @label="Email"
+        @errors={{this.user.errors.email}}
+      />
+      <TextInput
+        @type="password"
+        @value={{this.user.password}}
+        @label="Password"
+        @errors={{this.user.errors.email}}
+      />
+      <button type="submit" class="button">Sign Up</button>
+    </div>
+  </div>
+  <p class="text-align-center">
+    Already have an account ? <LinkTo @route="sign-in">Sign In</LinkTo>
+  </p>
+</form>

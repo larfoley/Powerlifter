@@ -4,8 +4,12 @@ import Validator from "ember-model-validator/mixins/object-validator";
 const validations = {
   username: {
     presence: true,
-    // minimum: 3,
-    // maximum: 15,
+  },
+  email: {
+    presence: true,
+  },
+  password: {
+    presence: true,
   }
 }
 

@@ -1,45 +1,35 @@
 import Component from '@ember/component';
-import { A } from '@ember/array';
 import { inject as service } from '@ember/service';
+import { get } from '@ember/object';
 
 export default Component.extend({
-  tagName: 'form',
   router: service('router'),
-  toast: service('toast'),
-
-  init() {
-    this._super(...arguments);
-    this.set('errors', A())
-  },
+  toast: service(),
+  session: service(),
 
   submit(e) {
     e.preventDefault();
-    const user = this.get('user');
-    const toast = this.get('toast');
-    const router = this.get('router');
+    const user = get(this, 'user');
+    const toast = get(this, 'toast');
+    const router = get(this, 'router');
 
-    if (!user.validate()) {
-      toast.error('Fix Validation errors', 'Error');
-      return;
+    if (user.validate()) {
+      user.save()
+        .then(() => {
+          toast.success('Account created');
+          router.transitionTo('sign-in')
+        })
+        .catch((error) => {
+          if (user.get('isValid')) {
+            error.errors.forEach((err) => {
+              toast.error(err.detail);
+            })
+          } else {
+            toast.info('fix validation errors');
+          }
+        })
+    } else {
+      toast.info('fix validation errors');
     }
-
-    user.save()
-      .then(() => {
-        toast.success('Account registered', 'Success');
-        router.transitionTo('home');
-      })
-      .catch((error) => {
-        if (!user.get('isValid')) {
-          toast.error('Please fix validation errors');
-
-        } else if (error.errors) {
-          error.errors.forEach((err) => {
-            toast.error(err.detail);
-          })
-
-        } else {
-          toast.error('Unable to sign up');
-        }
-      })
   }
 });

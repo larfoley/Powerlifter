@@ -7,12 +7,14 @@
   font-weight: normal;
   font-style: normal;
 }
-@import 'ember-paper';
-@import 'ember-paper-data-table';
-@import 'paper-data-table';
-@import "ember-basic-dropdown";
+
 
 @import "variables";
+@import "ember-basic-dropdown";
+@import 'ember-paper';
+
+
+
 @import "defaults";
 @import "utils";
 @import "components/all";

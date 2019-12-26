@@ -1,9 +1,4 @@
-import Route from '@ember/routing/route';
+import Route from './protected';
 
 export default Route.extend({
-  actions: {
-    test() {
-      alert()
-    }
-  }
 });

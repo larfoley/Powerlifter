@@ -4,7 +4,6 @@ import DataAdapterMixin from "ember-simple-auth/mixins/data-adapter-mixin";
 
 export default RESTAdapter.extend(DataAdapterMixin, {
   host: 'http://localhost:3000',
-  authorizer: 'authorizer:oauth2',
   headers: computed('session.data.authenticated.token', function() {
     const headers = {};
     if (this.session.isAuthenticated) {

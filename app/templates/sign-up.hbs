@@ -1,6 +1,3 @@
-<AppToolbar @title="Sign Up"/>
-<AppContainer>
-  <PageContainer>
-    <SignUpForm @user={{@model}} />
-  </PageContainer>
-</AppContainer>
+<PageOverlay @title="Sign Up">
+  <SignUpForm @user={{@model}} @onSignup={{action "authenticate"}}/>
+</PageOverlay>

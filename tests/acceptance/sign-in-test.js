@@ -11,8 +11,8 @@ module('Acceptance | sign in', function(hooks) {
   test('visiting /sign-in when authenticated should redirect to /home', async function(assert) {
 
     await authenticateSession({
-      authToken: '12345',
-      otherData: 'some-data'
+      access_token: '12345',
+      token_type: "bearer"
     });
 
     await visit('/sign-in');
@@ -29,5 +29,6 @@ module('Acceptance | sign in', function(hooks) {
     assert.dom('#toast-container', document).includesText('Signed in')
 
   });
+
 
 });

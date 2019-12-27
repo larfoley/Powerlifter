@@ -11,10 +11,6 @@ export default Component.extend({
     return get(this, 'backButton') && window.history.length > 0;
   }),
 
-  // invalidateSession() {
-  //   this.get('session').invalidate();
-  // },
-
   actions: {
     goBack() {
       window.history.back()

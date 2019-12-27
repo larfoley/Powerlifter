@@ -1,5 +1,5 @@
 <PageOverlay @title="Sign In">
   <SignInForm
-    @authenticate={{action "authenticate"}}
+    @authenticate={{fn this.authenticate}}
   />
 </PageOverlay>

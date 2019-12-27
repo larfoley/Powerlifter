@@ -1,11 +1,10 @@
 <AppNavbar />
 <AppToolbar>
-  {{!-- <i class="app-toolbar__item fas fa-edit"></i>
-  {{#link-to "posts.new"}}
-    <i class="app-toolbar__item fas fa-plus"></i>
-  {{/link-to}}
-  <i class="app-toolbar__item fas fa-ellipsis-v"></i> --}}
-  <FaIcon class="app-toolbar__item" @icon="sign-out-alt" @click={{action "invalidateSession"}}/>
+  <FaIcon
+    class="app-toolbar__item"
+    @icon="sign-out-alt"
+    @click={{this.invalidateSession}}
+  />
 </AppToolbar>
 <AppContainer>
   <PageContainer>

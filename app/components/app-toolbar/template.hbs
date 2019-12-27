@@ -1,7 +1,7 @@
 <div class="app-toolbar__container">
   <div class="app-toolbar__left">
     {{#if this.showBackButton}}
-      <i role="button" {{action "goBack"}} class="app-toolbar__item fas fa-arrow-left"></i>
+      <FaIcon class="app-toolbar__item" @icon="arrow-left" @on={{"click" "goBack"}}/>
     {{/if}}
     <span class="app-toolbar__item app-toolbar__title">
       {{this.title}}

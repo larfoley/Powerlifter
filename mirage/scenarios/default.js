@@ -5,18 +5,7 @@ export default function(server) {
     This data will not be loaded in your tests.
   */
 
-  // server.create('goal', {
-  //   exercise: 'Squat',
-  //   weight: 190,
-  //   reps: 1,
-  //   done: false,
-  // });
-  // server.create('goal', {
-  //   exercise: 'Deadlift',
-  //   weight: 190,
-  //   reps: 1,
-  //   done: false,
-  // });
+  // server.createList('post', 10);
   server.create('exercise', {
     name: 'squat'
   });

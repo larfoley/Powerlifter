@@ -25,13 +25,6 @@ module.exports = function(environment) {
     googleFonts: [
       'Nunito',
     ],
-
-    // Set or update content security policies
-    contentSecurityPolicy: {
-      'font-src': "'self' fonts.gstatic.com",
-      'style-src': "'self' fonts.googleapis.com"
-    }
-
   };
 
   if (environment === 'development') {
@@ -60,11 +53,7 @@ module.exports = function(environment) {
 
   if (environment === 'production') {
     // here you can enable a production-specific feature
-    ENV['ember-cli-mirage'] = {
-      enabled: true
-    };
   }
-
 
   return ENV;
 };

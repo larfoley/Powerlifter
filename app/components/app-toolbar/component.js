@@ -19,8 +19,5 @@ export default Component.extend({
     navigateTo() {
     },
 
-    invalidateSession() {
-      this.get('session').invalidate();
-    }
   }
 });

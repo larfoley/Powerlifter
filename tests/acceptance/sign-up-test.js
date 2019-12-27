@@ -1,8 +1,9 @@
 import { module, test } from 'qunit';
-import { visit, currentURL } from '@ember/test-helpers';
+import { currentURL } from '@ember/test-helpers';
 import { setupApplicationTest } from 'ember-qunit';
 import { authenticateSession } from 'ember-simple-auth/test-support';
 import { setupMirage } from 'ember-cli-mirage/test-support';
+import signUpPage from '../pages/sign-up';
 
 module('Acceptance | sign up', function(hooks) {
   setupApplicationTest(hooks);
@@ -15,9 +16,28 @@ module('Acceptance | sign up', function(hooks) {
       token_type: "bearer"
     });
 
-    await visit('/sign-up');
+    await signUpPage.visit();
 
     assert.equal(currentURL(), '/home');
+  });
+
+  test('signing up', async function(assert) {
+    const { signUpForm } = signUpPage;
+
+    await signUpPage.visit();
+
+    assert.equal(currentURL(), '/sign-up');
+
+    assert.ok(signUpForm.isPresent);
+
+    await signUpForm
+      .fillInUserName('bob')
+      .fillInEmail('bob@test.com')
+      .fillInPassword('bob123');
+
+    await signUpForm.submit();
+
+    assert.equal(currentURL(), '/sign-in');
   });
 
 });

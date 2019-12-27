@@ -1,8 +1,9 @@
-import { module, test } from 'qunit';
-import { visit, currentURL, click } from '@ember/test-helpers';
+import { module, test, skip } from 'qunit';
+import { currentURL, click } from '@ember/test-helpers';
 import { setupApplicationTest } from 'ember-qunit';
 import { authenticateSession } from 'ember-simple-auth/test-support';
 import { setupMirage } from 'ember-cli-mirage/test-support';
+import signInPage from '../pages/sign-in';
 
 module('Acceptance | sign in', function(hooks) {
   setupApplicationTest(hooks);
@@ -15,13 +16,13 @@ module('Acceptance | sign in', function(hooks) {
       token_type: "bearer"
     });
 
-    await visit('/sign-in');
+    await signInPage.visit();
 
     assert.equal(currentURL(), '/home');
   });
 
   test('succesfully signing in', async function(assert) {
-    await visit('/sign-in');
+    await signInPage.visit();
 
     assert.equal(currentURL(), '/sign-in');
 
@@ -30,5 +31,23 @@ module('Acceptance | sign in', function(hooks) {
 
   });
 
+  // BUG: ember simple auth will not logout
+  skip('signing out', async function(assert) {
+    await authenticateSession({
+      access_token: '12345',
+      token_type: "bearer"
+    });
 
+    const { signOutButton } = signInPage
+
+    await signInPage.visit();
+
+    assert.equal(currentURL(), '/home');
+
+    assert.ok(signOutButton.isPresent);
+
+    await signOutButton.click();
+
+    assert.equal(currentURL(), '/sign-in');
+  });
 });

@@ -1,5 +1,6 @@
-import Service, { inject as service } from '@ember/service';
+import Service from '@ember/service';
 import { resolve } from 'rsvp';
+import { inject as service } from '@ember/service';
 
 export default Service.extend({
   session: service(),
@@ -7,7 +8,7 @@ export default Service.extend({
 
   load() {
     if (this.get('session.isAuthenticated')) {
-      return this.store.queryRecord('user', { me: true }).then((user) => {
+      return this.get('store').queryRecord('user', { me: true }).then((user) => {
         this.set('user', user);
       });
     } else {

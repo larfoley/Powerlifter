@@ -9,9 +9,9 @@ export default Component.extend({
 
   submit(e) {
     e.preventDefault();
-    const user = this.user;
-    const toast = this.toast;
-    const router = this.router;
+    const user = get(this, 'user');
+    const toast = get(this, 'toast');
+    const router = get(this, 'router');
 
     if (user.validate()) {
       user.save()

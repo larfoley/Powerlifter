@@ -6,7 +6,7 @@ export default Controller.extend({
 
   actions: {
     invalidateSession() {
-      this.session.invalidate();
+      this.get('session').invalidate();
     }
   }
 });

@@ -5,6 +5,7 @@
     <i class="app-toolbar__item fas fa-plus"></i>
   {{/link-to}}
   <i class="app-toolbar__item fas fa-ellipsis-v"></i> --}}
+  <FaIcon class="app-toolbar__item" @icon="sign-out-alt" @click={{action "invalidateSession"}}/>
 </AppToolbar>
 <AppContainer>
   <PageContainer>

@@ -6,8 +6,8 @@ export default Component.extend({
 
   submit(e) {
     e.preventDefault();
-    const username = this.username;
-    const password = this.password;
+    const username = this.get('username');
+    const password = this.get('password');
 
     this.authenticate(username, password);
   }

@@ -1,23 +1,32 @@
-<form>
+<form data-test-sign-up>
   <div class="card">
     <div class="card__body">
       <TextInput
         @value={{this.user.username}}
         @label="Username"
         @errors={{this.user.errors.username}}
+        data-test-username
       />
       <TextInput
         @value={{this.user.email}}
         @label="Email"
         @errors={{this.user.errors.email}}
+        data-test-email
       />
       <TextInput
         @type="password"
         @value={{this.user.password}}
         @label="Password"
-        @errors={{this.user.errors.email}}
+        @errors={{this.user.errors.password}}
+        data-test-password
       />
-      <button type="submit" class="button">Sign Up</button>
+      <button
+        type="submit"
+        class="button"
+        data-test-submit-button
+      >
+        Sign Up
+      </button>
     </div>
   </div>
   <p class="text-align-center">

@@ -1,9 +1,11 @@
 <AppNavbar />
 <AppToolbar>
   <FaIcon
+    role="button"
     class="app-toolbar__item"
     @icon="sign-out-alt"
     @click={{this.invalidateSession}}
+    data-test-sign-out-button
   />
 </AppToolbar>
 <AppContainer>

@@ -30,4 +30,8 @@ Router.map(function() {
     this.route('all');
     this.route('new');
   });
+  this.route('my-network', function() {
+    this.route('search');
+    this.route('feed');
+  });
 });

@@ -20,6 +20,30 @@
     }
   }
 
+  &__container {
+    position: relative;
+
+
+  }
+
+  &__icon-container {
+    position: absolute;
+    bottom: 0;
+    top: 0;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+    width: 2.5em;
+    text-align: center;
+
+    & + input {
+      padding-left: 3em;
+    }
+  }
+
+  &__icon {
+    margin-top: .8em;
+  }
+
   &.is-invalid {
     input {
       border-color: $error-colors;

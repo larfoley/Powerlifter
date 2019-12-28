@@ -2,13 +2,25 @@
   <label class="input__label">
     {{this.label}}
   </label>
-  <Input
-    type={{if this.type this.type "text"}}
-    @value={{this.value}}
-    @model={{this.model}}
-    disabled={{this.disabled}}
-
-  />
+  <div class="input__container">
+    {{#if @icon}}
+      <div class="input__icon-container">
+        {{!-- <span class="fa-layers fa-lg">
+          <FaIcon @icon="circle" />
+          <FaIcon @icon={{@icon}} class="fa-inverse" @transform="shrink-6" />
+        </span> --}}
+        <FaIcon @icon={{@icon}} class="input__icon"/>
+      </div>
+    {{/if}}
+    <Input
+      type={{if this.type this.type "text"}}
+      @placeholder={{@placeholder}}
+      @value={{this.value}}
+      @model={{this.model}}
+      disabled={{this.disabled}}
+      @key-up={{@onKeyUp}}
+    />
+  </div>
   {{#if this.errors}}
     <div class="input__errors">
       {{#each this.errors as |error|}}

@@ -1,0 +1,34 @@
+<div class="tabs-menu" data-test-navbar-tabs>
+  <div class="tabs-menu__container">
+    {{#each @tabs as |tab|}}
+      <div class="tabs-menu__item">
+        {{#if tab.model}}
+          <LinkTo
+            class="tabs-menu__link"
+            @route={{tab.route}}
+            @model={{tab.model}}
+          >
+            {{#if tab.icon}}
+              <div>
+                <FaIcon @icon={{tab.icon}}/>
+              </div>
+            {{/if}}
+            {{tab.displayName}}
+          </LinkTo>
+        {{else}}
+          <LinkTo
+            class="tabs-menu__link"
+            @route={{tab.route}}
+          >
+            {{#if tab.icon}}
+              <div>
+                <FaIcon @icon={{tab.icon}}/>
+              </div>
+            {{/if}}
+            {{tab.displayName}}
+          </LinkTo>
+        {{/if}}
+      </div>
+    {{/each}}
+  </div>
+</div>

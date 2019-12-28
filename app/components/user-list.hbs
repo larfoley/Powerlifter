@@ -1,0 +1,15 @@
+<div class="card" data-test-user-list>
+  {{#each @users as |user|}}
+  <div class="card__body" data-test-user-item>
+    <div class="media">
+      <div class="media__asset">
+        <FaIcon @icon="user-circle" @size="3x"/>
+      </div>
+      <div class="media__body">
+        <h2>{{user.username}}</h2>
+        <Button @text="Add Friend" @icon="user-plus" @onClick={{fn @sendFriendRequest user}}/>
+      </div>
+    </div>
+  </div>
+  {{/each}}
+</div>

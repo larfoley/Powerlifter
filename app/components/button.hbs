@@ -1,0 +1,13 @@
+<button class="button" onclick={{@onClick}}>
+  {{#if @text}}
+    {{#if @icon}}
+      <FaIcon @icon={{@icon}}/>
+    {{/if}}
+    {{@text}}
+  {{else}}
+    {{#if @icon}}
+      <FaIcon @icon={{@icon}}/>
+    {{/if}}
+    {{yield}}
+  {{/if}}
+</button>

@@ -1,13 +1,16 @@
-<div class="app-toolbar__container">
-  <div class="app-toolbar__left">
-    {{#if this.showBackButton}}
+<div class="app-toolbar">
+  <div class="app-toolbar__container">
+    <div class="app-toolbar__left">
+      {{#if @showBackButton}}
       <FaIcon class="app-toolbar__item" @icon="arrow-left" @on={{"click" "goBack"}}/>
-    {{/if}}
-    <span class="app-toolbar__item app-toolbar__title">
-      {{this.title}}
-    </span>
+      {{/if}}
+      <span class="app-toolbar__item app-toolbar__title">
+        {{@title}}
+      </span>
+    </div>
+    <div class="app-toolbar__right">
+      {{yield}}
+    </div>
   </div>
-  <div class="app-toolbar__right">
-    {{yield}}
-  </div>
+
 </div>

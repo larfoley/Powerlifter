@@ -8,14 +8,15 @@
   input {
     padding: .9em 1.3em;
     width: 100%;
-    border-radius: 5px;
+    border-radius: 50px;
     display: block;
     border: none;
     background-color: $input-bg-color;
-    border: 2px solid $input-bg-color;
+    border: 3px solid $input-bg-color;
 
     &:focus {
       outline: 0;
+      border-color: $focus-color;
       background-color: white;
     }
   }
@@ -41,14 +42,12 @@
   }
 
   &__icon {
-    margin-top: .8em;
+    margin-top: .9em;
+    margin-left: .5em;
+    color: $input-icon-color;
   }
 
   &.is-invalid {
-    input {
-      border-color: $error-colors;
-    }
-
     label {
       color: $error-colors;
     }

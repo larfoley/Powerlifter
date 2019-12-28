@@ -1,4 +1,4 @@
-<button class="button" onclick={{@onClick}}>
+<button class="button" onclick={{@onClick}} ...attributes>
   {{#if @text}}
     {{#if @icon}}
       <FaIcon @icon={{@icon}}/>
@@ -6,7 +6,7 @@
     {{@text}}
   {{else}}
     {{#if @icon}}
-      <FaIcon @icon={{@icon}}/>
+      <FaIcon class="button__icon" @icon={{@icon}}/>
     {{/if}}
     {{yield}}
   {{/if}}

@@ -2,31 +2,35 @@
   <div class="card">
     <div class="card__body">
       <TextInput
-        @value={{this.user.username}}
+        @value={{@user.username}}
         @label="Username"
-        @errors={{this.user.errors.username}}
+        @errors={{@user.errors.username}}
+        @icon="user"
         data-test-username
       />
       <TextInput
-        @value={{this.user.email}}
+      class="foo"
+        @value={{@user.email}}
         @label="Email"
-        @errors={{this.user.errors.email}}
+        @errors={{@user.errors.email}}
         data-test-email
+        @icon="envelope"
       />
       <TextInput
         @type="password"
-        @value={{this.user.password}}
+        @value={{@user.password}}
         @label="Password"
-        @errors={{this.user.errors.password}}
+        @errors={{@user.errors.password}}
+        @icon="lock"
         data-test-password
       />
-      <button
+      <Button
         type="submit"
-        class="button"
+        @icon="paper-plane"
         data-test-submit-button
       >
         Sign Up
-      </button>
+      </Button>
     </div>
   </div>
   <p class="text-align-center">

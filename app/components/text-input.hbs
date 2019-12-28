@@ -1,0 +1,33 @@
+<div class="input {{if @errors "is-invalid"}}">
+  {{#if @label}}
+  <label class="input__label">
+    {{@label}}
+  </label>
+  {{/if}}
+  <div class="input__container">
+    {{#if @icon}}
+    <div class="input__icon-container">
+      <FaIcon @icon={{@icon}} class="input__icon"/>
+    </div>
+    {{/if}}
+    <Input
+      type={{if this.type this.type "text"}}
+      @placeholder={{@placeholder}}
+      @value={{@value}}
+      @model={{@model}}
+      disabled={{@disabled}}
+      @key-up={{@onKeyUp}}
+      ...attributes
+    />
+  </div>
+  {{#if @errors}}
+  <div class="input__errors">
+    {{#each @errors as |error|}}
+    <div class="input__error">
+      <FaIcon @icon="info-circle"/>
+      <span>{{error.message}}</span>
+    </div>
+    {{/each}}
+  </div>
+  {{/if}}
+</div>

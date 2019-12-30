@@ -1,0 +1,21 @@
+<AppNavbar />
+<AppToolbar @title="My Network"/>
+<AppContainer>
+  <NavbarTabs
+    @tabs={{array
+      (hash
+        displayName = "Feed"
+        route = "my-network.feed"
+        icon="rss"
+      )
+      (hash
+        displayName = "Search"
+        route = "my-network.search"
+        icon="search"
+      )
+    }}
+  />
+  <PageContainer>
+    {{outlet}}
+  </PageContainer>
+</AppContainer>

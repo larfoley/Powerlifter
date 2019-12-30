@@ -36,6 +36,16 @@ export default function() {
       email: "current@mail.com"
     })
   })
+  this.get('/users', (schema, request) => {
+    const searchTerm = request.queryParams.search;
+    
+    if (searchTerm) {
+      return schema.users
+        .where(user => user.username.includes(searchTerm));
+    }
+
+    return schema.users.all();
+  })
   this.get('/exercises');
   this.resource('goals');
   this.post('/token', () => {

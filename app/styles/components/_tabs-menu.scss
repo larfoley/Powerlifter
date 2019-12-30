@@ -9,6 +9,7 @@
   }
 
   &__item {
+    flex: 1;
     &:first-child .tabs-menu__link {
       padding-left: 0;
     }
@@ -17,10 +18,10 @@
   &__link {
     color: white;
     padding: 1em;
-    display: inline-block;
+    display: block;
+    text-align: center;
     text-decoration: none;
     border-bottom: 4px solid darken($primary-color, 7%);
-
 
     &.active {
       border-bottom-color: white;

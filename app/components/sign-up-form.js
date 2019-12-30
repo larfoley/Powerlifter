@@ -8,8 +8,8 @@ export default class SignUpComponent extends Component {
 
   async submit(e) {
     e.preventDefault();
-    const user = this.user
-    const toast = this.toast
+    const user = this.user;
+    const toast = this.toast;
 
     if (user.validate()) {
       try {

@@ -1,0 +1,19 @@
+<div data-test-find-friends>
+  <TextInput
+    @placeholder="Search for a user..."
+    @onKeyUp={{fn this.debounceFindFriends}}
+    @icon="search"
+  />
+  {{#if this.searching}}
+    <p>Finding friends...</p>
+  {{else}}
+    {{#if this.noUsersFound}}
+      <p data-test-no-users-found-message>No users found.</p>
+    {{else}}
+      <UserList
+        @users={{this.users}}
+        @sendFriendRequest={{fn @sendFriendRequest}}
+      />
+    {{/if}}
+  {{/if}}
+</div>

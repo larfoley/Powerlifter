@@ -5,14 +5,22 @@
         @value={{this.username}}
         @label="Username"
         data-test-username
+        @icon="user"
       />
       <TextInput
         @type="password"
         @value={{this.password}}
         @label="Password"
+        @icon="lock"
         data-test-password
       />
-      <button type="submit" class="button">Sign In</button>
+      <Button
+        @type="submit"
+        @icon="paper-plane"
+        data-test-submit-button
+      >
+        Sign In
+      </Button>
     </div>
   </div>
   <p class="text-align-center">

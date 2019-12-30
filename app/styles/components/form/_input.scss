@@ -8,23 +8,46 @@
   input {
     padding: .9em 1.3em;
     width: 100%;
-    border-radius: 5px;
+    border-radius: 50px;
     display: block;
     border: none;
     background-color: $input-bg-color;
-    border: 2px solid $input-bg-color;
+    border: 3px solid $input-bg-color;
 
     &:focus {
       outline: 0;
+      border-color: $focus-color;
       background-color: white;
     }
   }
 
-  &.is-invalid {
-    input {
-      border-color: $error-colors;
-    }
+  &__container {
+    position: relative;
 
+
+  }
+
+  &__icon-container {
+    position: absolute;
+    bottom: 0;
+    top: 0;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+    width: 2.5em;
+    text-align: center;
+
+    & + input {
+      padding-left: 3em;
+    }
+  }
+
+  &__icon {
+    margin-top: .9em;
+    margin-left: .5em;
+    color: $input-icon-color;
+  }
+
+  &.is-invalid {
     label {
       color: $error-colors;
     }

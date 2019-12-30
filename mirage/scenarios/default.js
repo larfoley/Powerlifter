@@ -15,4 +15,13 @@ export default function(server) {
   server.create('exercise', {
     name: 'deadlift'
   });
+  server.create('user', {
+    username: 'bob'
+  });
+  server.create('user', {
+    username: 'bobby'
+  });
+  server.create('user', {
+    username: 'bo'
+  });
 }

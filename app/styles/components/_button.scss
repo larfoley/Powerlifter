@@ -11,5 +11,10 @@
 
   &:hover {
     background-color: darken($primary-color, 5%);
+    cursor: pointer;
+  }
+
+  &__icon {
+    margin-right: .3em;
   }
 }

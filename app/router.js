@@ -34,4 +34,7 @@ Router.map(function() {
     this.route('search');
     this.route('feed');
   });
+  this.route('goals', function() {
+    this.route('new');
+  });
 });

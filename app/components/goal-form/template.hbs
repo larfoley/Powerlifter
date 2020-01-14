@@ -1,17 +1,51 @@
 <form>
   <div class="card">
     <div class="card__body">
-      <div class="form-field">
-        <label for="">Weight</label>
-        <Input @value={{this.goal.weight}} />
-      </div>
-      <div class="form-field">
-        <label for="">Reps</label>
-        <Input value={{this.goal.reps}} />
-      </div>
-      <div class="form-field">
-        <button type="submit">Add Goal</button>
-      </div>
+      <TextInput
+        @value={{@goal.weight}}
+        @label="Weight"
+        @errors={{@goal.errors.weight}}
+        data-test-username
+      />
+      <TextInput
+        @value={{@goal.reps}}
+        @label="Reps"
+        @errors={{@goal.errors.reps}}
+        @icon="user"
+        data-test-username
+      />
+      <TextInput
+        @value={{@goal.duedate}}
+        @label="Duedate"
+        @errors={{@goal.errors.duedate}}
+        @icon="user"
+        data-test-username
+      />
+      <TextInput
+        @value={{@goal.exercise}}
+        @label="Exercise"
+        @errors={{@goal.errors.exercise}}
+        @icon="user"
+        data-test-username
+      />
+      <label>
+  Start date:
+  {{pikaday-input onSelection=(action (mut selectedDueDate) )}}
+</label>
+      <PowerSelect
+        @options={{@exercises}}
+        @searchField="name"
+        @selected={{this.selectedExercise}}
+        @onChange={{action (mut selectedExercise)}} as |exercise|
+      >
+        {{exercise.name}}
+      </PowerSelect>
+      <Button
+        @type="submit"
+        data-test-submit-button
+      >
+        Add Goal
+      </Button>
     </div>
   </div>
 </form>

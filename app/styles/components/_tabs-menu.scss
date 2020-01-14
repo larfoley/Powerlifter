@@ -1,5 +1,6 @@
 .tabs-menu {
-  background: darken($primary-color, 7%);
+  // background: darken($primary-color, 7%);
+  background-color: $app-toolbar-bg-color;
 
   &__container {
     display: flex;
@@ -17,7 +18,7 @@
 
   &__link {
     color: white;
-    padding: 1em;
+    padding: .5em 1em;
     display: block;
     text-align: center;
     text-decoration: none;

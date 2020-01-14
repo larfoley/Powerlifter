@@ -5,4 +5,5 @@ export default Model.extend({
   weight: attr('number'),
   reps: attr('number'),
   done: attr('boolean'),
+  dueDate: attr('string')
 });

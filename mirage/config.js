@@ -30,21 +30,40 @@ export default function() {
 
     return schema.users.create(user);
   });
+
   this.get('/users/me', (schema) => {
     return schema.users.create({
       username: "current",
       email: "current@mail.com"
     })
   })
+
   this.get('/users', (schema, request) => {
     const searchTerm = request.queryParams.search;
-    
+
     if (searchTerm) {
       return schema.users
         .where(user => user.username.includes(searchTerm));
     }
 
+    if (request.queryParams.friendRequest) {
+      return schema.users
+        .where(user => user.username !== 'current' && (user.friendRequestSent || user.friendRequestRecieved));
+    }
+
     return schema.users.all();
+  })
+  this.post('/friendRequests', function(schema, request) {
+    const friendRequest = JSON.parse(request.requestBody).friendRequest;
+
+    const users = schema.users.
+      where(user => user.usernameuser.id === friendRequest.from);
+
+    users.update({
+      friendRequestSent: true
+    })
+    console.log(users);
+    return schema.friendRequests.create(friendRequest);
   })
   this.get('/exercises');
   this.resource('goals');

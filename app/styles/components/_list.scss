@@ -1,0 +1,30 @@
+.list {
+  margin: 0;
+  padding: 0;
+
+  &__item {
+    padding: .5em;
+    margin: 0;
+    list-style: none;
+
+    svg {
+      margin-right: 5px;
+      color: gray;
+    }
+
+    &:first-child {
+      border-top-right-radius: 5px;
+      border-top-left-radius: 5px;
+    }
+
+    &:last-child {
+      border-bottom-right-radius: 5px;
+      border-bottom-left-radius: 5px;
+    }
+
+    &:hover {
+      cursor: pointer;
+      background-color: #f2f2f2;
+    }
+  }
+}

@@ -1,9 +1,12 @@
 import RESTAdapter from '@ember-data/adapter/rest';
 import { computed } from '@ember/object';
 import DataAdapterMixin from "ember-simple-auth/mixins/data-adapter-mixin";
+import ENV from '../config/environment';
+
+const { host } = ENV.APP;
 
 export default RESTAdapter.extend(DataAdapterMixin, {
-  host: 'http://localhost:3000',
+  host,
 
   headers: computed('session.data.authenticated.token', function() {
     const headers = {};

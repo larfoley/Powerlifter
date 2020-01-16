@@ -33,5 +33,7 @@ Router.map(function() {
   this.route('my-network', function() {
     this.route('search');
     this.route('feed');
+    this.route('friend-requests');
+    this.route('friends');
   });
 });

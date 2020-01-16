@@ -6,13 +6,8 @@
         <FaIcon @icon="user-circle" @size="3x"/>
       </div>
       <div class="media__body">
-        <h2 data-test-user-item-username>{{user.username}}</h2>
-        <Button
-          @text="Add Friend"
-          @icon="user-plus"
-          @onClick={{fn @sendFriendRequest user}}
-          data-test-user-item-add-friend-button
-        />
+        <h3 data-test-user-item-username>{{user.username}}</h3>
+        <FriendRequestButton @user={{user}} />
       </div>
     </div>
   </div>

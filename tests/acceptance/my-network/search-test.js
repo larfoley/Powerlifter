@@ -33,17 +33,4 @@ module('Acceptance | my network/search', function(hooks) {
     assert.equal(page.userList.users.length, 0);
   });
 
-  test('sending a friend request', async function(assert) {
-    await authenticateSession({ access_token: '12345', token_type: "bearer" });
-    this.server.create('user', { username: 'john' });
-    this.server.create('user', { username: 'jane' });
-
-    await page.visit();
-
-    await typeIn('[data-test-find-friends] input', 'john' );
-
-    await this.pauseTest();
-
-    assert.equal(page.userList.users[0].username, 'john');
-  });
 });

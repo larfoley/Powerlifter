@@ -62,7 +62,6 @@ export default function() {
     users.update({
       friendRequestSent: true
     })
-    console.log(users);
     return schema.friendRequests.create(friendRequest);
   })
   this.get('/exercises');

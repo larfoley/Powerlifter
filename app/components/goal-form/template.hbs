@@ -11,35 +11,27 @@
         @value={{@goal.reps}}
         @label="Reps"
         @errors={{@goal.errors.reps}}
-        @icon="user"
         data-test-username
       />
-      <TextInput
-        @value={{@goal.duedate}}
-        @label="Duedate"
-        @errors={{@goal.errors.duedate}}
-        @icon="user"
-        data-test-username
-      />
-      <TextInput
-        @value={{@goal.exercise}}
-        @label="Exercise"
-        @errors={{@goal.errors.exercise}}
-        @icon="user"
-        data-test-username
-      />
-      <label>
-  Start date:
-  {{pikaday-input onSelection=(action (mut selectedDueDate) )}}
-</label>
-      <PowerSelect
+      <div class="input">
+        <label>Date</label>
+        <EmberFlatpickr
+          @date={{readonly @goal.dueDate}}
+          @dateFormat='M/D/Y'
+          @onChange={{fn (mut @goal.dueDate)}}
+        />
+      </div>
+      <div class="input">
+        <label>Exercise</label>
+        <PowerSelect
         @options={{@exercises}}
         @searchField="name"
         @selected={{this.selectedExercise}}
-        @onChange={{action (mut selectedExercise)}} as |exercise|
-      >
+        @onChange={{fn (mut this.selectedExercise)}} as |exercise|
+        >
         {{exercise.name}}
       </PowerSelect>
+      </div>
       <Button
         @type="submit"
         data-test-submit-button

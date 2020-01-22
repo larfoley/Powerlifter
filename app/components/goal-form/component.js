@@ -1,6 +1,5 @@
 import Component from '@ember/component';
 import { inject as service } from '@ember/service';
-import { get } from '@ember/object';
 
 export default class GoalFormComponent extends Component {
   @service router;
@@ -28,4 +27,4 @@ export default class GoalFormComponent extends Component {
       this.toast.error(e.message)
     }
   }
-};
+}

@@ -1,4 +1,4 @@
-import Route from '@ember/routing/route';
+import Route from '../protected';
 import { hash } from 'rsvp';
 
 export default class GoalsNewRoute extends Route {

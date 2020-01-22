@@ -1,17 +1,22 @@
 .app-navbar {
   background-color: $app-navbar-bg-color;
-  width: $app-navbar-width;
   position: fixed;
   bottom: 0;
-  // top: $app-toolbar-height;
-  top: 0;
+  display: flex;
   z-index: 200;
   color: $app-navbar-text-color;
-  flex-direction: column;
+  width: 100%;
+
+  @media screen and (min-width: 1900px) {
+    width: $app-navbar-width;
+    top: 0;
+    flex-direction: column;
+  }
 
   &__link {
     height: $app-toolbar-height;
     display: flex;
+    flex: 1;
     flex-direction: column;
     align-items: center;
     justify-content: center;
@@ -21,12 +26,19 @@
     // border-right: 4px solid $app-navbar-bg-color;
 
     &.active {
-      border-left: 4px solid $primary-color;
+      color: white;
+      
+      @media screen and (min-width: $navbar-breakpoint) {
+        border-left: 4px solid $primary-color;
+      }
     }
 
     &:hover {
       color: white;
       background-color: lighten($app-navbar-bg-color, 5%);
+    }
+
+    @media screen and (min-width: $navbar-breakpoint) {
     }
   }
 
@@ -37,5 +49,7 @@
 }
 
 .app-navbar ~ .app-container {
-  margin-left: $app-navbar-width;
+  @media screen and (min-width: $navbar-breakpoint) {
+    margin-left: $app-navbar-width;
+  }
 }

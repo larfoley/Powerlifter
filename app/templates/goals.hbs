@@ -1,0 +1,31 @@
+<AppNavbar />
+<AppToolbar @title="Goals">
+  <LinkTo @route="goals.new">
+    <FaIcon
+    role="button"
+    class="app-toolbar__item"
+    @icon="plus"
+    data-test-sign-out-button
+    />
+  </LinkTo>
+</AppToolbar>
+<AppContainer>
+  <NavbarTabs
+    @tabs={{array
+      (hash
+        displayName = "Active"
+        route = "goals"
+        icon="rss"
+      )
+      (hash
+        displayName = "Completed"
+        route = "goals"
+        icon="search"
+      )
+    }}
+  />
+  <PageContainer>
+    <h1>Goals</h1>
+    {{outlet}}
+  </PageContainer>
+</AppContainer>

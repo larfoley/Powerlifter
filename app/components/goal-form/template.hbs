@@ -1,17 +1,43 @@
 <form>
   <div class="card">
     <div class="card__body">
-      <div class="form-field">
-        <label for="">Weight</label>
-        <Input @value={{this.goal.weight}} />
+      <TextInput
+        @value={{@goal.weight}}
+        @label="Weight"
+        @errors={{@goal.errors.weight}}
+        data-test-username
+      />
+      <TextInput
+        @value={{@goal.reps}}
+        @label="Reps"
+        @errors={{@goal.errors.reps}}
+        data-test-username
+      />
+      <div class="input">
+        <label>Date</label>
+        <EmberFlatpickr
+          @date={{readonly @goal.dueDate}}
+          @dateFormat='M/D/Y'
+          @onChange={{fn (mut @goal.dueDate)}}
+        />
       </div>
-      <div class="form-field">
-        <label for="">Reps</label>
-        <Input value={{this.goal.reps}} />
+      <div class="input">
+        <label>Exercise</label>
+        <PowerSelect
+        @options={{@exercises}}
+        @searchField="name"
+        @selected={{this.selectedExercise}}
+        @onChange={{fn (mut this.selectedExercise)}} as |exercise|
+        >
+        {{exercise.name}}
+      </PowerSelect>
       </div>
-      <div class="form-field">
-        <button type="submit">Add Goal</button>
-      </div>
+      <Button
+        @type="submit"
+        data-test-submit-button
+      >
+        Add Goal
+      </Button>
     </div>
   </div>
 </form>

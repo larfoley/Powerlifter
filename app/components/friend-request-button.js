@@ -25,7 +25,6 @@ const handleErrors = (toast, response) => {
 }
 
 export default class FriendRequestButtonComponent extends Component {
-  @service store;
   @service currentUser;
   @service toast;
   @service session;
@@ -33,6 +32,7 @@ export default class FriendRequestButtonComponent extends Component {
   @action
   async sendFriendRequest() {
     const user = this.args.user;
+    console.log(this.currentUser.user);
 
     fetch(`${host}/friendRequests`, {
       method: 'POST',
@@ -61,6 +61,9 @@ export default class FriendRequestButtonComponent extends Component {
          user.friendRequestSent = true;
        }
      }
+   })
+   .then(() => {
+     this.onAddOrRemoveFriend()
    })
    .catch((error) => {
      user.rollbackAttributes();
@@ -94,7 +97,7 @@ export default class FriendRequestButtonComponent extends Component {
      if (!response.ok) {
        user.rollbackAttributes();
        handleErrors(this.toast, response);
-       
+
      } else {
        if (user.friendRequestRecieved) {
          this.toast.success('Friend request declined')
@@ -108,7 +111,11 @@ export default class FriendRequestButtonComponent extends Component {
          this.toast.success('Friend request canceled')
          user.friendRequestSent = false;
        }
+
      }
+   })
+   .then(() => {
+     this.onAddOrRemoveFriend()
    })
    .catch((error) => {
      user.rollbackAttributes();

@@ -1,25 +1,25 @@
 {{#if @user.isFriend}}
   <Button
     @text="Friends"
-    data-test-user-item-add-friend-button
+    data-test-friend-request-button
   />
 {{else if @user.friendRequestSent}}
   <Button
     @text="Friend Request Sent"
-    data-test-user-item-add-friend-button
+    data-test-friend-request-button
     onclick={{this.removeFriend}}
   />
 {{else if @user.friendRequestRecieved}}
   <Button
     @text="Confirm"
     onclick={{this.sendFriendRequest}}
-    data-test-user-item-add-friend-button
+    data-test-friend-request-button
   />
 {{else}}
   <Button
     @text="Add Friend"
     @icon="user-plus"
     onclick={{this.sendFriendRequest}}
-    data-test-user-item-add-friend-button
+    data-test-friend-request-button
   />
 {{/if}}

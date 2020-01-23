@@ -9,7 +9,7 @@ module('Acceptance | goals/new', function(hooks) {
   setupApplicationTest(hooks);
   setupMirage(hooks);
 
-  test('visiting /goals/new', async function(assert) {
+  test('visiting /goals/new when authenticated', async function(assert) {
     await authenticateSession({
       access_token: '12345',
       token_type: "bearer"
@@ -20,9 +20,9 @@ module('Acceptance | goals/new', function(hooks) {
     assert.equal(currentURL(), '/goals/new');
   });
 
-  test('visiting /goals/new', async function(assert) {
+  test('visiting /goals/new when un authenticated', async function(assert) {
     await visit('/goals/new');
 
-    assert.equal(currentURL(), '/goals/new');
+    assert.equal(currentURL(), '/sign-in');
   });
 });

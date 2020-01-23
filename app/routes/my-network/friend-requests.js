@@ -1,4 +1,4 @@
-import Route from '@ember/routing/route';
+import Route from '../protected';
 
 export default class MyNetworkFriendRequestsRoute extends Route {
   model() {

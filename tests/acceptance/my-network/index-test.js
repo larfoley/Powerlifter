@@ -9,11 +9,14 @@ module('Acceptance | my network/index', function(hooks) {
   setupApplicationTest(hooks);
   setupMirage(hooks);
 
+  test('redirect unauthenticated user to the sign in page', async function(assert) {
+    await myNetworkPage.visit();
+
+    assert.equal(currentURL(), '/sign-in');
+  });
+
   test('visiting /my-network/index', async function(assert) {
-    await authenticateSession({
-      access_token: '12345',
-      token_type: "bearer"
-    });
+    await authenticateSession();
 
     await myNetworkPage.visit();
 

@@ -1,0 +1,52 @@
+<div class="card__body" data-test-user-card>
+  <div class="media">
+    <div class="media__asset">
+      <FaIcon @icon="user-circle" @size="3x"/>
+    </div>
+    <div class="media__body">
+      <h3 data-test-user-card-username>{{@user.username}}</h3>
+      <div class="button-group">
+        {{#if @user.isFriend}}
+          <Button
+            @text="Friends"
+            @primary={{true}}
+            data-test-is-friend-button
+          />
+        {{else if @user.friendRequestSent}}
+          <Button
+            @text="Friend Request Sent"
+            class="button"
+            @primary={{true}}
+          />
+          <Button
+            @text="Cancel"
+            data-test-cancel-friend-request-button
+            onclick={{this.removeFriend}}
+            @secondary={{true}}
+          />
+        {{else if @user.friendRequestRecieved}}
+          <Button
+            @text="Confirm"
+            onclick={{this.acceptFriendRequest}}
+            @primary={{true}}
+            data-test-accept-friend-request-button
+          />
+          <Button
+            @text="Decline"
+            onclick={{this.sendFriendRequest}}
+            @secondary={{true}}
+          />
+        {{else}}
+          <Button
+            @text="Add Friend"
+            @icon="user-plus"
+            onclick={{this.sendFriendRequest}}
+            @primary={{true}}
+            data-test-friend-request-button
+          />
+        {{/if}}
+
+      </div>
+    </div>
+  </div>
+</div>

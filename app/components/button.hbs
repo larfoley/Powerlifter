@@ -1,4 +1,9 @@
-<button type={{if @type @type "button"}}  class="button" onclick={{@onClick}} ...attributes >
+<button
+  class="button
+    {{if @primary "button--primary"}}
+    {{if @secondary "button--secondary"}}"
+  ...attributes
+>
   {{#if @text}}
     {{#if @icon}}
       <FaIcon @icon={{@icon}}/>
@@ -10,7 +15,4 @@
     {{/if}}
     {{yield}}
   {{/if}}
-  <span>
-    <FaIcon @icon="caret-down"/>
-  </span>
 </button>

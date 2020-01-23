@@ -7,8 +7,8 @@ export default function() {
 
     Note: these only affect routes defined *after* them!
   */
-
   this.urlPrefix = 'http://localhost:3000';    // make this `http://localhost:8080`, for example, if your API is on a different server
+  this.passthrough('/write-coverage');
   // this.namespace = '';    // make this `/api`, for example, if your API is namespaced
   // this.timing = 400;      // delay for each request, automatically set to 0 during testing
 
@@ -31,11 +31,14 @@ export default function() {
     return schema.users.create(user);
   });
 
-  this.get('/users/me', (schema) => {
-    return schema.users.create({
-      username: "current",
-      email: "current@mail.com"
-    })
+  this.get('/users/me', () => {
+    return {
+      user: {
+        id: 0,
+        username: "current",
+        email: "current@mail.com"
+      }
+    }
   })
 
   this.get('/users', (schema, request) => {
@@ -48,22 +51,43 @@ export default function() {
 
     if (request.queryParams.friendRequest) {
       return schema.users
-        .where(user => user.username !== 'current' && (user.friendRequestSent || user.friendRequestRecieved));
+        .where(user => (user.friendRequestSent || user.friendRequestRecieved));
+    }
+
+    if (request.queryParams.isFriend) {
+      return schema.users.where(user => user.isFriend);
     }
 
     return schema.users.all();
   })
+
+  this.get('/users/:id');
+
   this.post('/friendRequests', function(schema, request) {
     const friendRequest = JSON.parse(request.requestBody).friendRequest;
+    const user = schema.users.find(friendRequest.to);
 
-    const users = schema.users.
-      where(user => user.usernameuser.id === friendRequest.from);
+    if (friendRequest.acceptFriendRequest) {
+      user.update({
+        isFriend: true,
+        friendRequestSent: false,
+        friendRequestRecieved: false
+      })
+    } else if (friendRequest.sendFriendRequest) {
+      user.update({
+        isFriend: false,
+        friendRequestSent: false,
+        friendRequestRecieved: true
+      })
+    }
 
-    users.update({
-      friendRequestSent: true
-    })
-    return schema.friendRequests.create(friendRequest);
+
+    return {
+      friendRequest
+    }
   })
+
+
   this.get('/exercises');
   this.resource('goals');
   this.post('/token', () => {

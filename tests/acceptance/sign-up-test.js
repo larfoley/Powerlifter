@@ -27,7 +27,7 @@ module('Acceptance | sign up', function(hooks) {
     await signUpPage.visit();
 
     assert.equal(currentURL(), '/sign-up');
-
+    assert.dom('[data-test-password]').hasAttribute('type', 'password');
     assert.ok(signUpForm.isPresent);
 
     await signUpForm

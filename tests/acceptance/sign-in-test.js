@@ -1,5 +1,5 @@
 import { module, test, skip } from 'qunit';
-import { currentURL, click } from '@ember/test-helpers';
+import { currentURL } from '@ember/test-helpers';
 import { setupApplicationTest } from 'ember-qunit';
 import { currentSession, authenticateSession } from 'ember-simple-auth/test-support';
 import { setupMirage } from 'ember-cli-mirage/test-support';
@@ -31,8 +31,13 @@ module('Acceptance | sign in', function(hooks) {
     })
 
     assert.equal(currentURL(), '/sign-in');
+    assert.dom('[data-test-password]').hasAttribute('type', 'password');
 
-    await click('button');
+    await signInPage.signInForm
+      .fillInUserName('bob')
+      .fillInPassword('letmein')
+      .submit();
+
     assert.dom('#toast-container', document).includesText('Signed in');
 
     const sessionData = currentSession().get('data.authenticated');

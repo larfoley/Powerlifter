@@ -3,33 +3,54 @@ import { typeIn } from '@ember/test-helpers';
 import { setupApplicationTest } from 'ember-qunit';
 import { authenticateSession } from 'ember-simple-auth/test-support';
 import { setupMirage } from 'ember-cli-mirage/test-support';
-import page from '../../pages/my-network/search';
+import searchPage from '../../pages/my-network/search';
+import friendRequestsPage from '../../pages/my-network/friend-requests';
 
 module('Acceptance | my network/search', function(hooks) {
   setupApplicationTest(hooks);
   setupMirage(hooks);
 
-  test('searching for a friend to add displays a list of users', async function(assert) {
-    await authenticateSession({ access_token: '12345', token_type: "bearer" });
+  test('searching for a user', async function(assert) {
+    await authenticateSession();
+
     const username = 'john';
 
     this.server.create('user', { username });
 
-    await page.visit();
+    await searchPage.visit();
 
     await typeIn('[data-test-find-friends] input', username );
 
-    assert.equal(page.userList.users.length, 1);
+    assert.equal(searchPage.userList.users.length, 1, 'user found');
+    assert.equal(searchPage.userList.users[0].username, 'john', 'username is displayed');
   });
 
-  test('searching for a friend with 0 results', async function(assert) {
-    await authenticateSession({ access_token: '12345', token_type: "bearer" });
+  test('searching for a user that does not exist', async function(assert) {
+    await authenticateSession();
     const username = 'john';
 
-    await page.visit();
+    await searchPage.visit();
 
     await typeIn('[data-test-find-friends] input', username );
 
-    assert.equal(page.userList.users.length, 0);
+    assert.equal(searchPage.userList.users.length, 0, 'no users found');
   });
+
+  test('sending a friend request', async function(assert) {
+    await authenticateSession();
+    const username = 'john';
+
+    this.server.create('user', { username });
+
+    await searchPage.visit();
+
+    await typeIn('[data-test-find-friends] input', username);
+
+    await searchPage.userList.users[0].sendFriendRequest();
+
+    await friendRequestsPage.visit();
+
+    assert.equal(friendRequestsPage.userList.users.length, 1, 'friend request sent');
+  });
+
 });

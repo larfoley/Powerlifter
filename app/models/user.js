@@ -18,5 +18,8 @@ export default Model.extend(Validator, {
   email: attr('string'),
   password: attr('string'),
   confirmPassword: attr('string'),
+  friendRequestRecieved: attr('boolean', { defaultValue: false} ),
+  friendRequestSent: attr('boolean', { defaultValue: false} ),
+  isFriend: attr('boolean', { defaultValue: false} ),
   validations
 });

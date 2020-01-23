@@ -1,0 +1,11 @@
+.button-group {
+  display: flex;
+
+  button {
+    margin-right: .5em;
+    flex-grow: 1;
+    @media screen and (min-width: 700px) {
+      flex-grow: 0;
+    }
+  }
+}

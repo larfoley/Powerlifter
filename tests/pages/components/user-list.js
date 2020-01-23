@@ -6,8 +6,9 @@ import {
 
 export default {
   scope: '[data-test-user-list]',
-  users: collection('[data-test-user-item]', {
-    username: text('[data-test-user-item-username]'),
-    sendFriendRequest: clickable('[data-test-user-item-add-friend-button]')
+  users: collection('[data-test-user-card]', {
+    username: text('[data-test-user-card-username]'),
+    sendFriendRequest: clickable('[data-test-friend-request-button]'),
+    acceptFriendRequest: clickable('[data-test-accept-friend-request-button]')
   })
 };

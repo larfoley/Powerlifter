@@ -36,7 +36,8 @@ Router.map(function() {
     this.route('friend-requests');
     this.route('friends');
   });
-  this.route('goals', function() {
+  this.route('goals',  function() {
     this.route('new');
+    this.route('edit', { path: '/:goal_id/edit' });
   });
 });

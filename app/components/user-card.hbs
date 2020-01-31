@@ -9,14 +9,14 @@
         {{#if @user.isFriend}}
           <Button
             @text="Friends"
-            @primary={{true}}
+            @primaryButton={{true}}
             data-test-is-friend-button
           />
         {{else if @user.friendRequestSent}}
           <Button
             @text="Friend Request Sent"
             class="button"
-            @primary={{true}}
+            @primaryButton={{true}}
           />
           <Button
             @text="Cancel"
@@ -28,7 +28,7 @@
           <Button
             @text="Confirm"
             onclick={{this.acceptFriendRequest}}
-            @primary={{true}}
+            @primaryButton={{true}}
             data-test-accept-friend-request-button
           />
           <Button
@@ -41,7 +41,7 @@
             @text="Add Friend"
             @icon="user-plus"
             onclick={{this.sendFriendRequest}}
-            @primary={{true}}
+            @primaryButton={{true}}
             data-test-friend-request-button
           />
         {{/if}}

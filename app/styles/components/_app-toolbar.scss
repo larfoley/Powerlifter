@@ -7,13 +7,12 @@
   top: 0;
   width: 100%;
   z-index: 1;
+  
   @media screen and (min-width: $navbar-breakpoint) {
     padding-left: $app-navbar-width;
   }
 
   &__container {
-    // max-width: $app-toolbar-max-width;
-    // width: $page-container-width;
     height: $app-toolbar-height;
     margin: auto;
     display: flex;

@@ -1,0 +1,93 @@
+<div
+  class="card goal-card {{if @goal.completed "goal-card--completed"}}"
+  data-test-goal-card
+>
+  <div class="card__body">
+    <div class="media">
+      <div class="media__body">
+        <h3 class="goal-card__title" data-test-exercise>
+          {{@goal.exercise.name}}
+        </h3>
+        <p class="goal-card__text">
+          <strong data-test-weight>{{@goal.weight}}kg</strong> for <strong data-test-reps>{{@goal.reps}} Rep</strong>
+        </p>
+      </div>
+      <div class="media__asset">
+        <span
+          role="button"
+          class="fa-layers fa-lg goal-card__check"
+          {{on "click" this.toggleStatus}}
+          data-test-exercise-status
+        >
+        <FaIcon @icon="circle" />
+        <FaIcon @icon="check" class="fa-inverse" @transform="shrink-6" />
+      </span>
+    </div>
+    </div>
+  </div>
+  <div class="card__footer">
+    <div class="media flex-grow">
+      {{#if @goal.completed}}
+      <div class="media__asset">
+        <span class="fa-layers fa-lg success-color" >
+          <FaIcon @icon="circle" />
+          <FaIcon @icon="check" class="fa-inverse" @transform="shrink-6" />
+        </span>
+      </div>
+        Goal completed
+      {{else}}
+        {{#if this.dueDateIsClose}}
+          <div class="media__asset">
+            <FaIcon @icon="exclamation-circle" class="warning-color" />
+          </div>
+          <div class="media__body">
+            Days left
+            <span data-test-days-left>
+              {{this.daysLeft}}
+            </span>
+          </div>
+        {{else if this.dueDateHasPassed}}
+          <FaIcon @icon="times-circle" />
+        {{else}}
+          {{@goal.dueDate}}
+        {{/if}}
+      {{/if}}
+    </div>
+    <LinkTo
+      @route="goals.edit"
+      @model={{@goal.id}}
+      class="button text-button"
+      data-test-delete-edit-Link
+    >
+      <FaIcon @icon="edit" class="button__icon"/>
+      <span>
+        Edit Goal
+      </span>
+    </LinkTo>
+    <Button
+      onclick={{this.toggleModal}}
+      @textButton={{true}}
+      data-test-delete-goal-button
+    >
+      <FaIcon @icon="trash" class="button__icon"/>
+      Delete Goal
+    </Button>
+  </div>
+</div>
+{{#if this.showConfirmModal}}
+  <ModalDialog
+    @onClose={{fn this.toggleModal}}
+    @targetAttachment="center"
+    @translucentOverlay={{true}}
+  >
+    <h2>Delete this goal?</h2>
+    <div class="flex flex-end">
+      <Button @icon="check" onclick={{this.deleteGoal}}>
+        Yes
+      </Button>
+      <Button @icon="ban" onclick={{this.toggleModal}}>
+        No
+      </Button>
+    </div>
+  </ModalDialog>
+{{/if}}

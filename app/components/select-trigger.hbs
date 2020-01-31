@@ -1,0 +1,22 @@
+{{#if @select.selected}}
+  {{#if @selectedItemComponent}}
+    {{component @selectedItemComponent extra=(readonly @extra) option=(readonly @select.selected) select=(readonly @select)}}
+  {{else}}
+    <span role="button" class="ember-power-select-selected-item">{{yield @select.selected @select}}</span>
+  {{/if}}
+  {{#if (and @allowClear (not @select.disabled))}}
+    <span role="button" class="ember-power-select-clear-btn" {{on "mousedown" this.clear}} {{on "touchstart" this.clear}}>&times;</span>
+  {{/if}}
+{{else}}
+  {{component @placeholderComponent placeholder=@placeholder}}
+{{/if}}
+<div class="ember-power-select-status-icon-container">
+  <FaIcon
+    class="ember-power-select-status-icon ember-power-select-status-icon--down"
+    @icon="caret-square-down"
+  />
+  <FaIcon
+    class="ember-power-select-status-icon ember-power-select-status-icon--up"
+    @icon="caret-square-up"
+  />
+</div>

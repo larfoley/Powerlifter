@@ -1,0 +1,71 @@
+<form data-test-create-or-edit-goal-form {{on "submit" this.createOrUpdateGoal}}>
+  <div class="card">
+    <div class="card__body">
+      <InputField
+        @label="Weight"
+        @errors={{this.goal.errors.weight}}
+      >
+        <TextInput
+          @value={{this.goal.weight}}
+          @placeholder="Enter weight"
+          data-test-weight
+        />
+      </InputField>
+      <InputField
+        @label="Reps"
+        @errors={{this.goal.errors.reps}}
+      >
+        <PowerSelect
+          @triggerClass="reps-selector"
+          @triggerComponent="select-trigger"
+          @options={{array 1 2 3 4 5 6 7 8 9 10 11 12 13 }}
+          @selected={{this.goal.reps}}
+          @placeholder="How many reps..."
+          @onChange={{fn (mut this.goal.reps)}} as |rep|
+        >
+          {{rep}}
+        </PowerSelect>
+      </InputField>
+      <InputField
+        @errors={{this.goal.errors.dueDate}}
+        @label="Due Date"
+      >
+        <EmberFlatpickr
+          class="text-input"
+          data-test-goal-date
+          @placeholder="Select date to complete goal by..."
+          @mode="single"
+          @date={{readonly this.goal.dueDate}}
+          @dateFormat='M/D/Y'
+          @onChange={{fn this.onDateChange}}
+        />
+      </InputField>
+      <InputField
+        @label="Exercise"
+        @errors={{this.goal.errors.exercise}}
+      >
+        <PowerSelect
+          @triggerClass="exercise-selector"
+          @options={{@exercises}}
+          @searchField="name"
+          @placeholder="Select and exercise..."
+          @selected={{this.goal.exercise}}
+          @triggerComponent="select-trigger"
+          @onChange={{fn (mut this.goal.exercise)}} as |exercise|
+        >
+          {{exercise.name}}
+        </PowerSelect>
+      </InputField>
+      <div class="button-group">
+        <Button
+          @submit={{true}}
+          data-test-submit-button
+          @primaryButton={{true}}
+        >
+        Add Goal
+      </Button>
+      <LinkTo class="button outlined-button" @route="goals">Cancel</LinkTo>
+      </div>
+    </div>
+  </div>
+</form>

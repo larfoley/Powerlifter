@@ -1,3 +1,4 @@
+@import "vendor/all";
 @import "app-navbar";
 @import "app-toolbar";
 @import "app-container";
@@ -12,9 +13,12 @@
 @import "exercise-link";
 @import "page-heading";
 @import "goal";
-@import "form/all";
 @import "media";
 @import "centered-container";
 @import "basic-dropdown";
 @import "list";
 @import "button-group";
+@import "colors";
+@import "goal-card";
+@import "form-field";
+@import "text-input";

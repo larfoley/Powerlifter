@@ -1,8 +1,10 @@
 <div class="app-toolbar">
   <div class="app-toolbar__container">
     <div class="app-toolbar__left">
-      {{#if @showBackButton}}
-      <FaIcon class="app-toolbar__item" @icon="arrow-left" @on={{"click" "goBack"}} />
+      {{#if @backButtonLink}}
+        <LinkTo @route={{@backButtonLink}} class="app-toolbar__item">
+          <FaIcon @icon="arrow-left" />
+        </LinkTo>
       {{/if}}
       <span class="app-toolbar__item app-toolbar__title">
         {{@title}}

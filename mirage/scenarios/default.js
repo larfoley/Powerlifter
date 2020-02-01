@@ -7,13 +7,13 @@ export default function(server) {
 
   // server.createList('post', 10);
   server.create('exercise', {
-    name: 'squat'
+    name: 'Squat'
   });
   server.create('exercise', {
-    name: 'bench'
+    name: 'Bench'
   });
   server.create('exercise', {
-    name: 'deadlift'
+    name: 'Deadlift'
   });
   server.create('user', {
     username: 'bob'
@@ -23,5 +23,11 @@ export default function(server) {
   });
   server.create('user', {
     username: 'bo'
+  });
+  server.create('goal', {
+    exercise: { name: 'Exercise' },
+    weight: 100,
+    reps: 1,
+    dueDate: new Date()
   });
 }

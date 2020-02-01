@@ -1,19 +1,25 @@
 <button
   type={{if @submit "submit" "button"}}
   class="button
-    {{if @primary "button--primary"}}
-    {{if @secondary "button--secondary"}}"
+    {{if @primaryButton "primary-button"}}
+    {{if @textButton "text-button"}}
+    {{if @outlinedButton "outlined-button"}}
+    "
   ...attributes
 >
   {{#if @text}}
     {{#if @icon}}
       <FaIcon @icon={{@icon}}/>
     {{/if}}
-    {{@text}}
+    <span>
+      {{@text}}
+    </span>
   {{else}}
     {{#if @icon}}
       <FaIcon class="button__icon" @icon={{@icon}}/>
     {{/if}}
-    {{yield}}
+    <span>
+      {{yield}}
+    </span>
   {{/if}}
 </button>

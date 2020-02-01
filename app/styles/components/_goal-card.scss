@@ -1,0 +1,24 @@
+.goal-card {
+  &__title {
+    margin: 0;
+  }
+
+  &__text {
+    margin: 0;
+  }
+
+  &__check {
+    font-size: 3em;
+    color: gainsboro;
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+
+  &--completed {
+    .goal-card__check {
+      color: $success-color;
+    }
+  }
+}

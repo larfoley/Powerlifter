@@ -1,30 +1,29 @@
 $primary-color: #ff7675;
 $app-bg-color: #f4f8f7;
 $primary: "red";
-
+$warning-color: #f89406;
+$success-color: #51a351;
+$info-color: #2f96b4;
 $app-toolbar-text-color: white;
 $app-toolbar-height: 67px;
 $app-toolbar-max-width: 800px;
 $app-toolbar-margin: 800px;
-
 $app-navbar-width: 80px;
 $app-navbar-bg-color: lighten(#20313b, 3%);
-// $app-toolbar-bg-color: lighten($app-navbar-bg-color, 5%);
 $app-toolbar-bg-color: #ee5253;
-// $app-navbar-bg-color: white;
 $app-navbar-text-color: #a0aabf;
 $app-navbar-active-text-color: $primary-color;
-
 $input-bg-color: #e8ebed;
-
 $page-container-max-width: 1200px;
 $page-container-width: 95%;
-
 $input-icon-color: #9ba1a9;
 $focus-color: #74b9ff;
 $muted-text: #616770;
 $error-colors: #cc0000;
 $text-color: #757575;
 $link-color: #74b9ff;
-
 $navbar-breakpoint: 1900px;
+$ember-basic-dropdown-content-background-color: #FFF !default;
+$ember-basic-dropdown-content-z-index: 1000 !default;
+$ember-basic-dropdown-overlay-background: rgba(0,0,0, 0.5) !default;
+$ember-basic-dropdown-overlay-pointer-events: none !default;

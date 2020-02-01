@@ -9,7 +9,7 @@
         data-test-username
       />
       <TextInput
-      class="foo"
+        class="foo"
         @value={{@user.email}}
         @label="Email"
         @errors={{@user.errors.email}}
@@ -26,6 +26,7 @@
       />
       <Button
         @submit={{true}}
+        @primaryButton={{true}}
         @icon="paper-plane"
         data-test-submit-button
       >

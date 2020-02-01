@@ -9,3 +9,11 @@
 .flex {
   display: flex;
 }
+
+.flex-grow {
+  flex-grow: 1;
+}
+
+.flex-end {
+  justify-content: flex-end;
+}

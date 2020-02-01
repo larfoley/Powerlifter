@@ -1,0 +1,33 @@
+.text-input {
+  padding: .9em 1.3em;
+  width: 100%;
+  border-radius: 50px;
+  display: flex;
+  border: none;
+  background-color: $input-bg-color;
+  border: 3px solid $input-bg-color;
+  color: black;
+  font-size: inherit;
+
+  &:focus {
+    outline: 0;
+    border-color: $focus-color;
+    background-color: white;
+  }
+
+  &__icon-container {
+    position: relative;
+
+    .text-input {
+      padding-left: 2.5em;
+    }
+  }
+
+  &__icon {
+    position: absolute;
+    top: 15px;
+    left: 18px;
+
+    color: $muted-text;
+  }
+}

@@ -1,0 +1,10 @@
+<div class="list card__body card">
+  {{#each @records as |record|}}
+    <div data-test-lift-record class="list__item">
+      <span data-test-lift-record-exercise>{{record.exercise.name}}</span>
+      <span data-test-lift-record-weight-lifted>{{record.weightLifted}}</span>
+      <span data-test-lift-record-reps>{{record.reps}}</span>
+      <span data-test-lift-record-date>{{record.date}}</span>
+    </div>
+  {{/each}}
+</div>

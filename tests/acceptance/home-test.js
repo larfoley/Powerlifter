@@ -5,19 +5,47 @@ import { authenticateSession } from 'ember-simple-auth/test-support';
 import { setupMirage } from 'ember-cli-mirage/test-support';
 import homePage from '../pages/home';
 
+const { appNavbar } =  homePage;
+
 module('Acceptance | home', function(hooks) {
   setupApplicationTest(hooks);
   setupMirage(hooks);
 
   test('visiting /home', async function(assert) {
+    await authenticateSession();
 
-    await authenticateSession({
-      access_token: '12345',
-      token_type: "bearer"
-    });
-    
     await homePage.visit();
 
     assert.equal(currentURL(), '/home');
+  });
+
+  test('Navigating to the records page', async function(assert) {
+    await authenticateSession();
+
+    await homePage.visit();
+
+    await appNavbar.recordsLink();
+
+    assert.equal(currentURL(), '/records');
+  });
+
+  test('Navigating to the home page', async function(assert) {
+    await authenticateSession();
+
+    await homePage.visit();
+
+    await appNavbar.homeLink();
+
+    assert.equal(currentURL(), '/home');
+  });
+
+  test('Navigating to the goals page', async function(assert) {
+    await authenticateSession();
+
+    await homePage.visit();
+
+    await appNavbar.goalsLink();
+
+    assert.equal(currentURL(), '/goals');
   });
 });

@@ -81,7 +81,6 @@ export default function() {
       })
     }
 
-
     return {
       friendRequest
     }
@@ -89,11 +88,17 @@ export default function() {
 
 
   this.get('/exercises');
+
   this.resource('goals');
+
   this.post('/token', () => {
     return {
       "access_token":"2YotnFZFEjr1zCsicMWpAA",
       "token_type":"bearer",
     }
   })
+
+  this.get('liftRecords')
+
+  this.post('liftRecords')
 }

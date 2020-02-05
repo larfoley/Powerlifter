@@ -1,0 +1,15 @@
+<AppNavbar />
+<AppToolbar>
+  <LinkTo @route="records.new" data-test-new-record-link>
+    <FaIcon
+      role="button"
+      class="app-toolbar__item"
+      @icon="plus"
+    />
+  </LinkTo>
+</AppToolbar>
+<AppContainer>
+  <PageContainer>
+    <LiftRecords @records={{@model}} />
+  </PageContainer>
+</AppContainer>

@@ -37,8 +37,8 @@ export default function(server) {
     date: new Date()
   });
   server.create('lift-record', {
-    exercise: { name: 'Squat' },
-    weightLifted: 100,
+    exercise: { name: 'Deadlift' },
+    weightLifted: 250,
     reps: 1,
     date: new Date()
   });

@@ -100,5 +100,7 @@ export default function() {
 
   this.get('liftRecords')
 
+  this.get('/liftRecords/:id');
+
   this.post('liftRecords')
 }

@@ -1,58 +1,58 @@
-<form data-test-create-or-edit-goal-form {{on "submit" this.createOrUpdateGoal}}>
+<form data-test-lift-record-form {{on "submit" this.createOrUpdateRecord}}>
   <div class="card">
     <div class="card__body">
       <InputField
-        @label="Weight"
-        @errors={{this.goal.errors.weight}}
+        @label="Weight Lifted"
+        @errors={{this.record.errors.weightLifted}}
       >
         <TextInput
-          @value={{this.goal.weight}}
+          @value={{this.record.weightLifted}}
           @placeholder="Enter weight"
+          data-test-weight-lifted-input
           type="number"
-          data-test-weight
         />
       </InputField>
       <InputField
         @label="Reps"
-        @errors={{this.goal.errors.reps}}
+        @errors={{this.record.errors.reps}}
       >
         <PowerSelect
           @triggerClass="reps-selector"
           @triggerComponent="select-trigger"
           @options={{array 1 2 3 4 5 6 7 8 9 10 11 12 13 }}
-          @selected={{this.goal.reps}}
+          @selected={{this.record.reps}}
           @placeholder="How many reps..."
-          @onChange={{fn (mut this.goal.reps)}} as |rep|
+          @onChange={{fn (mut this.record.reps)}} as |rep|
         >
           {{rep}}
         </PowerSelect>
       </InputField>
       <InputField
-        @errors={{this.goal.errors.dueDate}}
-        @label="Due Date"
+        @errors={{this.record.errors.dueDate}}
+        @label="Date"
       >
         <EmberFlatpickr
           class="text-input"
-          data-test-goal-date
-          @placeholder="Select date to complete goal by..."
+          data-test-record-date
+          @placeholder="Select date you completed the record..."
           @mode="single"
-          @date={{readonly this.goal.dueDate}}
+          @date={{readonly this.record.date}}
           @dateFormat='M/D/Y'
           @onChange={{fn this.onDateChange}}
         />
       </InputField>
       <InputField
         @label="Exercise"
-        @errors={{this.goal.errors.exercise}}
+        @errors={{this.record.errors.exercise}}
       >
         <PowerSelect
           @triggerClass="exercise-selector"
-          @options={{@exercises}}
+          @options={{@exerciseOptions}}
           @searchField="name"
           @placeholder="Select and exercise..."
-          @selected={{this.goal.exercise}}
+          @selected={{this.record.exercise}}
           @triggerComponent="select-trigger"
-          @onChange={{fn (mut this.goal.exercise)}} as |exercise|
+          @onChange={{fn (mut this.record.exercise)}} as |exercise|
         >
           {{exercise.name}}
         </PowerSelect>
@@ -60,12 +60,12 @@
       <div class="button-group">
         <Button
           @submit={{true}}
-          data-test-submit-button
+          data-test-lift-record-submit-button
           @primaryButton={{true}}
         >
         Add Goal
       </Button>
-      <LinkTo class="button outlined-button" @route="goals">Cancel</LinkTo>
+      <LinkTo class="button outlined-button" @route="records">Cancel</LinkTo>
       </div>
     </div>
   </div>

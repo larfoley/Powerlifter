@@ -25,9 +25,21 @@ export default function(server) {
     username: 'bo'
   });
   server.create('goal', {
-    exercise: { name: 'Exercise' },
+    exercise: { name: 'Deadlift' },
     weight: 100,
     reps: 1,
     dueDate: new Date()
+  });
+  server.create('lift-record', {
+    exercise: { name: 'Squat' },
+    weightLifted: 100,
+    reps: 1,
+    date: new Date()
+  });
+  server.create('lift-record', {
+    exercise: { name: 'Squat' },
+    weightLifted: 100,
+    reps: 1,
+    date: new Date()
   });
 }

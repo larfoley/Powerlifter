@@ -42,4 +42,5 @@ export default function(server) {
     reps: 1,
     date: new Date()
   });
+  server.createList('post', 3);
 }

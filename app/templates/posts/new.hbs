@@ -1,3 +1,10 @@
 <AppNavbar />
-<AppToolbar @backButton={{true}} />
-<PostForm @post={{@model}} />
+<AppToolbar
+  @title="New Post"
+  @backButtonLink="my-network"
+/>
+<AppContainer>
+  <PageContainer>
+    <PostForm />
+  </PageContainer>
+</AppContainer>

@@ -1,23 +1,25 @@
-<div class="post">
-  <div class="post__header">
-    <div class="left">
-      <span>
-        <img class="avatar" src={{this.avatar}} alt="avatar">
-      </span>
-    </div>
-    <div class="middle">
-      <span>
-        <LinkTo @route="index" class="post__header-title">
-          larfoley
+<div class="post card">
+  <div class="card__body">
+    <div class="media">
+      <div class="media__asset">
+        <UserAvatar />
+      </div>
+      <div class="media__body">
+        <LinkTo @route="index" class="post__author">
+          {{@post.author.username}}
         </LinkTo>
-        <span class="post__header-subtitle">3 hours ago</span>
-      </span>
-    </div>
-    <div class="right">
-      <FaIcon class="s" @icon="ellipsis-v"/>
+        <div class="post__date">
+          {{format-date @post.createdAt}}
+        </div>
+        {{@post.content}}
+      </div>
     </div>
   </div>
-  <div class="post__body">
-    <img src="https://images.unsplash.com/photo-1562886889-52933f35430b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1489&q=80" alt="banner">
+  <div class="post__actions">
+    <Button @icon="thumbs-up" @text="like" />
+    <Button @icon="comment" @text="Comment" onclick={{this.showComments}}/>
   </div>
+  {{#if this.showingComments}}
+    <Post::Comments @post={{@post}} />
+  {{/if}}
 </div>

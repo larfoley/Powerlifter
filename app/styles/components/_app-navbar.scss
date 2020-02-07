@@ -7,7 +7,7 @@
   color: $app-navbar-text-color;
   width: 100%;
 
-  @media screen and (min-width: 1900px) {
+  @media screen and (min-width: $navbar-breakpoint) {
     width: $app-navbar-width;
     top: 0;
     flex-direction: column;
@@ -16,7 +16,7 @@
   &__link {
     height: $app-toolbar-height;
     display: flex;
-    flex: 1;
+    flex: auto;
     flex-direction: column;
     align-items: center;
     justify-content: center;
@@ -27,7 +27,7 @@
 
     &.active {
       color: white;
-      
+
       @media screen and (min-width: $navbar-breakpoint) {
         border-left: 4px solid $primary-color;
       }
@@ -39,6 +39,7 @@
     }
 
     @media screen and (min-width: $navbar-breakpoint) {
+      flex: initial;
     }
   }
 

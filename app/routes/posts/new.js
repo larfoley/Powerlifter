@@ -1,14 +1,4 @@
-import ProtectedRoute from '../protected';
-// import deleteEmptyRecord from '../../utils/deleteEmptyRecord';
+import Route from '@ember/routing/route';
 
-export default ProtectedRoute.extend({
-  modeel() {
-    return this.store.createRecord('post');
-  },
-
-  // actions: {
-  //   willTransition() {
-  //     deleteEmptyRecord(this.store, 'post');
-  //   }
-  // }
-});
+export default class PostsNewRoute extends Route {
+}

@@ -45,6 +45,7 @@
   }
 
   &__item {
+    @extend .ripple;
     margin: 0 .5em;
     align-self: center;
     color: $app-toolbar-text-color;

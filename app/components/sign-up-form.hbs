@@ -1,29 +1,43 @@
 <form data-test-sign-up>
   <div class="card">
     <div class="card__body">
-      <TextInput
-        @value={{@user.username}}
+      <InputField
         @label="Username"
-        @errors={{@user.errors.username}}
-        @icon="user"
-        data-test-username
-      />
-      <TextInput
-        class="foo"
-        @value={{@user.email}}
+        @errors={{this.goal.errors.username}}
+      >
+        <TextInput
+          @value={{@user.username}}
+          @label="Username"
+          @errors={{@user.errors.username}}
+          @icon="user"
+          data-test-username
+        />
+      </InputField>
+      <InputField
         @label="Email"
-        @errors={{@user.errors.email}}
-        data-test-email
-        @icon="envelope"
-      />
-      <TextInput
-        type="password"
-        @value={{@user.password}}
+        @errors={{this.goal.errors.email}}
+      >
+        <TextInput
+          @value={{@user.email}}
+          @label="Email"
+          @errors={{@user.errors.email}}
+          data-test-email
+          @icon="envelope"
+        />
+      </InputField>
+      <InputField
         @label="Password"
-        @errors={{@user.errors.password}}
-        @icon="lock"
-        data-test-password
-      />
+        @errors={{this.goal.errors.password}}
+      >
+        <TextInput
+          type="password"
+          @value={{@user.password}}
+          @label="Password"
+          @errors={{@user.errors.password}}
+          @icon="lock"
+          data-test-password
+        />
+      </InputField>
       <Button
         @submit={{true}}
         @primaryButton={{true}}

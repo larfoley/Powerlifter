@@ -35,6 +35,8 @@ Router.map(function() {
     this.route('feed');
     this.route('friend-requests');
     this.route('friends');
+
+    this.route('posts', function() {});
   });
   this.route('goals',  function() {
     this.route('new');

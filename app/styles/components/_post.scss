@@ -1,4 +1,31 @@
 .post {
+  max-width: 600px;
+  margin: auto;
+  margin-bottom: 10px;
+
+  &__author {
+    display: block;
+  }
+
+  &__date {
+    color: $muted-text;
+    font-size: .75em;
+    margin-bottom: 5px;
+  }
+
+  &__actions {
+    display: flex;
+    border-top: 1px solid gainsboro;
+    border-bottom: 1px solid gainsboro;
+    padding: 2px 0;
+
+    .button {
+      color: gray;
+      text-transform: capitalize;
+      flex: auto;
+    }
+  }
+
   &__header-title {
     display: block;
     text-decoration: none;

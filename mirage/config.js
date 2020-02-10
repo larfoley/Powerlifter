@@ -98,9 +98,15 @@ export default function() {
     }
   })
 
-  this.get('liftRecords')
+  this.get('liftRecords');
 
   this.get('/liftRecords/:id');
 
-  this.post('liftRecords')
+  this.post('liftRecords');
+
+  this.post('posts');
+
+  this.get('posts');
+
+  this.post('comments');
 }

@@ -1,5 +1,12 @@
 <AppNavbar />
-<AppToolbar @title="My Network"/>
+<AppToolbar @title="My Network" >
+  <LinkTo
+    @route="posts.new"
+    class="app-toolbar__item"
+  >
+    <FaIcon @icon="edit" class="button__icon"/>
+  </LinkTo>
+</AppToolbar>
 <AppContainer>
   <NavbarTabs
     @tabs={{array

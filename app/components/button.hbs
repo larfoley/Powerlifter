@@ -4,22 +4,21 @@
     {{if @primaryButton "primary-button"}}
     {{if @textButton "text-button"}}
     {{if @outlinedButton "outlined-button"}}
+    {{if @roundedButton "rounded-button"}}
     "
   ...attributes
 >
   {{#if @text}}
     {{#if @icon}}
-      <FaIcon @icon={{@icon}}/>
+      <FaIcon class="button__icon" @icon={{@icon}}/>
     {{/if}}
     <span>
       {{@text}}
     </span>
   {{else}}
     {{#if @icon}}
-      <FaIcon class="button__icon" @icon={{@icon}}/>
+      <FaIcon @icon={{@icon}}/>
     {{/if}}
-    <span>
-      {{yield}}
-    </span>
+    {{yield}}
   {{/if}}
 </button>

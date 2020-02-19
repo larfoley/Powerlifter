@@ -109,4 +109,8 @@ export default function() {
   this.get('posts');
 
   this.post('comments');
+
+  this.get('notifications');
+
+  this.put('notifications/:id');
 }

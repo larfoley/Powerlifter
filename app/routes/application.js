@@ -5,8 +5,10 @@ import { inject as service } from '@ember/service';
 
 export default Route.extend(ApplicationRouteMixin, {
   currentUser: service(),
+  notifications: service(),
 
   beforeModel() {
+    this.notifications.load();
     return this._loadCurrentUser();
   },
 

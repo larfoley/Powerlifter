@@ -1,11 +1,4 @@
 export default function(server) {
-
-  /*
-    Seed your development database using your factories.
-    This data will not be loaded in your tests.
-  */
-
-  // server.createList('post', 10);
   server.create('exercise', {
     name: 'Squat'
   });
@@ -43,4 +36,12 @@ export default function(server) {
     date: new Date()
   });
   server.createList('post', 3);
+  server.createList('notification', 3, {
+    isUnread: false,
+    text: 'Liked your post'
+  });
+  server.createList('notification', 3, {
+    isUnread: true,
+    text: 'Sent you a friend request'
+  });
 }

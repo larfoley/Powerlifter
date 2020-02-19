@@ -47,4 +47,5 @@ Router.map(function() {
     this.route('record', { path: '/:lift_record_id' });
     this.route('edit', { path: '/:lift_record_id/edit' });
   });
+  this.route('notifications');
 });

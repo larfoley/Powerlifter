@@ -1,17 +1,18 @@
 .badge {
+  display: inline-block;
+  min-width: 1.5em;
+  padding: .15em;
+  border-radius: 50%;
+  font-size: 12px;
+  text-align: center;
+  background: tomato;
+  color: #fefefe;
+  position: absolute;
+  left: 13px;
+  top: -4px;
+
   &__container {
     position: relative;
     display: flex;
-  }
-
-  &__count {
-    position: absolute;
-    font-size: 11px;
-    top: -8px;
-    right: -13px;
-    padding: 3px 5px;
-    border-radius: 50%;
-    background: red;
-    color: white;
   }
 }

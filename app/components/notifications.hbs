@@ -1,0 +1,20 @@
+<div class="list list--card">
+  {{#each @notifications as |notif|}}
+    <LinkTo
+      @route="index"
+      class="notification media list__item {{if notif.isUnread "notification--is-unread" }}"
+      {{on "click" (fn this.markAsRead notif)}}>
+      <div class="media__asset">
+        <UserAvatar @icon="user" />
+      </div>
+      <div class="media__body">
+        <p class="notification__text">
+          <span class="notification__username">{{notif.from}}</span> {{notif.text}}
+        </p>
+        <span class="notification__date">
+          <FaIcon @icon="calendar"/> {{notif.createdAt}}
+        </span>
+      </div>
+    </LinkTo>
+  {{/each}}
+</div>

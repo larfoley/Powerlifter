@@ -14,7 +14,8 @@
   }
 
   &__link {
-    height: $app-toolbar-height;
+    font-size: 21px;
+    height: 75px;
     display: flex;
     flex: auto;
     flex-direction: column;

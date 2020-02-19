@@ -17,11 +17,15 @@
       Goals
     </small>
   </LinkTo>
-  <LinkTo @route="index" class="app-navbar__link" data-test-notifications-link>
-    <span class="badge__container">
+  <LinkTo @route="notifications" class="app-navbar__link" data-test-notifications-link>
+    {{#if this.notifications.hasNewNotifications}}
+      <span class="badge__container">
+        <FaIcon class="app-navbar__icon" @icon="bell"/>
+        <span class="badge">{{this.notifications.totalNew}}</span>
+      </span>
+    {{else}}
       <FaIcon class="app-navbar__icon" @icon="bell"/>
-      <span class="badge__count">3</span>
-    </span>
+    {{/if}}
     <small class="app-navbar__text">
       Notifs
     </small>

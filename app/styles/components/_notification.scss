@@ -1,0 +1,22 @@
+.notification {
+  &__text {
+    margin: 0;
+  }
+
+  &__username {
+    font-weight: bold;
+    color: black;
+  }
+
+  &__date {
+    font-size: 13px;
+  }
+
+  &--is-unread {
+    background-color: #edf2fa;
+
+    &:hover {
+      background-color: lighten(#edf2fa, 1%)
+    }
+  }
+}

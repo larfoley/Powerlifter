@@ -1,12 +1,22 @@
 .list {
   margin: 0;
   padding: 0;
+  border-radius: 5px;
+
+  &--card {
+    background-color: white;
+    .list__item {
+      padding: 1.5em;
+    }
+  }
 
   &__item {
     padding: .5em;
     margin: 0;
     list-style: none;
     color: inherit;
+    border-bottom: 1px solid #f5f5f5;
+    position: relative;
 
     svg {
       margin-right: 5px;
@@ -21,6 +31,7 @@
     &:last-child {
       border-bottom-right-radius: 5px;
       border-bottom-left-radius: 5px;
+      border-bottom: none;
     }
 
     &:hover {

@@ -6,6 +6,12 @@
   >
     <FaIcon @icon="edit" class="button__icon"/>
   </LinkTo>
+  <LinkTo
+    @route="posts.new"
+    class="app-toolbar__item"
+  >
+    <FaIcon @icon="user-plus" class="button__icon"/>
+  </LinkTo>
 </AppToolbar>
 <AppContainer>
   <NavbarTabs
@@ -26,7 +32,7 @@
         icon="users"
       )
       (hash
-        displayName = "Friend Requests"
+        displayName = "Requests"
         route = "my-network.friend-requests"
         icon="exchange-alt"
       )

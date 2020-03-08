@@ -5,7 +5,7 @@ export default class NotificationsRoute extends Route {
   @service notifications;
 
   model() {
-    return this.notifications.all;
+    return this.store.findAll('notification');
   }
 
   afterModel() {

@@ -26,6 +26,10 @@ module.exports = function(environment) {
     googleFonts: [
       'Nunito',
     ],
+
+    'ember-websockets': {
+      socketIO: true
+    }
   };
 
   if (environment === 'development') {
@@ -36,7 +40,7 @@ module.exports = function(environment) {
     // ENV.APP.LOG_VIEW_LOOKUPS = true;
     ENV['ember-cli-mirage'] = {
       trackRequests: true,
-      enabled: true
+      enabled: false
     };
   }
 
@@ -62,7 +66,7 @@ module.exports = function(environment) {
 
   ENV['ember-cli-mirage'] = {
     trackRequests: true,
-    enabled: true
+    enabled: false
   };
 
   return ENV;

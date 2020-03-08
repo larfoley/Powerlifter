@@ -22,7 +22,7 @@ export default class UserCardComponent extends Component {
       await friendRequest.save();
 
       user.friendRequestSent = true;
-      this.toast.success('Friend request sent');
+      this.toast.success('Request sent');
 
 
     } catch (e) {
@@ -46,7 +46,7 @@ export default class UserCardComponent extends Component {
       await friendRequest.save();
 
       user.isFriend = true;
-      this.toast.success('Friend request sent');
+      this.toast.success('Request sent');
 
     } catch (e) {
       friendRequest.rollbackAttributes();
@@ -69,7 +69,7 @@ export default class UserCardComponent extends Component {
       await friendRequest.save();
 
       user.isFriend = true;
-      this.toast.success('Friend request sent');
+      this.toast.success('Request sent');
 
     } catch (e) {
       friendRequest.rollbackAttributes();

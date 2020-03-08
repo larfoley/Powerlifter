@@ -45,7 +45,7 @@ module('Integration | Component | user-card', function(hooks) {
 
     await click('button');
 
-    assert.dom('button').hasText('Friend Request Sent');
+    assert.dom('button').hasText('Request Sent');
   });
 
   test('accepting a friend request', async function(assert) {

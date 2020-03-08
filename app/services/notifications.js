@@ -10,7 +10,14 @@ export default class NotificationsService extends Service {
 
   async load() {
     const notifs = await this.store.findAll('notification');
+
     notifs.forEach(notif => this.notifications.pushObject(notif));
+
+    return notifs;
+  }
+
+  add(notification) {
+    this.notifications.pushObject(notification);
   }
 
   get all() {
@@ -40,10 +47,16 @@ export default class NotificationsService extends Service {
   }
 
   @action
-  markAllAsNotNew() {
-    for (let notif of this.notifications) {
-      notif.new = false;
-      notif.save();
-    }
+  async markAllAsNotNew() {
+    const promises = [];
+
+    this.notifications.forEach(notif => {
+      if (notif.new) {
+        notif.new = false;
+        promises.push(notif.save());
+      }
+    });
+
+    return Promise.all(promises);
   }
 }

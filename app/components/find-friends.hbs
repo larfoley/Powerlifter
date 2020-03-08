@@ -1,20 +1,24 @@
-<div data-test-find-friends>
-  <InputField>
-    <TextInput
-      @placeholder="Search for a user..."
-      @onKeyUp={{fn this.debounceFindFriends}}
-      @icon="search"
-    />
-  </InputField>
-  {{#if this.searching}}
-    <p>Finding friends...</p>
-  {{else}}
-    {{#if this.noUsersFound}}
+<div class="card">
+  <div class="card__body">
+    <div data-test-find-friends>
+      <InputField>
+        <TextInput
+        @placeholder="Search for a user..."
+        @onKeyUp={{fn this.debounceFindFriends}}
+        @icon="search"
+        />
+      </InputField>
+      {{#if this.searching}}
+      <p>Finding friends...</p>
+      {{else}}
+      {{#if this.noUsersFound}}
       <p data-test-no-users-found-message>No users found.</p>
-    {{else}}
+      {{else}}
       <UserList
-        @users={{this.users}}
+      @users={{this.users}}
       />
-    {{/if}}
-  {{/if}}
+      {{/if}}
+      {{/if}}
+    </div>
+  </div>
 </div>

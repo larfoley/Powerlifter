@@ -6,6 +6,8 @@ import { inject as service } from '@ember/service';
 export default class PostCommentsComponent extends Component {
   @service store;
   @service currentUser;
+  @service toast;
+
   @tracked commentContent = "";
 
   @action
@@ -25,7 +27,8 @@ export default class PostCommentsComponent extends Component {
       this.commentContent = "";
 
     } catch (e) {
-      alert(e);
+      comment.rollbackAttributes();
+      this.toast.error(e.message)
     }
   }
 }

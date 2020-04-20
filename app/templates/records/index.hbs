@@ -10,6 +10,50 @@
 </AppToolbar>
 <AppContainer>
   <PageContainer>
-    <LiftRecords @records={{@model}} />
+    {{!-- <LiftRecords @records={{@model}} /> --}}
+    <style media="screen">
+      .pb {
+        flex-grow: 1;
+        border-left: 5px solid #ee5253;
+        padding: 1em;
+      }
+
+      .pb dd {
+        margin: 0;
+        padding: 0;
+      }
+
+
+      .center {
+        text-align: center;
+      }
+    </style>
+    <div class="grid grid--4-cols grid-gap">
+      <div class="pb card">
+        <h2>Squat</h2>
+        <dl class="">
+          <dt>1RM</dt>
+          <dd>100</dd>
+        </dl>
+      </div>
+      <div class="pb card">
+        <h2>Squat</h2>
+        <dl class="">
+          <dt>1RM</dt>
+          <dd>100</dd>
+        </dl>
+      </div>
+      <div class="pb card">
+        <h2>Squat</h2>
+        <dl class="">
+          <dt>1RM</dt>
+          <dd>100</dd>
+        </dl>
+      </div>
+      <div class="pb card center">
+        <FaIcon @icon="plus" @size="3x"/>
+        <p>Add Exercise</p>
+      </div>
+    </div>
   </PageContainer>
 </AppContainer>

@@ -17,18 +17,9 @@ env:
     # See https://git.io/vdao3 for details.
     - JOBS=1
 
+branches:
+  only:
+    - master
+
 script:
   - npm test
-
-install:
-  npm install -g surge
-
-before_deploy:
-  - npm run build
-  - mv dist/index.html dist/200.html
-
-deploy:
-  provider: surge
-  project: ./dist
-  skip_cleanup: true
-  domain: https://powerlifter.surge.sh

@@ -18,6 +18,12 @@ env:
     - JOBS=1
 
 script:
+<<<<<<< HEAD
+  - npm install
+  - npm run lint:hbs
+  - npm run lint:js
+=======
+>>>>>>> 2f8d08c... v3.15.1...v3.17.0
   - npm test
 
 install:

@@ -1,6 +1,24 @@
-<PageOverlay @title="Add New Goal">
-  <GoalForm
-    @exercises={{@model.exercises}}
-    @goal={{@model.goal}}
-  />
+  <Toolbar @title="Edit Goal" />
+  {{!-- <AppContainer>
+    <PageContainer>
+      <PageContainer::PrimaryContent>
+      <GoalForm
+      @exercises={{@model.exercises}}
+      @goal={{@model.goal}}
+      />
+      {{outlet}}
+    </PageContainer::PrimaryContent>
+  </PageContainer>
+</AppContainer> --}}
+
+<PageOverlay @title="Sign In">
+    <PageContainer>
+      <PageContainer::PrimaryContent>
+      <GoalForm
+      @exercises={{@model.exercises}}
+      @goal={{@model.goal}}
+      />
+      {{outlet}}
+    </PageContainer::PrimaryContent>
+  </PageContainer>
 </PageOverlay>

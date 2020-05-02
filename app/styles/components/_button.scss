@@ -3,15 +3,21 @@
   border: none;
   transition: .3s;
   display: block;
-  margin-right: .5em;
-  text-transform: uppercase;
+  text-transform: capitalize;
   padding: .5em 1em;
   background-color: transparent;
-  color: black;
+  color: $text-color;
   font-weight: bold;
   font-family: inherit;
   font-size: .9em;
   text-align: center;
+  border-radius: 50px;
+  min-width: 100px;
+
+
+  &--full-width {
+    width: 100%;
+  }
 
   &__icon {
     margin-right: .3em;
@@ -61,6 +67,21 @@
   &:focus {
     outline: none;
   }
+
+  border-radius: 50px;
+}
+
+.icon-button {
+  @extend .button;
+
+  &:focus {
+    outline: none;
+  }
+
+  min-width: 0;
+  padding: 0;
+  width: 28px;
+  height: 28px;
 
   border-radius: 50px;
 }

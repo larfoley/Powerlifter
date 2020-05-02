@@ -1,31 +1,36 @@
-.tabs-menu {
-  // background: darken($primary-color, 7%);
-  background-color: $app-toolbar-bg-color;
+.tabs {
+  padding: 0;
+  margin: 0;
+  background: white;
+  display: flex;
+  width: 100%;
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
 
-  &__container {
-    display: flex;
-    margin: auto;
-    // width: $page-container-width;
-    max-width: $page-container-max-width;
-  }
-
-  &__item {
-    flex: 1;
-    &:first-child .tabs-menu__link {
-      padding-left: 0;
-    }
-  }
-
-  &__link {
-    color: white;
-    padding: .5em 1em;
-    display: block;
-    text-align: center;
+  &__tab {
+    list-style-type: none;
+    color: black;
+    display: inline-block;
     text-decoration: none;
-    border-bottom: 4px solid darken($primary-color, 7%);
+    border-bottom: 2px solid white;
+    text-transform: capitalize;
+    padding: 0.8rem 1rem;
+    flex-grow: 1;
+    text-align: center;
+    transition: 0.3s;
+
+    @media screen and (min-width: 700px) {
+      flex: initial;
+    }
 
     &.active {
-      border-bottom-color: white;
+      border-color: $primary-color;
+      color: $primary-color;
+    }
+
+    &:active {
+      background-color: #f5f5f5;
     }
   }
 }

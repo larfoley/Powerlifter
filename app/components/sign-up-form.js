@@ -18,6 +18,7 @@ export default class SignUpComponent extends Component {
         this.router.transitionTo('sign-in')
 
       } catch (error) {
+        console.log("is valid", user.errors);
         if (user.isValid) {
           error.errors.forEach((err) => {
             toast.error(err.detail);
@@ -29,6 +30,7 @@ export default class SignUpComponent extends Component {
 
     } else {
       toast.info('fix validation errors');
+      console.log(1, user.get('errors.email'));
     }
   }
 }

@@ -113,4 +113,6 @@ export default function() {
   this.get('notifications');
 
   this.put('notifications/:id');
+
+  this.get('exercise');
 }

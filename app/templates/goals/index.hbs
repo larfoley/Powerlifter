@@ -1,5 +1,31 @@
-<div data-test-goal-list>
-  {{#each @model as |goal|}}
-    <GoalCard @goal={{goal}} />
-  {{/each}}
-</div>
+<ul class="card list" data-test-goal-list>
+  {{!-- {{#each @model as |goal|}} --}}
+    {{!-- <GoalCard @goal={{goal}} /> --}}
+    <li class="list__item">
+      <div class="media">
+        <div class="media__asset">
+          <span class="fa-layers fa-lg">
+            <FaIcon @icon="circle" />
+            <FaIcon @icon="check" class="fa-inverse" @transform="shrink-6" />
+          </span>
+        </div>
+        <div class="media__body">
+
+
+          <strong>Squat 100 kgs</strong>
+
+
+          <div>Completed on Tue 1st Jan</div>
+        </div>
+        <div class="media__asset">
+          <div class="">
+            3rd Feb 2020
+          </div>
+        </div>
+      </div>
+      <div class="card__foot">
+        <FaIcon @icon="trash-alt" @prefix="far"/>
+      </div>
+    </li>
+  {{!-- {{/each}} --}}
+</ul>

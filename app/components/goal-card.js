@@ -6,8 +6,7 @@ import { inject as service } from '@ember/service';
 export default class GoalCardComponent extends Component {
   @service toast;
 
-  @tracked
-  showConfirmModal = false;
+  @tracked showConfirmModal = false;
   @tracked dueDate = this.args.goal.dueDate;
 
   get daysLeft() {

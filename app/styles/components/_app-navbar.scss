@@ -52,6 +52,6 @@
 
 .app-navbar ~ .app-container {
   @media screen and (min-width: $navbar-breakpoint) {
-    margin-left: $app-navbar-width;
+    // margin-left: $app-navbar-width;
   }
 }

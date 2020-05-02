@@ -1,15 +1,25 @@
-<div class="card">
-  <div class="card__body">
-    <form {{on "submit" this.createOrUpdatePost}}>
-      <Textarea
-        class="textarea"
-        rows="5"
-        placeholder="Say something..."
-        autofocus="true"
-        @value={{this.post.content}}
-        maxlength={{1000}}
-      />
-      <Button @text="Post" @submit={{true}} />
-    </form>
+<form {{on "submit" this.createOrUpdatePost}}>
+  <div class="card">
+    <div class="card__body">
+        <div class="media">
+          <div class="media__asset">
+            <UserAvatar />
+          </div>
+          <div class="media__body">
+            <Textarea
+              class="textarea"
+              rows="5"
+              placeholder="Say something laurence..."
+              autofocus="true"
+              @value={{this.post.content}}
+              maxlength={{1000}}
+            />
+          </div>
+        </div>
+    </div>
+    <div class="card__footer">
+      <Button @text="Save Post" @submit={{true}} @primaryButton={{true}} />
+      <Button @text="Cancel" @submit={{true}} @secondaryButton={{true}} />
+    </div>
   </div>
-</div>
+</form>

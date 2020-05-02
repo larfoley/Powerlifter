@@ -1,0 +1,44 @@
+.toolbar {
+  background-color: white;
+  // box-shadow: 0px 2px 4px -1px rgba(0,0,0,0.2),
+  //             0px 4px 5px 0px rgba(0,0,0,0.14),
+  //             0px 1px 10px 0px rgba(0,0,0,0.12);
+  border-bottom: 1px solid #e6ecf0;
+  margin-bottom: 1em;
+
+  &__container {
+    display: flex;
+    align-items: center;
+    max-width: $page-container-max-width;
+    width: $page-container-width;
+    margin: auto;
+  }
+
+  &__title {
+    margin: 0;
+    font-size: 1.4rem;
+    padding: 0.8rem 0;
+  }
+
+  &__links {
+    padding: 0.8rem 1rem;
+    margin: 0;
+    flex: 1;
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  &__link {
+    margin-left: 2rem;
+    color: $text-color;
+  }
+
+  &__back-icon {
+    font-size: 1.3rem;
+  }
+
+  &__back-link {
+    color: $primary-color;
+    margin-right: 1em;
+  }
+}

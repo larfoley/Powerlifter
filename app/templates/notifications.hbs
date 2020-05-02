@@ -1,7 +1,13 @@
 <AppNavbar />
-<AppToolbar @title="Notifications" />
+<Toolbar
+  @title="Notifications"
+>
+  <Toolbar::Link @route="index" />
+</Toolbar>
 <AppContainer>
   <PageContainer>
-    <Notifications @notifications={{@model}} />
+    <PageContainer::PrimaryContent>
+      <Notifications @notifications={{@model}} />
+    </PageContainer::PrimaryContent>
   </PageContainer>
 </AppContainer>

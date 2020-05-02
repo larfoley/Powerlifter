@@ -1,6 +1,25 @@
 <form data-test-lift-record-form {{on "submit" this.createOrUpdateRecord}}>
   <div class="card">
     <div class="card__body">
+      {{!-- Exercise Field --}}
+      {{#unless @selectedExercise}}
+        <InputField
+          @label="Exercise"
+          @errors={{this.record.errors.exercise}}
+          >
+          <PowerSelect
+          @triggerClass="exercise-selector"
+          @options={{@exerciseOptions}}
+          @searchField="name"
+          @placeholder="Select and exercise..."
+          @selected={{this.record.exercise}}
+          @triggerComponent="select-trigger"
+          @onChange={{fn (mut this.record.exercise)}} as |exercise|
+          >
+          {{capitalize exercise.name}}
+        </PowerSelect>
+      </InputField>
+      {{/unless}}
       <InputField
         @label="Weight Lifted"
         @errors={{this.record.errors.weightLifted}}
@@ -41,22 +60,6 @@
           @onChange={{fn this.onDateChange}}
         />
       </InputField>
-      <InputField
-        @label="Exercise"
-        @errors={{this.record.errors.exercise}}
-      >
-        <PowerSelect
-          @triggerClass="exercise-selector"
-          @options={{@exerciseOptions}}
-          @searchField="name"
-          @placeholder="Select and exercise..."
-          @selected={{this.record.exercise}}
-          @triggerComponent="select-trigger"
-          @onChange={{fn (mut this.record.exercise)}} as |exercise|
-        >
-          {{exercise.name}}
-        </PowerSelect>
-      </InputField>
       <div class="button-group">
         <Button
           @submit={{true}}
@@ -65,7 +68,7 @@
         >
         Add Goal
       </Button>
-      <LinkTo class="button outlined-button" @route="records">Cancel</LinkTo>
+      <Button @outlinedButton={{true}} onclick={{this.cancel}}>Cancel</Button>
       </div>
     </div>
   </div>

@@ -1,0 +1,15 @@
+<PageOverlay>
+  <Toolbar
+    @title={{concat "Edit " (capitalize @model.exercise.name) " Goal"}}
+    @backRoute="exercises.exercise.goals"
+  />
+  <PageContainer>
+    <PageContainer::PrimaryContent>
+      <GoalForm
+        @goal={{this.model}}
+        @selectedExercise={{@model.exercise}}
+        @onCreateOrUpdate={{action this.transitionToRoute "exercises.exercise.goals"}}
+      />
+    </PageContainer::PrimaryContent>
+  </PageContainer>
+</PageOverlay>

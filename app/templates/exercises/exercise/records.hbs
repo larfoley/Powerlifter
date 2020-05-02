@@ -1,24 +1,10 @@
-{{!-- <style media="screen">
-.flex {
-  display: flex;
-}
-.left {
-  flex-grow: 1;
-  margin-right: .5em;
-}
-
-.right {
-  justify-content: flex-end;
-}
-</style> --}}
-<div class="flex">
-  <div class="left">
-    <PageHeading @text="Records" />
-  </div>
-  <div class="right">
-    <LinkTo @route="exercises.exercise.records.new"  >
-      <FaIcon @icon="plus" /> New Record
+<div class="header">
+  <div class="header__actions">
+    <LinkTo class="primary-button" @route="exercises.exercise.records.new">
+      <FaIcon @icon="plus" />
+      New Record
     </LinkTo>
   </div>
 </div>
+
 {{outlet}}

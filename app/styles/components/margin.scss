@@ -1,0 +1,23 @@
+.margin {
+  margin: 1em;
+
+  &--left {
+    margin: 0 0 1em 0;
+  }
+
+  &--top {
+    margin: 0 1em 0 0;
+  }
+
+  &--bottom {
+    margin: 0 1em 0 0;
+  }
+
+  &--right {
+    margin: 0 1em 0 0;
+  }
+
+  &--none {
+    margin: 0;
+  }
+}

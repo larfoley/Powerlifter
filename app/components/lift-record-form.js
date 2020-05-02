@@ -13,7 +13,13 @@ export default class LiftRecordFormComponent extends Component {
     super(...arguments);
 
     if (typeOf(this.args.record) !== "instance") {
+
       this.record = this.store.createRecord('lift-record');
+
+      if (this.args.selectedExercise) {
+        this.record.exercise = this.args.selectedExercise
+      }
+
     } else {
       this.record = this.args.record;
     }
@@ -25,6 +31,11 @@ export default class LiftRecordFormComponent extends Component {
     if (this.record.isNew) {
       this.record.deleteRecord()
     }
+  }
+
+  @action
+  cancel() {
+    history.back();
   }
 
   @action
@@ -47,7 +58,9 @@ export default class LiftRecordFormComponent extends Component {
         this.toast.success('Record updated');
       }
 
-      this.router.transitionTo('records')
+      if (typeOf(this.args.onCreateOrUpdate) === 'function') {
+        this.args.onCreateOrUpdate();
+      }
 
     } catch(e) {
       this.toast.error(e.message)

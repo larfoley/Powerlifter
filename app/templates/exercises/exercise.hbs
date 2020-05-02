@@ -1,21 +1,17 @@
-<AppToolbar @title="Squats">
-</AppToolbar>
+<AppNavbar />
+<Toolbar
+  @title={{capitalize @model.name}}
+  @backRoute="exercises"
+  @tabs={{ array
+    (hash label="Records" route="exercises.exercise.records")
+    (hash label="Goals" route="exercises.exercise.goals")
+  }}
+>
+</Toolbar>
 <AppContainer>
-  <div class="tabs-menu">
-    <div class="tabs-menu__container">
-      <div class="tabs-menu__item">
-        <LinkTo class="tabs-menu__link" @route="exercises.exercise.records" @model="squat">
-          Records
-        </LinkTo>
-      </div>
-      <div class="tabs-menu__item">
-        <LinkTo class="tabs-menu__link" @route="exercises.exercise.goals" @model="squat">
-          Goals
-        </LinkTo>
-      </div>
-    </div>
-  </div>
   <PageContainer>
-    {{outlet}}
+    <PageContainer::PrimaryContent>
+      {{outlet}}
+    </PageContainer::PrimaryContent>
   </PageContainer>
 </AppContainer>

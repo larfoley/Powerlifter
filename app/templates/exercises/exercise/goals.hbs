@@ -1,12 +1,16 @@
-<h1>Goals</h1>
-<LinkTo @route="exercises.exercise.goals.new"  >
-  New
-</LinkTo>
+<div class="header">
+  <div class="header__actions">
+    <LinkTo class="button primary-button" @route="exercises.exercise.goals.new">
+      <FaIcon @icon="plus" />
+      New Goal
+    </LinkTo>
+  </div>
+</div>
 
-<GoalCard />
-
+<div class="card-list">
 {{#each this.model as |goal|}}
-  <Goal @goal={{goal}} />
+  <GoalCard @goal={{goal}} class="card-list__card"/>
 {{/each}}
+</div>
 
 {{outlet}}

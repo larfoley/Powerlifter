@@ -15,20 +15,22 @@ Router.map(function() {
 
   this.route('posts', function() {
     this.route('new');
+    this.route('post');
   });
   this.route('exercises', function() {
     this.route('exercise', { path: '/:exercise_id' }, function() {
       this.route('goals', function() {
         this.route('new');
+        this.route('edit', { path: '/:goal_id/edit' });
       });
       this.route('records', function() {
         this.route('new');
-        this.route('record');
         this.route('edit');
       });
     });
     this.route('all');
     this.route('new');
+    this.route('records');
   });
   this.route('my-network', function() {
     this.route('search');
@@ -48,4 +50,5 @@ Router.map(function() {
     this.route('edit', { path: '/:lift_record_id/edit' });
   });
   this.route('notifications');
+  this.route('more');
 });

@@ -1,17 +1,16 @@
 <PageOverlay @title="Add New Record">
-  <div class="card">
-    <div class="card__body">
-      <div class="form-field">
-        <label>Weight</label>
-        <Input />
-      </div>
-      <div class="form-field">
-        <label>Reps</label>
-        <Input @value="" />
-      </div>
-      <div class="form-field">
-        <button type="button" name="button">Submit</button>
-      </div>
-    </div>
-  </div>
+  <Toolbar
+    @title={{concat "Add " (capitalize @model.exercise.name) " Record"}}
+    @backRoute="exercises.exercise.records"
+    @backRouteModle={{@model.exercise}}
+  />
+  <PageContainer>
+    <PageContainer::PrimaryContent>
+    <LiftRecordForm
+      @exerciseOptions={{@model.exercises}}
+      @selectedExercise={{@model.exercise}}
+      @onCreateOrUpdate={{action this.transitionToRoute "exercises.exercise.records" @model.exercise}}
+    />
+    </PageContainer::PrimaryContent>
+  </PageContainer>
 </PageOverlay>

@@ -13,15 +13,17 @@ const validations = {
   },
   dueDate: {
     presence: true
-  }
+  },
 }
 
-export default Model.extend(Validator, {
-  exercise: attr(),
-  weight: attr('number'),
-  reps: attr('number'),
-  done: attr('boolean'),
-  dueDate: attr('date', { defaultValue: null }),
-  completed: attr('boolean'),
-  validations
-});
+
+export default class GoalModel extends Model.extend(Validator) {
+  @attr() exercise;
+  @attr('number') weight;
+  @attr('number') reps;
+  @attr('boolean', { hasPreviouslyAchievedGoal: false }) hasPreviouslyAchievedGoal;
+  @attr('date', { defaultValue: null }) dueDate;
+  @attr('boolean') isCompleted;
+  @attr('number') percentageCompleted;
+  // validations = validations;
+}

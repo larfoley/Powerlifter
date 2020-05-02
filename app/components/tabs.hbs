@@ -1,1 +1,13 @@
-{{yield}}
+<div class="tabs">
+  {{#each @tabs as |tab|}}
+    {{#if tab.model}}
+      <LinkTo class="tabs__tab" @route={{tab.route}} @model={{@tab.model}}>
+        {{tab.label}}
+      </LinkTo>
+    {{else}}
+      <LinkTo class="tabs__tab" @route={{tab.route}}>
+        {{tab.label}}
+      </LinkTo>
+    {{/if}}
+  {{/each}}
+</div>

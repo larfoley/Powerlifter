@@ -1,0 +1,32 @@
+<AppNavbar />
+<Toolbar @title="Excercises">
+  <Toolbar::Link @route="exercises.new" @icon="plus"/>
+</Toolbar>
+<AppContainer>
+  <PageContainer>
+    <PageContainer::PrimaryContent>
+      <InputField>
+        <TextInput
+        @placeholder="Search exercises..."
+        @icon="search"
+        />
+      </InputField>
+      <ul class="list card">
+        {{#each @model as |exercise|}}
+        <li class="list__item">
+          <LinkTo @route="exercises.exercise" @model={{exercise}}>
+            <div class="media">
+              <div class="media__asset">
+                <FaIcon @icon="dumbbell" />
+              </div>
+              <div class="media__body">
+                {{exercise.name}}
+              </div>
+            </div>
+          </LinkTo>
+        </li>
+        {{/each}}
+      </ul>
+    </PageContainer::PrimaryContent>
+  </PageContainer>
+</AppContainer>

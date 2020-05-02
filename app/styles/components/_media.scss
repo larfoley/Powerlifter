@@ -1,6 +1,11 @@
 .media {
   display: flex;
 
+  &--align-center {
+    // align-items: center;
+  }
+  align-items: center;
+
   &__asset {
     margin-right: .6em;
   }
@@ -8,4 +13,19 @@
   &__body {
     flex: 1;
   }
+
+  &__title {
+    font-size: 1em;
+    color: black;
+    margin-bottom: 0;
+  }
+
+  &__actions {
+    align-self: baseline;
+  }
+}
+img {
+  width: 100%;
+  vertical-align: middle;
+
 }

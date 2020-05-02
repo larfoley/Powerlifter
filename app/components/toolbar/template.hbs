@@ -1,0 +1,22 @@
+<div class="toolbar">
+  <div class="toolbar__container">
+    <h1 class="toolbar__title">
+      {{#if @backRoute}}
+        <LinkTo @route={{@backRoute}} class="toolbar__back-link">
+          <FaIcon @icon="arrow-left" class="toolbar__back-icon"/>
+        </LinkTo>
+      {{/if}}
+      {{@title}}
+    </h1>
+    {{#if (has-block)}}
+      <div class="toolbar__links">
+        {{yield}}
+      </div>
+    {{/if}}
+  </div>
+  {{#if @tabs}}
+    <div class="toolbar__container">
+      <Tabs @tabs={{@tabs}}/>
+    </div>
+  {{/if}}
+</div>

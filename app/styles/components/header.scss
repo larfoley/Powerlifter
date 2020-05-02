@@ -1,0 +1,19 @@
+.header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1em;
+  // padding: 2em 0;
+
+  &__title {
+    margin: 0;
+    // flex: 1;
+    font-size: 1.1rem;
+    font-weight: bold;
+  }
+
+  &__actions {
+    flex-grow: 1;
+    display: flex;
+    justify-content: flex-end;
+  }
+}

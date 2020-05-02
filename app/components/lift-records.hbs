@@ -4,14 +4,31 @@
     <span>Weight Lifted</span>
     <span>Reps</span>
     <span>Date</span>
+    <span></span>
   </div>
   <div class="list card__body card">
     {{#each @records as |record|}}
-    <LinkTo @route="records.record" @model={{record}} class="list__item flex grid grid--4-cols" data-test-lift-record>
+    <LinkTo @route="records.record" @model={{record}} class="list__item flex" data-test-lift-record>
       <span data-test-lift-record-exercise>{{record.exercise.name}}</span>
       <span data-test-lift-record-weight-lifted>{{record.weightLifted}}</span>
       <span data-test-lift-record-reps>{{record.reps}}</span>
       <span data-test-lift-record-date>{{format-date record.date}}</span>
+      <div class="flex">
+        <LinkTo
+          class="button"
+          @route="records.edit"
+          @model={{@record}}
+          data-test-delete-edit-Link>
+          <FaIcon @icon="edit" @prefix="far" />
+          <span>Edit</span>
+        </LinkTo>
+        <Button
+          onclick={{this.toggleModal}}
+        >
+          <FaIcon @icon="trash-alt" @prefix="far" />
+          <span>Delete</span>
+        </Button>
+      </div>
     </LinkTo>
     {{/each}}
   </div>

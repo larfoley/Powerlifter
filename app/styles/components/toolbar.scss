@@ -4,20 +4,20 @@
   //             0px 4px 5px 0px rgba(0,0,0,0.14),
   //             0px 1px 10px 0px rgba(0,0,0,0.12);
   border-bottom: 1px solid #e6ecf0;
-  margin-bottom: 1em;
+  position: sticky;
+  top: 0;
+  z-index: 2;
 
   &__container {
     display: flex;
     align-items: center;
-    max-width: $page-container-max-width;
-    width: $page-container-width;
-    margin: auto;
+    @include container;
   }
 
   &__title {
     margin: 0;
     font-size: 1.4rem;
-    padding: 0.8rem 0;
+    padding: 1rem 0;
   }
 
   &__links {
@@ -29,7 +29,7 @@
   }
 
   &__link {
-    margin-left: 2rem;
+    margin-left: 1rem;
     color: $text-color;
   }
 
@@ -37,8 +37,21 @@
     font-size: 1.3rem;
   }
 
+  &__back-icon--close {
+    font-size: 1.3rem;
+    display: none;
+  }
+
   &__back-link {
     color: $primary-color;
-    margin-right: 1em;
+    margin-right: .5em;
+  }
+
+  &__search {
+    font-size: 13px;
+  }
+
+  .text-input__icon-container {
+    flex-grow: 1;
   }
 }

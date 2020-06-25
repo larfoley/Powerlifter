@@ -1,13 +1,11 @@
 <Toolbar @title="Excercises" />
-<AppContainer>
-  <PageContainer>
-    <h1>Chose Exercise</h1>
-    <div class="grid grid--4-cols grid-gap">
-      {{#each this.model as |exercise|}}
-        <ExerciseLink @exercise={{exercise}} />
-      {{/each}}
-      <ExerciseLink @exercise={{this.model.firstObject}} />
-    </div>
-  </PageContainer>
-</AppContainer>
+<PageContainer>
+  <h1>Chose Exercise</h1>
+  <div class="grid grid--4-cols grid-gap">
+    {{#each this.model as |exercise|}}
+      <ExerciseLink @exercise={{exercise}} />
+    {{/each}}
+    <ExerciseLink @exercise={{this.model.firstObject}} />
+  </div>
+</PageContainer>
 {{outlet}}

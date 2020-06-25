@@ -1,10 +1,38 @@
 .card-list {
   padding: 0;
-  margin: 0;
+  margin: 0 0 1em 0;
 
-  &__card {
+  .card {
+    margin-bottom: 1em;
+    list-style-type: none;
+  }
+
+  &--grid {
+    @media screen and (min-width: 1300px) {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      grid-gap: 1em;
+
+      .card {
+        margin-bottom: 0;
+      }
+    }
+
+  }
+
+  &__item {
     @extend .card;
     margin-bottom: 2em;
     list-style: none;
+
+    &--link {
+      padding: 0;
+
+      a {
+        padding: 1em;
+        display: block;
+      }
+    }
   }
+
 }

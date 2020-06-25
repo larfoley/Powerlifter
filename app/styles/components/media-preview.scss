@@ -1,0 +1,19 @@
+.media-preview {
+  height: 500px;
+  position: relative;
+
+  img, video {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+  }
+
+  &__close-icon {
+    position: absolute;
+    top: 1em;
+    left: 1em;
+    z-index: 100;
+    background-color: white;
+    color: $primary-color;
+  }
+}

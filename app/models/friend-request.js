@@ -1,9 +1,24 @@
-import Model, { attr } from '@ember-data/model';
+import Model, { attr, belongsTo } from '@ember-data/model';
 
-export default Model.extend({
-  from: attr('string'),
-  to: attr('string'),
-  sendFriendRequest: attr('boolean', { defaultValue: false} ),
-  acceptFriendRequest: attr('boolean', { defaultValue: false} ),
-  declineFriendRequest: attr('boolean', { defaultValue: false} ),
-});
+export default class FriendRequestModel extends Model {
+  @attr('date') added;
+  @attr() friend;
+  @attr('string') status;
+  @belongsTo('user') user;
+
+  get username() {
+    return this.friend.username;
+  }
+
+  get friendRequestRecieved() {
+    return this.status === 'pending';
+  }
+
+  get friendRequestSent() {
+    return this.status === 'requested';
+  }
+
+  get isFriend() {
+    return this.status === 'accepted';
+  }
+};

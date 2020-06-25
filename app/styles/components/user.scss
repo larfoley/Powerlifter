@@ -1,0 +1,17 @@
+.user-masthead {
+  padding: 0 0 20em 0;
+  background-color: white;
+
+  &__header {
+    position: relative;
+    height: 150px;
+    background-color: gray;
+  }
+
+  &__profile-pic {
+    text-align: center;
+    position: absolute;
+    top: 90px;
+    width: 100%;
+  }
+}

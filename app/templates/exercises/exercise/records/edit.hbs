@@ -1,1 +1,12 @@
-<h1>Edit Record</h1>
+<PageOverlay>
+  <Toolbar
+    @title="Edit Record"
+    @backRoute="exercises.exercise.records.record"
+    @backRouteModel={{@model}}
+  />
+  <PageContainer>
+    <PageContainer::PrimaryContent>
+      <LiftRecordForm @record={{@model}} @selectedExercise={{@model.exercise}} />
+    </PageContainer::PrimaryContent>
+  </PageContainer>
+</PageOverlay>

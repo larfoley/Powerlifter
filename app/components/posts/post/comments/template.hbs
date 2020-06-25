@@ -1,0 +1,44 @@
+<div class="post__comments">
+  {{#each @comments as |comment|}}
+    <div class="media">
+      <div class="media__asset">
+        <UserAvatar class="post-comments__user-avatar"/>
+      </div>
+      <div class="media__body">
+        <div class="post-comments__comment">
+          <div class="post-comments__comment-author">
+            <LinkTo @route="users.user" @model={{comment.author.username}} >
+              {{comment.author.username}}
+            </LinkTo>
+          </div>
+          {{comment.content}}
+        </div>
+      </div>
+      <div>
+        {{#if comment.isCurrentUsersComment}}
+        <BasicDropdown as |dd|>
+          <dd.Trigger>
+            <Icon @icon="ellipsis-h" @muted={{true}} />
+          </dd.Trigger>
+          <dd.Content>
+            <div class="dropdown-options">
+              <div class="dropdown-options__option" {{on 'click' (action deleteComment comment) }}>
+                Delete comment
+              </div>
+            </div>
+          </dd.Content>
+        </BasicDropdown>
+        {{/if}}
+      </div>
+    </div>
+  {{/each}}
+  {{#if this.hasMoreComments}}
+    {{#if this.isLoadingMoreComments}}
+      <p>Loading comments...</p>
+    {{else}}
+      <span {{on 'click' this.loadMoreComments}}>
+        View More
+      </span>
+    {{/if}}
+  {{/if}}
+</div>

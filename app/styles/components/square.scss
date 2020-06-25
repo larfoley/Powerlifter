@@ -1,0 +1,18 @@
+.square {
+  width: 30px;
+  height: 30px;
+  border-radius: 5px;
+  background-color: #ddd;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+
+  &--success {
+    background-color: $primary-color;
+  }
+
+  &:hover {
+    cursor: pointer;
+  }
+}

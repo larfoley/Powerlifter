@@ -1,47 +1,44 @@
 <AppNavbar />
-
-<AppContainer>
-  <PageContainer>
-    <div class="list card">
-      <LinkTo
-        @route="index"
-        class="notification list__item"
-      >
-        <div class="media">
-          <div class="media__asset">
-            <FaIcon @icon="cog" />
-          </div>
-          <div class="media__body">
-            Settings
-          </div>
-        </div>
-    </LinkTo>
+<PageContainer>
+  <div class="list card">
     <LinkTo
       @route="index"
       class="notification list__item"
     >
       <div class="media">
         <div class="media__asset">
-          <FaIcon @icon="user" />
+          <FaIcon @icon="cog" />
         </div>
         <div class="media__body">
-          Account
+          Settings
         </div>
       </div>
-    </LinkTo>
-    <LinkTo
-      @route="index"
-      class="notification list__item"
-    >
-      <div class="media">
-        <div class="media__asset">
-          <FaIcon @icon="help" />
-        </div>
-        <div class="media__body">
-          Help
-        </div>
+  </LinkTo>
+  <LinkTo
+    @route="index"
+    class="notification list__item"
+  >
+    <div class="media">
+      <div class="media__asset">
+        <FaIcon @icon="user" />
       </div>
-    </LinkTo>
-  </div>
-  </PageContainer>
-</AppContainer>
+      <div class="media__body">
+        Account
+      </div>
+    </div>
+  </LinkTo>
+  <LinkTo
+    @route="index"
+    class="notification list__item"
+  >
+    <div class="media">
+      <div class="media__asset">
+        <FaIcon @icon="help" />
+      </div>
+      <div class="media__body">
+        Help
+      </div>
+    </div>
+  </LinkTo>
+</div>
+</PageContainer>

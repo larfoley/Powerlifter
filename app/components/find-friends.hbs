@@ -9,15 +9,15 @@
         />
       </InputField>
       {{#if this.searching}}
-      <p>Finding friends...</p>
+        <p>Finding friends...</p>
       {{else}}
-      {{#if this.noUsersFound}}
-      <p data-test-no-users-found-message>No users found.</p>
-      {{else}}
-      <UserList
-      @users={{this.users}}
-      />
-      {{/if}}
+        {{#if this.noUsersFound}}
+          <p data-test-no-users-found-message>No users found.</p>
+        {{else}}
+          <Users
+            @users={{this.users}}
+          />
+        {{/if}}
       {{/if}}
     </div>
   </div>

@@ -30,7 +30,6 @@ export default class PostFormComponent extends Component {
   @action
   async createOrUpdatePost(e) {
     e.preventDefault();
-    console.log(e);
 
     const post = this.post;
 

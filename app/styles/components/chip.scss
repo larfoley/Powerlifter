@@ -1,12 +1,10 @@
 .chip {
   padding: .5em 1em;
-  background-color: $success-color;
+  background-color: #eee;
   font-size: .9em;
   text-align: center;
   border-radius: 50px;
-  color: white;
   font-weight: bold;
-  margin-right: 1em;
 
   &--primary {
     border: 2px solid $primary-color;
@@ -21,5 +19,9 @@
   &--danger {
     border: 2px solid $danger-color;
     background-color: $danger-color;
+  }
+
+  &--primary, &--warning, &--dnager {
+    color: white;
   }
 }

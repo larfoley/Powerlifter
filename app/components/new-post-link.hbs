@@ -1,16 +1,16 @@
-<div class="card">
-  <div class="card__body--small">
-    <LinkTo @route="posts.new" >
-    <div class="media">
-      <div class="media__asset ">
-        <UserAvatar />
-      </div>
-      <div class="media__body">
-        <div class="post-something">
-          Post something...
+<div class="box box--with-margin box--transparent">
+  <div class="new-post-link card card__body">
+      <LinkTo @route="posts.new" >
+      <div class="media media--align-center">
+        <div class="media__asset ">
+          <UserAvatar />
+        </div>
+        <div class="media__body">
+          <div class="new-post-link__input">
+            Post something...
+          </div>
         </div>
       </div>
-    </div>
-  </LinkTo>
+    </LinkTo>
   </div>
 </div>

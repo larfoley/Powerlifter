@@ -1,0 +1,12 @@
+.new-post-link {
+  &__input {
+    background-color: $input-bg-color;
+    padding: .5em 1.5em;
+    border-radius: 50px;
+    color: $muted-text;
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+}

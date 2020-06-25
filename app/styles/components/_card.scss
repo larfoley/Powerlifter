@@ -1,19 +1,45 @@
 .card {
   background: #fff;
-  border-radius: 4px;
-  box-shadow: 0 2px 0 rgba(0,0,0,0.06);
-  margin: auto;
+  border-radius: $card-border-radius;
+  // box-shadow: 0 2px 0 rgba(0,0,0,0.06);
+  box-shadow: $card-bod-shadow;
+  margin-bottom: 1em;
+  // &--with-bottom-margin {
+  //   margin-bottom: 2em;
+  // }
 
-  &--with-bottom-margin {
-    margin-bottom: 1em;
+  &__body, &__footer, &__header {
+    padding-left: 1em;
+    padding-right: 1em;
+  }
+
+  &__footer, &__header {
+    font-size: 15px;
+    padding-top: .8em;
+    padding-bottom: .9em;
+  }
+
+  &__header {
+    // background-color: $primary-color;
+    // color: white;
+    border-top-right-radius: 4px;
+    border-top-left-radius: 4px;
+    border-bottom: 1px solid $border-color;
   }
 
   &__body {
-    padding: 1.5em;
+    padding-top: 1em;
+    padding-bottom: 1em;
   }
 
-  &__body--small {
-    padding: 1em;
+  &__footer {
+    border-top: 1px solid $border-color;
+    padding-top: 1em;
+    padding-bottom: 1em;
+  }
+
+  &__footer--small {
+    padding: 0.5em 1em;
   }
 
   &__title {
@@ -28,15 +54,4 @@
     font-weight: normal;
   }
 
-  &__footer {
-    display: flex;
-    padding: 1em;
-    align-items: center;
-    justify-content: space-around;
-    border-top: 1px solid #f5f5f5;
-  }
-
-  &__footer--small {
-    padding: 1em;
-  }
 }

@@ -1,0 +1,11 @@
+<div class="box box--with-margin box--transparent">
+  {{#if @friendRequests.length}}
+    <ul class="list card" data-test-user-list>
+      {{#each @friendRequests as |fr|}}
+      <div class="list__item" data-test-user-card>
+        <FriendRequests::FriendRequest @friendRequest={{fr}} />
+      </div>
+      {{/each}}
+    </ul>
+  {{/if}}
+</div>

@@ -4,13 +4,8 @@
     @backRoute="exercises.exercise.records"
     @backRouteModle={{@model.exercise}}
   />
-  <PageContainer>
-    <PageContainer::PrimaryContent>
-    <LiftRecordForm
-      @exerciseOptions={{@model.exercises}}
-      @selectedExercise={{@model.exercise}}
-      @onCreateOrUpdate={{action this.transitionToRoute "exercises.exercise.records" @model.exercise}}
-    />
-    </PageContainer::PrimaryContent>
-  </PageContainer>
+  <LiftRecordForm
+    @selectedExercise={{@model.exercise}}
+    @onCreateOrUpdate={{action this.transitionToRoute "exercises.exercise.records" @model.exercise}}
+  />
 </PageOverlay>

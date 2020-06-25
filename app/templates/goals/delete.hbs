@@ -1,0 +1,6 @@
+<ConfirmModal
+  @title="Delete Goal?"
+  @text="Are you sure you want to delete this goal?"
+  @onCancel={{action this.transitionToRoute 'goals'}}
+  @onConfirm={{action this.deleteGoal}}
+/>

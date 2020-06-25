@@ -1,20 +1,53 @@
-.fa-circle {
-  color: transparent;
-  transition: .3s;
-}
+// .fa-circle {
+//   color: transparent;
+//   transition: .3s;
+// }
+//
+// .fa-stack:hover .fa-circle  {
+//   color: white;
+// }
+//
+// .fa-stack:hover .fa-stack-1x  {
+//   color: $primary-color;
+// }
+//
+// .icon-primary .fa-circle {
+//   color: $primary-color;
+// }
+//
+// .icon-primary {
+//   color: white;
+// }
 
-.fa-stack:hover .fa-circle  {
-  color: white;
-}
+.icon {
+  font-size: 17px;
+  display: inline-block;
+  width: 37px;
+  height: 37px;
+  line-height: 37px;
+  text-align: center;
+  border-radius: 50px;
+  // margin: 0 7px;
+  // background-color: white;
 
-.fa-stack:hover .fa-stack-1x  {
-  color: $primary-color;
-}
+  &:hover:not(&--disabled) {
+    cursor: pointer;
+    background-color: #eee;
+  }
 
-.icon-primary .fa-circle {
-  color: $primary-color;
-}
+  &:active {
+    background-color: lightgray;
+  }
 
-.icon-primary {
-  color: white;
+  &--primary:not(&--disabled) {
+    color: $primary-color;
+  }
+
+  &--muted {
+    color: $muted-text;
+  }
+
+  &--disabled {
+    color: gray;
+  }
 }

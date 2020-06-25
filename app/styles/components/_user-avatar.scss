@@ -1,3 +1,25 @@
 .user-avatar {
   color: gainsboro;
+  font-size: 45px;
+  display: flex;
+  position: relative;
+
+  img {
+    width: 45px;
+    border-radius: 50%;
+    border: 2px solid #eee;
+  }
+
+  &__status-icon {
+    border-radius: 50px;
+    border: 2px solid white;
+    font-size: 15px;
+    position: absolute;
+    bottom: 3px;
+    right: -2px;
+
+    &--online {
+      color: $success-color;
+    }
+  }
 }

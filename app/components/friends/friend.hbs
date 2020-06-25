@@ -1,0 +1,24 @@
+<div class="media media--align-center">
+  <div class="media__asset">
+    <UserAvatar @user={{@friend}} />
+  </div>
+  <div class="media__body">
+    <LinkTo @route="index">
+      {{@friend.username}}
+    </LinkTo>
+  </div>
+  <div class="media__actions">
+    <BasicDropdown as |dd|>
+      <dd.Trigger>
+        <Icon @icon="ellipsis-h" />
+      </dd.Trigger>
+      <dd.Content>
+        <div class="menu">
+          <div class="menu__item" {{action @onRemoveFriend dd @friend }}>
+            <FaIcon @icon="trash-alt" @prefix="far"/> Remove friend
+          </div>
+        </div>
+      </dd.Content>
+    </BasicDropdown>
+  </div>
+</div>

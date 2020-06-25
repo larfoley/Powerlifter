@@ -1,4 +1,4 @@
-import Model, { attr } from '@ember-data/model';
+import Model, { attr, belongsTo } from '@ember-data/model';
 import Validator from "ember-model-validator/mixins/object-validator";
 
 const validations = {
@@ -21,5 +21,7 @@ export default Model.extend(Validator, {
   date: attr('date', { defaultValue: null }),
   weightLifted: attr('string'),
   reps: attr('number'),
+  isPersonalBest: attr('boolean'),
+  media: belongsTo('photo'),
   validations
 });

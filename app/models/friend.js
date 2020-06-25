@@ -1,6 +1,4 @@
-import Model, { attr } from '@ember-data/model';
+import { attr } from '@ember-data/model';
+import UserModel from './user';
 
-export default class FriendModel extends Model {
-  @attr('string') username;
-  @attr('boolean') isOnline;
-}
+export default class FriendModel extends UserModel {}

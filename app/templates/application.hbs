@@ -1,1 +1,38 @@
-{{outlet}}
+{{!-- <style media="screen">
+  .flash-message {
+    position: fixed;
+    bottom: 3em;
+    width: 300px;
+    left: 2em;
+    /* bottom: 1em; */
+    z-index: 1000;
+  }
+</style> --}}
+{{!-- <AppNavbar />
+<AppContainer>
+  {{outlet}}
+  {{#each flashMessages.queue as |flash|}}
+  {{#flash-message flash=flash as |component flash|}}
+      {{#if flash.componentName}}
+      {{else}}
+      <div class="card">
+        <div class="card__body">
+          <h6>{{component.flashType}}</h6>
+          <p>{{flash.message}}</p>
+        </div>
+      </div>
+
+      {{/if}}
+    {{/flash-message}}
+  {{/each}}
+</AppContainer> --}}
+<div class="app-layout">
+  <div class="app-layout__left-container">
+    <AppNavbar />
+  </div>
+  <div class="app-layout__main-container">
+    {{outlet}}
+  </div>
+  <div class="app-layout__right-container">
+  </div>
+</div>

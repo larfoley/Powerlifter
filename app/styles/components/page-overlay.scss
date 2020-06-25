@@ -1,0 +1,16 @@
+.page-overlay {
+  position: absolute;
+  top: 0;
+  height: 100vh;
+  z-index: 100;
+  width: 100%;
+  background-color: $app-bg-color;
+
+  & ~ .page-overlay {
+    display: none;
+  }
+
+  & ~ .full-screen-modal {
+    z-index: 101;
+  }
+}

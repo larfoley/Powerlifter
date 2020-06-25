@@ -1,0 +1,32 @@
+.flex {
+  display: flex;
+
+  &__align-items-center {
+    align-items: center;
+  }
+
+  &__align-self-center {
+    align-items: center;
+  }
+
+  &--space-between {
+    justify-content: space-between;
+  }
+
+  &--space-around {
+    justify-content: space-around;
+  }
+
+  &--flex-end {
+    justify-content: flex-end;
+  }
+
+  &--align-center {
+    align-items: center;
+  }
+
+  &__grow {
+    flex-grow: 1;
+  }
+
+}

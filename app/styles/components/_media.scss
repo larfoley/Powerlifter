@@ -2,12 +2,11 @@
   display: flex;
 
   &--align-center {
-    // align-items: center;
+    align-items: center;
   }
-  align-items: center;
 
   &__asset {
-    margin-right: .6em;
+    margin-right: .7em;
   }
 
   &__body {
@@ -21,7 +20,12 @@
   }
 
   &__actions {
-    align-self: baseline;
+    // align-self: baseline;
+    display: flex;
+
+    .button {
+      margin-left: 5px; 
+    }
   }
 }
 img {

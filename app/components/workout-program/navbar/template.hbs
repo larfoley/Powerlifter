@@ -1,0 +1,35 @@
+<div class="program-navbar">
+    <div class="flex flex--space-between flex__grow flex--align-center">
+      <div>
+        {{#if this.hasPrev}}
+          <Icon @icon="arrow-left" @primary={{true}} {{action this.previousWorkout}}/>
+        {{else}}
+          <Icon @icon="arrow-left" @primary={{true}} @disabled={{true}} />
+        {{/if}}
+      </div>
+      <div class="text--center">
+        <h1 class="text text--muted">Week {{@currentWorkoutSession.week}}</h1>
+        <h2 class="h2">Day {{@currentWorkoutSession.weekDay}}</h2>
+        {{#if @currentWorkoutSession.completed}}
+          <div class="text text--success">
+            Completed
+          </div>
+        {{/if}}
+      </div>
+      <div>
+        {{#if this.hasNext}}
+          <Icon
+            @icon="arrow-right"
+            {{action this.nextWorkout}}
+            @primary={{true}}
+          />
+        {{else}}
+          <Icon
+            @icon="arrow-right"
+            @primary={{true}}
+            @disabled={{true}}
+          />
+        {{/if}}
+      </div>
+    </div>
+</div>

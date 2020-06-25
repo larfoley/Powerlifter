@@ -1,0 +1,106 @@
+<Form @onSubmit={{this.createWorkoutProgram}} class="workout-program">
+    {{!-- Program Name --}}
+    <div class="box box--with-margin box--transparent">
+      <div class="card">
+        <div class="card__body">
+          <Form::Field @label="Program Name">
+            <TextInput @value={{this.workoutProgram.name}} @placeholder="eg. strength & conditioning" />
+          </Form::Field>
+        </div>
+      </div>
+    </div>
+    {{!-- Weeks --}}
+    <div class="box box--transparent">
+      <ul class="inline-list">
+        {{#each this.weeks as |week index|}}
+          <li class="inline-list__item">
+            <Button
+              @text="Week {{week.week}}"
+              @primary={{equals index this.selectedWeekIndex}}
+              {{action  this.selectWeek index}}
+            />
+            <EmberPopover @event="hover">
+              <Icon @icon="trash-alt" @prefix="far" {{action this.removeWeek index}} @tooltip="Delete Week"/>
+              {{#if week.workouts.length}}
+                <Icon @icon="copy" @prefix="far" {{action this.copyWeek week}} @tooltip="Copy Week" />
+              {{/if}}
+            </EmberPopover>
+        </li>
+      {{/each}}
+      <li class="inline-list__item u-relative">
+        <Button @text="Add Week" @transparent={{true}} @icon="plus" {{action this.addWeek}}/>
+      </li>
+    </ul>
+  </div>
+    {{!-- Sessions --}}
+    <div class="box box--transparent box--with-margin">
+      {{#each this.workoutSessions as |workout|}}
+        <div class="card">
+          <div class="card__header">
+            <div class="header">
+              <div class="header__title">
+                <h4>Day {{workout.weekDay}}</h4>
+              </div>
+              <div class="header__actions">
+                <Icon
+                  @icon="trash-alt"
+                  @prefix="far"
+                  {{action this.removeWorkoutSession workout}}
+                />
+                {{#if workout.exercises.length}}
+                  <Icon
+                    @icon="copy"
+                    @prefix="far"
+                    @tooltip="Copy Day"
+                    {{action this.copyWorkoutSession workout}}
+                  />
+                {{/if}}
+              </div>
+            </div>
+          </div>
+          <div class="card__bodyxx">
+            {{#each workout.exercises as |workoutBlock|}}
+              <WorkoutProgramTemplate::Form::WorkoutBlock
+                @workoutBlock={{workoutBlock}}
+                @workoutSession={{workout}}
+                @removeWorkoutProgramSet={{action this.removeWorkoutProgramSet}}
+                @addWorkoutProgramSet={{action this.addWorkoutProgramSet}}
+                @removeWorkoutBlock={{action this.removeWorkoutBlock }}
+              />
+            {{/each}}
+          </div>
+          <div class="card__footer workout-program__add-exercise-button">
+            <Button
+              @secondaryButton={{true}}
+              @noBorder={{true}}
+              @text="Add Exercise"
+              @icon="plus"
+              @route="workout.new.workout-session.exercise-select"
+              @model={{if workout.id workout.id workout.guid}}
+            />
+          </div>
+        </div>
+      {{/each}}
+  </div>
+
+    {{#if this.showAddWorkoutSessionButton}}
+      <div class="box box--transparent">
+        <Button
+        {{action this.addWorkoutSession}}
+        @text="Add Workout Session"
+        @icon="plus"
+        class="workout-program__add-session-button"
+        />
+      </div>
+    {{/if}}
+    <div class="box box--transparent box--with-margin">
+      <Button
+        @text="Save Workout Program"
+        @icon="plus"
+        @primary={{true}}
+        @fullWidth={{true}}
+        disabled={{this.isNotValid}}
+        {{action this.createWorkoutProgram}}
+      />
+    </div>
+</Form>

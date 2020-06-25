@@ -1,0 +1,19 @@
+.link {
+
+  &:hover {
+    text-decoration: underline;
+    cursor: pointer;
+  }
+
+  &--primary {
+    color: $primary-color;
+  }
+
+  &--center {
+    display: block;
+    text-align: center;
+    max-width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}

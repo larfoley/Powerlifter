@@ -1,0 +1,18 @@
+<PageOverlay
+  @onClose={{action this.transitionToRoute "workout.my-programs"}}
+>
+  <Toolbar
+    @title={{@model.author}}
+    @backRoute="workout.my-programs"
+    @actions={{array
+      (hash icon="edit" prefix="far" route="index")
+      (hash icon="trash-alt" prefix="far" action=(action this.transitionToRoute 'goals'))
+    }}
+  />
+  <div class="box box--transparent box--with-margin">
+    <div class="flex flex--flex-end">
+      <Button @text="Activate Program" @primary={{true}} {{action this.activateProgram @model}} />
+    </div>
+    {{!-- <WorkoutProgram @workoutProgram={{@model}} /> --}}
+  </div>
+</PageOverlay>

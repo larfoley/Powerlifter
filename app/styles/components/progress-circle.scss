@@ -1,7 +1,6 @@
 // VARS
 $circle-width: 0.09em;
 $circle-width-hover: 0.07em;
-$primary-color-blue: #30bae7;
 
 .pie {
 	position: absolute;
@@ -22,14 +21,21 @@ $primary-color-blue: #30bae7;
 	  box-sizing: content-box;
 	}
 
+  &--completed {
+    > span {
+      color: $primary-color !important;
+    }
+  }
+
 	position: relative;
-	font-size: 160px;
+	font-size: 4.7rem;
 	width: 1em;
 	height: 1em;
 	border-radius: 50%;
-	float: left;
+	// float: left;
 	background-color: #dfe8ed;
   font-weight: bold;
+	background-color: lighten($primary-color, 20%);
 
 	> span {
 		position: absolute;
@@ -46,13 +52,13 @@ $primary-color-blue: #30bae7;
     transition-property: all;
     transition-duration: 0.2s;
     transition-timing-function: ease-in;
+    color: $primary-color;
 
     .percent {
       font-size: .6em;
       vertical-align: bottom;
     }
 	}
-
 
 	&:after {
 		position: absolute;
@@ -67,6 +73,7 @@ $primary-color-blue: #30bae7;
 		transition-property: all;
     transition-duration: 0.2s;
     transition-timing-function: ease-in;
+		color: white;
 	}
 
 	.slice {
@@ -106,22 +113,24 @@ $primary-color-blue: #30bae7;
 	&:hover {
 		cursor: default;
 
-		> span {
-			width: 3.33em;
-			line-height: 3.33em;
-			font-size: 0.3em;
-		}
-
-		&:after{
-			top: $circle-width-hover;
-			left: $circle-width-hover;
-			width: 1 - (2 * $circle-width-hover);
-			height: 1 - (2 * $circle-width-hover);
-		}
+		// > span {
+		// 	width: 3.33em;
+		// 	line-height: 3.33em;
+		// 	font-size: 0.3em;
+		// }
+		//
+		// &:after{
+		// 	top: $circle-width-hover;
+		// 	left: $circle-width-hover;
+		// 	width: 1 - (2 * $circle-width-hover);
+		// 	height: 1 - (2 * $circle-width-hover);
+		// }
 	}
 
-	&.green {
-		.bar, .fill { border-color: $success-color !important;}
+	&--completed {
+		.bar, .fill {
+      border-color: $primary-color !important;
+    }
 	}
 
 }

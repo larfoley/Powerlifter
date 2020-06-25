@@ -1,0 +1,55 @@
+<form {{on "submit" this.createOrUpdatePost}}>
+  <div class="box">
+      <div class="media">
+        <div class="media__asset">
+          <UserAvatar @user={{this.post.author}} />
+        </div>
+        <div class="media__body">
+          <Textarea
+            class="textarea"
+            rows="5"
+            placeholder="Say something laurence..."
+            autofocus="true"
+            @value={{this.post.content}}
+            maxlength={{1000}}
+          />
+        </div>
+        {{this.isValid}}
+      </div>
+      {{#if this.hasMedia}}
+        <div class="media-preview">
+          <Icon
+            @icon="times"
+            {{on 'click' (fn this.removeMedia)}}
+            class="media-preview__close-icon"
+          />
+          {{#if this.media.isImage}}
+            <img src={{this.post.media.url}} alt="post file">
+          {{else}}
+          <video src={{this.post.media.url}}>
+          </video>
+          {{/if}}
+        </div>
+      {{/if}}
+
+  </div>
+  <div class="box">
+    <div class="flex">
+      <div class="flex__grow">
+        <div class="">
+          <FileUpload
+            @name="avatar"
+            @onfileadd={{action this.setMedia}}
+            @accept="video/*"
+          >
+            <Icon @icon="photo-video" @primary={{true}} />
+          </FileUpload>
+        </div>
+      </div>
+      <div class="row">
+        <Button @text="Post" @submit={{true}} @primaryButton={{true}} disabled={{this.isInValid}}/>
+        <Button @text="Cancel" @submit={{true}} @secondaryButton={{true}} @route="my-network" />
+      </div>
+    </div>
+  </div>
+</form>

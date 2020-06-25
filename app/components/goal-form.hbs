@@ -1,6 +1,5 @@
 <form data-test-create-or-edit-goal-form {{on "submit" this.handleSubmit}}>
-  <div class="card">
-    <div class="card__body">
+  <div class="box">
       {{#unless @selectedExercise}}
         <InputField
           @label="Exercise"
@@ -69,29 +68,13 @@
         </Button>
       <LinkTo class="button outlined-button" @route="goals">Cancel</LinkTo>
       </div>
-    </div>
   </div>
 </form>
 {{#if this.showingConfirmModal}}
-  <ModalDialog @translucentOverlay={{true}} @onClose={{this.hideConfirmModal}}>
-    <div class="header">
-      <h3 class="header__title">This goal has already been achieved. Do you still want to create this goal?</h3>
-    </div>
-    <div class="button-group margin margin--top">
-      <Button
-        {{on "click" (fn this.createPreviouslyAchievedGoal true) }}
-        data-test-submit-button
-        @primaryButton={{true}}
-      >
-      Yes
-    </Button>
-    <Button
-      {{on "click" this.hideConfirmModal}}
-      data-test-submit-button
-      @outlinedButton={{true}}
-      >
-      No
-    </Button>
-    </div>
-  </ModalDialog>
+  <ConfirmModal
+    @title="Create Goal?"
+    @text="You have already been achieved this goal. Do you want to attempt this goal again?"
+    @onCancel={{fn this.hideConfirmModal}}
+    @onConfirm={{fn this.createPreviouslyAchievedGoal}}
+  />
 {{/if}}

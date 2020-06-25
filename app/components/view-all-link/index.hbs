@@ -1,0 +1,11 @@
+{{#if @model}}
+  <LinkTo @route={{@route}} @model="@model" class="view-all-link">
+    View All
+    <FaIcon @icon="angle-right" class="view-all-link__icon" />
+  </LinkTo>
+{{else}}
+  <LinkTo @route={{@route}} class="view-all-link">
+    View All
+    <FaIcon @icon="angle-right" class="view-all-link__icon" />
+  </LinkTo>
+{{/if}}

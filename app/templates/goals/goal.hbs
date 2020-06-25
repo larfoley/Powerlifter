@@ -1,0 +1,17 @@
+<PageOverlay>
+  <Toolbar
+    @title="Goal"
+    @backRoute="goals"
+    @actions={{array
+      (hash icon="edit" prefix="far" route="goals.new")
+      (hash icon="trash-alt" prefix="far" route="goals.new")
+    }}
+  />
+  <div class="box">
+    <div class="media__asset">
+      <ProgressCircle @value={{12}} />
+    </div>
+    <div class="media__body">
+    </div>
+  </div>
+</PageOverlay>

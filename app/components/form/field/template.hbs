@@ -1,0 +1,18 @@
+<div class="form-field {{if @errors "is-invalid"}}" ...attributes>
+  {{#if @label}}
+    <label class="form-field__label">
+      {{@label}}
+    </label>
+  {{/if}}
+  {{yield}}
+  {{#if @errors}}
+    <div class="form-field__errors">
+      {{#each @errors as |error|}}
+      <div>
+        <FaIcon @icon="info-circle"/>
+        <span>{{error.message}}</span>
+      </div>
+      {{/each}}
+    </div>
+  {{/if}}
+</div>

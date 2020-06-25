@@ -1,0 +1,53 @@
+.noscroll {
+  overflow: hidden;
+}
+
+.text-align-center {
+  text-align: center;
+}
+
+.flex-end {
+  justify-content: flex-end;
+}
+
+.grid {
+  display: grid;
+}
+
+.row {
+  display: grid;
+  gap: .5rem;
+  grid-auto-flow: column;
+}
+
+.grid--4-cols {
+  grid-template-columns: repeat(4, 1fr);
+}
+
+.grid-gap {
+  grid-column-gap: 50px;
+}
+
+.hover {
+  &-text{
+    cursor: text;
+  }
+}
+
+.underline-on-hover:hover {
+  text-decoration: underline;
+}
+
+.margin-top-bottom {
+  margin: 1em 0;
+}
+
+.u-bold {
+  font-weight: bold;
+}
+
+.u-sticky {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}

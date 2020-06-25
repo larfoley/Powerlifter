@@ -1,9 +1,32 @@
 .text {
+  color: $text-color;
+  font-size: 1rem;
 
-  // Modifiers
-  &--muted {}
-  &--small {}
+  &--muted {
+    color: $muted-text;
+  }
 
-  // Elements
+  &--center {
+    text-align: center;
+  }
 
+  &--small {
+    font-size: 0.8rem
+  }
+
+  &--success {
+    color: $success-color;
+  }
+
+  &--primary {
+    color: $primary-color;
+  }
+
+  &--bold {
+    font-weight: bold;
+  }
+
+  p:last-child {
+    margin-bottom: 0;
+  }
 }

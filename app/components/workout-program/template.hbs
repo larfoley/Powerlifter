@@ -1,0 +1,32 @@
+<WorkoutProgram::Navbar @currentWorkoutSession={{this.currentWorkoutSession}} />
+
+{{#if this.canFinishWorkoutSession}}
+  <div class="box box--transparent box--with-margin">
+    <div class="flex flex--flex-end">
+      {{#if this.canFinishWorkoutProgram}}
+        <Button
+          @icon="check"
+          @primary={{true}}
+          @text="Finish Workout"
+          {{action this.completeWorkoutSession}}
+        />
+      {{/if}}
+        <Button
+          @icon="check"
+          @primary={{true}}
+          @text="Finish Program"
+          {{action this.completeWorkoutProgram}}
+        />
+    </div>
+  </div>
+{{/if}}
+<WorkoutProgram::WorkoutSession
+  @workout={{this.currentWorkoutSession}}
+  @onToggleExerciseSetCompleted={{action this.toggleExerciseSetCompleted}}
+/>
+{{#if this.showWorkoutCompleteDialog}}
+  <WorkoutProgram::WorkoutCompleteDialog
+    @onClose=""
+    @achievments={{this.currentWorkoutSession}}
+  />
+{{/if}}

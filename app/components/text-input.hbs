@@ -2,7 +2,7 @@
   <div class="text-input__icon-container">
     <FaIcon @icon={{@icon}} class="text-input__icon"/>
     <Input
-      class="text-input"
+      class="text-input {{if @inline "text-input--inline"}}"
       @placeholder={{@placeholder}}
       @value={{@value}}
       @model={{@model}}
@@ -13,7 +13,7 @@
   </div>
 {{else}}
   <Input
-    class="text-input"
+    class="text-input {{if @inline "text-input--inline"}}"
     @placeholder={{@placeholder}}
     @value={{@value}}
     @model={{@model}}

@@ -1,24 +1,12 @@
-  <Toolbar @title="Edit Goal" />
-  {{!-- <AppContainer>
-    <PageContainer>
-      <PageContainer::PrimaryContent>
-      <GoalForm
-      @exercises={{@model.exercises}}
-      @goal={{@model.goal}}
-      />
-      {{outlet}}
-    </PageContainer::PrimaryContent>
-  </PageContainer>
-</AppContainer> --}}
-
-<PageOverlay @title="Sign In">
-    <PageContainer>
-      <PageContainer::PrimaryContent>
-      <GoalForm
-      @exercises={{@model.exercises}}
-      @goal={{@model.goal}}
-      />
-      {{outlet}}
-    </PageContainer::PrimaryContent>
-  </PageContainer>
-</PageOverlay>
+<FullScreenModal>
+  <Toolbar @title="Edit Goal" @backRoute="goals" @showCloseIcon={{true}} />
+  <GoalForm
+    @exercises={{@model.exercises}}
+    @goal={{@model.goal}}
+    @actions={{array
+      (hash icon="plus" route="goals.new")
+    }}
+    @onCreateOrUpdate={{action this.transitionToRoute "goals"}}
+  />
+  {{outlet}}
+</FullScreenModal>

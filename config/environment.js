@@ -24,7 +24,7 @@ module.exports = function(environment) {
     },
 
     googleFonts: [
-      'Nunito:300,400,500,600,700',
+      'Nunito:300,400,500,600,700,800,900',
     ],
 
     'ember-websockets': {

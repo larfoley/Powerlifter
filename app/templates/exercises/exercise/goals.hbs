@@ -1,16 +1,8 @@
-<div class="header">
-  <div class="header__actions">
+<div class="box box--with-margin box--transparent">
+  <div class="flex flex--flex-end">
     <LinkTo class="button primary-button" @route="exercises.exercise.goals.new">
-      <FaIcon @icon="plus" />
-      New Goal
+      <FaIcon @icon="plus" /> New Goal
     </LinkTo>
   </div>
 </div>
-
-<div class="card-list">
-{{#each this.model as |goal|}}
-  <GoalCard @goal={{goal}} class="card-list__card"/>
-{{/each}}
-</div>
-
 {{outlet}}

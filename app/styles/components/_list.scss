@@ -1,40 +1,30 @@
 .list {
-  margin-left: 0;
   padding: 0;
+  margin: 0;
+  // @extend .card;
 
   &__item {
-    // height: 80px;
     padding: 1em;
-    margin: 0;
+    margin-left: 0;
     list-style: none;
     color: inherit;
     position: relative;
     align-items: center;
-    // align-items: stretch;
-
-    a {
-      display: flex;
-      color: black;
-    }
-
-    svg {
-      margin-right: 5px;
-    }
-
-    &:first-child {
-      border-top-right-radius: 5px;
-      border-top-left-radius: 5px;
-    }
-
-    &:last-child {
-      border-bottom-right-radius: 5px;
-      border-bottom-left-radius: 5px;
-      border-bottom: none;
-    }
+    background-color: white;
 
     &:hover {
       cursor: pointer;
       background-color: #f2f2f2;
+    }
+
+    &--link {
+      padding: 0;
+
+      a {
+        display: block;
+        padding: 1em;
+        color: black;
+      }
     }
   }
 }

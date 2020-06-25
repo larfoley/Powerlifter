@@ -9,19 +9,25 @@
   top: 0;
 
   &__tab {
+    border-bottom: 2px solid white;
     list-style-type: none;
     color: black;
     display: inline-block;
     text-decoration: none;
-    border-bottom: 2px solid white;
     text-transform: capitalize;
-    padding: 0.8rem 1rem;
+    padding: 0.6rem 1rem;
     flex-grow: 1;
     text-align: center;
     transition: 0.3s;
+    font-weight: bold;
 
-    @media screen and (min-width: 700px) {
-      flex: initial;
+    &:hover {
+      background-color: #eee;
+      border-color: #eee;
+    }
+
+    @media screen and (min-width: $mobile-breakpoint) {
+      // flex: initial;
     }
 
     &.active {

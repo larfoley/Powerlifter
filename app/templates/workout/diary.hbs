@@ -1,0 +1,12 @@
+<Toolbar
+  @title="Workout"
+  @actions={{array
+    (hash icon="plus" route="workout.new")
+  }}
+  @tabs={{ array
+    (hash label="Diary" route="workout.diary")
+    (hash label="My Programs" route="workout.my-programs")
+  }}
+>
+</Toolbar>
+<WorkoutProgram @workoutProgram={{@model.workoutProgram}} />

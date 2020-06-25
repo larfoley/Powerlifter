@@ -1,0 +1,71 @@
+.workout-sets {
+  display: grid;
+  grid-template-columns: 60px 150px 60px 30px 60px 1fr;
+  grid-template-columns: 110px 110px 110px 1fr;
+  // grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 1em;
+  align-items: stretch;
+  // font-weight: bold;
+  margin-bottom: 2em;
+  align-items: center;
+
+
+  &__set {
+    // align-self: center;
+    text-align: center;
+  }
+
+  &__set-wrapper {
+    display: contents;
+    & > .workout-sets__set {
+      // opacity: 0.5;
+      // background-color:lighten($success-color, 45%);
+      // color: white;
+      // height: 50px;
+      // line-height: 50px;
+      // margin-bottom: 1em;
+      align-self:  center;
+
+      &:first-child {
+        // border-radius: 5px 0 0 5px;
+      }
+
+      &:last-child {
+        // border-radius: 0 5px 5px 0;
+      }
+    }
+  }
+
+  &__checkbox {
+    background-color: $input-bg-color;
+    border-radius: 5px;
+    text-align: center;
+    // position: relative;
+    color: gray;
+    width: 40px;
+    height: 40px;
+    padding: 0;
+    min-width: auto;
+
+    &--completed {
+      background-color: lighten($success-color, 20%);
+      color: white;
+
+      &:hover {
+        cursor: pointer;
+        background-color: lighten($success-color, 20%);
+      }
+    }
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+
+  &__checkbox-icon {
+    position: absolute;
+    bottom: 14px;
+    right: 17px;
+  }
+
+}

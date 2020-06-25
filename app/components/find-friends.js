@@ -8,14 +8,20 @@ import { tracked } from '@glimmer/tracking';
 
 export default class FindFriendsComponent extends Component {
   @service toast;
+  @service store;
   @tracked searching = false;
   @tracked noUsersFound = false;
   delay = 350;
   users = A([]);
 
+  @action
+  searchUsers(userSearchTerm) {
+    return this.store.query('user', { search: userSearchTerm.trim() });
+  }
+
   async findFriends(userSearchTerm) {
     try {
-      const results = await this.args.findFriends(userSearchTerm);
+      const results = await this.searchUsers(userSearchTerm);
 
       this.users.removeObjects(this.users);
 
@@ -28,6 +34,7 @@ export default class FindFriendsComponent extends Component {
       }
 
     } catch (error) {
+      console.log(error);
       this.toast.error('Unable to search for friends');
 
     } finally {

@@ -1,0 +1,14 @@
+<ul class="list">
+  {{#each @exercises as |exercise|}}
+  <li class="list__item">
+    <div class="media">
+      <div class="media__asset">
+        <FaIcon @icon="dumbbell" />
+      </div>
+      <div class="media__body">
+        {{capitalize exercise.name}}
+      </div>
+    </div>
+  </li>
+  {{/each}}
+</ul>

@@ -1,0 +1,17 @@
+<div class="profile-pic">
+  {{#if this.profilePic}}
+    <img class="profile-pic__image" src={{this.profilePic}} alt="">
+  {{else}}
+    <FaIcon @icon="user-circle" @size={{ if @size @size "3x"}} class="profile-pic__avatar" ...attributes/>
+  {{/if}}
+  <FileUpload
+    @name="avatar"
+    @onfileadd={{action this.setProfilePic}}
+    @accept="image/*"
+  >
+    <FaIcon
+      class="profile-pic__icon"
+      @icon="camera"
+    />
+  </FileUpload>
+</div>

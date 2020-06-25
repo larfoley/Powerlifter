@@ -8,19 +8,40 @@ export default Route.extend(ApplicationRouteMixin, {
   notifications: service(),
   socketIOService: service('socket-io'),
   session: service(),
+  flashMessages: service(),
+  toast: service(),
 
   setUpWebSocket() {
     const authToken = this.session.data.authenticated.access_token;
-    const socket = this.socketIOService.socketFor(`http://localhost:3000`, { query: `auth_token=${authToken}` });
+    const socket = this.socketIOService.socketFor(`http://localhost:3000`, {
+      query: `auth_token=${authToken}`
+    });
 
-    // socket.on('error', function(err) {
-    // });
+    socket.on('error', function(err) {
+      console.log(err);
+    });
 
-    // socket.on('success', function(data) {
-    // })
+    socket.on('success', function(data) {
+      console.log(data);
+    })
 
     socket.on(`notification/${this.currentUser.user.id}`, (data) => {
+      this.flashMessages.add({
+        message: data.text,
+        sticky: true,
+      });
       this.notifications.add(data)
+    })
+
+    socket.on(`friends/${this.currentUser.user.id}`, (data) => {
+      const friend = this.store.peekRecord('friend', data.friend._id);
+
+      friend.isOnline = data.friend.isOnline;
+
+      if (friend.isOnline) {
+        this.toast.info(friend.username + " is now online");
+      }
+
     })
 
     socket.on(`post/${this.currentUser.user.id}`, (post) => {
@@ -29,7 +50,7 @@ export default Route.extend(ApplicationRouteMixin, {
           id: post._id,
           type: 'post',
           attributes: {
-            content: post.content
+            post
           }
         }
       }

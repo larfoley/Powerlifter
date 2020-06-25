@@ -1,0 +1,15 @@
+{{#if this.showNavbar}}
+  {{outlet}}
+{{else}}
+  <Toolbar
+    @title="Workouts"
+    @actions={{array
+      (hash icon="plus" route="workout.new")
+    }}
+    @tabs={{ array
+      (hash label="Diary" route="workout.diary")
+      (hash label="My Programs" route="workout.my-programs")
+    }}
+  />
+  {{outlet}}
+{{/if}}

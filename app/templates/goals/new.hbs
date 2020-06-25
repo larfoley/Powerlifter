@@ -1,5 +1,7 @@
-<PageModal @title="Add New Goal">
+<FullScreenModal @onClose={{action this.transitionToRoute 'goals'}}>
+  <Toolbar @title="Add New Goal" @backRoute="goals" @showCloseIcon={{true}} />
   <GoalForm
     @exercises={{@model.exercises}}
+    @onCreateOrUpdate={{action this.transitionToRoute 'goals'}}
   />
-</PageModal>
+</FullScreenModal>

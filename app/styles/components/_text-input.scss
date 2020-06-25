@@ -9,11 +9,12 @@
   border-color: $input-bg-color;
   background-clip:  padding-box;
   color: black;
-  font-size: inherit;
+  font-size: 13px;
+  outline: none;
 
   &:focus {
     outline: 0;
-    border-color: $focus-color;
+    box-shadow: 0 0 0 1.5px $focus-color;
     background-color: white;
   }
 
@@ -27,9 +28,29 @@
 
   &__icon {
     position: absolute;
-    top: 22px;
+    top: 11px;
     left: 20px;
+    font-size: 1.2em;
+    color: $muted-text;
+  }
 
-    color: black;
+  &--inline {
+    width: 50px;
+    display: inline-block;
+    border-radius: 5px;
+    padding: 0.7em 1em;
+    text-align: center;
+  }
+
+  /* Chrome, Safari, Edge, Opera */
+  &::-webkit-outer-spin-button,
+  &::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+
+  /* Firefox */
+  &[type=number] {
+    -moz-appearance: textfield;
   }
 }

@@ -1,0 +1,50 @@
+//App colors
+$primary-color: #ff7675;
+// $primary-color: lighten(royalblue, 20%);
+// $primary-color: #00a8ff;
+$app-bg-color: #f4f8f7;
+$warning-color: #f89406;
+$danger-color: #e74c3c;
+$success-color: #2ecc71;
+$info-color: #2f96b4;
+$blue: rgb(29, 161, 242);
+$border-color: #e6ecf0;
+
+// App toolbar
+$app-toolbar-text-color: white;
+$app-toolbar-height: 67px;
+$app-toolbar-max-width: 800px;
+$app-toolbar-margin: 800px;
+
+// App navbar
+$app-navbar-width: 350px;
+$app-navbar-bg-color: lighten(#20313b, 3%);
+$app-navbar-bg-color: royalblue;
+$app-toolbar-bg-color: #ee5253;
+$app-navbar-text-color: #a0aabf;
+$app-navbar-active-text-color: $primary-color;
+$app-bottom-bar-height: 75px;
+
+// Container
+$container-max-width: 800px;
+$container-width: 95%;
+
+// Inputs
+$input-bg-color: #00000008;
+$input-icon-color: #9ba1a9;
+
+$focus-color: #74b9ff;
+$muted-text: #616770;
+$error-colors: #cc0000;
+$text-color: #495057;
+$text-color: black;
+$link-color: #74b9ff;
+
+//Card
+$card-border-radius: 10px;
+$card-bod-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+
+// Breakpoints
+$navbar-breakpoint: 900px;
+$mobile-breakpoint: 900px;
+$bp-small: 500px;

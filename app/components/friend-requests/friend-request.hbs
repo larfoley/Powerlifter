@@ -1,0 +1,39 @@
+<div class="media media--align-center">
+  <div class="media__asset">
+    <UserAvatar />
+  </div>
+  <div class="media__body">
+    <h3 class="text" data-test-user-card-username>
+      {{@friendRequest.friend.username}}
+    </h3>
+  </div>
+  <div class="media__actions">
+    {{#if @friendRequest.isFriend}}
+      <Button
+        @text="Friends"
+        @primaryButton={{true}}
+        data-test-is-friend-button
+      />
+    {{else if @friendRequest.friendRequestSent}}
+      <Button
+        @text="Request Sent"
+        class="button request-sent"
+        @primaryButton={{true}}
+        {{on 'click' (fn this.friends.cancelOrDeclineRequest @friendRequest)}}
+      />
+
+    {{else if @friendRequest.friendRequestRecieved}}
+      <Button
+        @text="Confirm"
+        {{on 'click' (fn this.friends.acceptFriendRequest @friendRequest)}}
+        @primaryButton={{true}}
+        data-test-accept-friend-request-button
+      />
+      <Button
+        @text="Decline"
+        {{on 'click' (fn this.friends.cancelOrDeclineRequest @friendRequest)}}
+        @secondaryButton={{true}}
+      />
+    {{/if}}
+  </div>
+</div>

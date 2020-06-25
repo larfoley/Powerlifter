@@ -1,0 +1,66 @@
+.app-layout {
+
+  &__main-container {
+    background-color: $app-bg-color;
+    position: relative;
+
+    @media screen and (max-width: $mobile-breakpoint) {
+      height: calc(100vh - #{$app-bottom-bar-height});
+    }
+  }
+
+  &__left-container {
+    display: flex;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    left: 0;
+    border-top: 1px solid #e6ecf0;
+  }
+
+  &__right-container {
+    display: none;
+  }
+
+  @media screen and (min-width: $mobile-breakpoint) {
+    display: grid;
+    grid-template-columns: minmax(auto, 70px) 1fr 0px;
+
+    &__left-container {
+      position: static;
+      border-right: 1px solid #e6ecf0;
+      height: 100vh;
+    }
+
+    .app-navbar__link {
+      margin: .3em 0;
+    }
+
+    .app-navbar__text {
+      display: none;
+    }
+  }
+
+  @media screen and (min-width: 1242px) {
+    display: grid;
+    grid-template-columns: minmax(auto, 1fr) 800px 1fr;
+
+    &__main-container {
+      border-right: 1px solid #e6ecf0;
+      border-left: 1px solid #e6ecf0;
+      margin: 0 1em;
+    }
+
+    &__left-container, &__right-container {
+      height: 100vh;
+      position: sticky;
+      top: 0;
+      padding: 1em;
+      border-right: none;
+    }
+
+    .app-navbar__text {
+      display: inline;
+    }
+  }
+}

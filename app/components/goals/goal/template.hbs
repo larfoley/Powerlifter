@@ -1,0 +1,55 @@
+<li
+  class="card goal-card {{if @goal.isCompleted "goal-card--completed"}}"
+  data-test-goal-card
+>
+  <div class="card__body">
+    <div class="media media--align-center">
+      <div class="media__asset">
+        <ProgressCircle @value={{@goal.percentageCompleted}} />
+      </div>
+      <div class="media__body">
+        <span class="text text--muted ">
+          {{capitalize @goal.exercise.name}} Goal
+        </span>
+        <div class="h3">
+          {{@goal.weight}}<span class="h6"> kgs</span> for {{@goal.reps}} reps
+        </div>
+      </div>
+      <div>
+        <div
+          class="square {{if @goal.isCompleted "square--success"}}"
+          {{action this.markComplete}}
+        >
+          <FaIcon @icon="check" />
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="flex flex--space-between flex--align-center card__footer card__footer--small">
+    {{#if @goal.isCompleted}}
+      <span class="text text--primary u-bold">
+        Completed {{moment-calendar @goal.dueDate}}
+      </span>
+    {{else}}
+      <div class="text text--primary u-bold">
+        {{#if this.isOverdue}}
+          <FaIcon @icon="exclamation-circle" @text="foo"/> <span>Overdue</span>
+        {{else}}
+          Due {{moment-from this.dueDate}}
+        {{/if}}
+      </div>
+    {{/if}}
+    <div class="">
+      {{#if @goal.isCompleted}}
+        <Icon @icon="trash-alt" @prefix="far" {{action this.toggleModal}} />
+      {{else}}
+        <LinkTo @route="goals.edit" @model={{@goal.id}}>
+          <Icon @icon="edit" @prefix="far"/>
+        </LinkTo>
+        <LinkTo @route="goals.delete" @model={{@goal.id}}>
+          <Icon @icon="trash-alt" @prefix="far"/>
+        </LinkTo>
+      {{/if}}
+    </div>
+  </div>
+</li>

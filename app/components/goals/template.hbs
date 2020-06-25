@@ -1,0 +1,7 @@
+<ul class="list box box--transparent box--with-margin">
+  {{#each this.sortedGoals as |goal|}}
+    <Goals::Goal @goal={{goal}} />
+  {{else}}
+    <ZeroStateMessage @icon="medal" @message="You have not set any goals" />
+  {{/each}}
+</ul>

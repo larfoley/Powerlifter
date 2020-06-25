@@ -1,0 +1,31 @@
+<FileDropzone @name="photos" as |dropzone queue|>
+  {{#if dropzone.active}}
+    {{#if dropzone.valid}}
+      Drop to upload
+    {{else}}
+      Invalid
+    {{/if}}
+  {{else if queue.files.length}}
+    {{#each (file-queue name='photos') as |queue|}}
+      {{#each queue.files as |file|}}
+        <img src={{file.url}} alt={{file.name}} />
+      {{/each}}
+    {{/each}}
+  {{else}}
+    <h4>Upload Images</h4>
+    <p>
+      {{#if dropzone.supported}}
+        Drag and drop images onto this area to upload them or
+      {{/if}}
+      <FileUpload
+        @name="photos"
+        @for="upload-photo"
+        @accept="image/*"
+        @multiple={{true}}
+        @onfileadd={{action this.uploadImage}}
+      >
+        <a tabindex=0>Add an Image.</a>
+      </FileUpload>
+    </p>
+  {{/if}}
+</FileDropzone>

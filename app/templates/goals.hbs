@@ -1,12 +1,9 @@
-<AppNavbar />
 <Toolbar
-  @title="Add Goal"
+  @title="Goals"
+  @actions={{array
+    (hash icon="plus" route="goals.new")
+  }}
 >
 </Toolbar>
-<AppContainer>
-  <PageContainer>
-    <PageContainer::PrimaryContent>
-      {{outlet}}
-    </PageContainer::PrimaryContent>
-  </PageContainer>
-</AppContainer>
+<Goals @goals={{@model}} />
+{{outlet}}

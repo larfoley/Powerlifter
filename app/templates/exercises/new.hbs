@@ -1,47 +1,42 @@
-<AppNavbar />
 <Toolbar @title="Create New Exercise" />
-<AppContainer>
-  <PageContainer>
-    <form>
-      <div class="card">
-        <div class="card__body">
-          <InputField
-            @label="Name"
-          >
-            <TextInput
-              @placeholder="Enter exercise name"
-              data-test-weight-lifted-input
-              type="number"
-            />
-          </InputField>
+  <form>
+    <div class="card">
+      <div class="card__body">
+        <InputField
+          @label="Name"
+        >
+          <TextInput
+            @placeholder="Enter exercise name"
+            data-test-weight-lifted-input
+            type="number"
+          />
+        </InputField>
 
-          <InputField
-            @label="Category"
+        <InputField
+          @label="Category"
+        >
+          <PowerSelect
+            @triggerClass="exercise-selector"
+            @options={{@model}}
+            @searchField="name"
+            @placeholder="Select and exercise..."
+            @triggerComponent="select-trigger"
+            @selected={{@model.firstObject}}
+            @onChange={{fn (mut @model.firstObject)}} as |exercise|
           >
-            <PowerSelect
-              @triggerClass="exercise-selector"
-              @options={{@model}}
-              @searchField="name"
-              @placeholder="Select and exercise..."
-              @triggerComponent="select-trigger"
-              @selected={{@model.firstObject}}
-              @onChange={{fn (mut @model.firstObject)}} as |exercise|
-            >
-              {{exercise.name}}
-            </PowerSelect>
-          </InputField>
-          <div class="button-group">
-            <Button
-              @submit={{true}}
-              data-test-lift-record-submit-button
-              @primaryButton={{true}}
-            >
-            Add Goal
-          </Button>
-          <Button @outlinedButton={{true}} >Cancel</Button>
-          </div>
+            {{exercise.name}}
+          </PowerSelect>
+        </InputField>
+        <div class="button-group">
+          <Button
+            @submit={{true}}
+            data-test-lift-record-submit-button
+            @primaryButton={{true}}
+          >
+          Add Goal
+        </Button>
+        <Button @outlinedButton={{true}} >Cancel</Button>
         </div>
       </div>
-    </form>
-  </PageContainer>
-</AppContainer>
+    </div>
+  </form>

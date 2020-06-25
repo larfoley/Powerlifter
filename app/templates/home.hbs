@@ -1,92 +1,18 @@
-<AppNavbar />
-<Toolbar @title="Powerlifter">
-  <Toolbar::Link @icon="edit" @route="posts.new"/>
-  <Toolbar::Link @icon="plus" @route="records.new"/>
-</Toolbar>
-<AppContainer>
-  <PageContainer>
 
-    <PageContainer::PrimaryContent>
-      <style media="screen">
-        /* #2ecc71
-        border-color: #e74c3c;
-        3498db
-    */
+<Toolbar @title="Home" />
+<div class="header">
+  <h2 class="header__title">Personal Bests</h2>
+  <ViewAllLink @route="index" />
+</div>
+<LiftRecords @records={{@model.personalBests}} @recordPath="records.record" />
 
-      .numberCircle {
-        border-radius: 50%;
-        width: 170px;
-        height: 170px;
-        background-color: white;
-        padding: 40px;
-        border: 14px solid black;
-        color: #666;
-        text-align: center;
-        margin: 0 .5em;
-        color: white;
-        background-color: #253945;
-      }
+<div class="section">
+  <div class="header">
+    <h2 class="header__title">Goals</h2>
+    <ViewAllLink @route="index" />
+  </div>
+  <Goals @goals={{@model.goals}} />
+</div>
 
-      .label {
-        color: white;
-        margin-top: -15px;
-        display: inline-block;
-      }
-
-      .green {
-      border-color: #2ecc71;
-      }
-
-      .red {
-      border-color: #e74c3c;
-      }
-
-      .blue {
-      border-color: #3498db;
-      }
-
-    </style>
-    <div class="header">
-      <h2 class="header__title">Personal Bests</h2>
-      <LinkTo class="text-link" @route="index">View All</LinkTo>
-    </div>
-      <div class="card">
-        <div class="card__body flex">
-          <StatCircle @label="Squat" @value="50" />
-        </div>
-      </div>
-
-      <NewPostLink />
-
-      <div class="list">
-        {{#each @model.posts as |post|}}
-          <Post @post={{post}} />
-        {{/each}}
-      </div>
-    </PageContainer::PrimaryContent>
-    <PageContainer::SecondaryContent>
-    <div class="header">
-      <div class="header__title">
-        Friends Online
-      </div>
-    </div>
-    <div class="list card">
-      {{#each @model.friends as |friend|}}
-        <div class="list__item">
-          <div class="media">
-            <div class="media__asset">
-              <UserAvatar />
-            </div>
-            <div class="media__body">
-              <h3 class="media__title">{{friend.username}}</h3>
-            </div>
-            <div class="media__actions">
-              <StatusIcon />
-            </div>
-          </div>
-        </div>
-      {{/each}}
-    </div>
-    </PageContainer::SecondaryContent>
-  </PageContainer>
-</AppContainer>
+<NewPostLink />
+<Posts @posts={{@model.posts}} />

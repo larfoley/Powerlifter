@@ -9,7 +9,7 @@ export default class GoalFormComponent extends Component {
   @service toast;
   @service session;
   @service store;
-
+  @tracked goal;
   @tracked showingConfirmModal = false;
 
   constructor() {
@@ -33,6 +33,11 @@ export default class GoalFormComponent extends Component {
     if (this.goal.isNew) {
       this.goal.deleteRecord()
     }
+
+    if (this.goal.hasDirtyAttributes) {
+      this.goal.rollbackAttributes()
+    }
+
   }
 
   @action
@@ -59,21 +64,21 @@ export default class GoalFormComponent extends Component {
       return;
     }
 
-    // if (await this.checkIfGoalHasAlreadyBeenAchieved()) {
-    //
-    //   this.showConfirmModal();
-    //   return;
-    // }
+    if (await this.checkIfGoalHasAlreadyBeenAchieved()) {
+
+      this.showConfirmModal();
+      return;
+    }
 
     this.createOrUpdateGoal();
   }
 
   @action
   validate() {
-    // if (!this.goal.validate()) {
-    //   this.toast.info('Fix validation errors');
-    //   return false;
-    // }
+    if (!this.goal.validate()) {
+      this.toast.info('Fix validation errors');
+      return false;
+    }
 
     return true;
   }
@@ -81,6 +86,7 @@ export default class GoalFormComponent extends Component {
   @action
   async createOrUpdateGoal(hasPreviouslyAchievedGoal) {
     const goal = this.goal;
+    const isCreatingGoal = goal.isNew;
 
     if (!this.validate()) {
       return;
@@ -89,7 +95,7 @@ export default class GoalFormComponent extends Component {
     try {
       await goal.save();
 
-      if (goal.isNew) {
+      if (isCreatingGoal) {
         this.toast.success('Goal added');
       } else {
         this.toast.success('Goal updated');
@@ -103,13 +109,10 @@ export default class GoalFormComponent extends Component {
         this.args.onCreateOrUpdate();
       }
 
-    } catch(e) {
-      console.log(e);
-      console.log('errors');
-      console.log(goal.get('error.errors'))
-
-
-
+    } catch(error) {
+      error.errors.forEach(err => {
+        this.toast.info(err.detail);
+      });
     }
   }
 

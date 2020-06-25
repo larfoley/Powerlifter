@@ -1,25 +1,4 @@
 .page-container {
-  display: flex;
-  margin-left: auto;
-  margin-right: auto;
-  width: $page-container-width;
-  max-width: $page-container-max-width;
-  width: 100%;
-  align-items: flex-start;
-
-  &--small {
-    width: calc(#{$page-container-max-width} - 20%)
-  }
-
-  &__primary-content {
-    width: 70%;
-    flex: 1;
-  }
-
-  &__secondary-content {
-    width: 30%;
-    margin-left: 2em;
-    position: sticky;
-    top: 0;
-  }
+  width: 95%;
+  margin: auto;
 }

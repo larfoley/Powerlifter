@@ -13,12 +13,10 @@
   }
 
   &__container {
+    @include container;
     height: $app-toolbar-height;
-    margin: auto;
     display: flex;
     align-items: center;
-    width: $page-container-width;
-    max-width: $page-container-max-width;
   }
 
   &__left, &__right {

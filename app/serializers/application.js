@@ -3,6 +3,6 @@ import config from '../config/environment';
 
 const primaryKey = config['ember-cli-mirage'].enabled || config.environment === 'test' ? "id" : "_id"
 
-export default RESTSerializer.extend({
-  primaryKey
-});
+export default class ApplicationSerializer extends RESTSerializer {
+  primaryKey = primaryKey;
+};

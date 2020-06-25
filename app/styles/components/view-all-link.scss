@@ -1,0 +1,14 @@
+.view-all-link {
+  color: $muted-text;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  border: 2px solid;
+  padding: .3em .9em;
+  border-radius: 50px;
+
+  &__icon {
+    margin-left: 5px;
+    display: none;
+  }
+}

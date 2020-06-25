@@ -1,0 +1,8 @@
+<span
+  class="icon {{if @muted "icon--muted"}} {{if @primary "icon--primary"}} {{if @disabled "icon--disabled"}}"
+  ...attributes>
+  <FaIcon @icon={{@icon}} @prefix={{if @prefix @prefix "fas"}} @size={{if @size @size ""}} />
+  {{#if @tooltip}}
+    <EmberTooltip @text={{@tooltip}} />
+  {{/if}}
+</span>

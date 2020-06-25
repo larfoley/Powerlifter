@@ -1,10 +1,11 @@
-<div class="header">
-  <div class="header__actions">
-    <LinkTo class="primary-button" @route="exercises.exercise.records.new">
-      <FaIcon @icon="plus" />
-      New Record
-    </LinkTo>
+<div class="box box--with-margin box--transparent">
+  <div class="flex flex--flex-end">
+    <Button
+      @primary={{true}}
+      @text="New Record"
+      @icon="plus"
+      @route="exercises.exercise.records.new"
+      />
   </div>
 </div>
-
 {{outlet}}

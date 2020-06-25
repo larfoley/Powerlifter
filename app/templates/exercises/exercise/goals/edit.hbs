@@ -6,7 +6,7 @@
   <PageContainer>
     <PageContainer::PrimaryContent>
       <GoalForm
-        @goal={{this.model}}
+        @goal={{@model}}
         @selectedExercise={{@model.exercise}}
         @onCreateOrUpdate={{action this.transitionToRoute "exercises.exercise.goals"}}
       />

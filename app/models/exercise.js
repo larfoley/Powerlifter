@@ -10,11 +10,12 @@ Object.freeze(exerciseType);
 
 exerciseType.BARBELLS
 
-export default Model.extend({
-  name: attr('string'),
-  category: attr(),
+export default class ExerciseModel extends Model {
+  @attr('string') name;
+  @attr() category;
 
-  displayName: computed('name', function() {
-    return capitalize(get(this, 'name'));
-  }),
-});
+  get displayName() {
+    return capitalize(this.name);
+  }
+
+};

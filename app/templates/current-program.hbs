@@ -1,0 +1,44 @@
+<AppNavbar />
+<Toolbar
+  @title="Program"
+  @actions={{array
+    (hash icon="plus" route="goals.new")
+  }}
+  @tabs={{ array
+    (hash label="Workout" route="current-program")
+    (hash label="Discover" route="my-network.friends")
+    (hash label="My Programs" route="my-network.friend-requests")
+  }}
+>
+<div class="program-navbar">
+  <div class="page-container">
+    <div class="flex flex--space-between flex__grow flex--align-center">
+      <div>
+        {{#if this.hasPrev}}
+          <Icon @icon="arrow-left" @primary={{true}} {{on 'click' this.previousWorkout}} />
+        {{/if}}
+      </div>
+      <div class="text--center">
+        <h1 class="text text--muted">Week {{this.currentWorkout.week}}</h1>
+        <h2 class="h2">Day {{this.currentWorkout.day}}</h2>
+        <div class="text text--success">
+          Completed
+        </div>
+      </div>
+      <div>
+        {{#if this.hasNext}}
+          <Icon
+            @icon="arrow-right"
+            {{on 'click' this.nextWorkout}}
+            @primary={{true}}
+          />
+        {{/if}}
+      </div>
+    </div>
+  </div>
+</div>
+</Toolbar>
+<PageContainer>
+  <PageContainer::PrimaryContent>
+  </PageContainer::PrimaryContent>
+</PageContainer>

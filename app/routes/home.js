@@ -1,11 +1,15 @@
 import Route from './protected';
 import { hash } from 'rsvp';
+import { sort } from '@ember/object/computed';
 
 export default class HomeRoute extends Route {
-  model() {
+  async model() {
+    const posts = await this.store.findAll('post');
     return {
-      posts: this.store.findAll('post'),
-      friends: this.store.findAll('friend')
+      posts: posts.sortBy('createdAt').reverse(),
+      friends: this.store.findAll('friend'),
+      personalBests: this.store.query('lift-record', { limit: 3, isPersonalBest: true }),
+      goals: this.store.query('goal', { limit: 3 })
     }
   }
 }

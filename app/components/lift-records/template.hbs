@@ -1,0 +1,54 @@
+{{#if @records.length}}
+  <ul class="list box box--transparent">
+    {{#each @records as |record|}}
+      <li class="card list__item">
+        <LinkTo @route={{@recordPath}} @model={{record}} data-test-lift-record>
+          <div class="media media--align-center">
+            <div class="media__asset">
+              <div class="circle">
+                <FaIcon @icon="medal" />
+              </div>
+            </div>
+            <div class="media__body">
+              <h3 data-test-lift-record-exercise>{{capitalize record.exercise.name}}</h3>
+              <div>
+                <span data-test-lift-record-weight-lifted>{{record.weightLifted}}</span>kgs for
+                <span data-test-lift-record-reps>{{record.reps}}</span>
+                reps
+              </div>
+            </div>
+            {{!-- <div class="media__actions">
+              <div class="">
+              Due date
+            </div>
+              <span class="text text--muted text--small">1, Jan, 2010</span><br>
+
+            </div> --}}
+          </div>
+          {{!-- <span data-test-lift-record-date>Date: {{format-date record.date}}</span> --}}
+          {{!-- <div class="flex">
+            <LinkTo
+            class="button"
+            @route="records.edit"
+            @model={{@record}}
+            data-test-delete-edit-Link>
+            <FaIcon @icon="edit" @prefix="far" />
+            <span>Edit</span>
+          </LinkTo>
+          <Button
+          onclick={{this.toggleModal}}
+          >
+          <FaIcon @icon="trash-alt" @prefix="far" />
+          <span>Delete</span>
+        </Button>
+        </div> --}}
+      </LinkTo>
+
+      </li>
+    {{/each}}
+  </ul>
+{{else}}
+
+  <ZeroStateMessage @message="No Records" @icon="trophy" />
+
+{{/if}}

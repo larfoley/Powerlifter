@@ -13,17 +13,40 @@
     margin-bottom: 5px;
   }
 
-  &__actions {
+  &__meta {
+    @extend .card__body;
     display: flex;
-    border-top: 1px solid gainsboro;
-    border-bottom: 1px solid gainsboro;
-    padding: 2px 0;
+    justify-content: space-between;
+    color: $muted-text;
+  }
 
-    .button {
-      color: gray;
-      text-transform: capitalize;
-      flex: auto;
+  &__actions {
+    @extend .card__body;
+    display:  flex;
+    border-top: 1px solid $border-color;
+  }
+
+  &__comments {
+    margin-top: 2em;
+  }
+
+  &__like-button {
+
+    &--liked {
+      color: $blue;
     }
+  }
+
+  &__like-meta {
+    font-size: 12px;
+    display: inline-block;
+    width: 22px;
+    height: 22px;
+    line-height: 22px;
+    text-align: center;
+    border-radius: 50px;
+    color: white;
+    background-color: $blue;
   }
 
   &__header-title {

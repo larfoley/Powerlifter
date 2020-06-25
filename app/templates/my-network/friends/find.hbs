@@ -1,0 +1,19 @@
+<FullScreenModal>
+  <Toolbar
+    @backRoute="my-network.friends"
+    @search={{hash placeholder="Find Friends..." onSearch=this.debounceFindFriends }}
+  />
+    {{#if this.searching}}
+      <div class="box">Finding friends...</div>
+    {{else}}
+      {{#if this.noUsersFound}}
+      <div class="box" data-test-no-users-found-message>No users found.</div>
+      {{else}}
+        {{#if this.users.length}}
+          <div class="box">
+            <Users @users={{this.users}} />
+          </div>
+        {{/if}}
+      {{/if}}
+    {{/if}}
+</FullScreenModal>

@@ -1,0 +1,13 @@
+.inline-list {
+  margin-bottom: 0em;
+
+  &--centered {
+    text-align: center;
+  }
+
+  &__item {
+    display: inline-block;
+    margin-bottom: 1em;
+    margin-right: 5px;
+  }
+}

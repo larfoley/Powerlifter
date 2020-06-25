@@ -1,0 +1,47 @@
+<div class="box">
+  <div class="flex flex--space-between flex--align-center">
+    <div class="">
+      <h5>{{capitalize @workoutBlock.exercise}}</h5>
+    </div>
+    <div>
+      <Icon
+        @tooltip="Delete Exercise"
+        @icon="trash-alt"
+        @prefix="far"
+        {{action @removeWorkoutBlock @workoutSession @workoutBlock}}
+      />
+    </div>
+  </div>
+  <div class="workout-program-sets">
+      {{#each @workoutBlock.sets as |exerciseSet index|}}
+        <div class="flex flex--align-center">
+          <Form::Field @label="Set Order" class="flex__grow">
+            <TextInput
+              @value={{increment index}}
+              type="number"
+            />
+          </Form::Field>
+          <Form::Field @label="Reps" class="flex__grow">
+            <TextInput
+              @value={{exerciseSet.targetReps}}
+              type="number"
+            />
+          </Form::Field>
+          <div class="flex flex--flex-end">
+            <Icon
+              @icon="trash-alt"
+              @prefix="far"
+              {{action (fn @removeWorkoutProgramSet @workoutBlock exerciseSet) }}
+            />
+          </div>
+        </div>
+      {{/each}}
+    <Button
+      {{action (fn @addWorkoutProgramSet @workoutBlock) }}
+      @secondaryButton={{true}}
+      @text="Add Set"
+      @icon="plus"
+      @noBorder={{true}}
+    />
+  </div>
+</div>

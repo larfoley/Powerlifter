@@ -1,7 +1,8 @@
 .menu {
+  font-size: .9rem;
   background-color: white;
   min-width: 112px;
-  max-width: 280px;
+  // max-width: 280px;
   padding: 6px 0;
   border-radius: 4px;
   box-shadow: 0 2px 4px -1px rgba(0,0,0,.2),
@@ -11,6 +12,7 @@
   &__item {
     color: $text-color;
     padding: 1em;
+    display: block;
 
     &:hover {
       background-color: #00000008;
@@ -19,6 +21,6 @@
   }
 
   &__item-icon {
-    margin-right: .9rem;
+    margin-right: .8rem;
   }
 }

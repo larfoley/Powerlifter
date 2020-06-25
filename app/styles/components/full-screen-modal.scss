@@ -1,0 +1,32 @@
+.full-screen-modal {
+   position: fixed;
+   overflow-y: scroll;
+   top: 0;
+   right: 0;
+   bottom: 0;
+   left: 0;
+   z-index: 101;
+
+  // Hide neted overlays
+   ~ .full-screen-modal {
+     display: none;
+   }
+
+   &__container {
+     background-color: $app-bg-color;
+   }
+
+   @media screen and (min-width: $mobile-breakpoint) {
+     background-color: rgba(0, 0, 0, 0.4);
+     left: 0;
+
+     &__container {
+       box-shadow: $card-bod-shadow;
+       border-radius: $card-border-radius;
+       max-width: 600px;
+       margin: 2em auto;
+       overflow: hidden;
+     }
+   }
+
+ }

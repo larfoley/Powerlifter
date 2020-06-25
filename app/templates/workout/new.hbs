@@ -1,0 +1,14 @@
+{{outlet}}
+<PageOverlay
+  @onClose={{action this.transitionToRoute "workout.diary"}}
+  @closeOnClickOverlay={{false}}
+>
+    <Toolbar
+      @title="New Workout Program"
+      @backRoute="workout.diary"
+      @showCloseIcon={{true}}
+    />
+      <WorkoutProgramTemplate::Form
+        @exercises={{@model}}
+      />
+</PageOverlay>

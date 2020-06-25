@@ -2,21 +2,82 @@
   <div class="toolbar__container">
     <h1 class="toolbar__title">
       {{#if @backRoute}}
-        <LinkTo @route={{@backRoute}} class="toolbar__back-link">
-          <FaIcon @icon="arrow-left" class="toolbar__back-icon"/>
-        </LinkTo>
+        {{#if @backRouteModel}}
+          <LinkTo @route={{@backRoute}} class="toolbar__back-link" @model={{@backRouteModel}}>
+            {{#if @showCloseIcon}}
+              <Icon @icon="times" class="toolbar__back-icon"/>
+            {{else}}
+              <Icon @icon="arrow-left" class="toolbar__back-icon"/>
+            {{/if}}
+          </LinkTo>
+        {{else}}
+          <LinkTo @route={{@backRoute}} class="toolbar__back-link">
+            {{#if @showCloseIcon}}
+              <Icon @icon="times" class="toolbar__back-icon"/>
+            {{else}}
+              <Icon @icon="arrow-left" class="toolbar__back-icon"/>
+            {{/if}}
+          </LinkTo>
+        {{/if}}
       {{/if}}
       {{@title}}
     </h1>
-    {{#if (has-block)}}
+    {{#if @search}}
+      <TextInput
+        @placeholder={{@search.placeholder}}
+        @icon="search"
+        @onKeyUp={{fn @search.onSearch}}
+      />
+    {{/if}}
+    {{#if @actions}}
       <div class="toolbar__links">
-        {{yield}}
+        {{#each @actions as |action|}}
+          {{#if action.route}}
+            {{#if action.model}}
+              <LinkTo @route={{action.route}} @model={{action.model}} class="toolbar__link" >
+                {{#if action.text}}
+                  <span class="u-bold">
+                    {{uppercase action.text}}
+                  </span>
+                {{/if}}
+                <Icon
+                  class="toolbar__icon"
+                  @icon={{action.icon}}
+                  @primary={{true}}
+                  @prefix={{if action.prefix action.prefix "fas"}}
+                />
+              </LinkTo>
+            {{else}}
+              <LinkTo @route={{action.route}} class="toolbar__link" >
+                {{#if action.text}}
+                  <span class="u-bold">
+                    {{uppercase action.text}}
+                  </span>
+                {{/if}}
+                <Icon
+                  class="toolbar__icon" @icon={{action.icon}}
+                  @primary={{true}}
+                  @prefix={{if action.prefix action.prefix "fas"}}
+                />
+              </LinkTo>
+            {{/if}}
+          {{else}}
+            {{#if action.action}}
+              <Icon
+                @primary={{true}}
+                @icon={{action.icon}}
+                @prefix={{if action.prefix action.prefix "fas"}}
+                {{on 'click' action.action}}
+              />
+            {{/if}}
+          {{/if}}
+
+        {{/each}}
       </div>
     {{/if}}
   </div>
   {{#if @tabs}}
-    <div class="toolbar__container">
-      <Tabs @tabs={{@tabs}}/>
-    </div>
+    <Tabs @tabs={{@tabs}}/>
   {{/if}}
+  {{yield}}
 </div>

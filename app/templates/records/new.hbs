@@ -1,8 +1,5 @@
 <AppNavbar />
-<Toolbar @title="New Record" @backButtonLink="records">
-</Toolbar>
-<AppContainer>
-  <PageContainer>
-    <LiftRecordForm @exerciseOptions={{@model}}/>
-  </PageContainer>
-</AppContainer>
+<Toolbar @title="New Record" @backButtonLink="records" />
+<PageContainer::PrimaryContent>
+  <LiftRecordForm @exerciseOptions={{@model}}/>
+</PageContainer::PrimaryContent>

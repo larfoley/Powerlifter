@@ -1,4 +1,3 @@
-<AppNavbar />
 <Toolbar
   @title={{capitalize @model.name}}
   @backRoute="exercises"
@@ -8,10 +7,4 @@
   }}
 >
 </Toolbar>
-<AppContainer>
-  <PageContainer>
-    <PageContainer::PrimaryContent>
-      {{outlet}}
-    </PageContainer::PrimaryContent>
-  </PageContainer>
-</AppContainer>
+{{outlet}}

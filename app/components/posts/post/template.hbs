@@ -1,0 +1,108 @@
+<div class="card">
+  <div class="card__header">
+    <div class="media">
+      <div class="media__asset">
+        <UserAvatar />
+      </div>
+      <div class="media__body">
+        <h2 class="card__title">
+          <LinkTo @route="users.user" @model={{@post.author}}>
+            {{@post.author.username}}
+          </LinkTo>
+        </h2>
+        <h3 class="card__sub-title">{{moment-from @post.createdAt}}</h3>
+      </div>
+      <div class="media__actions">
+        {{#if this.isCurrentUsersPost}}
+          <BasicDropdown as |dd|>
+            <dd.Trigger>
+              <Icon @icon="ellipsis-h" @iconButton={{true}} />
+            </dd.Trigger>
+            <dd.Content>
+              <div class="dropdown-options">
+                <div class="dropdown-options__option" {{on 'click' (action this.deletePost @post) }}>
+                  <FaIcon @icon="trash"/> Delete Post
+                </div>
+              </div>
+            </dd.Content>
+          </BasicDropdown>
+        {{/if}}
+      </div>
+    </div>
+  </div>
+  <div class="card__body">
+    <div class="text">
+      <p>{{@post.content}}</p>
+    </div>
+  </div>
+  {{#if @post.media}}
+    <div class="media-preview">
+      {{#if @post.media.isImage}}
+        <img src={{@post.media.url}} alt="">
+      {{else}}
+        <video src={{@post.media.url}} controls>
+        </video>
+      {{/if}}
+    </div>
+  {{/if}}
+  <div class="post__meta">
+    <div>
+      {{#if @post.likesCount}}
+        <div class="post__like-meta">
+          <FaIcon @icon="thumbs-up"/>
+          <EmberTooltip>
+            <div class="h5">
+              Likes
+            </div>
+            {{#each @post.likes as |like|}}
+              {{like.user.username}}
+            {{/each}}
+            {{#if this.hasMoreLikes}}
+              And {{@post.likesCount - @post.likes.length}} more...
+            {{/if}}
+          </EmberTooltip>
+        </div>
+        {{@post.likesCount}}
+      {{/if}}
+    </div>
+    <div>
+      {{#if @post.commentsCount}}
+        {{@post.commentsCount}} Comments
+      {{/if}}
+    </div>
+  </div>
+  <div class="post__actions">
+    <Button
+      @icon="thumbs-up"
+      class="post__like-button {{if @post.like "post__like-button--liked"}}"
+      {{on 'click' (if @post.like (action this.unlikePost @post) (action this.likePost @post)) }}
+      @prefix={{if @post.like "fas" "far"}}
+      @text="Like"
+    />
+    <Button
+      @icon="comment"
+      @prefix="far"
+      onclick={{this.toggleComments}}
+      @text="Comment"
+    />
+  </div>
+  {{#if this.showingComments}}
+    <div class="card__footer">
+      <form {{on "submit" this.postComment}}>
+        <div class="media">
+          <div class="media__asset">
+            <UserAvatar class="post-comments__user-avatar" @user={{@post.author}} />
+          </div>
+          <div class="media__body">
+            <TextInput
+              @value={{this.commentContent}}
+              @placeholder="Write a comment..."
+              data-test-post-comments-input
+            />
+          </div>
+        </div>
+      </form>
+      <Posts::Post::Comments @comments={{@post.comments}} @post={{@post}} />
+    </div>
+  {{/if}}
+</div>

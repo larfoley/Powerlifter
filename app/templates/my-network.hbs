@@ -1,44 +1,12 @@
-<AppNavbar />
-<Toolbar @title="My Network" >
-  <LinkTo
-    @route="posts.new"
-    class="app-toolbar__item"
-  >
-    <FaIcon @icon="edit" class="button__icon"/>
-  </LinkTo>
-  <LinkTo
-    @route="posts.new"
-    class="app-toolbar__item"
-  >
-    <FaIcon @icon="user-plus" class="button__icon"/>
-  </LinkTo>
-</Toolbar>
-<AppContainer>
-  <NavbarTabs
-    @tabs={{array
-      (hash
-        displayName = "Feed"
-        route = "my-network.feed"
-        icon="rss"
-      )
-      (hash
-        displayName = "Search"
-        route = "my-network.search"
-        icon="search"
-      )
-      (hash
-        displayName = "Friends"
-        route = "my-network.friends"
-        icon="users"
-      )
-      (hash
-        displayName = "Requests"
-        route = "my-network.friend-requests"
-        icon="exchange-alt"
-      )
-    }}
-  />
-  <PageContainer>
-    {{outlet}}
-  </PageContainer>
-</AppContainer>
+<Toolbar
+  @title="My Network"
+  @actions={{ array
+    (hash icon="user-plus" route="my-network.friends.find")
+  }}
+  @tabs={{ array
+    (hash label="Feed" route="my-network.feed")
+    (hash label="Friends" route="my-network.friends")
+    (hash label="Requests" route="my-network.friend-requests")
+  }}
+/>
+{{outlet}}

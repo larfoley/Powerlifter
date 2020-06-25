@@ -1,0 +1,21 @@
+<ModalDialog
+  @onClose={{fn @onCancel}}
+  @targetAttachment="center"
+  @translucentOverlay={{true}}
+  @containerClass="confirm-modal"
+>
+  {{#if @title}}
+    <h2 class="confirm-modal__title">{{@title}}</h2>
+  {{/if}}
+  {{#if @text}}
+    <p class="confirm-modal__text">{{@text}}</p>
+  {{/if}}
+  <div>
+    <Button @primary={{true}} {{action @onConfirm}}>
+      Yes
+    </Button>
+    <Button @secondary={{true}} {{action @onCancel}}>
+      No
+    </Button>
+  </div>
+</ModalDialog>

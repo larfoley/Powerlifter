@@ -25,5 +25,5 @@ export default class GoalModel extends Model.extend(Validator) {
   @attr('date', { defaultValue: null }) dueDate;
   @attr('boolean') isCompleted;
   @attr('number') percentageCompleted;
-  // validations = validations;
+  validations = validations;
 }

@@ -1,0 +1,54 @@
+html {
+  box-sizing: border-box;
+}
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+body {
+ font-family: 'Nunito', sans-serif;
+ // font-family: 'Gotham Pro Regular';
+ max-width: 1200px;
+ margin: 0 auto;
+}
+
+video, img {
+  max-width: 100%;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  margin: 0;
+}
+
+.h3 {
+  margin: 0;
+  font-size: 1.2rem;
+}
+
+a {
+  color: $text-color;
+  text-decoration: none;
+}
+
+p {
+  color: $text-color;
+  margin-top: 0;
+}
+
+ul {
+  padding-left: 0;
+}
+
+li {
+  margin-left: 0;
+  list-style-type: none;
+}
+
+// TODO: refactor
+.request-sent:hover span {
+  display: none;
+}
+
+.request-sent:hover:after {
+  content: "Cancel Request"
+}

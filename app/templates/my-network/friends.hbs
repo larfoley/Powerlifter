@@ -1,0 +1,11 @@
+<div class="box box--transparent box--with-margin flex flex--flex-end">
+  {{!-- <Button @text="foo" @primary={{true}}/> --}}
+  <FloatingActionButton @route="my-network.friends.find" @icon="user-plus" @text="Add Friend"/>
+</div>
+<div class="content-container">
+  {{#if @model.length}}
+  <Friends @friends={{@model}} />
+  {{else}}
+  {{/if}}
+</div>
+{{outlet}}

@@ -1,5 +1,5 @@
 {{outlet}}
-<PageOverlay
+<FullScreenModal
   @onClose={{action this.transitionToRoute "workout.diary"}}
   @closeOnClickOverlay={{false}}
 >
@@ -11,4 +11,4 @@
       <WorkoutProgramTemplate::Form
         @exercises={{@model}}
       />
-</PageOverlay>
+</FullScreenModal>

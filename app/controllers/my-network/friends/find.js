@@ -12,7 +12,6 @@ export default class MyNetworkFriendsFindController extends Controller {
   @tracked noUsersFound = false;
   delay = 350;
   users = A([]);
-  foo = 123;
 
   @action
   searchUsers(userSearchTerm) {

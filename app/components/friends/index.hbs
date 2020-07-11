@@ -1,6 +1,6 @@
-<div class="list">
+<div class="card">
   {{#each @friends as |friend|}}
-    <div class="list__item">
+    <div class="card__body">
       <Friends::Friend
         @friend={{friend}}
         @onRemoveFriend={{action this.removeFriend}}

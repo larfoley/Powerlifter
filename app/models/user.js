@@ -1,5 +1,6 @@
 import Model, { attr, belongsTo, hasMany } from '@ember-data/model';
 import Validator from "ember-model-validator/mixins/object-validator";
+import { isPresent } from '@ember/utils';
 
 const validations = {
   username: {
@@ -13,18 +14,20 @@ const validations = {
   }
 }
 
-export default Model.extend(Validator, {
-  username: attr('string'),
-  email: attr('string'),
-  password: attr('string'),
-  friendRequest: belongsTo('friend-request'),
-  workoutPrograms: hasMany('workout-program'),
-  confirmPassword: attr('string'),
-  friendRequestRecieved: attr('boolean', { defaultValue: false} ),
-  friendRequestSent: attr('boolean', { defaultValue: false} ),
-  isFriend: attr('boolean', { defaultValue: false} ),
-  isOnline: attr('boolean', { defaultValue: false} ),
-  profilePic: attr('string'),
-  workoutHistory: hasMany('workout-program-history'),
-  validations
-});
+export default class UserModel extends Model.extend(Validator) {
+  validations;
+
+  @attr('string') username;
+  @attr('string') email;
+  @attr('string') password;
+  @belongsTo('friend-request') friendRequest;
+  @attr('string') confirmPassword;
+  @attr('boolean', { defaultValue: false} ) friendRequestRecieved;
+  @attr('boolean', { defaultValue: false} ) friendRequestSent;
+  @attr('boolean', { defaultValue: false} ) isFriend;
+  @attr('boolean', { defaultValue: false} ) isOnline;
+  @attr('string') profilePic;
+  @hasMany('workout-program-template') workoutProgramTemplates;
+  @hasMany('workout-program') workoutHistory;
+
+};

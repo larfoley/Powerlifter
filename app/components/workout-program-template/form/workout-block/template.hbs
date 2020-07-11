@@ -1,4 +1,4 @@
-<div class="box">
+<div>
   <div class="flex flex--space-between flex--align-center">
     <div class="">
       <h5>{{capitalize @workoutBlock.exercise}}</h5>
@@ -8,22 +8,29 @@
         @tooltip="Delete Exercise"
         @icon="trash-alt"
         @prefix="far"
-        {{action @removeWorkoutBlock @workoutSession @workoutBlock}}
+        {{on 'click' (fn @removeWorkoutBlock @workoutSession @workoutBlock)}}
       />
     </div>
   </div>
-  <div class="workout-program-sets">
+  <WorkoutProgramTemplate::Form::ExerciseSets
+    @workoutBlock={{@workoutBlock}}
+    @addWorkoutProgramSet={{fn @addWorkoutProgramSet}}
+    @removeWorkoutProgramSet={{fn @removeWorkoutProgramSet }}
+  />
+  {{!-- <div class="workout-program-sets">
       {{#each @workoutBlock.sets as |exerciseSet index|}}
         <div class="flex flex--align-center">
-          <Form::Field @label="Set Order" class="flex__grow">
+          <Form::Field @label="Order" class="flex__grow">
             <TextInput
-              @value={{increment index}}
+              @value={{exerciseSet.order}}
+              @inline={{true}}
               type="number"
             />
           </Form::Field>
           <Form::Field @label="Reps" class="flex__grow">
             <TextInput
               @value={{exerciseSet.targetReps}}
+              @inline={{true}}
               type="number"
             />
           </Form::Field>
@@ -43,5 +50,5 @@
       @icon="plus"
       @noBorder={{true}}
     />
-  </div>
+  </div> --}}
 </div>

@@ -1,12 +1,16 @@
-<Toolbar
-  @title="Workout"
-  @actions={{array
-    (hash icon="plus" route="workout.new")
-  }}
-  @tabs={{ array
-    (hash label="Diary" route="workout.diary")
-    (hash label="My Programs" route="workout.my-programs")
-  }}
->
-</Toolbar>
-<WorkoutProgram @workoutProgram={{@model.workoutProgram}} />
+{{#if @model}}
+  <WorkoutProgram
+    @workoutProgram={{@model}}
+    @changeDay={{fn this.changeDay}}
+    @goToNextWorkout={{fn this.goToNextWorkout}}
+    @goToPreviousWorkout={{fn this.goToPreviousWorkout}}
+    @selectedWeek={{this.week}}
+    @selectedDay={{this.day}}
+    @hasNext={{this.hasNext}}
+    @hasPrevious={{this.hasPrevious}}
+  />
+{{else}}
+  <ZeroStateMessage @icon="book">
+    You have not active workout program
+  </ZeroStateMessage>
+{{/if}}

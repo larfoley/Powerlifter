@@ -11,11 +11,7 @@
     <p class="confirm-modal__text">{{@text}}</p>
   {{/if}}
   <div>
-    <Button @primary={{true}} {{action @onConfirm}}>
-      Yes
-    </Button>
-    <Button @secondary={{true}} {{action @onCancel}}>
-      No
-    </Button>
+    <Button @primary={{true}} {{action @onConfirm}} @text="Yes" />
+    <Button @secondary={{true}} {{action @onCancel}} @text="No" />
   </div>
 </ModalDialog>

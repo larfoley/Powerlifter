@@ -1,5 +1,4 @@
 <FullScreenModal
-  @onClose={{action this.transitionToRoute "workout.new"}}
   @closeOnClickOverlay={{false}}
 >
   <Toolbar
@@ -9,10 +8,10 @@
   <ul class="list">
     {{#each this.model.exercises as |exercise|}}
       <li
-        {{action this.selectExercise exercise}}
+        {{on 'click' (fn selectExercise exercise)}}
         class="list__item"
       >
-      {{exercise.name}}
+      {{exercise.name}} test
       </li>
     {{/each}}
   </ul>

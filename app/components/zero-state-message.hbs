@@ -1,4 +1,10 @@
 <div class="zero-state-message">
   <FaIcon class="zero-state-message__icon" @icon={{@icon}} @size="3x"/>
-  <div date-test-zero-state-message>{{@message}}</div>
+  {{#if @message}}
+    <div date-test-zero-state-message>{{@message}}</div>
+  {{else}}
+    <div date-test-zero-state-message>
+      {{yield}}
+    </div>
+  {{/if}}
 </div>

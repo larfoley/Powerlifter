@@ -14,16 +14,17 @@
       </div>
       <div class="media__actions">
         {{#if this.isCurrentUsersPost}}
-          <BasicDropdown as |dd|>
+          <BasicDropdown @horizontalPosition="auto-left" as |dd|>
             <dd.Trigger>
               <Icon @icon="ellipsis-h" @iconButton={{true}} />
             </dd.Trigger>
             <dd.Content>
-              <div class="dropdown-options">
+              {{!-- <div class="dropdown-options">
                 <div class="dropdown-options__option" {{on 'click' (action this.deletePost @post) }}>
-                  <FaIcon @icon="trash"/> Delete Post
+                  ddsss
                 </div>
-              </div>
+              </div> --}}
+              fooooooooooo
             </dd.Content>
           </BasicDropdown>
         {{/if}}

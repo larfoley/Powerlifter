@@ -1,1 +1,12 @@
-{{outlet}}
+<div class="content-container">
+  <div class="content-container__section">
+    <Button
+      @route="workout.my-programs.new"
+      @text="New Program"
+      @primary={{true}}
+      @icon="plus"
+    />
+  </div>
+  <WorkoutProgramTemplate::List @workoutPrograms={{@model}}/>
+  {{outlet}}
+</div>

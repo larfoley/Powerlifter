@@ -22,7 +22,14 @@ export default class WorkoutProgramFormComponent extends Component {
     super(...arguments);
 
     if (typeOf(this.args.workoutProgram) !== "instance") {
-      this.workoutProgram = this.store.createRecord('workout-program');
+      this.workoutProgram = this.store.createRecord('workout-program-template');
+      this.workoutProgram.user = this.currentUser.user;
+
+      const firstWeek = this.store.createRecord('workout-program-week', {
+        week: 1,
+      })
+
+      this.workoutProgram.weeks.pushObject(firstWeek);
 
     } else {
       this.workoutProgram = this.args.record;
@@ -30,6 +37,7 @@ export default class WorkoutProgramFormComponent extends Component {
 
     this.workoutProgram.author = this.currentUser.user.username;
     this.weeks = this.workoutProgram.weeks;
+
   }
 
   willDestroy() {
@@ -109,7 +117,6 @@ export default class WorkoutProgramFormComponent extends Component {
 
   @action
   removeWeek(weekIndex) {
-
     this.weeks.removeAt(weekIndex);
 
     for (var i = 0; i < this.weeks.length; i++) {
@@ -159,6 +166,9 @@ export default class WorkoutProgramFormComponent extends Component {
 
     if (workoutBlock.sets.length > 0) {
       workoutProgramSet.targetReps = workoutBlock.sets.lastObject.targetReps;
+      workoutProgramSet.order = workoutBlock.sets.lastObject.order + 1;
+    } else {
+      workoutProgramSet.order = 1;
     }
 
     workoutBlock.sets.pushObject(workoutProgramSet);
@@ -179,7 +189,6 @@ export default class WorkoutProgramFormComponent extends Component {
       workout.weekDay = this.workoutSessions.lastObject.weekDay + 1;
     }
 
-    // workout.id = guidFor(workout);
     workout.guid = guidFor(workout);
     workout.week = this.selectedWeek ? this.selectedWeek.week : 1;
 

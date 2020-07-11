@@ -7,10 +7,8 @@
     border-radius: 0;
     width: 100%;
     height: 90px;
-    margin-bottom: 2em;
     background-color: white;
     font-size: 1.3em;
-    margin: 2em 0;
 
     &:focus {
       box-shadow: none
@@ -18,10 +16,55 @@
   }
 
   &__add-exercise-button {
-    text-align: center;
+    // text-align: center;
+    margin: 1em 0;
 
     .button {
       display: inline-block;
+    }
+  }
+
+  &__header {
+    @extend .box;
+    padding: 2em 0 !important;
+  }
+
+  &__title {
+    @extend .h1;
+    text-align: center;
+    color: $primary-color;
+    line-height: 1;
+    margin-bottom: .5em;
+  }
+
+  &__sub-title {
+    text-align: center;
+    color: $muted-text;
+    font-size: .9rem;
+  }
+
+  &__progress {
+    max-width: 500px;
+    margin: auto;
+  }
+
+  &__progress-outer-bar {
+    height: 1em;
+    border-radius: 50px;
+    background: #eee;
+    margin: .25em 0;
+  }
+
+  &__progress-inner-bar {
+    height: 100%;
+    background: #ff7675;
+    width: attr(data-progress);
+    border-radius: 50px;
+
+    @for $i from 0 through 100 {
+      &--value-#{$i} {
+        max-width: #{$i} + "%";
+      }
     }
   }
 }

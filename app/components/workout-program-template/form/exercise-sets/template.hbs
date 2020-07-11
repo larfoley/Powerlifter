@@ -1,0 +1,39 @@
+<div class="exercise-sets">
+  <div class="exercise-sets__set-cell u-bold">Set</div>
+  <div class="exercise-sets__set-cell u-bold">Weight</div>
+  <div class="exercise-sets__set-cell u-bold">Reps</div>
+  <div class=""></div>
+  {{#each @workoutBlock.sets as |exerciseSet|}}
+    <div class="exercise-sets__set">
+      <div class="exercise-sets__set-cell">
+        <TextInput @value={{exerciseSet.order}} />
+      </div>
+      <div class="exercise-sets__set-cell">
+
+      </div>
+      <div class="exercise-sets__set-cell">
+        <TextInput
+          @value={{exerciseSet.targetReps}}
+          type="number"
+          type="number"
+        />
+      </div>
+      <div class="exercise-sets__set-cell">
+        <div class="flex flex--flex-end">
+
+        </div>
+      </div>
+    </div>
+  {{/each}}
+  <div class="flex flex--flex-end">
+    <Form @onSubmit={{fn (fn @addWorkoutProgramSet @workoutBlock)}}>
+      <Button
+        @submit={{true}}
+        @secondaryButton={{true}}
+        @text="Add Set"
+        @icon="plus"
+        @noBorder={{true}}
+      />
+    </Form>
+  </div>
+</div>

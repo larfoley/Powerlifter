@@ -5,6 +5,6 @@ export default class WorkoutMyProgramsRoute extends Route {
   @service currentUser;
 
   model() {
-    return this.currentUser.user.workoutPrograms;
+    return this.currentUser.user.workoutProgramTemplates;
   }
 }

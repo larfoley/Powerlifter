@@ -1,65 +1,15 @@
 <div class="box box--transparent box--with-margin">
-  {{#each @workout.exercises as |exercise index|}}
-  <div class="card">
-    <div class="card__body">
-        <h4>Exercise {{increment index}}</h4>
-        <br>
-        <div class="workout-sets">
-          <div class="workout-sets__set u-bold">Set</div>
-          {{!-- <div class="workout-sets__set u-bold">Exercise</div> --}}
-          <div class="workout-sets__set u-bold">Weight</div>
-          {{!-- <div class="workout-sets__set u-bold"></div> --}}
-          <div class="workout-sets__set u-bold">Reps</div>
-          <div class=""></div>
-          {{#each exercise.sets as |exerciseSet|}}
-            <div class="workout-sets__set-wrapper">
-              <div class="workout-sets__set">
-                {{exerciseSet.number}}
-              </div>
-              {{!-- <div class="workout-sets__set">
-                {{exercise.exercise}}
-              </div> --}}
-              <div class="workout-sets__set">
-                {{#if exerciseSet.completed}}
-                  <span>{{exerciseSet.weightLifted}}</span>
-                {{else}}
-                  <TextInput
-                    @value={{exerciseSet.weightLifted}}
-                    type="number"
-                    {{on 'change' (fn this.updateSet exerciseSet)}}
-                    @inline={{true}}
-                  />
-                {{/if}}
-              </div>
-              {{!-- <div class="workout-sets__set">
-                <FaIcon @icon="times" />
-              </div> --}}
-              <div class="workout-sets__set">
-                {{#if exerciseSet.completed}}
-                  <span>{{exerciseSet.repsCompleted}}</span>
-                {{else}}
-                  <TextInput
-                    @value={{exerciseSet.repsCompleted}}
-                    type="number"
-                    @placeholder="9"
-                    {{on 'change' (fn this.updateSet exerciseSet)}}
-                    @inline={{true}}
-                  />
-                {{/if}}
-              </div>
-              <div class="workout-sets__set">
-                <div class="flex flex--flex-end">
-                  <Button
-                    @icon="check"
-                    class="workout-sets__checkbox {{if exerciseSet.completed "workout-sets__checkbox--completed"}}"
-                    {{action @onToggleExerciseSetCompleted exerciseSet}}
-                  />
-                </div>
-              </div>
-            </div>
-          {{/each}}
-      </div>
+  {{#each @workout.exercises as |workoutBlock index|}}
+    <div class="h4">
+      Exercise {{increment index}} - Squat
     </div>
-  </div>
+    <div class="">
+      <p>Dont leave anything left in the tank</p>
+    </div>
+    <WorkoutBlock
+      @workoutBlock={{workoutBlock}}
+      @onUpdateExerciseSet={{fn @onUpdateExerciseSet}}
+      @onToggleExerciseSetCompleted={{fn @onToggleExerciseSetCompleted}}
+    />
   {{/each}}
 </div>

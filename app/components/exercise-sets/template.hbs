@@ -1,0 +1,61 @@
+<div class="exercise-sets">
+  <div class="exercise-sets__set-cell u-bold">Set</div>
+  <div class="exercise-sets__set-cell u-bold">Exercise</div>
+  <div class="exercise-sets__set-cell u-bold">Weight</div>
+  <div class="exercise-sets__set-cell u-bold">Reps</div>
+  <div class="exercise-sets__set-cell u-bold"></div>
+  <div class="">
+  </div>
+  {{#each @exerciseSets as |exerciseSet|}}
+
+    <div class="exercise-sets__set">
+      <div class="exercise-sets__set-cell">
+        1
+      </div>
+      <div class="exercise-sets__set-cell">
+        Squat
+      </div>
+      <div class="exercise-sets__set-cell">
+        {{#if exerciseSet.completed}}
+          <span>{{exerciseSet.weightLifted}}</span>
+        {{else}}
+          <TextInput
+            @value={{exerciseSet.weightLifted}}
+            type="number"
+            @inline={{true}}
+            {{on 'change' (fn @onUpdateExerciseSet exerciseSet)}}
+          />
+        {{/if}}
+      </div>
+
+      <div class="exercise-sets__set-cell">
+        {{#if exerciseSet.completed}}
+          <span>{{exerciseSet.repsCompleted}}</span>
+        {{else}}
+          <div class="">
+            <TextInput
+              @value={{exerciseSet.repsCompleted}}
+              type="number"
+              {{on 'change' (fn @onUpdateExerciseSet exerciseSet)}}
+              type="number"
+              @inline={{true}}
+            />
+          </div>
+        {{/if}}
+      </div>
+      <div class="exercise-sets__set-cellx">
+        &nbsp; / 5
+      </div>
+      <div class="exercise-sets__set-cell">
+        <div class="flex flex--flex-end">
+          <Button
+            @icon="check"
+            class="exercise-sets__checkbox {{if exerciseSet.completed "exercise-sets__checkbox--completed"}}"
+            {{on 'click' (fn @onToggleExerciseSetCompleted exerciseSet)}}
+            disabled={{exerciseSet.isNotValid}}
+          />
+        </div>
+      </div>
+    </div>
+  {{/each}}
+</div>

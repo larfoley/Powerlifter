@@ -1,0 +1,11 @@
+<div class="card">
+  <div class="card__body">
+      {{!-- <h4>{{@workoutBlock.exercise}}</h4> --}}
+      {{!-- <br> --}}
+      <ExerciseSets
+        @exerciseSets={{@workoutBlock.sets}}
+        @onUpdateExerciseSet={{@onUpdateExerciseSet}}
+        @onToggleExerciseSetCompleted={{@onToggleExerciseSetCompleted}}
+      />
+  </div>
+</div>

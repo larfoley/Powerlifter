@@ -1,5 +1,5 @@
-<form {{on "submit" this.createOrUpdatePost}}>
-  <div class="box">
+<form {{on "submit" this.createOrUpdatePost}} class="card">
+  <div class="card__body">
       <div class="media">
         <div class="media__asset">
           <UserAvatar @user={{this.post.author}} />
@@ -9,12 +9,11 @@
             class="textarea"
             rows="5"
             placeholder="Say something laurence..."
-            autofocus="true"
+            autofocus={{true}}
             @value={{this.post.content}}
             maxlength={{1000}}
           />
         </div>
-        {{this.isValid}}
       </div>
       {{#if this.hasMedia}}
         <div class="media-preview">
@@ -33,7 +32,7 @@
       {{/if}}
 
   </div>
-  <div class="box">
+  <div class="card__footer">
     <div class="flex">
       <div class="flex__grow">
         <div class="">

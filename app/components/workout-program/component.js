@@ -31,7 +31,7 @@ export default class WorkoutProgramComponent extends Component {
   get currentWorkoutSession() {
     const workouts = this.workoutSessions
       .filter(({ week, weekDay }) => week === this.selectedWeek && weekDay === this.selectedDay);
-      
+
     return workouts.length > 0 ? workouts.firstObject : this.workouts.firstObject
   }
 
@@ -60,8 +60,8 @@ export default class WorkoutProgramComponent extends Component {
   }
 
   @action
-  updateExerciseSet(exerciseSet, update) {
-    exerciseSet.completed = !exerciseSet.completed;
+  updateExerciseSet(exerciseSet) {
+
   }
 
   @action

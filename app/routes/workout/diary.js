@@ -1,7 +1,12 @@
 import Route from '@ember/routing/route';
+import { inject as service } from '@ember/service';
 
 export default class WorkoutDiaryRoute extends Route {
-  async model() {
-    return await this.store.queryRecord('workout-program-history', {});
+  @service currentUser;
+  @service workout;
+
+  model(params) {
+    console.log(params);
+    return this.workout.currentWorkoutProgram;
   }
 }

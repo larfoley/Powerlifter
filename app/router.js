@@ -66,7 +66,7 @@ Router.map(function() {
   this.route('current-program');
 
   this.route('workout', function() {
-    this.route('diary');
+    this.route('diary', function() {});
     this.route('new', function() {
       this.route('exercise-select');
 
@@ -79,8 +79,10 @@ Router.map(function() {
 
       this.route('new', function() {
         this.route('week', { path: '/:week' });
+        this.route('exercise-select');
       });
     });
+    this.route('history');
   });
 
   this.route('my-programs', function() {

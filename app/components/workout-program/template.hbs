@@ -1,4 +1,42 @@
-<WorkoutProgram::Navbar @currentWorkoutSession={{this.currentWorkoutSession}} />
+<WorkoutProgram::Navbar
+  @currentWorkoutSession={{this.currentWorkoutSession}}
+  @hasNext={{@hasNext}}
+  @hasPrevious={{@hasPrevious}}
+  @goToNextWorkout={{@goToNextWorkout}}
+  @goToPreviousWorkout={{@goToPreviousWorkout}}
+/>
+<div class="workout-program__header">
+  <div class="workout-program__sub-title">
+    Program
+  </div>
+  <div class="workout-program__title">
+    <div class="">
+      {{capitalize @workoutProgram.name}}
+    </div>
+  </div>
+  <div class="flex flex-">
+    <Icon @icon="info"  />
+    <Icon @icon="trophy"  />
+    <Icon @icon="eye"  />
+  </div>
+  <div class="workout-program__progress">
+    <span class="text text--muted">Progress</span>
+    <div class="h3">
+      {{@workoutProgram.progress}}% completed
+    </div>
+    <div class="workout-program__progress-outer-bar">
+      <div
+        class="workout-program__progress-inner-bar
+        workout-program__progress-inner-bar--value-{{@workoutProgram.progress}}"
+        >
+      </div>
+    </div>
+    <div class="flex flex--space-between">
+      <span class="text text--muted">0%</span>
+      <span class="text text--muted">100%</span>
+    </div>
+  </div>
+</div>
 
 {{#if this.canFinishWorkoutSession}}
   <div class="box box--transparent box--with-margin">
@@ -23,6 +61,7 @@
 <WorkoutProgram::WorkoutSession
   @workout={{this.currentWorkoutSession}}
   @onToggleExerciseSetCompleted={{action this.toggleExerciseSetCompleted}}
+  @onUpdateExerciseSet={{action this.updateExerciseSet}}
 />
 {{#if this.showWorkoutCompleteDialog}}
   <WorkoutProgram::WorkoutCompleteDialog

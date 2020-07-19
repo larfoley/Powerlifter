@@ -1,5 +1,6 @@
 <div>
   {{#each @workoutPrograms as |program|}}
+  {{log program}}
     <div class="card">
       <div class="card__header">
         <div class="flex flex--space-between">
@@ -30,7 +31,7 @@
       <div class="card__footer">
         <Button
           @text="Start Program"
-          @primary={{true}}
+          @secondary={{true}}
           {{on 'click' (if this.workout.hasActiveWorkoutProgram
               (fn this.showActivateProgramConfirmDialog program)
               (fn this.activateProgram program)

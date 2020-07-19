@@ -1,2 +1,27 @@
-<ProfilePic @user={{@model}} />
-<h1>larfoley</h1>
+<Toolbar @title={{@model.username}} @backRoute="index"/>
+<div class="user-profile">
+  <div
+    class="user-profile__background"
+    style="background-image: url('https://images.unsplash.com/photo-1594643551111-29af420564e8?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80')"
+  >
+    <div class="user-profile__pic">
+      <ProfilePic @user={{@model}}/>
+      <h3>{{@model.username}}</h3>
+    </div>
+    <Button
+      @text="Add Cover Photo"
+      @icon="camera"
+      class="user-profile__edit-bg-button"
+    />
+  </div>
+  <div class="flex flex--flex-end user-profile__banner">
+    <div class="">
+      <Button @text="Add Friend" @icon="user-plus" @secondary={{true}} />
+    </div>
+  </div>
+  <Tabs @tabs={{ array
+    (hash label="Posts" route="users")
+    (hash label="Friends" route="my-network.friends")
+    (hash label="Programs" route="my-network.friend-requests")
+  }}/>
+</div>

@@ -23,6 +23,7 @@ export default class GoalModel extends Model.extend(Validator) {
   @attr('number') reps;
   @attr('boolean', { hasPreviouslyAchievedGoal: false }) hasPreviouslyAchievedGoal;
   @attr('date', { defaultValue: null }) dueDate;
+  @attr('date', { defaultValue: null }) completedOn;
   @attr('boolean') isCompleted;
   @attr('number') percentageCompleted;
   validations = validations;

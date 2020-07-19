@@ -7,7 +7,10 @@ export default class GoalCardComponent extends Component {
   @service toast;
 
   @tracked showConfirmModal = false;
+  @tracked showingConfirmMarkGoalCompleteDialog = false;
   @tracked dueDate = this.args.goal.dueDate;
+  @tracked shouldShareGoal = true;
+  @tracked shouldPostLiftRecord = true;
 
   get isOverdue() {
     const dueDate = this.dueDate;
@@ -19,7 +22,7 @@ export default class GoalCardComponent extends Component {
     const todaysDate = new Date();
     const timeDifference = dueDate.getTime() - todaysDate.getTime();
     const daysLeft = Math.ceil(timeDifference / (1000 * 3600 * 24));
-    
+
     return daysLeft < 0
   }
 
@@ -41,15 +44,24 @@ export default class GoalCardComponent extends Component {
   }
 
   @action
+  toggleConfirmMarkGoalCompleteDialog() {
+    this.showingConfirmMarkGoalCompleteDialog = !this.showingConfirmMarkGoalCompleteDialog;
+  }
+
+  @action
   async markComplete() {
     const goal = this.args.goal;
 
     goal.isCompleted = true;
+    goal.completedOn = new Date();
 
     await goal.save();
 
-    this.showConfirmModal = false;
+    this.showingConfirmMarkGoalCompleteDialog = false;
     this.toast.success('Goal Completed');
+
+    this.shouldShareGoal = false;
+    this.shouldPostLiftRecord = false;
   }
 
   @action
@@ -67,5 +79,15 @@ export default class GoalCardComponent extends Component {
     } catch(e) {
       this.toast.error(e.message)
     }
+  }
+
+  @action
+  toggleShouldShareGoal() {
+    this.shouldShareGoal = !this.shouldShareGoal;
+  }
+
+  @action
+  toggleShouldPostLiftRecord() {
+    this.shouldPostLiftRecord = !this.shouldPostLiftRecord;
   }
 }

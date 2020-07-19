@@ -1,0 +1,18 @@
+<FullScreenModal
+  @closeOnClickOverlay={{false}}
+>
+  <Toolbar
+    @title="Select an Exercise"
+    @backRoute="workout.my-programs.new.edit-exercise"
+  />
+  <ul class="list">
+    {{#each this.model.exercises as |exercise|}}
+      <li
+        {{on 'click' (fn editExercise this.model.workoutBlock exercise)}}
+        class="list__item"
+      >
+      {{exercise.name}}
+      </li>
+    {{/each}}
+  </ul>
+</FullScreenModal>

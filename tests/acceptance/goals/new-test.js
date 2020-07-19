@@ -5,7 +5,7 @@ import { authenticateSession } from 'ember-simple-auth/test-support';
 import { setupMirage } from 'ember-cli-mirage/test-support';
 import newGoalPage from '../../pages/goals/new';
 import editGoalPage from '../../pages/goals/edit';
-import { selectChoose } from 'ember-power-select/test-support';
+import { selectChoose, selectSearch } from 'ember-power-select/test-support';
 import { setFlatpickrDate } from 'ember-flatpickr/test-support/helpers';
 
 module('Acceptance | goals/new', function(hooks) {
@@ -39,8 +39,11 @@ module('Acceptance | goals/new', function(hooks) {
 
     await newGoalPage.visit();
 
+
     await selectChoose('.reps-selector', 1);
-    await selectChoose('.exercise-selector', 'Deadlift')
+    await selectSearch('.exercise-selector', 'Deadlift');
+    await selectChoose('.exercise-selector', 'Deadlift');
+
     setFlatpickrDate('[data-test-goal-date]', new Date());
 
     await newGoalPage.createOrEditGoalForm

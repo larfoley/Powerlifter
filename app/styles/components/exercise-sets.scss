@@ -1,15 +1,13 @@
 .exercise-sets {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
-  // grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
   grid-gap: 0.5em;
   align-items: stretch;
-  // font-weight: bold;
   margin-bottom: .5em;
   align-items: center;
 
   @media screen and (min-width: $mobile-breakpoint) {
-    grid-template-columns: 50px 100px 110px 50px 90px 1fr;
+    grid-template-columns: 50px 100px 100px 100px 1fr;
   }
 
   &__set {
@@ -35,6 +33,11 @@
 
   .exercise-sets__set-cell {
      text-align: center;
+
+     &--heading {
+       font-size: .8em;
+       font-weight: bold;
+     }
    }
 
   &__checkbox {

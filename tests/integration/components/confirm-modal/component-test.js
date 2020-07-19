@@ -7,20 +7,16 @@ module('Integration | Component | confirm-modal', function(hooks) {
   setupRenderingTest(hooks);
 
   test('it renders', async function(assert) {
-    // Set any properties with this.set('myProperty', 'value');
-    // Handle any actions with this.set('myAction', function(val) { ... });
+    this.set('onConfirm', function(val) { });
+    this.set('onCancel', function(val) { });
 
-    await render(hbs`<ConfirmModal />`);
-
-    assert.equal(this.element.textContent.trim(), '');
-
-    // Template block usage:
     await render(hbs`
-      <ConfirmModal>
-        template block text
-      </ConfirmModal>
-    `);
+      <ConfirmModal
+        @onConfirm={{this.onConfirm}}
+        @onCancel={{this.onCancel}}
+        @title="Hello"
+      />`);
 
-    assert.equal(this.element.textContent.trim(), 'template block text');
+    assert.equal(this.element.querySelector('[data-test-confirm-modal-title]').textContent.trim(), 'Hello');
   });
 });

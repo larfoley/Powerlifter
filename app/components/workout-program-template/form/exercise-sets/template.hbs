@@ -1,39 +1,36 @@
-<div class="exercise-sets">
-  <div class="exercise-sets__set-cell u-bold">Set</div>
-  <div class="exercise-sets__set-cell u-bold">Weight</div>
-  <div class="exercise-sets__set-cell u-bold">Reps</div>
+
+<div class="workout-template__exercise-sets">
+  <div class="">Set</div>
+  <div class="">Reps</div>
   <div class=""></div>
-  {{#each @workoutBlock.sets as |exerciseSet|}}
-    <div class="exercise-sets__set">
-      <div class="exercise-sets__set-cell">
-        <TextInput @value={{exerciseSet.order}} />
-      </div>
-      <div class="exercise-sets__set-cell">
-
-      </div>
-      <div class="exercise-sets__set-cell">
-        <TextInput
-          @value={{exerciseSet.targetReps}}
-          type="number"
-          type="number"
+  {{#each @workoutBlock.sets as |exerciseSet index|}}
+    <div>
+      {{increment index}}
+    </div>
+    <div>
+      <TextInput
+        @value={{exerciseSet.targetReps}}
+        type="number"
+        type="number"
+      />
+    </div>
+    <div class="workout-template__set-action">
+      {{#if index}}
+        <Icon
+          {{on 'click' (fn @removeWorkoutProgramSet @workoutBlock exerciseSet)}}
+          @icon="times"
+          @primary={{true}}
         />
-      </div>
-      <div class="exercise-sets__set-cell">
-        <div class="flex flex--flex-end">
-
-        </div>
-      </div>
+      {{/if}}
     </div>
   {{/each}}
-  <div class="flex flex--flex-end">
-    <Form @onSubmit={{fn (fn @addWorkoutProgramSet @workoutBlock)}}>
-      <Button
-        @submit={{true}}
-        @secondaryButton={{true}}
-        @text="Add Set"
-        @icon="plus"
-        @noBorder={{true}}
-      />
-    </Form>
-  </div>
 </div>
+<Form @onSubmit={{fn @addWorkoutProgramSet @workoutBlock}}>
+  <Button
+    @submit={{true}}
+    @secondaryButton={{true}}
+    @text="Add Set"
+    @icon="plus"
+    @noBorder={{true}}
+  />
+</Form>

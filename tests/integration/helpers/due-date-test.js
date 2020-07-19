@@ -7,11 +7,13 @@ module('Integration | Helper | due-date', function(hooks) {
   setupRenderingTest(hooks);
 
   // Replace this with your real tests.
-  test('it renders', async function(assert) {
-    this.set('inputValue', '1234');
+  test('it converts date', async function(assert) {
+    const date = new Date();
+
+    this.set('inputValue', date);
 
     await render(hbs`{{due-date inputValue}}`);
 
-    assert.equal(this.element.textContent.trim(), '1234');
+    assert.equal(this.element.textContent.trim(), date.toLocaleDateString());
   });
 });

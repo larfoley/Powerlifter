@@ -20,6 +20,7 @@ export default class WorkoutProgramTemplateListComponent extends Component {
 
   @action
   async activateProgram(program) {
+    
     if (this.showingActivateProgramConfirmDialog) {
       this.showingActivateProgramConfirmDialog = false;
     }

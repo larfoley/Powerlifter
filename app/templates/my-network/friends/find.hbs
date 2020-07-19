@@ -1,4 +1,6 @@
-<FullScreenModal>
+<FullScreenModal
+  @onClose={{action this.transitionToRoute 'my-network.friends'}}
+>
   <Toolbar
     @backRoute="my-network.friends"
     @search={{hash placeholder="Find Friends..." onSearch=this.debounceFindFriends }}

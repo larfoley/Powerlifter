@@ -1,11 +1,11 @@
-<div class="box box--transparent box--with-margin flex flex--flex-end">
-  {{!-- <Button @text="foo" @primary={{true}}/> --}}
-  <FloatingActionButton @route="my-network.friends.find" @icon="user-plus" @text="Add Friend"/>
-</div>
 <div class="content-container">
+  <div class="content-container__section flex flex--flex-end">
+    <FloatingActionButton @route="my-network.friends.find" @icon="user-plus" @text="Add Friend"/>
+  </div>
   {{#if @model.length}}
-  <Friends @friends={{@model}} />
+    <Friends @friends={{@model}} />
   {{else}}
+    <ZeroStateMessage @icon="users" @message="You have not yet added any friends" />
   {{/if}}
 </div>
 {{outlet}}

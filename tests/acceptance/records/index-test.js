@@ -29,13 +29,4 @@ module('Acceptance | records/index', function(hooks) {
     assert.equal(currentURL(), '/records/new');
   });
 
-  test('lift records are displayed', async function(assert) {
-    this.server.createList('lift-record', 3);
-
-    await authenticateSession();
-
-    await recordsPage.visit();
-
-    assert.equal(recordsPage.liftRecords.records.length, 3);
-  });
 });

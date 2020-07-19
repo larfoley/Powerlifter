@@ -7,11 +7,11 @@ module('Integration | Helper | increment', function(hooks) {
   setupRenderingTest(hooks);
 
   // Replace this with your real tests.
-  test('it renders', async function(assert) {
-    this.set('inputValue', '1234');
+  test('it increments', async function(assert) {
+    this.set('inputValue', 1);
 
     await render(hbs`{{increment inputValue}}`);
 
-    assert.equal(this.element.textContent.trim(), '1234');
+    assert.equal(this.element.textContent.trim(), '2');
   });
 });

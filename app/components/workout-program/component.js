@@ -3,16 +3,16 @@ import { tracked } from '@glimmer/tracking'
 import { action } from '@ember/object';
 import { set } from '@ember/object';
 import { A } from '@ember/array';
+import { isPresent } from '@ember/utils';
 
 export default class WorkoutProgramComponent extends Component {
   @tracked showWorkoutCompleteDialog = false;
+  @tracked selectedWorkoutDay = 1;
 
-  get selectedWeek() {
-    return this.args.selectedWeek || 1;
-  }
-
-  get selectedDay() {
-    return this.args.selectedDay || 1;
+  get currentWorkout() {
+    return this.workoutSessions.find(x => {
+      return x.day === this.selectedWorkoutDay
+    })
   }
 
   get workoutSessions() {
@@ -28,19 +28,13 @@ export default class WorkoutProgramComponent extends Component {
     return workoutSessions;
   }
 
-  get currentWorkoutSession() {
-    const workouts = this.workoutSessions
-      .filter(({ week, weekDay }) => week === this.selectedWeek && weekDay === this.selectedDay);
-
-    return workouts.length > 0 ? workouts.firstObject : this.workouts.firstObject
-  }
 
   get wokroutProgramIsCompleted() {
     return this.workoutsSessions.every(workout => workout.completed);
   }
 
-  get canFinishWorkoutSession() {
-    return this.currentWorkoutSession.everyWorkoutBlockIsCompleted;
+  get canFinishWorkout() {
+    return this.currentWorkout.everyWorkoutBlockIsCompleted;
   }
 
   get canFinishWorkoutProgram() {
@@ -54,23 +48,49 @@ export default class WorkoutProgramComponent extends Component {
     return !this.canFinishWorkoutSession;
   }
 
+  get hasNextWorkout() {
+    return isPresent(this._findWorkoutSession(this.selectedWorkoutDay + 1))
+  }
+
+  get hasPreviousWorkout() {
+    return isPresent(this._findWorkoutSession(this.selectedWorkoutDay - 1))
+  }
+
   @action
   toggleExerciseSetCompleted(exerciseSet) {
     exerciseSet.completed = !exerciseSet.completed;
   }
 
   @action
-  updateExerciseSet(exerciseSet) {
-
+  goToNextWorkout(exerciseSet) {
+    if (this.hasNextWorkout) {
+      this.selectedWorkoutDay = this.selectedWorkoutDay + 1;
+    }
   }
 
   @action
-  async completeWorkoutSession() {
-    const workoutSession = this.currentWorkoutSession;
+  goToPreviousWorkout(exerciseSet) {
+    if (this.hasPreviousWorkout) {
+      this.selectedWorkoutDay = this.selectedWorkoutDay - 1;
+    }
+  }
 
-    if (!this.currentWorkoutSession.completed) {
+  @action
+  updateExerciseSet(exerciseSet) {
+    console.log(0);
+  }
 
-      this.currentWorkoutSession.completed = true;
+  get showFinishWorkoutProgramButton() {
+    return this.args.workoutProgram.progress === 100 && !this.args.workoutProgram.completed;
+  }
+
+  @action
+  async completeWorkout() {
+    const workout = this.currentWorkout;
+
+    if (!workout.completed) {
+
+      workout.completed = true;
       this.showWorkoutCompleteDialog = true;
 
       // for (var exercise of workoutSession.exercises) {
@@ -90,6 +110,15 @@ export default class WorkoutProgramComponent extends Component {
   }
 
   @action
+  onCloseWorkoutCompleteDialog() {
+    this.showWorkoutCompleteDialog = false;
+
+    if (this.hasNext) {
+      this.goToNextWorkout()
+    }
+  }
+
+  @action
   async completeWorkoutProgram() {
     const workoutSession = this.currentWorkoutSession;
 
@@ -97,5 +126,9 @@ export default class WorkoutProgramComponent extends Component {
     this.args.workoutProgram.completed = true;
     // this.showWorkoutProgramCompleteDialog = true;
     alert()
+  }
+
+  _findWorkoutSession(day) {
+    return this.workoutSessions.find(workout => workout.day === day)
   }
 }

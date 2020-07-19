@@ -115,4 +115,8 @@ export default function() {
   this.put('notifications/:id');
 
   this.get('exercise');
+
+  this.get('friends');
+
+  this.get('friendRequests');
 }

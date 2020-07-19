@@ -2,13 +2,19 @@
   max-width: 360px;
   text-align: center;
   padding: 1.5em;
+  background-color: white;
+  border-radius: 10px;
 
   &__title {
     font-size: 1.3em;
-    margin-bottom: .5em;
+    margin-bottom: .25em;
   }
 
   &__text {
     color: $muted-text;
+  }
+
+  &__body {
+    margin: 1em 0;
   }
 }

@@ -45,17 +45,18 @@ export default Route.extend(ApplicationRouteMixin, {
     })
 
     socket.on(`post/${this.currentUser.user.id}`, (post) => {
-      const payload = {
-        data: {
-          id: post._id,
-          type: 'post',
-          attributes: {
-            post
-          }
-        }
-      }
-
-      this.store.push(payload)
+      // const payload = {
+      //   data: {
+      //     id: post._id,
+      //     type: 'post',
+      //     attributes: {
+      //       post
+      //     }
+      //   }
+      // }
+      //
+      // this.store.push(payload)
+      console.log(this.get('home'));
     })
   },
 

@@ -5,11 +5,14 @@
   @containerClass="confirm-modal"
 >
   {{#if @title}}
-    <h2 class="confirm-modal__title">{{@title}}</h2>
+    <h2 data-test-confirm-modal-title class="confirm-modal__title">{{@title}}</h2>
   {{/if}}
-  {{#if @text}}
-    <p class="confirm-modal__text">{{@text}}</p>
-  {{/if}}
+    {{#if @text}}
+      <p class="confirm-modal__text">{{@text}}</p>
+    {{/if}}
+    <div class="confirm-modal__body">
+      {{yield}}
+    </div>
   <div>
     <Button @primary={{true}} {{action @onConfirm}} @text="Yes" />
     <Button @secondary={{true}} {{action @onCancel}} @text="No" />

@@ -1,5 +1,5 @@
 
-<Toolbar @title="Home" />
+{{!-- <Toolbar @title="Home" />
 <div class="header">
   <h2 class="header__title">Personal Bests</h2>
   <ViewAllLink @route="index" />
@@ -15,4 +15,17 @@
 </div>
 
 <NewPostLink />
-<Posts @posts={{@model.posts}} />
+<Posts @posts={{@model.posts}} /> --}}
+<Toolbar @title="Home" />
+<div class="content-container">
+  <div class="content-container__section">
+    <h2 class="h4">Active Goals</h2>
+    <Goals @goals={{@model.goals}} />
+  </div>
+  <div class="content-container__section">
+    <h2 class="h4">Recent Personal Bests</h2>
+  </div>
+  <div class="content-container__section">
+    <h2 class="h4">Current Workout Program</h2>
+  </div>
+</div>

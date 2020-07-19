@@ -70,9 +70,9 @@ Router.map(function() {
     this.route('new', function() {
       this.route('exercise-select');
 
-      this.route('workout-session', function() {
-        this.route('exercise-select', { path: '/exercise-select/:workout_session_id' });
-      });
+      // this.route('workout-session', function() {
+      //   this.route('exercise-select', { path: '/exercise-select/:workout_session_id' });
+      // });
     });
     this.route('my-programs', function() {
       this.route('my-program', { path: '/:workout_program_id' });
@@ -80,6 +80,7 @@ Router.map(function() {
       this.route('new', function() {
         this.route('week', { path: '/:week' });
         this.route('exercise-select');
+        this.route('edit-exercise');
       });
     });
     this.route('history');

@@ -26,7 +26,6 @@ export default class WorkoutProgramBaseModel extends Model.extend(Copyable) {
   }
 
   get duration() {
-    // return this.weeks.length
-    return 0
+    return this.weeks.length
   }
 }

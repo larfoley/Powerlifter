@@ -1,0 +1,13 @@
+<PowerSelect
+  @searchEnabled={{true}}
+  @search={{this.searchExercises}}
+  @triggerClass="exercise-selector"
+  @options={{@exercises}}
+  @searchField="name"
+  @placeholder="Select and exercise..."
+  @selected={{@selected}}
+  @triggerComponent="select-trigger"
+  @onChange={{fn (mut @selected)}} as |exercise|
+>
+  {{exercise.name}}
+</PowerSelect>

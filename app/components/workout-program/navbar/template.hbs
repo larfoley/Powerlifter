@@ -1,7 +1,7 @@
 <div class="program-navbar box">
     <div class="flex flex--space-between flex__grow flex--align-center">
       <div>
-        {{#if @hasPrev}}
+        {{#if @hasPreviousWorkout}}
           <Icon @icon="arrow-left" @primary={{true}} {{action @goToPreviousWorkout}}/>
         {{else}}
           <Icon @icon="arrow-left" @primary={{true}} @disabled={{true}} />
@@ -17,7 +17,7 @@
         {{/if}}
       </div>
       <div>
-        {{#if @hasNext}}
+        {{#if @hasNextWorkout}}
           <Icon
             @icon="arrow-right"
             {{action @goToNextWorkout}}

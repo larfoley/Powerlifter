@@ -1,32 +1,15 @@
-// .fa-circle {
-//   color: transparent;
-//   transition: .3s;
-// }
-//
-// .fa-stack:hover .fa-circle  {
-//   color: white;
-// }
-//
-// .fa-stack:hover .fa-stack-1x  {
-//   color: $primary-color;
-// }
-//
-// .icon-primary .fa-circle {
-//   color: $primary-color;
-// }
-//
-// .icon-primary {
-//   color: white;
-// }
-
 .icon {
-  font-size: 17px;
+  font-size: 1em;
   display: inline-block;
-  width: 37px;
-  height: 37px;
-  line-height: 37px;
+  width: 1.8em;
+  height: 1.8em;
+  line-height: 1.95em;
   text-align: center;
   border-radius: 50px;
+
+  &__wrapper {
+    font-size: 17px;
+  }
   // margin: 0 7px;
   // background-color: white;
 

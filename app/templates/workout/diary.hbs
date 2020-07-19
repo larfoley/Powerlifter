@@ -1,13 +1,6 @@
 {{#if @model}}
   <WorkoutProgram
     @workoutProgram={{@model}}
-    @changeDay={{fn this.changeDay}}
-    @goToNextWorkout={{fn this.goToNextWorkout}}
-    @goToPreviousWorkout={{fn this.goToPreviousWorkout}}
-    @selectedWeek={{this.week}}
-    @selectedDay={{this.day}}
-    @hasNext={{this.hasNext}}
-    @hasPrevious={{this.hasPrevious}}
   />
 {{else}}
   <ZeroStateMessage @icon="book">

@@ -1,6 +1,6 @@
 <li
   class="card goal-card {{if @goal.isCompleted "goal-card--completed"}}"
-  data-test-goal-card
+  data-test-goals-item
 >
   <div class="card__body">
     <div class="media media--align-center">
@@ -9,47 +9,72 @@
       </div>
       <div class="media__body">
         <span class="text text--muted ">
-          {{capitalize @goal.exercise.name}} Goal
+          <span data-test-exercise>{{capitalize @goal.exercise.name}}</span> Goal
         </span>
-        <div class="h3">
+        <div class="h4">
           {{@goal.weight}}<span class="h6"> kgs</span> for {{@goal.reps}} reps
         </div>
       </div>
       <div>
-        <div
-          class="square {{if @goal.isCompleted "square--success"}}"
-          {{action this.markComplete}}
-        >
-          <FaIcon @icon="check" />
-        </div>
+        {{#if @goal.isCompleted}}
+          <div
+            class="square square--success"
+          >
+            <FaIcon @icon="check" />
+          </div>
+        {{else}}
+          <div
+            class="square"
+            {{action this.toggleConfirmMarkGoalCompleteDialog}}
+          >
+            <FaIcon @icon="check" />
+          </div>
+        {{/if}}
       </div>
     </div>
   </div>
   <div class="flex flex--space-between flex--align-center card__footer card__footer--small">
     {{#if @goal.isCompleted}}
       <span class="text text--primary u-bold">
-        Completed {{moment-calendar @goal.dueDate}}
+        Completed {{moment-calendar @goal.completedOn}}
       </span>
     {{else}}
       <div class="text text--primary u-bold">
         {{#if this.isOverdue}}
-          <FaIcon @icon="exclamation-circle" @text="foo"/> <span>Overdue</span>
+          <FaIcon @icon="exclamation-circle"/> <span>Overdue</span>
         {{else}}
           Due {{moment-from this.dueDate}}
         {{/if}}
       </div>
     {{/if}}
-    <div class="">
-      {{#if @goal.isCompleted}}
-        <Icon @icon="trash-alt" @prefix="far" {{action this.toggleModal}} />
-      {{else}}
+    <div class="flex">
+      {{#unless @goal.isCompleted}}
         <LinkTo @route="goals.edit" @model={{@goal.id}}>
           <Icon @icon="edit" @prefix="far"/>
         </LinkTo>
+      {{/unless}}
         <LinkTo @route="goals.delete" @model={{@goal.id}}>
           <Icon @icon="trash-alt" @prefix="far"/>
         </LinkTo>
-      {{/if}}
     </div>
   </div>
 </li>
+{{#if this.showingConfirmMarkGoalCompleteDialog}}
+  <ConfirmModal
+    @title="Mark Goal as Completed?"
+    @text="You wont be able to undo this."
+    @onConfirm={{fn this.markComplete}}
+    @onCancel={{fn this.toggleConfirmMarkGoalCompleteDialog}}
+  >
+    <Checkbox
+      @label="Log lift record?"
+      @checked={{this.shouldShareGoal}}
+      @onChange={{fn this.toggleShouldShareGoal}}
+    />
+    <Checkbox
+      @label="Share goal?"
+      @checked={{this.shouldPostLiftRecord}}
+      @onChange={{fn this.toggleShouldPostLiftRecord}}
+    />
+  </ConfirmModal>
+{{/if}}

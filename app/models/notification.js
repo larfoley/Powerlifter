@@ -6,5 +6,6 @@ export default class NotificationModel extends Model {
   @attr('string') text;
   @attr('string') from;
   @attr('boolean', { defaultValue: true }) new;
+  @attr() link;
   @attr('date', { defaultValue() { return new Date(); } }) createdAt;
 }

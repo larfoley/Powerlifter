@@ -5,13 +5,28 @@
     @title="Select an Exercise"
     @backRoute="workout.new"
   />
+  <div class="box box--with-bottom-margin">
+    <div class="card__body">
+      <label for="">Category</label>
+      <PowerSelect
+        @triggerClass="reps-selector"
+        @triggerComponent="select-trigger"
+        @options={{array  }}
+        @selected={{this.record.reps}}
+        @placeholder="How many reps..."
+        @onChange={{fn (mut this.record.reps)}} as |rep|
+      >
+        {{rep}}
+      </PowerSelect>
+    </div>
+  </div>
   <ul class="list">
     {{#each this.model.exercises as |exercise|}}
       <li
         {{on 'click' (fn selectExercise exercise)}}
         class="list__item"
       >
-      {{exercise.name}} test
+      {{exercise.name}}
       </li>
     {{/each}}
   </ul>

@@ -42,7 +42,6 @@
 .ember-power-select-options {
   margin: 0;
   border-radius: 4px;
-
 }
 
 .ember-power-select-option {
@@ -77,4 +76,12 @@
     border-radius: 4px;
     border-bottom: none;
   }
+}
+
+.ember-view.ember-basic-dropdown-trigger.ember-basic-dropdown-trigger--left.ember-basic-dropdown-trigger--below.ember-power-select-trigger.exercise-selector {
+  border-radius: 50px;
+}
+
+.ember-view.ember-basic-dropdown-trigger.ember-power-select-trigger.reps-selector {
+  border-radius: 50px;
 }

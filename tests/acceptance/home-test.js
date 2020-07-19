@@ -19,16 +19,6 @@ module('Acceptance | home', function(hooks) {
     assert.equal(currentURL(), '/home');
   });
 
-  test('Navigating to the records page', async function(assert) {
-    await authenticateSession();
-
-    await homePage.visit();
-
-    await appNavbar.recordsLink();
-
-    assert.equal(currentURL(), '/records');
-  });
-
   test('Navigating to the home page', async function(assert) {
     await authenticateSession();
 

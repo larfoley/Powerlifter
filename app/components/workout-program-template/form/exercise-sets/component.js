@@ -19,7 +19,6 @@ export default class WorkoutProgramTemplateFormExerciseSetsComponent extends Com
     })
 
     this.args.exerciseSets.pushObject(exerciseSet);
-    console.log('add set');
     this.newExerciseSet.order = parseInt(this.args.exerciseSets.sortBy('order').lastObject.order) + 1.
   }
 }

@@ -40,13 +40,13 @@ export default class WorkoutService extends Service {
     }
 
     const workoutProgram = await this._convertWorkoutProgramTemplateToWorkoutProgram(workoutProgramTemplate);
-
     await workoutProgram.save();
 
-    this.currentWorkoutProgram = workoutProgram;
+    this._currentWorkoutProgram = workoutProgram;
   }
 
   async _convertWorkoutProgramTemplateToWorkoutProgram(workoutProgramTemplate) {
+
     const workoutProgram = this.store.createRecord('workout-program', {
       author: workoutProgramTemplate.author,
       name: workoutProgramTemplate.name,
@@ -58,10 +58,28 @@ export default class WorkoutService extends Service {
     const workoutProgramTemplateCopy = await workoutProgramTemplate.copy({ deep: false });
     const serializedWorkoutProgramTemplate = workoutProgramTemplateCopy.serialize();
 
-    workoutProgramTemplateCopy.deleteRecord();
+    workoutProgramTemplateCopy.weeks.forEach((week) => {
+      week.workouts.forEach((workout) => {
+        if (workout) {
+          workout.unloadRecord()
+        }
+        if (workout) {
+          workout.exercises.forEach((exercise) => {
+            if (exercise) {
+              exercise.unloadRecord()
+            }
+            exercise.sets.forEach((workoutSet) => {
+              if (workoutSet) {
+                workoutSet.unloadRecord()
+              }
+            });
+          });
+        }
+      });
+    });
+    workoutProgramTemplateCopy.unloadRecord();
 
     serializedWorkoutProgramTemplate.weeks.forEach((week) => {
-
       const workoutProgramWeek = this.store.createRecord('workout-program-week', {
         week: week.week
       });
@@ -69,12 +87,14 @@ export default class WorkoutService extends Service {
       week.workouts.forEach((workout) => {
         const workoutProgramSession = this.store.createRecord('workout-session', {
           week: workout.week,
-          weekDay: workout.weekDay
+          weekDay: workout.weekDay,
+          day: workout.day
         });
 
         workout.exercises.forEach((workout) => {
           const workoutProgramBlock = this.store.createRecord('workout-block', {
-            exercise: workout.exercise
+            exercise: workout.exercise,
+            note: workout.note
           });
 
           workout.sets.forEach((workoutSet) => {

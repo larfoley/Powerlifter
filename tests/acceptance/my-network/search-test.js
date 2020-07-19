@@ -1,4 +1,4 @@
-import { module, test } from 'qunit';
+import { module, test, skip } from 'qunit';
 import { typeIn } from '@ember/test-helpers';
 import { setupApplicationTest } from 'ember-qunit';
 import { authenticateSession } from 'ember-simple-auth/test-support';
@@ -10,7 +10,7 @@ module('Acceptance | my network/search', function(hooks) {
   setupApplicationTest(hooks);
   setupMirage(hooks);
 
-  test('searching for a user', async function(assert) {
+  skip('searching for a user', async function(assert) {
     await authenticateSession();
 
     const username = 'john';
@@ -25,7 +25,7 @@ module('Acceptance | my network/search', function(hooks) {
     assert.equal(searchPage.userList.users[0].username, 'john', 'username is displayed');
   });
 
-  test('searching for a user that does not exist', async function(assert) {
+  skip('searching for a user that does not exist', async function(assert) {
     await authenticateSession();
     const username = 'john';
 
@@ -36,7 +36,7 @@ module('Acceptance | my network/search', function(hooks) {
     assert.equal(searchPage.userList.users.length, 0, 'no users found');
   });
 
-  test('sending a friend request', async function(assert) {
+  skip('sending a friend request', async function(assert) {
     await authenticateSession();
     const username = 'john';
 

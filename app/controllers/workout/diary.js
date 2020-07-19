@@ -11,17 +11,15 @@ export default class WorkoutDiaryController extends Controller {
   @tracked day = 1;
   @tracked week = 1;
   @tracked weekDay = 1;
-  @tracked foo = 1;
 
   @action
   goToNextWorkout() {
     if (isPresent(this._findWorkoutSession(this.week, this.day + 1))) {
-      // this.day = this.day + 1
-      // this.week = 1;
-      // this.weekDay = 5;
-      this.foo = 8
+      this.day = this.day + 1
+      this.week = 1;
+      this.weekDay = 5;
     } else if (this._findWorkoutSession(this.week + 1, this.day)) {
-      // this.week = this.week + 1
+      this.week = this.week + 1
     }
   }
 
@@ -49,7 +47,6 @@ export default class WorkoutDiaryController extends Controller {
   }
 
   get hasPrevious() {
-    console.log(123);
     if (this._findWorkoutSession(this.week, this.day - 1)) {
       return true;
     }
@@ -63,10 +60,14 @@ export default class WorkoutDiaryController extends Controller {
 
   @action
   _findWorkoutSession(week, day) {
-    const workoutWeek = this.model.weeks.find(w => w.week == week);
+    const workoutWeek = this.model.weeks.find((w) => {
+      return w.week === week;
+    });
 
-    return workoutWeek.workouts
-      .filter((workout) => workout.weekDay === day)
-      .firstObject;
+    if (workoutWeek) {
+      return workoutWeek.workouts
+        .filter((workout) => workout.weekDay === day)
+        .firstObject;
+    }
   }
 }

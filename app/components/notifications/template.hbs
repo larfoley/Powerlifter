@@ -2,8 +2,9 @@
   <div class="list">
     {{#each @notifications as |notif|}}
       <div class="list__item notification  {{if notif.isUnread "notification--is-unread"}}">
+        {{notif.link.route}}
         <LinkTo
-          @route="index"
+          @route={{notif.link.route}}
         >
         <div class="media">
           <div class="media__asset">

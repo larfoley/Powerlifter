@@ -39,7 +39,7 @@
           <FileUpload
             @name="avatar"
             @onfileadd={{action this.setMedia}}
-            @accept="video/*"
+            @accept="image/*,video/*"
           >
             <Icon @icon="photo-video" @primary={{true}} />
           </FileUpload>

@@ -1,11 +1,9 @@
-<div class="box box--transparent box--with-margin">
+<div class="">
   {{#each @workout.exercises as |workoutBlock index|}}
-    <div class="h4">
-      Exercise {{increment index}} - Squat
+    <div class="h5">
+      Exercise {{increment index}} - {{workoutBlock.exercise}}
     </div>
-    <div class="">
-      <p>Dont leave anything left in the tank</p>
-    </div>
+    <p>{{workoutBlock.note}}</p>
     <WorkoutBlock
       @workoutBlock={{workoutBlock}}
       @onUpdateExerciseSet={{fn @onUpdateExerciseSet}}
@@ -13,3 +11,16 @@
     />
   {{/each}}
 </div>
+{{#if @workout.everyWorkoutBlockIsCompleted}}
+  <div class="content-container__section">
+    <div class="flex flex--flex-end">
+      <Button
+        @text="Finish Workout"
+        @primary={{true}}
+        @icon="check"
+        {{on 'click' @completeWorkout}}
+      />
+    </div>
+  </div>
+  <br>
+{{/if}}

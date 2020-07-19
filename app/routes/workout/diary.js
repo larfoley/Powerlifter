@@ -6,7 +6,6 @@ export default class WorkoutDiaryRoute extends Route {
   @service workout;
 
   model(params) {
-    console.log(params);
     return this.workout.currentWorkoutProgram;
   }
 }

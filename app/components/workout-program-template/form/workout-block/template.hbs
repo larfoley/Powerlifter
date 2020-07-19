@@ -1,7 +1,9 @@
 <div>
   <div class="flex flex--space-between flex--align-center">
-    <div class="">
-      <h5>{{capitalize @workoutBlock.exercise}}</h5>
+    <div class="h5">
+      <small>Exercise {{@order}}</small>
+      {{capitalize @workoutBlock.exercise}}
+
     </div>
     <div>
       <Icon
@@ -10,45 +12,25 @@
         @prefix="far"
         {{on 'click' (fn @removeWorkoutBlock @workoutSession @workoutBlock)}}
       />
+      <LinkTo
+        @iconButton={{true}}
+        @noBorder={{true}}
+        @icon="edit"
+        @route="workout.my-programs.new.edit-exercise"
+        @query={{hash workoutBlockId=(if @workoutBlock.id @workoutBlock.id @workoutBlock.guid)}}
+      >
+        <Icon @icon="edit" @prefix="far" @tooltip="Edit exercise"/>
+      </LinkTo>
     </div>
   </div>
+  <br>
+  Note
+  <Form::Field >
+    <TextInput @value={{@workoutBlock.note}}/>
+  </Form::Field>
   <WorkoutProgramTemplate::Form::ExerciseSets
     @workoutBlock={{@workoutBlock}}
     @addWorkoutProgramSet={{fn @addWorkoutProgramSet}}
     @removeWorkoutProgramSet={{fn @removeWorkoutProgramSet }}
   />
-  {{!-- <div class="workout-program-sets">
-      {{#each @workoutBlock.sets as |exerciseSet index|}}
-        <div class="flex flex--align-center">
-          <Form::Field @label="Order" class="flex__grow">
-            <TextInput
-              @value={{exerciseSet.order}}
-              @inline={{true}}
-              type="number"
-            />
-          </Form::Field>
-          <Form::Field @label="Reps" class="flex__grow">
-            <TextInput
-              @value={{exerciseSet.targetReps}}
-              @inline={{true}}
-              type="number"
-            />
-          </Form::Field>
-          <div class="flex flex--flex-end">
-            <Icon
-              @icon="trash-alt"
-              @prefix="far"
-              {{action (fn @removeWorkoutProgramSet @workoutBlock exerciseSet) }}
-            />
-          </div>
-        </div>
-      {{/each}}
-    <Button
-      {{action (fn @addWorkoutProgramSet @workoutBlock) }}
-      @secondaryButton={{true}}
-      @text="Add Set"
-      @icon="plus"
-      @noBorder={{true}}
-    />
-  </div> --}}
 </div>

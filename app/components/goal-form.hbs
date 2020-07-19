@@ -5,17 +5,9 @@
           @label="Exercise"
           @errors={{this.goal.errors.exercise}}
         >
-          <PowerSelect
-            @triggerClass="exercise-selector"
-            @options={{@exercises}}
-            @searchField="name"
-            @placeholder="Select and exercise..."
+          <ExerciseSelect
             @selected={{this.goal.exercise}}
-            @triggerComponent="select-trigger"
-            @onChange={{fn (mut this.goal.exercise)}} as |exercise|
-          >
-            {{exercise.name}}
-          </PowerSelect>
+          />
         </InputField>
       {{/unless}}
       <InputField
@@ -63,9 +55,8 @@
           @submit={{true}}
           data-test-submit-button
           @primaryButton={{true}}
-        >
-          Add Goal
-        </Button>
+          @text="Save"
+        />
       <LinkTo class="button outlined-button" @route="goals">Cancel</LinkTo>
       </div>
   </div>

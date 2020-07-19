@@ -29,6 +29,16 @@ export default class WorkoutProgramFormComponent extends Component {
         week: 1,
       })
 
+      const firstWorkoutSession = this.store.createRecord('workout-session', {
+        day: 1,
+        week: 1,
+        weekDay: 1
+      });
+      
+      firstWorkoutSession.guid = guidFor(firstWorkoutSession)
+
+      firstWeek.workouts.pushObject(firstWorkoutSession);
+
       this.workoutProgram.weeks.pushObject(firstWeek);
 
     } else {
@@ -37,7 +47,6 @@ export default class WorkoutProgramFormComponent extends Component {
 
     this.workoutProgram.author = this.currentUser.user.username;
     this.weeks = this.workoutProgram.weeks;
-
   }
 
   willDestroy() {
@@ -68,6 +77,16 @@ export default class WorkoutProgramFormComponent extends Component {
     }
 
     return A();
+  }
+
+  get allWorkoutSessions() {
+    const workouts = A();
+
+    this.weeks.forEach((week) => {
+      week.workouts.forEach(workout => workouts.pushObject(workout));
+    })
+
+    return workouts;
   }
 
   get isValid() {
@@ -130,9 +149,12 @@ export default class WorkoutProgramFormComponent extends Component {
 
     weekCopy.week = this.weeks.lastObject.week + 1;
 
-
+    // Add new guids
     weekCopy.workouts.forEach((workout) => {
       workout.guid = guidFor(workout);
+      workout.exercises.forEach((exercise) => {
+        exercise.guid = guidFor(exercise);
+      });
     });
 
     this.weeks.pushObject(this.store.createRecord('workout-program-week', weekCopy));
@@ -191,7 +213,6 @@ export default class WorkoutProgramFormComponent extends Component {
 
     workout.guid = guidFor(workout);
     workout.week = this.selectedWeek ? this.selectedWeek.week : 1;
-
     this.workoutProgram.weeks.objectAt(this.selectedWeekIndex).workouts.pushObject(workout);
   }
 
@@ -201,14 +222,23 @@ export default class WorkoutProgramFormComponent extends Component {
   }
 
   @action
+  _setWorkoutDays() {
+    this.allWorkoutSessions.forEach((workout, i) => {
+      workout.day = i + 1;
+    });
+  }
+
+  @action
   async createWorkoutProgram() {
+    this._setWorkoutDays();
+
     try {
       await this.workoutProgram.save();
 
-      this.router.transitionTo('workout.my-programs')
+      this.router.transitionTo('workout.my-programs');
 
     } catch (e) {
-      console.log(e);
+      console.error(e);
     }
   }
 }

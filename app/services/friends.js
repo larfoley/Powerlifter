@@ -7,13 +7,13 @@ export default class FriendsService extends Service {
   @service toast;
 
   @action
-  async cancelOrDeclineRequest(friendId) {
+  async cancelOrDeclineRequest(friendRequest) {
 
     try {
-      const fr = await this.store.findRecord('friend-request', friendId, { reload: true });
-      const friend = await this.store.findRecord('user', friendId);
+      const user = await friendRequest.user.id;
+      const friend = await this.store.findRecord('user', friendRequest.friend._id);
 
-      await fr.destroyRecord();
+      await friendRequest.destroyRecord();
 
       friend.friendRequestRecieved = false;
       friend.friendRequestSent = false;
@@ -22,7 +22,6 @@ export default class FriendsService extends Service {
       console.log(e);
       fr.rollbackAttributes()
     }
-
   }
 
   @action

@@ -52,7 +52,7 @@
              {{/if}}
             </div>
           </div>
-          {{#each workout.exercises as |workoutBlock|}}
+          {{#each workout.exercises as |workoutBlock index|}}
             <div class="card">
               <div class="card__body">
                 <WorkoutProgramTemplate::Form::WorkoutBlock
@@ -61,6 +61,7 @@
                   @removeWorkoutProgramSet={{action this.removeWorkoutProgramSet}}
                   @addWorkoutProgramSet={{action this.addWorkoutProgramSet}}
                   @removeWorkoutBlock={{action this.removeWorkoutBlock }}
+                  @order={{increment index}}
                 />
               </div>
             </div>
@@ -79,7 +80,7 @@
       {{#if this.showAddWorkoutSessionButton}}
         <Button
           {{action this.addWorkoutSession}}
-          @text="Add Workout"
+          @text="Add Day"
           @icon="plus"
           class="workout-program__add-session-button"
         />

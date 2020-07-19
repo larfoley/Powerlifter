@@ -1,23 +1,20 @@
-<div class="exercise-sets">
-  <div class="exercise-sets__set-cell u-bold">Set</div>
-  <div class="exercise-sets__set-cell u-bold">Exercise</div>
-  <div class="exercise-sets__set-cell u-bold">Weight</div>
-  <div class="exercise-sets__set-cell u-bold">Reps</div>
-  <div class="exercise-sets__set-cell u-bold"></div>
-  <div class="">
-  </div>
+<div class="exercise-setsxxxxx">
+  {{!-- <div class="exercise-sets__set-cell exercise-sets__set-cell--heading">Set</div>
+  <div class="exercise-sets__set-cell exercise-sets__set-cell--heading">Reps Target</div>
+  <div class="exercise-sets__set-cell exercise-sets__set-cell--heading">Weight</div>
+  <div class="exercise-sets__set-cell exercise-sets__set-cell--heading">Reps</div>
+  <div class="exercise-sets__set-cell exercise-sets__set-cell--heading"></div> --}}
   {{#each @exerciseSets as |exerciseSet|}}
-
-    <div class="exercise-sets__set">
+    {{!-- <div class="exercise-sets__set">
       <div class="exercise-sets__set-cell">
         1
       </div>
       <div class="exercise-sets__set-cell">
-        Squat
+        1
       </div>
       <div class="exercise-sets__set-cell">
         {{#if exerciseSet.completed}}
-          <span>{{exerciseSet.weightLifted}}</span>
+        <span>{{exerciseSet.weightLifted}}</span>
         {{else}}
           <TextInput
             @value={{exerciseSet.weightLifted}}
@@ -43,10 +40,34 @@
           </div>
         {{/if}}
       </div>
-      <div class="exercise-sets__set-cellx">
-        &nbsp; / 5
-      </div>
       <div class="exercise-sets__set-cell">
+
+      </div>
+    </div> --}}
+    <div class="workout-program__set-header">
+      Set 1 | <span class="text text--muted">5 Reps</span>
+    </div>
+    <div class="workout-program__set-row {{if exerciseSet.completed "workout-program__set-row--completed"}}">
+      <div class="">
+        <label>Reps</label>
+        <TextInput
+          @value={{exerciseSet.repsCompleted}}
+          type="number"
+          {{on 'change' (fn @onUpdateExerciseSet exerciseSet)}}
+          type="number"
+          @inline={{true}}
+        />
+      </div>
+      <div class="">
+        <label>Weight</label>
+        <TextInput
+          @value={{exerciseSet.weightLifted}}
+          type="number"
+          @inline={{true}}
+          {{on 'change' (fn @onUpdateExerciseSet exerciseSet)}}
+        />
+      </div>
+      <div>
         <div class="flex flex--flex-end">
           <Button
             @icon="check"

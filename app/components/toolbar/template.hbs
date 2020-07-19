@@ -78,6 +78,8 @@
   </div>
   {{#if @tabs}}
     <Tabs @tabs={{@tabs}}/>
+    {{yield}}
+  {{else}}
+    {{yield}}
   {{/if}}
-  {{yield}}
 </div>

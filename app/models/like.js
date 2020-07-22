@@ -1,4 +1,4 @@
-import Model, { attr, belongsTo } from '@ember-data/model';
+import Model, { belongsTo } from '@ember-data/model';
 
 export default class LikeModel extends Model {
   @belongsTo('user') user;

@@ -64,10 +64,9 @@
           @submit={{true}}
           data-test-lift-record-submit-button
           @primaryButton={{true}}
-        >
-        Add Goal
-      </Button>
-      <Button @outlinedButton={{true}} onclick={{this.cancel}}>Cancel</Button>
+          @text="Save"
+        />
+      <Button @outlinedButton={{true}} onclick={{this.cancel}} @text="Cancel" />
       </div>
   </div>
 </form>

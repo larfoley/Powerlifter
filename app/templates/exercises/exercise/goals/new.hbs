@@ -1,4 +1,4 @@
-<PageOverlay>
+<FullScreenModal>
   <Toolbar
     @title={{concat "Add " (capitalize @model.exercise.name) " Goal"}}
     @backRoute="exercises.exercise.records"
@@ -8,4 +8,4 @@
     @selectedExercise={{@model.exercise}}
     @onCreateOrUpdate={{action this.transitionToRoute "exercises.exercise.goals" @model.exercise}}
   />
-</PageOverlay>
+</FullScreenModal>

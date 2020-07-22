@@ -11,7 +11,7 @@ export default class OAuth2PasswordGrantAuthenticator extends OAuth2PasswordGran
   sendClientIdAsQueryParam = true;
   @service currentUser;
 
-  async invalidate(data) {
+  async invalidate() {
     await super.invalidate();
 
     await fetch(`${host}/sign-out`, {
@@ -22,4 +22,4 @@ export default class OAuth2PasswordGrantAuthenticator extends OAuth2PasswordGran
       body: JSON.stringify(this.currentUser.user),
     });
   }
-};
+}

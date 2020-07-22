@@ -1,3 +1,12 @@
+<Toolbar
+  @title="Workout"
+  @sticky={{false}}
+  @tabs={{ array
+    (hash label="Diary" route="workout.diary")
+    (hash label="My Programs" route="workout.my-programs")
+    (hash label="History" route="workout.history")
+  }}
+/>
 {{#if @model}}
   <WorkoutProgram
     @workoutProgram={{@model}}

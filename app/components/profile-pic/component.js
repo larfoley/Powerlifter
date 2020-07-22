@@ -1,6 +1,5 @@
 import Component from '@glimmer/component';
 import { inject as service } from '@ember/service';
-import { typeOf } from '@ember/utils';
 import { action } from '@ember/object';
 import { tracked } from '@glimmer/tracking';
 
@@ -14,6 +13,7 @@ export default class ProfilePicComponent extends Component {
 
   @action
   async setProfilePic(file) {
+    console.log('set pic');
     const url = await file.readAsDataURL();
     const mediaType = file.type.split('/')[0];
     const media = this.store.createRecord('file', { mediaType, url });
@@ -26,7 +26,6 @@ export default class ProfilePicComponent extends Component {
     await user.save();
 
     profilePic = response.body.location;
-
 
     this.toast.success('Profile picture updated');
   }

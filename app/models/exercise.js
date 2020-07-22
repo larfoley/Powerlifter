@@ -1,5 +1,4 @@
 import Model, { attr } from '@ember-data/model';
-import { computed, get } from '@ember/object';
 import { capitalize } from '@ember/string';
 
 const exerciseType = {
@@ -17,5 +16,4 @@ export default class ExerciseModel extends Model {
   get displayName() {
     return capitalize(this.name);
   }
-
-};
+}

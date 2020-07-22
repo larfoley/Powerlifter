@@ -1,4 +1,107 @@
-{{#if @records.length}}
+<div class="card">
+  <div class="card__body">
+    <div class="flex flex--flex-end">
+      <Button
+        @icon="sort"
+        @text="{{if this.sortOptionIsSelected this.selectedSortOption.label "Sort"}}"
+        @secondary={{this.sortOptionIsSelected}}
+        {{on 'click' (fn this.toggleSortModal)}}
+      />
+      <Button
+        @icon="filter"
+        @text="{{if this.filterOptionIsSelected this.selectedFilterOption.label "Filter"}}"
+        @secondary={{this.filterOptionIsSelected}}
+        {{on 'click' (fn this.toggleFilterModal)}}
+      />
+    </div>
+    <Tabs
+      @tabs={{ array
+        (hash label="Personal Bests" route="exercises")
+        (hash label="history" route="my-network.friends")
+      }}
+      @sticky={{false}}
+      @inline={{true}}
+    />
+    {{#each this.records as |record|}}
+      <ul class="card__list">
+        <li class="card__list-item flex flex--space-between flex flex--align-center">
+          <div class="">
+            <div class="h5">{{record.exercise.name}}</div>
+            {{record.weightLifted}} kgs for {{record.reps}} Reps
+          </div>
+          <div>
+            <span class="text text--muted text--small">
+              {{due-date record.date 'MM-DD-YYYY'}}
+            </span>
+          </div>
+        </li>
+      </ul>
+    {{else}}
+      <ZeroStateMessage @message="You have not lift records" @icon="dumbbell"/>
+    {{/each}}
+  </div>
+</div>
+{{#if this.showSortModal}}
+  <ModalDialog @translucentOverlay={{true}}>
+    <div class="card__body">
+      <div class="h3 flex flex--space-between flex--align-center">
+        Sort by <Icon @icon="times" {{on 'click' (fn this.toggleSortModal)}} />
+      </div>
+      <ul class="card__list">
+        {{#each this.sortOptions as |option|}}
+          <li
+            class="card__list-item flex flex--space-between flex--align-center"
+            {{on 'click' (fn this.onSelectSortOption option)}}
+          >
+            {{option.label}}
+            {{#if (eq this.selectedSortOption option)}}
+              <Icon @icon="check" @primary={{true}}/>
+            {{/if}}
+          </li>
+        {{/each}}
+      </ul>
+    </div>
+  </ModalDialog>
+{{/if}}
+
+{{#if this.showFilterModal}}
+  <ModalDialog @translucentOverlay={{true}}>
+    <div class="card__body">
+      <h3 class="h3 flex flex--space-between flex--align-center">
+        Filter <Icon @icon="times" {{on 'click' (fn this.toggleFilterModal)}} />
+      </h3>
+      <div class="">
+        <div class="h5">Reps</div>
+        <ul class="inline-list">
+          {{#each this.filterOptions.reps.options as |option|}}
+            <li class="inline-list__item">
+              <Button
+                @text={{option.label}}
+                @primary={{eq this.filterOptions.reps.selected option.value}}
+                {{on 'click' (fn this.onSelectFilterOption option)}}
+              />
+            </li>
+          {{/each}}
+        </ul>
+      </div>
+      {{!-- <ul class="card__list">
+        {{#each this.filterOptions as |filterOption|}}
+          <li
+            class="card__list-item flex flex--space-between flex--align-center"
+            {{on 'click' (fn this.onSelectFilterOption filterOption)}}
+          >
+            {{filterOption.label}}
+            {{#if (eq this.selectedFilterOption option)}}
+              <Icon @icon="check" @primary={{true}}/>
+            {{/if}}
+          </li>
+        {{/each}}
+      </ul> --}}
+    </div>
+  </ModalDialog>
+{{/if}}
+
+{{!-- {{#if @records.length}}
   <ul class="list box box--transparent">
     {{#each @records as |record|}}
       <li class="card list__item">
@@ -17,16 +120,16 @@
                 reps
               </div>
             </div>
-            {{!-- <div class="media__actions">
+            <div class="media__actions">
               <div class="">
               Due date
             </div>
               <span class="text text--muted text--small">1, Jan, 2010</span><br>
 
-            </div> --}}
+            </div>
           </div>
-          {{!-- <span data-test-lift-record-date>Date: {{format-date record.date}}</span> --}}
-          {{!-- <div class="flex">
+          <span data-test-lift-record-date>Date: {{format-date record.date}}</span>
+          <div class="flex">
             <LinkTo
             class="button"
             @route="records.edit"
@@ -41,7 +144,7 @@
           <FaIcon @icon="trash-alt" @prefix="far" />
           <span>Delete</span>
         </Button>
-        </div> --}}
+        </div>
       </LinkTo>
 
       </li>
@@ -51,4 +154,4 @@
 
   <ZeroStateMessage @message="No Records" @icon="trophy" />
 
-{{/if}}
+{{/if}} --}}

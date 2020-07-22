@@ -39,8 +39,8 @@ export default class WorkoutProgramResultsComponent extends Component {
 
     results.forEach((result) => {
       this.achievments.pushObject(result);
-      if (result.isPersonalBest) {
-      }
+      // if (result.isPersonalBest) {
+      // }
     });
 
   }

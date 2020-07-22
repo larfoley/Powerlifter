@@ -13,6 +13,10 @@
     padding-right: 2em;
   }
 
+  &__section {
+    padding: 1.5em;
+  }
+
   &__footer, &__header {
     font-size: 15px;
     padding-top: 1.5em;
@@ -40,16 +44,19 @@
     padding: 0.5em 1em;
   }
 
-  &__title {
-    font-size: 1.1rem;
-    margin:  0;
+  &__list {
+    margin: 1.5em 0 0 0;
   }
 
-  &__sub-title {
-    font-size: .8rem;
-    margin:  0;
-    color: $muted-text;
-    font-weight: normal;
+  &__list-item {
+    padding: 1em;
+    // border: 1px solid #eee;
+    border-radius: 10px;
+
+    &:hover {
+      cursor: pointer;
+      background-color: #eee;
+    }
   }
 
 }

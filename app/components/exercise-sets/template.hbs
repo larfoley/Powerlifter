@@ -1,82 +1,91 @@
-<div class="exercise-setsxxxxx">
-  {{!-- <div class="exercise-sets__set-cell exercise-sets__set-cell--heading">Set</div>
-  <div class="exercise-sets__set-cell exercise-sets__set-cell--heading">Reps Target</div>
-  <div class="exercise-sets__set-cell exercise-sets__set-cell--heading">Weight</div>
-  <div class="exercise-sets__set-cell exercise-sets__set-cell--heading">Reps</div>
-  <div class="exercise-sets__set-cell exercise-sets__set-cell--heading"></div> --}}
-  {{#each @exerciseSets as |exerciseSet|}}
-    {{!-- <div class="exercise-sets__set">
-      <div class="exercise-sets__set-cell">
-        1
-      </div>
-      <div class="exercise-sets__set-cell">
-        1
-      </div>
-      <div class="exercise-sets__set-cell">
-        {{#if exerciseSet.completed}}
-        <span>{{exerciseSet.weightLifted}}</span>
-        {{else}}
-          <TextInput
-            @value={{exerciseSet.weightLifted}}
-            type="number"
-            @inline={{true}}
-            {{on 'change' (fn @onUpdateExerciseSet exerciseSet)}}
-          />
-        {{/if}}
-      </div>
-
-      <div class="exercise-sets__set-cell">
-        {{#if exerciseSet.completed}}
-          <span>{{exerciseSet.repsCompleted}}</span>
-        {{else}}
-          <div class="">
-            <TextInput
-              @value={{exerciseSet.repsCompleted}}
-              type="number"
-              {{on 'change' (fn @onUpdateExerciseSet exerciseSet)}}
-              type="number"
-              @inline={{true}}
-            />
+<div>
+  {{#if @workoutIsComplete}}
+    <div class="card">
+      <div class="card__body">
+        <div class="workout-program__workout-results">
+          <div class="workout-program__workout-result-header">
+            Set
           </div>
-        {{/if}}
-      </div>
-      <div class="exercise-sets__set-cell">
-
-      </div>
-    </div> --}}
-    <div class="workout-program__set-header">
-      Set 1 | <span class="text text--muted">5 Reps</span>
-    </div>
-    <div class="workout-program__set-row {{if exerciseSet.completed "workout-program__set-row--completed"}}">
-      <div class="">
-        <label>Reps</label>
-        <TextInput
-          @value={{exerciseSet.repsCompleted}}
-          type="number"
-          {{on 'change' (fn @onUpdateExerciseSet exerciseSet)}}
-          type="number"
-          @inline={{true}}
-        />
-      </div>
-      <div class="">
-        <label>Weight</label>
-        <TextInput
-          @value={{exerciseSet.weightLifted}}
-          type="number"
-          @inline={{true}}
-          {{on 'change' (fn @onUpdateExerciseSet exerciseSet)}}
-        />
-      </div>
-      <div>
-        <div class="flex flex--flex-end">
-          <Button
-            @icon="check"
-            class="exercise-sets__checkbox {{if exerciseSet.completed "exercise-sets__checkbox--completed"}}"
-            {{on 'click' (fn @onToggleExerciseSetCompleted exerciseSet)}}
-            disabled={{exerciseSet.isNotValid}}
-          />
+          <div class="workout-program__workout-result-header">
+            Weight
+          </div>
+          <div class="workout-program__workout-result-header">
+            Reps done
+          </div>
+          <div class="workout-program__workout-result-header">
+            Target reps
+          </div>
+          <div class="workout-program__workout-result-header">
+          </div>
+          {{#each @exerciseSets as |exerciseSet index|}}
+            <div class="workout-program__workout-result-cell">
+              {{increment index}}
+            </div>
+            <div class="workout-program__workout-result-cell">
+              {{exerciseSet.weightLifted}}
+            </div>
+            <div class="workout-program__workout-result-cell">
+              {{exerciseSet.repsCompleted}}
+            </div>
+            <div class="workout-program__workout-result-cell">
+              {{exerciseSet.targetReps}}
+            </div>
+            {{#if exerciseSet.completedSuccessfully }}
+              <div class="workout-program__workout-result-cell workout-program__workout-result-cell--success">
+                <FaIcon @icon="check" />
+              </div>
+            {{else}}
+              <div class="workout-program__workout-result-cell workout-program__workout-result-cell--failed">
+                <FaIcon @icon="times" />
+              </div>
+            {{/if}}
+          {{/each}}
         </div>
       </div>
     </div>
-  {{/each}}
+    {{else}}
+      {{#each @exerciseSets as |exerciseSet index|}}
+      <div class="card">
+        <div class="card__body">
+        <div class="workout-program__set-header">
+          <span class="workout-program__set-header-primary-label">
+            Set {{increment index}}
+          </span>
+          <span class="workout-program__set-header-secondary-label">
+            {{exerciseSet.targetReps}} Reps
+          </span>
+        </div>
+        <div class="workout-program__set-row {{if exerciseSet.completed "workout-program__set-row--completed"}}">
+          <label>Weight (Kgs)</label>
+          <label>Reps</label>
+          <div class="">
+          </div>
+          <div>
+            <TextInput
+              @value={{exerciseSet.weightLifted}}
+              type="number"
+              @inline={{true}}
+              @disabled={{exerciseSet.completed}}
+            />
+          </div>
+          <div>
+            <TextInput
+              @value={{exerciseSet.repsCompleted}}
+              type="number"
+              @inline={{true}}
+              @disabled={{exerciseSet.completed}}
+            />
+          </div>
+          <div class="">
+            <Checkbox
+              @value={{exerciseSet.completed}}
+              @onChange={{fn @onToggleExerciseSetCompleted exerciseSet}}
+              @disabled={{exerciseSet.isNotValid}}
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+    {{/each}}
+  {{/if}}
 </div>

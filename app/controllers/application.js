@@ -9,4 +9,4 @@ export default class ApplicationController extends Controller {
   invalidateSession() {
     this.session.invalidate();
   }
-};
+}

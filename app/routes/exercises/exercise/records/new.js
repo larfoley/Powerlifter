@@ -10,5 +10,5 @@ export default class ExercisesExerciseRecordsNewRoute extends Route {
       exercises,
       exercise
     })
-  };
-};
+  }
+}

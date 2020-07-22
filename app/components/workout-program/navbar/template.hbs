@@ -1,35 +1,45 @@
 <div class="program-navbar box">
-    <div class="flex flex--space-between flex__grow flex--align-center">
-      <div>
-        {{#if @hasPreviousWorkout}}
-          <Icon @icon="arrow-left" @primary={{true}} {{action @goToPreviousWorkout}}/>
-        {{else}}
-          <Icon @icon="arrow-left" @primary={{true}} @disabled={{true}} />
-        {{/if}}
-      </div>
-      <div class="text--center">
-        <div class="h1 text text--muted">Week {{@currentWorkoutSession.week}}</div>
-        <div class="h2">Day {{@currentWorkoutSession.weekDay}}</div>
-        {{#if @currentWorkoutSession.completed}}
-          <div class="text text--success">
-            Completed
-          </div>
-        {{/if}}
-      </div>
-      <div>
-        {{#if @hasNextWorkout}}
-          <Icon
-            @icon="arrow-right"
-            {{action @goToNextWorkout}}
-            @primary={{true}}
-          />
-        {{else}}
-          <Icon
-            @icon="arrow-right"
-            @primary={{true}}
-            @disabled={{true}}
-          />
-        {{/if}}
-      </div>
+  <div class="program-navbar__action-bar">
+    {{#if this.showFinishWorkoutButton}}
+    <Button
+      @text="Finish Workout"
+      @primary={{true}}
+      @icon="check"
+      {{on 'click' @completeWorkout}}
+    />
+    {{/if}}
+  </div>
+  <div class="program-navbar__calendar">
+    <div>
+      {{#if @hasPreviousWorkout}}
+        <Icon @icon="arrow-left" @primary={{true}} {{action @goToPreviousWorkout}}/>
+      {{else}}
+        <Icon @icon="arrow-left" @primary={{true}} @disabled={{true}} />
+      {{/if}}
     </div>
+    <div class="text--center">
+      <div class="h1 text text--muted">Week {{@currentWorkoutSession.week}}</div>
+      <div class="h2">Day {{@currentWorkoutSession.weekDay}}</div>
+      {{#if @currentWorkoutSession.completed}}
+        <div class="text text--primary u-bold">
+          Completed
+        </div>
+      {{/if}}
+    </div>
+    <div>
+      {{#if @hasNextWorkout}}
+        <Icon
+          @icon="arrow-right"
+          {{action @goToNextWorkout}}
+          @primary={{true}}
+        />
+      {{else}}
+        <Icon
+          @icon="arrow-right"
+          @primary={{true}}
+          @disabled={{true}}
+        />
+      {{/if}}
+    </div>
+  </div>
 </div>

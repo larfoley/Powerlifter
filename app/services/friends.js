@@ -10,8 +10,8 @@ export default class FriendsService extends Service {
   async cancelOrDeclineRequest(friendRequest) {
 
     try {
-      const user = await friendRequest.user.id;
-      const friend = await this.store.findRecord('user', friendRequest.friend._id);
+      const userId = await friendRequest.user.id;
+      const friend = await this.store.findRecord('user', userId);
 
       await friendRequest.destroyRecord();
 
@@ -19,8 +19,8 @@ export default class FriendsService extends Service {
       friend.friendRequestSent = false;
 
     } catch (e) {
-      console.log(e);
-      fr.rollbackAttributes()
+      console.error(e);
+      friendRequest.rollbackAttributes()
     }
   }
 

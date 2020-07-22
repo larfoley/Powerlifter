@@ -1,12 +1,24 @@
 .checkbox {
   display: flex;
   align-items: center;
+
+  &--checked {
+    color: $primary-color;
+  }
+
+  &--disabled {
+    opacity: 0.2;
+
+    .checkbox__icon:hover {
+      cursor: not-allowed !important;
+    }
+  }
+
   .icon__wrapper {
     font-size: 22px;
   }
 
   &__icon {
-    color: $primary-color;
     margin-right: 5px;
   }
 

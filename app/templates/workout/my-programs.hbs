@@ -1,3 +1,11 @@
+<Toolbar
+  @title="Workout"
+  @tabs={{ array
+    (hash label="Diary" route="workout.diary")
+    (hash label="My Programs" route="workout.my-programs")
+    (hash label="History" route="workout.history")
+  }}
+/>
 <div class="content-container">
   <div class="content-container__section">
     <Button
@@ -7,6 +15,10 @@
       @icon="plus"
     />
   </div>
-  <WorkoutProgramTemplate::List @workoutPrograms={{@model}}/>
+  {{#if @model}}
+    <WorkoutProgramTemplate::List @workoutPrograms={{@model}}/>
+  {{else}}
+    <ZeroStateMessage @message="You have not created any workout porgrams" @icon="clipboard-list"/>
+  {{/if}}
   {{outlet}}
 </div>

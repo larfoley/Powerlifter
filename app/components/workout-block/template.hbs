@@ -1,9 +1,7 @@
-<div class="card">
-  <div class="card__body">
-      <ExerciseSets
-        @exerciseSets={{@workoutBlock.sets}}
-        @onUpdateExerciseSet={{@onUpdateExerciseSet}}
-        @onToggleExerciseSetCompleted={{@onToggleExerciseSetCompleted}}
-      />
-  </div>
-</div>
+
+    <ExerciseSets
+      @exerciseSets={{@workoutBlock.sets}}
+      @onUpdateExerciseSet={{@onUpdateExerciseSet}}
+      @onToggleExerciseSetCompleted={{@onToggleExerciseSetCompleted}}
+      @workoutIsComplete={{@workoutIsComplete}}
+    />

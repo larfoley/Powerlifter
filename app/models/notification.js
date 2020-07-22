@@ -1,5 +1,4 @@
 import Model, { attr } from '@ember-data/model';
-import { htmlSafe } from '@ember/template';
 
 export default class NotificationModel extends Model {
   @attr('boolean') isUnread;

@@ -23,7 +23,7 @@ export default class FileUploaderService extends Service {
   @action
   upload(file) {
     return file.upload(host + '/upload', {
-      headers: { userAuthToken: this.token }
+      headers: { Authorization: 'Bearer ' + this.token }
     });
   }
 }

@@ -3,7 +3,6 @@ import { inject as service } from '@ember/service';
 import { typeOf } from '@ember/utils';
 import { action, computed } from '@ember/object';
 import { tracked } from '@glimmer/tracking';
-import { isEmpty } from '@ember/utils';
 import ENV from '../../../config/environment';
 
 const { host } = ENV.APP;
@@ -22,7 +21,7 @@ export default class PostsPostFormComponent extends Component {
   @computed('post.media')
   get hasMedia() {
     return this.post.belongsTo('media').value() !== null;
-  };
+  }
 
   constructor() {
     super(...arguments);
@@ -69,7 +68,7 @@ export default class PostsPostFormComponent extends Component {
 
     try {
       if (this.hasMedia && post.media.get('isNew')) {
-
+        
         const response = await this.file.upload(host + '/upload', {
           headers: { authorization: 'Bearer ' + this.token }
         });

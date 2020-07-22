@@ -5,4 +5,4 @@ const primaryKey = config['ember-cli-mirage'].enabled || config.environment === 
 
 export default class ApplicationSerializer extends RESTSerializer {
   primaryKey = primaryKey;
-};
+}

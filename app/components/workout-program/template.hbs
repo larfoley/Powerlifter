@@ -4,6 +4,7 @@
   @hasPreviousWorkout={{this.hasPreviousWorkout}}
   @goToNextWorkout={{fn this.goToNextWorkout}}
   @goToPreviousWorkout={{fn this.goToPreviousWorkout}}
+  @completeWorkout={{fn this.completeWorkout}}
 />
 <div class="workout-program__header">
   {{#if @workoutProgram.name}}
@@ -31,10 +32,6 @@
         >
       </div>
     </div>
-    <div class="flex flex--space-between">
-      {{!-- <span class="text text--muted">0%</span>
-      <span class="text text--muted">100%</span> --}}
-    </div>
   </div>
   <br>
   <div class="flex flex--justify-center">
@@ -55,12 +52,12 @@
         />
       {{/if}}
       {{#if this.showFinishWorkoutProgramButton}}
-      <Button
-      @icon="check"
-      @primary={{true}}
-      @text="Finish Program"
-      {{action this.completeWorkoutProgram}}
-      />
+        <Button
+          @icon="check"
+          @primary={{true}}
+          @text="Finish Program"
+          {{action this.completeWorkoutProgram}}
+        />
       {{/if}}
     </div>
   {{/if}}
@@ -73,7 +70,9 @@
 </div>
 {{#if this.showWorkoutCompleteDialog}}
   <WorkoutProgram::WorkoutCompleteDialog
-    @onClose={{this.onCloseWorkoutCompleteDialog}}
-    @achievments={{this.currentWorkout}}
+    @onClose={{fn this.onCloseWorkoutCompleteDialog}}
+    @goToNextWorkout={{fn this.goToNextWorkout}}
+    @hasNextWorkout={{this.hasNextWorkout}}
+    @workout={{this.currentWorkout}}
   />
 {{/if}}

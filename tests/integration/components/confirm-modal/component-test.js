@@ -7,8 +7,8 @@ module('Integration | Component | confirm-modal', function(hooks) {
   setupRenderingTest(hooks);
 
   test('it renders', async function(assert) {
-    this.set('onConfirm', function(val) { });
-    this.set('onCancel', function(val) { });
+    this.set('onConfirm', function() { });
+    this.set('onCancel', function() { });
 
     await render(hbs`
       <ConfirmModal

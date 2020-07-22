@@ -1,8 +1,6 @@
 import Controller from '@ember/controller';
 import { tracked } from '@glimmer/tracking'
 import { action } from '@ember/object';
-import { set } from '@ember/object';
-import { A } from '@ember/array';
 import { isPresent } from '@ember/utils';
 
 export default class WorkoutDiaryController extends Controller {

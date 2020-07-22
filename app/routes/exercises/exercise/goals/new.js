@@ -11,4 +11,4 @@ export default class ExercisesExerciseGoalsNewRoute extends Route {
       exercise
     })
   }
-};
+}

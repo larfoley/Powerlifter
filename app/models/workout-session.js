@@ -8,6 +8,8 @@ export default class WorkoutSessionModel extends Model.extend(Copyable) {
   @hasMany('workout-block') exercises;
   @attr('boolean', { defaultValue: false }) completed;
   @attr('string') guid;
+  @attr({ defaultValue() { return []}}) goalsAchieved;
+  @attr({ defaultValue() { return []}}) personalBestsAchieved;
 
   get everyWorkoutBlockIsCompleted() {
     return this.exercises.every(workoutBlock => workoutBlock.everySetIsCompleted);

@@ -3,8 +3,7 @@ import { action } from '@ember/object';
 
 import Ember from 'ember';
 import { task } from 'ember-concurrency';
-
-const { get, set } = Ember;
+import { get, set } from '@ember/object';
 
 export default class FileUploadController extends Controller.extend({
   uploadPhoto: task(function * (file) {
@@ -37,4 +36,4 @@ export default class FileUploadController extends Controller.extend({
   uploadImage(file) {
     // get(this, 'uploadPhoto').perform(file);
   }
-};
+}

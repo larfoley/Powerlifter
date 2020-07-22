@@ -8,19 +8,7 @@
       @workoutBlock={{workoutBlock}}
       @onUpdateExerciseSet={{fn @onUpdateExerciseSet}}
       @onToggleExerciseSetCompleted={{fn @onToggleExerciseSetCompleted}}
+      @workoutIsComplete={{@workout.completed}}
     />
   {{/each}}
 </div>
-{{#if @workout.everyWorkoutBlockIsCompleted}}
-  <div class="content-container__section">
-    <div class="flex flex--flex-end">
-      <Button
-        @text="Finish Workout"
-        @primary={{true}}
-        @icon="check"
-        {{on 'click' @completeWorkout}}
-      />
-    </div>
-  </div>
-  <br>
-{{/if}}

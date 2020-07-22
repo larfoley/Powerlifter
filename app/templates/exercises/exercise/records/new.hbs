@@ -1,11 +1,12 @@
-<PageOverlay @title="Add New Record">
+<FullScreenModal @title="Add New Record">
   <Toolbar
     @title={{concat "Add " (capitalize @model.exercise.name) " Record"}}
     @backRoute="exercises.exercise.records"
-    @backRouteModle={{@model.exercise}}
+    @backRouteModel={{@model.exercise}}
+    @showCloseIcon={{true}}
   />
   <LiftRecordForm
     @selectedExercise={{@model.exercise}}
     @onCreateOrUpdate={{action this.transitionToRoute "exercises.exercise.records" @model.exercise}}
   />
-</PageOverlay>
+</FullScreenModal>

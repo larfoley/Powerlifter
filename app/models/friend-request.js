@@ -21,4 +21,4 @@ export default class FriendRequestModel extends Model {
   get isFriend() {
     return this.status === 'accepted';
   }
-};
+}

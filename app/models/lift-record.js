@@ -19,7 +19,7 @@ const validations = {
 export default Model.extend(Validator, {
   exercise: attr(),
   date: attr('date', { defaultValue: null }),
-  weightLifted: attr('string'),
+  weightLifted: attr('number'),
   reps: attr('number'),
   isPersonalBest: attr('boolean'),
   media: belongsTo('photo'),

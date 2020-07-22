@@ -3,27 +3,33 @@ import { action } from '@ember/object';
 import { tracked } from '@glimmer/tracking';
 
 export default class CheckboxComponent extends Component {
-  @tracked _checked;
+  @tracked _value;
 
   constructor() {
     super(...arguments);
-    this._checked = this.args.checked || false;
+    this._value = this.args.value || false;
   }
 
-  get checked() {
-    return this._checked;
+  get disabled() {
+    return this.args.disabled;
   }
 
-  set checked(value) {
-    this._checked = value;
+  get value() {
+    return this._value;
+  }
+
+  set value(newValue) {
+    this._value = newValue;
   }
 
   @action
   toggleValue() {
-    this.checked = !this.checked;
+    if (!this.disabled) {
+      this.value = !this.value;
 
-    if (this.args.onChange) {
-      this.args.onChange();
+      if (this.args.onChange) {
+        this.args.onChange();
+      }
     }
   }
 }

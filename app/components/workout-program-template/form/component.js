@@ -5,7 +5,6 @@ import { typeOf } from '@ember/utils';
 import { tracked } from '@glimmer/tracking';
 import { guidFor } from '@ember/object/internals';
 import { A } from '@ember/array';
-import { copy } from '@ember/object/internals';
 
 export default class WorkoutProgramFormComponent extends Component {
   @service store;
@@ -34,7 +33,7 @@ export default class WorkoutProgramFormComponent extends Component {
         week: 1,
         weekDay: 1
       });
-      
+
       firstWorkoutSession.guid = guidFor(firstWorkoutSession)
 
       firstWeek.workouts.pushObject(firstWorkoutSession);
@@ -59,6 +58,8 @@ export default class WorkoutProgramFormComponent extends Component {
     if (this.weeks.length > 0) {
       return this.weeks.objectAt(this.selectedWeekIndex);
     }
+
+    return null;
   }
 
   get showAddWorkoutSessionButton() {

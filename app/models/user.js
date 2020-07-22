@@ -1,21 +1,18 @@
 import Model, { attr, belongsTo, hasMany } from '@ember-data/model';
 import Validator from "ember-model-validator/mixins/object-validator";
-import { isPresent } from '@ember/utils';
-
-const validations = {
-  username: {
-    presence: true,
-  },
-  email: {
-    presence: true,
-  },
-  password: {
-    presence: true,
-  }
-}
 
 export default class UserModel extends Model.extend(Validator) {
-  validations;
+  validations = {
+    username: {
+      presence: true,
+    },
+    email: {
+      presence: true,
+    },
+    password: {
+      presence: true,
+    }
+  }
 
   @attr('string') username;
   @attr('string') email;
@@ -29,5 +26,4 @@ export default class UserModel extends Model.extend(Validator) {
   @attr('string') profilePic;
   @hasMany('workout-program-template') workoutProgramTemplates;
   @hasMany('workout-program') workoutHistory;
-
-};
+}

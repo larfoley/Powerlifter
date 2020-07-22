@@ -1,6 +1,5 @@
 import Model, { attr, hasMany, belongsTo } from '@ember-data/model';
 import Validator from "ember-model-validator/mixins/object-validator";
-import { isPresent } from '@ember/utils';
 
 export default class PostModel extends Model.extend(Validator) {
   @attr() author;

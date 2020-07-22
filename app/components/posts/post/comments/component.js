@@ -12,7 +12,6 @@ export default class PostCommentsComponent extends Component {
   @tracked isLoadingMoreComments = false;
 
   get hasMoreComments() {
-    console.log(this.args.post.commentsCount, this.args.comments.length);
     return this.args.post.commentsCount > this.args.comments.length
   }
 
@@ -20,7 +19,7 @@ export default class PostCommentsComponent extends Component {
   async loadMoreComments() {
     this.isLoadingMoreComments = true;
 
-    const comments = await this.store.query('comment', {
+    await this.store.query('comment', {
       postId: this.args.post.id,
       offset: this.args.comments.length
     })

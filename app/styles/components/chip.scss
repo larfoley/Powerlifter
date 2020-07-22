@@ -5,6 +5,7 @@
   text-align: center;
   border-radius: 50px;
   font-weight: bold;
+  min-width: 65px;
 
   &--primary {
     border: 2px solid $primary-color;

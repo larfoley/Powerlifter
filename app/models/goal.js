@@ -16,7 +16,6 @@ const validations = {
   },
 }
 
-
 export default class GoalModel extends Model.extend(Validator) {
   @attr() exercise;
   @attr('number') weight;

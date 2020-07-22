@@ -1,11 +1,12 @@
-<div class="box box--with-margin box--transparent">
-  <div class="flex flex--flex-end">
+<div class="content-container">
+  <div class="content-container__section flex flex--flex-end">
     <Button
-      @primary={{true}}
-      @text="New Record"
-      @icon="plus"
-      @route="exercises.exercise.records.new"
-      />
+    @primary={{true}}
+    @text="New Record"
+    @icon="plus"
+    @route="exercises.exercise.records.new"
+    />
   </div>
+  <LiftRecords @records={{@model}} @recordPath="exercises.exercise.records.record" />
+  {{outlet}}
 </div>
-{{outlet}}

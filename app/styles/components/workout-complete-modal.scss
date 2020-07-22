@@ -1,0 +1,25 @@
+.workout-complete-modal {
+  padding: 2em;
+  max-width: 500px;
+  position: relative;
+
+  &__title {
+    @extend .h3;
+    text-align: center;
+    margin-bottom: 1em;
+  }
+
+  &__results-title {
+    font-weight: bold;
+  }
+
+  &__results-list {
+    margin: 0 0 1em 0;
+  }
+
+  &__close-icon {
+    position: absolute;
+    right: 1em;
+    top: 1em;
+  }
+}

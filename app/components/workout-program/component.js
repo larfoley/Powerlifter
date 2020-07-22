@@ -1,17 +1,30 @@
 import Component from '@glimmer/component';
 import { tracked } from '@glimmer/tracking'
 import { action } from '@ember/object';
-import { set } from '@ember/object';
 import { A } from '@ember/array';
 import { isPresent } from '@ember/utils';
+import { inject as service } from '@ember/service';
 
 export default class WorkoutProgramComponent extends Component {
+  @service store;
+  @service toast;
   @tracked showWorkoutCompleteDialog = false;
   @tracked selectedWorkoutDay = 1;
 
+  constructor() {
+    super(...arguments);
+
+    for (var workout of this.workoutSessions) {
+      if (!workout.completed) {
+        this.selectedWorkoutDay = workout.day;
+        break;
+      }
+    }
+  }
+
   get currentWorkout() {
-    return this.workoutSessions.find(x => {
-      return x.day === this.selectedWorkoutDay
+    return this.workoutSessions.find(workout => {
+      return workout.day === this.selectedWorkoutDay
     })
   }
 
@@ -57,70 +70,128 @@ export default class WorkoutProgramComponent extends Component {
   }
 
   @action
-  toggleExerciseSetCompleted(exerciseSet) {
+  async toggleExerciseSetCompleted(exerciseSet) {
     exerciseSet.completed = !exerciseSet.completed;
+    this.args.workoutProgram.save()
   }
 
   @action
-  goToNextWorkout(exerciseSet) {
+  goToNextWorkout() {
     if (this.hasNextWorkout) {
       this.selectedWorkoutDay = this.selectedWorkoutDay + 1;
+      document.documentElement.scrollTop = 0;
     }
   }
 
   @action
-  goToPreviousWorkout(exerciseSet) {
+  goToPreviousWorkout() {
     if (this.hasPreviousWorkout) {
       this.selectedWorkoutDay = this.selectedWorkoutDay - 1;
     }
   }
 
   @action
-  updateExerciseSet(exerciseSet) {
+  updateExerciseSet() {
     console.log(0);
-  }
-
-  get showFinishWorkoutProgramButton() {
-    return this.args.workoutProgram.progress === 100 && !this.args.workoutProgram.completed;
   }
 
   @action
   async completeWorkout() {
-    const workout = this.currentWorkout;
+    this.currentWorkout.goalsAchieved = []
+    this.currentWorkout.personalBestsAchieved = [];
+
+    const workout = this.currentWorkout.serialize();
 
     if (!workout.completed) {
 
-      workout.completed = true;
+      this.currentWorkout.completed = true;
       this.showWorkoutCompleteDialog = true;
 
-      // for (var exercise of workoutSession.exercises) {
-      //   const liftRecord = this.store.createRecord('lift-record');
-      //   await liftRecord.save();
-      //
-      //   if (liftRecord.isPersonalBest) {
-      //     workoutSession.achievments.pushObject({
-      //       achievedOn: new Date(),
-      //       exerciseName: 'squat',
-      //       weightLifted: 100,
-      //       reps: 1
-      //     });
-      //   }
-      // }
+      for (const exercise of workout.exercises) {
+        for (const exerciseSet of exercise.sets) {
+
+          const liftRecords = await this.store.query('lift-record', {
+            reps: exerciseSet.repsCompleted,
+            exercise: exercise.exercise
+          }).then((results) => {
+            return results.filter((lr) => {
+              console.log('filter lift records');
+              console.log('lr', lr.weightLifted);
+              console.log('es', exerciseSet.weightLifted);
+              return  lr.weightLifted > exerciseSet.weightLifted
+            });
+          })
+
+          if (liftRecords.length === 0) {
+            const newLiftRecord = this.store.createRecord('lift-record', {
+              exercise: { name: exercise.exercise },
+              reps: exerciseSet.repsCompleted,
+              weightLifted: exerciseSet.weightLifted,
+              date: new Date()
+            })
+
+            await newLiftRecord.save();
+
+            this.currentWorkout.personalBestsAchieved.push({
+              exercise: newLiftRecord.exercise.name,
+              reps: newLiftRecord.reps,
+              weight: newLiftRecord.weightLifted,
+              achievedOn: new Date(),
+            })
+          }
+
+          const goals = await this.store.query('goal', {
+            reps: exerciseSet.repsCompleted,
+            exercise: exercise.exercise,
+            isCompleted: false,
+          }).then((results) => {
+            return results.filter((goal) => {
+              return exerciseSet.weightLifted >= goal.weight;
+            });
+          })
+
+          for (const goal of goals) {
+            goal.isCompleted = true;
+            goal.completedOn = new Date();
+
+            await goal.save();
+
+            this.currentWorkout.goalsAchieved.push({
+              exercise: goal.exercise.name,
+              reps: goal.reps,
+              weight: goal.weight,
+              achievedOn: new Date(),
+            })
+          }
+        }
+      }
+
+      const totalGoals = this.currentWorkout.goalsAchieved.length;
+      const totalPersonalBests = this.currentWorkout.personalBestsAchieved.length;
+
+      if (totalGoals > 0) {
+        const msg = totalGoals === 1 ? 'Goal Completed' : totalGoals + ' Goals completed';
+
+        this.toast.success(msg);
+      }
+
+      if (totalPersonalBests > 0) {
+        const msg = totalPersonalBests === 1 ? 'New Personal Best' : totalPersonalBests + ' New Personal Bests';
+
+        this.toast.success(msg);
+      }
+
+      this.args.workoutProgram.save();
     }
   }
 
   @action
   onCloseWorkoutCompleteDialog() {
     this.showWorkoutCompleteDialog = false;
-
-    if (this.hasNext) {
-      this.goToNextWorkout()
-    }
   }
 
   @action
   async completeWorkoutProgram() {
-    const workoutSession = this.currentWorkoutSession;
 
     this.currentWorkoutSession.completed = true;
     this.args.workoutProgram.completed = true;

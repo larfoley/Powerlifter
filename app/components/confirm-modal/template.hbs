@@ -1,5 +1,5 @@
 <ModalDialog
-  @onClose={{fn @onCancel}}
+  @onClose={{fn this.onCancel}}
   @targetAttachment="center"
   @translucentOverlay={{true}}
   @containerClass="confirm-modal"
@@ -14,7 +14,7 @@
       {{yield}}
     </div>
   <div>
-    <Button @primary={{true}} {{action @onConfirm}} @text="Yes" />
-    <Button @secondary={{true}} {{action @onCancel}} @text="No" />
+    <Button @primary={{true}} {{action this.onConfirm}} @text="Yes" />
+    <Button @secondary={{true}} {{action this.onCancel}} @text="No" />
   </div>
 </ModalDialog>

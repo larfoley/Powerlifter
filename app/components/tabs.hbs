@@ -1,11 +1,15 @@
-<div class="tabs">
+<div class="tabs {{if this.sticky "tabs--sticky"}}">
   {{#each @tabs as |tab|}}
     {{#if tab.model}}
-      <LinkTo class="tabs__tab" @route={{tab.route}} @model={{@tab.model}}>
+      <LinkTo
+        class="tabs__tab {{if @inline "tabs__tab--inline"}}"
+        @route={{tab.route}}
+        @model={{@tab.model}}
+      >
         {{tab.label}}
       </LinkTo>
     {{else}}
-      <LinkTo class="tabs__tab" @route={{tab.route}}>
+      <LinkTo class="tabs__tab {{if @inline "tabs__tab--inline"}}" @route={{tab.route}}>
         {{tab.label}}
       </LinkTo>
     {{/if}}

@@ -1,8 +1,9 @@
-<div class="box box--with-margin box--transparent">
+<div class="content-container">
   <div class="flex flex--flex-end">
     <LinkTo class="button primary-button" @route="exercises.exercise.goals.new">
       <FaIcon @icon="plus" /> New Goal
     </LinkTo>
   </div>
+  <Goals @goals={{@model}} />
+  {{outlet}}
 </div>
-{{outlet}}

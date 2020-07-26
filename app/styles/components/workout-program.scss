@@ -109,6 +109,10 @@
     grid-template-columns: 1fr 1fr 1fr 1fr 20px;
     text-align: left;
     font-size: .8em;
+
+    &--preview {
+      grid-template-columns: 60px 1fr 1fr;
+    }
   }
 
   &__workout-result-header {
@@ -119,6 +123,9 @@
     border-bottom: 1px solid #eee;
     padding: 1.2em 5px;
     align-self: center;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
 
     &--success {
       align-self: auto;
@@ -133,6 +140,23 @@
   &__workout-result-completed {
     border-bottom: 1px solid #eee;
     padding: 1em 0;
+  }
+
+  &__dates {
+    display: inline-block;
+    text-align: center;
+    margin-left: 1em;
+  }
+
+  &__date-label {
+    font-weight: bold;
+    font-size: .8rem;
+    min-width: 65px;
+    display: block;
+  }
+
+  &__date-value {
+    font-size: .9rem
   }
 }
 
@@ -152,6 +176,7 @@
     justify-content: space-between;
     align-items: center;
   }
+
 }
 
 .workout-template {

@@ -40,7 +40,11 @@ export default class WorkoutService extends Service {
     }
 
     const workoutProgram = await this._convertWorkoutProgramTemplateToWorkoutProgram(workoutProgramTemplate);
+
+    workoutProgram.startedOn = new Date();
     await workoutProgram.save();
+
+    this._removeDirtyProps()
 
     this._currentWorkoutProgram = workoutProgram;
   }
@@ -55,29 +59,30 @@ export default class WorkoutService extends Service {
       user: this.currentUser.user,
     });
 
-    const workoutProgramTemplateCopy = await workoutProgramTemplate.copy({ deep: false });
-    const serializedWorkoutProgramTemplate = workoutProgramTemplateCopy.serialize();
+    // const workoutProgramTemplateCopy = await workoutProgramTemplate.copy({ deep: false });
+    // const serializedWorkoutProgramTemplate = workoutProgramTemplateCopy.serialize();
+    const serializedWorkoutProgramTemplate = workoutProgramTemplate.serialize();
 
-    workoutProgramTemplateCopy.weeks.forEach((week) => {
-      week.workouts.forEach((workout) => {
-        if (workout) {
-          workout.unloadRecord()
-        }
-        if (workout) {
-          workout.exercises.forEach((exercise) => {
-            if (exercise) {
-              exercise.unloadRecord()
-            }
-            exercise.sets.forEach((workoutSet) => {
-              if (workoutSet) {
-                workoutSet.unloadRecord()
-              }
-            });
-          });
-        }
-      });
-    });
-    workoutProgramTemplateCopy.unloadRecord();
+    // workoutProgramTemplateCopy.weeks.forEach((week) => {
+    //   week.workouts.forEach((workout) => {
+    //     if (workout) {
+    //       workout.unloadRecord()
+    //     }
+    //     if (workout) {
+    //       workout.exercises.forEach((exercise) => {
+    //         if (exercise) {
+    //           exercise.unloadRecord()
+    //         }
+    //         exercise.sets.forEach((workoutSet) => {
+    //           if (workoutSet) {
+    //             workoutSet.unloadRecord()
+    //           }
+    //         });
+    //       });
+    //     }
+    //   });
+    // });
+    // workoutProgramTemplateCopy.unloadRecord();
 
     serializedWorkoutProgramTemplate.weeks.forEach((week) => {
       const workoutProgramWeek = this.store.createRecord('workout-program-week', {
@@ -85,7 +90,7 @@ export default class WorkoutService extends Service {
       });
 
       week.workouts.forEach((workout) => {
-        const workoutProgramSession = this.store.createRecord('workout-session', {
+        const workoutProgramSession = this.store.createRecord('workout', {
           week: workout.week,
           weekDay: workout.weekDay,
           day: workout.day
@@ -98,7 +103,7 @@ export default class WorkoutService extends Service {
           });
 
           workout.sets.forEach((workoutSet) => {
-            const workoutProgramSet = this.store.createRecord('workout-program-set', workoutSet);
+            const workoutProgramSet = this.store.createRecord('workout-set', workoutSet);
 
             workoutProgramBlock.sets.pushObject(workoutProgramSet)
           });
@@ -114,5 +119,28 @@ export default class WorkoutService extends Service {
     });
 
     return workoutProgram;
+  }
+
+  _removeDirtyProps() {
+    this.store.peekAll('workout-set').filter(record => {
+      if (record.dirtyType === "created") {
+        record.unloadRecord();
+      }
+    });
+    this.store.peekAll('workout-program-week').filter(record => {
+      if (record.dirtyType === "created") {
+        record.unloadRecord();
+      }
+    });
+    this.store.peekAll('workout-block').filter(record => {
+      if (record.dirtyType === "created") {
+        record.unloadRecord();
+      }
+    });
+    this.store.peekAll('workout').filter(record => {
+      if (record.dirtyType === "created") {
+        record.unloadRecord();
+      }
+    });
   }
 }

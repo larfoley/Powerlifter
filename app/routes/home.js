@@ -7,7 +7,7 @@ export default class HomeRoute extends Route {
       posts: posts.sortBy('createdAt').reverse(),
       friends: this.store.findAll('friend'),
       personalBests: this.store.query('lift-record', { limit: 3, isPersonalBest: true }),
-      goals: this.store.query('goal', { limit: 3 })
+      goals: this.store.query('goal', { limit: 3, isCompleted: false })
     }
   }
 }

@@ -8,37 +8,35 @@
         {{on 'click' (fn this.toggleSortModal)}}
       />
       <Button
-        @icon="filter"
-        @text="{{if this.filterOptionIsSelected this.selectedFilterOption.label "Filter"}}"
-        @secondary={{this.filterOptionIsSelected}}
+        @icon={{unless this.filtersApplied "filter"}}
+        @text="{{if this.filtersApplied this.selectedRep.label "Filter"}}"
+        @secondary={{this.filtersApplied}}
         {{on 'click' (fn this.toggleFilterModal)}}
       />
     </div>
-    <Tabs
-      @tabs={{ array
-        (hash label="Personal Bests" route="exercises")
-        (hash label="history" route="my-network.friends")
-      }}
-      @sticky={{false}}
-      @inline={{true}}
-    />
-    {{#each this.records as |record|}}
+    <div class="card__section">
       <ul class="card__list">
-        <li class="card__list-item flex flex--space-between flex flex--align-center">
-          <div class="">
-            <div class="h5">{{record.exercise.name}}</div>
-            {{record.weightLifted}} kgs for {{record.reps}} Reps
-          </div>
-          <div>
-            <span class="text text--muted text--small">
-              {{due-date record.date 'MM-DD-YYYY'}}
-            </span>
-          </div>
+        {{#each this.records as |record|}}
+        <li class="card__list-item card__list-item--link">
+          <LinkTo class="card__list-item-link" @route={{this.route}} @model={{record}}>
+            <div class="flex flex--space-between flex flex--align-center">
+              <div>
+                <div class="h5">{{record.exercise.name}}</div>
+                {{record.weightLifted}} kgs for {{record.reps}} Reps
+              </div>
+              <div>
+                <span class="text text--muted text--small">
+                  {{due-date record.date 'MM-DD-YYYY'}}
+                </span>
+              </div>
+            </div>
+          </LinkTo>
         </li>
+        {{else}}
+        <ZeroStateMessage @message="You have not lift records" @icon="dumbbell"/>
+        {{/each}}
       </ul>
-    {{else}}
-      <ZeroStateMessage @message="You have not lift records" @icon="dumbbell"/>
-    {{/each}}
+    </div>
   </div>
 </div>
 {{#if this.showSortModal}}
@@ -73,6 +71,13 @@
       <div class="">
         <div class="h5">Reps</div>
         <ul class="inline-list">
+          <li class="inline-list__item">
+            <Button
+              @text="Any"
+              @primary={{not this.filtersApplied}}
+              {{on 'click' (fn this.resetRepsFilter option)}}
+            />
+          </li>
           {{#each this.filterOptions.reps.options as |option|}}
             <li class="inline-list__item">
               <Button

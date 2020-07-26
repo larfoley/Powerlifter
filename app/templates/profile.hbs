@@ -19,9 +19,12 @@
       <Button @text="Add Friend" @icon="user-plus" @secondary={{true}} />
     </div>
   </div>
-  <Tabs @tabs={{ array
-    (hash label="Posts" route="users")
-    (hash label="Friends" route="my-network.friends")
-    (hash label="Programs" route="my-network.friend-requests")
+  <Toolbar @tabs={{ array
+    (hash label="Posts" route="profile.posts")
+    (hash label="Friends" route="profile.friends")
+    (hash label="Programs" route="profile.programs")
   }}/>
+</div>
+<div class="content-container">
+  {{outlet}}
 </div>

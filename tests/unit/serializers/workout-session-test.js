@@ -7,14 +7,14 @@ module('Unit | Serializer | workout session', function(hooks) {
   // Replace this with your real tests.
   test('it exists', function(assert) {
     let store = this.owner.lookup('service:store');
-    let serializer = store.serializerFor('workout-session');
+    let serializer = store.serializerFor('workout');
 
     assert.ok(serializer);
   });
 
   test('it serializes records', function(assert) {
     let store = this.owner.lookup('service:store');
-    let record = store.createRecord('workout-session', {});
+    let record = store.createRecord('workout', {});
 
     let serializedRecord = record.serialize();
 

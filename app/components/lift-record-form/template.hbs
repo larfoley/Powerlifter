@@ -59,6 +59,34 @@
           @onChange={{fn this.onDateChange}}
         />
       </InputField>
+      <div class="content-container__section">
+        <div class="flex flex--space-between flex--align-center">
+          <div class="">
+            <FileUpload
+              @name="avatar"
+              @onfileadd={{action this.setVideo}}
+              @accept="video/*"
+            >
+              <span class="button">
+                <FaIcon
+                  @icon="camera"
+                />
+                Upload Video
+              </span>
+              {{#if this.videoFile}}
+              <span class="text text--no-wrap">
+                {{this.videoFile.name}}
+              </span>
+              {{/if}}
+            </FileUpload>
+          </div>
+          <div>
+            {{#if this.videoFile}}
+              <Icon @icon="times" {{on 'click' this.removeVideo}}/>
+            {{/if}}
+          </div>
+        </div>
+      </div>
       <div class="button-group">
         <Button
           @submit={{true}}

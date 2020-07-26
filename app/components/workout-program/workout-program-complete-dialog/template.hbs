@@ -1,0 +1,16 @@
+<ModalDialog
+  @targetAttachment="center"
+  @translucentOverlay={{true}}
+  @containerClass="workout-complete-modal"
+  @onClose={{@onClose}}
+>
+  <Icon @icon="times" class="workout-complete-modal__close-icon" {{on 'click' @onClose}}/>
+  <div class="u-center-text u-star">
+    <FaIcon @icon="star"/>
+    <FaIcon @icon="star" @size="3x"/>
+    <FaIcon @icon="star" />
+  </div>
+  <h2 class="workout-complete-modal__title">Congratulation <div class="text text--muted text--small">
+    Program Completed
+  </div>🎉💪</h2>
+</ModalDialog>

@@ -1,38 +1,32 @@
-{{!-- <style media="screen">
-  .flash-message {
-    position: fixed;
-    bottom: 3em;
-    width: 300px;
-    left: 2em;
-    /* bottom: 1em; */
-    z-index: 1000;
-  }
-</style> --}}
-{{!-- <AppNavbar />
-<AppContainer>
-  {{outlet}}
-  {{#each flashMessages.queue as |flash|}}
-  {{#flash-message flash=flash as |component flash|}}
-      {{#if flash.componentName}}
-      {{else}}
-      <div class="card">
-        <div class="card__body">
-          <h6>{{component.flashType}}</h6>
-          <p>{{flash.message}}</p>
+{{#if (or (eq this.target.currentRouteName "sign-in") (eq this.target.currentRouteName "sign-up"))}}
+  <div class="landing-page">
+    <div class="landing-page__container">
+      {{outlet}}
+    </div>
+  </div>
+{{else}}
+  <div class="app-layout">
+    <div class="app-layout__left-container">
+      <AppNavbar />
+    </div>
+    <div class="app-layout__main-container">
+      {{outlet}}
+    </div>
+    <div class="app-layout__right-container">
+      <div class="h4">
+        Friends
+      </div>
+      <div class="card__list">
+        <div class="card__list-item">
+          Bob
+        </div>
+        <div class="card__list-item">
+          Bob
+        </div>
+        <div class="card__list-item">
+          Bob
         </div>
       </div>
-
-      {{/if}}
-    {{/flash-message}}
-  {{/each}}
-</AppContainer> --}}
-<div class="app-layout">
-  <div class="app-layout__left-container">
-    <AppNavbar />
+    </div>
   </div>
-  <div class="app-layout__main-container">
-    {{outlet}}
-  </div>
-  <div class="app-layout__right-container">
-  </div>
-</div>
+{{/if}}

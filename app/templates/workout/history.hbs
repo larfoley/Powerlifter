@@ -7,11 +7,5 @@
   }}
 />
 <div class="content-container">
-  {{#each @model as |workoutHistory|}}
-  <div class="card">
-    <div class="card__body">
-      <div class="h5">{{workoutHistory.workoutProgram.name}}</div>
-    </div>
-  </div>
-  {{/each}}
+  <WorkoutProgram::History @workoutHistory={{@model}} />
 </div>

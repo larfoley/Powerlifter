@@ -24,21 +24,21 @@ export default class WorkoutProgramFormComponent extends Component {
       this.workoutProgram = this.store.createRecord('workout-program-template');
       this.workoutProgram.user = this.currentUser.user;
 
-      const firstWeek = this.store.createRecord('workout-program-week', {
-        week: 1,
-      })
+      // const firstWeek = this.store.createRecord('workout-program-week', {
+      //   week: 1,
+      // })
 
-      const firstWorkoutSession = this.store.createRecord('workout-session', {
-        day: 1,
-        week: 1,
-        weekDay: 1
-      });
+      // const firstWorkoutSession = this.store.createRecord('workout', {
+      //   day: 1,
+      //   week: 1,
+      //   weekDay: 1
+      // });
 
-      firstWorkoutSession.guid = guidFor(firstWorkoutSession)
+      // firstWorkoutSession.guid = guidFor(firstWorkoutSession)
+      //
+      // firstWeek.workouts.pushObject(firstWorkoutSession);
 
-      firstWeek.workouts.pushObject(firstWorkoutSession);
-
-      this.workoutProgram.weeks.pushObject(firstWeek);
+      // this.workoutProgram.weeks.pushObject(firstWeek);
 
     } else {
       this.workoutProgram = this.args.record;
@@ -146,6 +146,7 @@ export default class WorkoutProgramFormComponent extends Component {
 
   @action
   async copyWeek(week) {
+    console.log('copy week');
     const weekCopy = await week.copy({ deep: true })
 
     weekCopy.week = this.weeks.lastObject.week + 1;
@@ -169,7 +170,7 @@ export default class WorkoutProgramFormComponent extends Component {
     workoutSessionCopy.weekDay = this.selectedWeek.workouts.lastObject.weekDay + 1;
 
     if (this.selectedWeek) {
-      this.selectedWeek.workouts.pushObject(this.store.createRecord('workout-session', workoutSessionCopy));
+      this.selectedWeek.workouts.pushObject(this.store.createRecord('workout', workoutSessionCopy));
     }
   }
 
@@ -185,7 +186,8 @@ export default class WorkoutProgramFormComponent extends Component {
 
   @action
   addWorkoutProgramSet(workoutBlock) {
-    const workoutProgramSet = this.store.createRecord('workout-program-set');
+    const workoutProgramSet = this.store.createRecord('workout-set');
+    console.log('creating set from add');
 
     if (workoutBlock.sets.length > 0) {
       workoutProgramSet.targetReps = workoutBlock.sets.lastObject.targetReps;
@@ -204,7 +206,8 @@ export default class WorkoutProgramFormComponent extends Component {
 
   @action
   addWorkoutSession() {
-    const workout = this.store.createRecord('workout-session');
+    console.log('add workout sesison');
+    const workout = this.store.createRecord('workout');
 
     if (this.workoutSessions.length === 0) {
       workout.weekDay = 1;
@@ -235,11 +238,35 @@ export default class WorkoutProgramFormComponent extends Component {
 
     try {
       await this.workoutProgram.save();
-
+      this._removeDirtyProps()
       this.router.transitionTo('workout.my-programs');
 
     } catch (e) {
       console.error(e);
     }
+  }
+
+  @action
+  _removeDirtyProps() {
+    this.store.peekAll('workout-set').filter(record => {
+      if (record.dirtyType === "created") {
+        record.unloadRecord();
+      }
+    });
+    this.store.peekAll('workout-program-week').filter(record => {
+      if (record.dirtyType === "created") {
+        record.unloadRecord();
+      }
+    });
+    this.store.peekAll('workout-block').filter(record => {
+      if (record.dirtyType === "created") {
+        record.unloadRecord();
+      }
+    });
+    this.store.peekAll('workout').filter(record => {
+      if (record.dirtyType === "created") {
+        record.unloadRecord();
+      }
+    });
   }
 }

@@ -4,7 +4,7 @@ import { hash } from 'rsvp';
 export default class WorkoutMyProgramsNewWeekRoute extends Route {
   model({ workoutSessionId }) {
 
-    const workoutSessions = this.store.peekAll('workout-session');
+    const workoutSessions = this.store.peekAll('workout');
     const workoutSession = workoutSessions.findBy('guid', workoutSessionId)
 
     if (workoutSession) {

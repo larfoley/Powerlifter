@@ -29,7 +29,6 @@ Router.map(function() {
         this.route('edit', { path: '/:lift_record_id/edit' });
       });
     });
-    this.route('all');
     this.route('new');
     this.route('records');
   });
@@ -62,7 +61,11 @@ Router.map(function() {
     this.route('user', { path: '/:username' });
   });
   this.route('file-upload');
-  this.route('profile');
+  this.route('profile', function() {
+    this.route('posts');
+    this.route('friends');
+    this.route('programs');
+  });
   this.route('current-program');
 
   this.route('workout', function() {
@@ -70,7 +73,7 @@ Router.map(function() {
     this.route('new', function() {
       this.route('exercise-select');
 
-      // this.route('workout-session', function() {
+      // this.route('workout', function() {
       //   this.route('exercise-select', { path: '/exercise-select/:workout_session_id' });
       // });
     });

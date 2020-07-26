@@ -1,8 +1,9 @@
-<FullScreenModal>
+<FullScreenModal @onClose={{action this.transitionToRoute "exercises.exercise.goals" @model.exercise}}>
   <Toolbar
     @title={{concat "Add " (capitalize @model.exercise.name) " Goal"}}
-    @backRoute="exercises.exercise.records"
+    @backRoute="exercises.exercise.goals"
     @backRouteModle={{@model.exercise}}
+    @showCloseIcon={{true}}
   />
   <GoalForm
     @selectedExercise={{@model.exercise}}

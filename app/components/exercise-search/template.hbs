@@ -7,14 +7,16 @@
         @onKeyUp={{fn this.handleKeyPress}}
       />
     </div>
-    <ul class="card__list">
-      {{#each this.filteredExercises as |exercise|}}
+    <div class="card__section">
+      <ul class="card__list">
+        {{#each this.filteredExercises as |exercise|}}
         <li class="card__list-item" {{on 'click' (fn this.goToExercise exercise)}}>
           {{exercise.name}}
         </li>
-      {{else}}
+        {{else}}
         <p>No exercises found</p>
-      {{/each}}
-    </ul>
+        {{/each}}
+      </ul>
+    </div>
   </div>
 </div>

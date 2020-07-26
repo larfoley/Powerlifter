@@ -5,12 +5,16 @@ import { inject as service } from '@ember/service';
 
 export default class GoalCardComponent extends Component {
   @service toast;
-
+  @service currentUser;
   @tracked showConfirmModal = false;
   @tracked showingConfirmMarkGoalCompleteDialog = false;
-  @tracked dueDate = this.args.goal.dueDate;
-  @tracked shouldShareGoal = true;
-  @tracked shouldPostLiftRecord = true;
+  @tracked shouldShareGoal = false;
+  @tracked shouldPostLiftRecord = false;
+  @service store;
+
+  get dueDate() {
+    return this.args.goal.dueDate || null
+  }
 
   get isOverdue() {
     const dueDate = this.dueDate;
@@ -57,9 +61,34 @@ export default class GoalCardComponent extends Component {
 
     await goal.save();
 
-    this.showingConfirmMarkGoalCompleteDialog = false;
     this.toast.success('Goal Completed');
 
+    if (this.shouldShareGoal) {
+      const post = this.store.createRecord('post', {
+        author: this.currentUser.user,
+        actionText: 'Completed a goal 🎉',
+        content: `${goal.exercise.name} ${goal.weight}kgs for ${goal.reps} reps`
+      })
+
+      await post.save();
+
+      this.toast.success('Posted Goal');
+    }
+
+    if (this.shouldPostLiftRecord) {
+      const liftRecord = this.store.createRecord('lift-record', {
+        exercise: goal.exercise,
+        weightLifted: goal.weight,
+        reps: goal.reps,
+        date: new Date(),
+      })
+
+      await liftRecord.save();
+
+      this.toast.success('Lift Record Created');
+    }
+
+    this.showingConfirmMarkGoalCompleteDialog = false;
     this.shouldShareGoal = false;
     this.shouldPostLiftRecord = false;
   }

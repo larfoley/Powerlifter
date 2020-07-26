@@ -1,8 +1,8 @@
-<div class="box box--with-margin box--transparent">
+<div class="card">
   {{#if @friendRequests.length}}
-    <ul class="list card" data-test-user-list>
+    <ul class="card__list" data-test-user-list>
       {{#each @friendRequests as |fr|}}
-      <div class="list__item" data-test-user-card>
+      <div class="card__list-item" data-test-user-card>
         <FriendRequests::FriendRequest @friendRequest={{fr}} />
       </div>
       {{/each}}

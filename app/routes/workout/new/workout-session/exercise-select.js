@@ -4,8 +4,8 @@ import { hash } from 'rsvp';
 export default class WorkoutNewWorkoutSessionExerciseSelectRoute extends Route {
   model(params) {
     const id = params.workout_session_id;
-    // const workoutSession = this.store.peekRecord('workout-session', id);
-    const workoutSessions = this.store.peekAll('workout-session');
+    // const workoutSession = this.store.peekRecord('workout', id);
+    const workoutSessions = this.store.peekAll('workout');
     const workoutSession = workoutSessions.findBy('guid', id);
 
     if (workoutSession === undefined || workoutSession === null) {

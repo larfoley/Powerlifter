@@ -1,0 +1,22 @@
+<FullScreenModal @onClose={{action this.handleClose}}>
+<button type="button" name="button" {{on 'click' (fn this.shareRecord)}} >Share</button>
+<div class="masthead">
+  <div class="masthead__container">
+    <h1 class="h1">{{@liftRecord.exercise.name}}</h1>
+    <p>{{@liftRecord.weightLifted}}kg for {{@liftRecord.reps}} Reps</p>
+    <div class="record">
+      <FaIcon @icon="medal" @size="3x" />
+    </div>
+  </div>
+</div>
+<div class="content-container">
+  {{#if @liftRecord.containsVideo}}
+    <video src={{@liftRecord.videoURL}} controls>
+    </video>
+  {{else}}
+    <div class="box box--dashed">
+      <Button @text="Upload Video" @icon="video" @primary={{true}} />
+    </div>
+  {{/if}}
+</div>
+</FullScreenModal>

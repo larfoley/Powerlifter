@@ -7,18 +7,21 @@ export default class WorkoutProgramTemplateFormExerciseSetsComponent extends Com
 
   constructor() {
     super(...arguments);
-    this.newExerciseSet = this.store.createRecord('workout-program-set', {
-
-    })
+    console.log('constructro creating set');
+    // this.newExerciseSet = this.store.createRecord('workout-set', {
+    //
+    // })
   }
 
+
   @action addSet() {
-    const exerciseSet = this.store.createRecord('workout-program-set', {
+    console.log('add set from sets comp');
+    const exerciseSet = this.store.createRecord('workout-set', {
       order: this.newExerciseSet.order,
       targetReps: this.newExerciseSet.targetReps,
     })
 
     this.args.exerciseSets.pushObject(exerciseSet);
-    this.newExerciseSet.order = parseInt(this.args.exerciseSets.sortBy('order').lastObject.order) + 1.
+    // this.newExerciseSet.order = parseInt(this.args.exerciseSets.sortBy('order').lastObject.order) + 1
   }
 }

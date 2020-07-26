@@ -5,10 +5,9 @@
 >
     <Toolbar
       @title="New Workout Program"
-      @backRoute="workout.diary"
+      @backRoute="workout.my-programs"
       @showCloseIcon={{true}}
     />
-      {{log 'render template form'}}
       <WorkoutProgramTemplate::Form
         @exercises={{@model}}
       />

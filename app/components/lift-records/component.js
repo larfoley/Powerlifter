@@ -34,6 +34,10 @@ export default class LiftRecordsComponent extends Component {
     this.selectedRep = this.filterOptions.reps.selected;
   }
 
+  get filtersApplied() {
+    return !!this.selectedRep
+  }
+
   @action
   toggleSortModal() {
     this.showSortModal = !this.showSortModal;
@@ -52,13 +56,17 @@ export default class LiftRecordsComponent extends Component {
 
   @action
   onSelectFilterOption(option) {
-    set(this.filterOptions.reps, 'selected', option.value);
-    this.selectedRep = option.value;
+    set(this.filterOptions.reps, 'selected', option);
+    this.selectedRep = option;
   }
 
   @action resetRepsFilter() {
     set(this.filterOptions.reps, 'selected', null);
     this.selectedRep = null;
+  }
+
+  get route() {
+    return this.args.route || 'exercises.exercise.records.record'
   }
 
   get records() {
@@ -70,11 +78,9 @@ export default class LiftRecordsComponent extends Component {
       records = records.sortBy('date').reverse();
     }
 
-    console.log('filter', this.filterOptions.reps);
 
-    if (this.selectedRep != null) {
-      console.log(121212);
-      return records.filterBy('reps', this.selectedRep);
+    if (this.filtersApplied) {
+      return records.filterBy('reps', this.selectedRep.value);
     }
 
     return records

@@ -15,6 +15,22 @@
   &--transparent {
     background: transparent;
     padding-top: 0;
-    padding-bottom: 0; 
+    padding-bottom: 0;
+  }
+
+  &--dashed {
+    @extend .card;
+    text-align: center;
+    border: 3px dashed;
+    border-color: $primary-color;
+    background-color: $primary-color;
+    border-radius: 0;
+    background-color: white;
+    font-size: 1.3em;
+    padding: 2em;
+
+    &:focus {
+      box-shadow: none
+    }
   }
 }

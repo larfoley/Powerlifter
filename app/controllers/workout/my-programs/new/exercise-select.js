@@ -14,7 +14,7 @@ export default class WorkoutMyProgramsNewExerciseSelectController extends Contro
       exercise: exercise.name
     })
 
-    workoutBlock.sets.pushObject(this.store.createRecord('workout-program-set'))
+    workoutBlock.sets.pushObject(this.store.createRecord('workout-set'))
 
     workoutBlock.guid = guidFor(workoutBlock);
 

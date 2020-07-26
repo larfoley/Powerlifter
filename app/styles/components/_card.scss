@@ -8,13 +8,24 @@
   //   margin-bottom: 2em;
   // }
 
+  &__title {
+    margin: 0;
+    font-size: 15px;
+  }
+
+  &__sub-title {
+    margin: 0;
+    font-size: 13px;
+    color: gray;
+  }
+
   &__body, &__footer, &__header {
     padding-left: 2em;
     padding-right: 2em;
   }
 
   &__section {
-    padding: 1.5em;
+    margin-top: 1em;
   }
 
   &__footer, &__header {
@@ -41,22 +52,30 @@
   }
 
   &__footer--small {
-    padding: 0.5em 1em;
+    padding: 0.5em 2em;
   }
 
   &__list {
-    margin: 1.5em 0 0 0;
+    margin: 0;
   }
 
   &__list-item {
     padding: 1em;
-    // border: 1px solid #eee;
     border-radius: 10px;
 
     &:hover {
       cursor: pointer;
       background-color: #eee;
     }
+
+    &--link {
+      padding: 0;
+    }
+  }
+
+  &__list-item-link {
+    padding: 1em;
+    display: block;
   }
 
 }

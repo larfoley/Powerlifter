@@ -6,7 +6,7 @@ export default class ExerciseSelectComponent extends Component {
   @service store;
 
   @action
-  searchExercises() {
-    return this.store.findAll('exercise');
+  searchExercises(searchTerm) {
+    return this.store.query('exercise', { exercise: searchTerm });
   }
 }

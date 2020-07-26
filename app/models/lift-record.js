@@ -1,5 +1,7 @@
 import Model, { attr, belongsTo } from '@ember-data/model';
 import Validator from "ember-model-validator/mixins/object-validator";
+import { isPresent } from '@ember/utils';
+import { computed } from '@ember/object';
 
 const validations = {
   exercise: {
@@ -22,6 +24,10 @@ export default Model.extend(Validator, {
   weightLifted: attr('number'),
   reps: attr('number'),
   isPersonalBest: attr('boolean'),
-  media: belongsTo('photo'),
+  videoURL: attr('string'),
+
+  containsVideo: computed('videoURL', function() {
+    return isPresent(this.get('videoURL'));
+  }),
   validations
 });

@@ -22,7 +22,7 @@
             {{on 'click' (fn this.removeMedia)}}
             class="media-preview__close-icon"
           />
-          {{#if this.media.isImage}}
+          {{#if this.post.media.isImage}}
             <img src={{this.post.media.url}} alt="post file">
           {{else}}
           <video src={{this.post.media.url}}>

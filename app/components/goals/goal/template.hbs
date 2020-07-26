@@ -43,7 +43,7 @@
         {{#if this.isOverdue}}
           <FaIcon @icon="exclamation-circle"/> <span>Overdue</span>
         {{else}}
-          Due {{moment-from this.dueDate}}
+          Due {{moment-from @goal.dueDate}}
         {{/if}}
       </div>
     {{/if}}
@@ -68,12 +68,12 @@
   >
     <Checkbox
       @label="Log lift record?"
-      @checked={{this.shouldShareGoal}}
+      @value={{this.shouldShareGoal}}
       @onChange={{fn this.toggleShouldShareGoal}}
     />
     <Checkbox
       @label="Share goal?"
-      @checked={{this.shouldPostLiftRecord}}
+      @value={{this.shouldPostLiftRecord}}
       @onChange={{fn this.toggleShouldPostLiftRecord}}
     />
   </ConfirmModal>

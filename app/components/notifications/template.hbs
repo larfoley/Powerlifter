@@ -1,27 +1,30 @@
 {{#if @notifications}}
-  <div class="list">
-    {{#each @notifications as |notif|}}
-      <div class="list__item notification  {{if notif.isUnread "notification--is-unread"}}">
-        {{notif.link.route}}
-        <LinkTo
-          @route={{notif.link.route}}
-        >
-        <div class="media">
-          <div class="media__asset">
-            <UserAvatar @icon="user" />
-          </div>
-          <div class="media__body">
-            <div class="">
-              <strong>{{notif.from}}</strong>
-               {{notif.text}}
+  <div class="card">
+    <div class="card__body">
+      <div class="card__list">
+        {{#each @notifications as |notif|}}
+          <li class="card__list-item notification  {{if notif.isUnread "notification--is-unread"}}">
+            <LinkTo
+              @route={{notif.link.route}}
+            >
+            <div class="media">
+              <div class="media__asset">
+                <UserAvatar @icon="user" />
+              </div>
+              <div class="media__body">
+                <div class="">
+                  <strong>{{notif.from}}</strong>
+                  {{notif.text}}
+                </div>
+                <span class="notification__date">
+                  {{format-date notif.createdAt}}
+                </span>
+              </div>
             </div>
-            <span class="notification__date">
-              <FaIcon @icon="user-friends"/> {{format-date notif.createdAt}}
-            </span>
-          </div>
-        </div>
-      </LinkTo>
+          </LinkTo>
+        </li>
+      {{/each}}
       </div>
-    {{/each}}
+  </div>
   </div>
 {{/if}}

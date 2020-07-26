@@ -1,40 +1,38 @@
 <form>
-  <div class="card">
-    <div class="card__body">
-      <InputField
-        @label="Username"
-        @errors={{this.goal.errors.username}}
-      >
-        <TextInput
-          @value={{this.username}}
-          @label="Username"
-          data-test-username
-          @icon="user"
-        />
-      </InputField>
-      <InputField
-        @label="Password"
-        @errors={{this.goal.errors.password}}
-      >
-        <TextInput
-          type="password"
-          @value={{this.password}}
-          @label="Password"
-          @icon="lock"
-          data-test-password
-        />
-      </InputField>
-      <Button
-        @submit={{true}}
-        @primaryButton={{true}}
-        @icon="paper-plane"
-        data-test-submit-button
-        class="foo"
-      >
-        Sign In
-      </Button>
-    </div>
-  </div>
+  <h2 class="u-center-text u-bolder">Sign In</h2>
+  <InputField
+    @label="Username"
+    @errors={{this.goal.errors.username}}
+  >
+    <TextInput
+      @value={{this.username}}
+      @label="Username"
+      data-test-username
+      @icon="user"
+    />
+  </InputField>
+  <InputField
+    @label="Password"
+    @errors={{this.goal.errors.password}}
+  >
+    <TextInput
+      type="password"
+      @value={{this.password}}
+      @label="Password"
+      @icon="lock"
+      data-test-password
+    />
+  </InputField>
+  <p>
+    <Button
+      @submit={{true}}
+      @primaryButton={{true}}
+      @icon="paper-plane"
+      data-test-submit-button
+      @fullWidth={{true}}
+      @text="Sign In"
+    />
+  </p>
   <p class="text-align-center">
     Dont have an account ? <LinkTo @route="sign-up">Sign Up</LinkTo>
   </p>

@@ -16,7 +16,7 @@
     />
   </div>
   {{#if @model}}
-    <WorkoutProgramTemplate::List @workoutPrograms={{@model}}/>
+    <WorkoutProgramTemplate::List @workoutPrograms={{@model}} />
   {{else}}
     <ZeroStateMessage @message="You have not created any workout porgrams" @icon="clipboard-list"/>
   {{/if}}

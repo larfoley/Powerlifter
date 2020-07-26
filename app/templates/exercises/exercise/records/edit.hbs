@@ -1,12 +1,10 @@
-<PageOverlay>
+<FullScreenModal>
   <Toolbar
     @title="Edit Record"
     @backRoute="exercises.exercise.records.record"
     @backRouteModel={{@model}}
   />
-  <PageContainer>
-    <PageContainer::PrimaryContent>
-      <LiftRecordForm @record={{@model}} @selectedExercise={{@model.exercise}} />
-    </PageContainer::PrimaryContent>
-  </PageContainer>
-</PageOverlay>
+  <div class="content-container">
+    <LiftRecordForm @record={{@model}} @selectedExercise={{@model.exercise}} />
+  </div>
+</FullScreenModal>

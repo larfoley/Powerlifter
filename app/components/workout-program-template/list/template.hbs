@@ -1,6 +1,5 @@
 <div>
   {{#each @workoutPrograms as |program|}}
-  {{log program}}
     <div class="card">
       <div class="card__header">
         <div class="flex flex--space-between">
@@ -17,9 +16,9 @@
         </div>
       </div>
       <div class="card__body">
-        <h4 class="h5">Duration</h4>
+        <div class="h5">Duration</div>
         <p>{{program.duration}} Weeks</p>
-        <h4 class="h5">Exercises</h4>
+        <div class="h5">Exercises</div>
         <ul class="inline-list">
           {{#each program.exercises as |exercise|}}
             <li class="inline-list__item">

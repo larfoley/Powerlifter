@@ -32,8 +32,9 @@
   }
 
   &__banner {
-    @extend .box;
-    height: 170px;
+    background-color: white;
+    padding: 1em;
+    height: 100px;
   }
 
   &__edit-bg-button {

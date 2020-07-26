@@ -1,0 +1,68 @@
+<div class="card">
+  <div class="card__body">
+    <div class="flex flex--space-between">
+      <div>
+        <div class="h6">Program</div>
+        <p>{{@workoutProgram.name}}</p>
+      </div>
+      <div>
+        <div class="workout-program__dates">
+          <span class="workout-program__date-label">Start Date</span>
+          <span class="workout-program__date-value">
+            {{#if @workoutProgram.startedOn}}
+              {{due-date @workoutProgram.startedOn}}
+            {{else}}
+            --
+            {{/if}}
+          </span>
+        </div>
+        <div class="workout-program__dates">
+          <span class="workout-program__date-label">Finish Date</span>
+          <span class="workout-program__date-value">
+            {{#if @workoutProgram.completedOn}}
+              {{due-date @workoutProgram.completedOn}}
+            {{else}}
+            --
+            {{/if}}
+          </span>
+        </div>
+      </div>
+    </div>
+    <div class="flex flex--space-between">
+      <div>
+        <div class="u-bold">
+          Status
+        </div>
+        {{#if @workoutProgram.completed}}
+          <div class="text text--success">
+            Completed
+          </div>
+        {{else}}
+          {{#if @workoutProgram.isActive}}
+            <div class="text text--warning">
+              In progress
+            </div>
+          {{else}}
+            <div class="text text--danger">
+              Canceled
+            </div>
+          {{/if}}
+        {{/if}}
+      </div>
+      <div>
+        {{#if @workoutProgram.completed}}
+          <Button @secondary={{true}} @text="View Results" {{on 'click' this.toggleResults}}/>
+        {{/if}}
+      </div>
+    </div>
+  </div>
+</div>
+{{#if this.showResults}}
+  <FullScreenModal @onClose={{fn this.toggleResults}}>
+    <Toolbar @showCloseIcon={{true}} @title="Workout Program Results"/>
+    <WorkoutProgram
+      @workoutProgram={{@workoutProgram}}
+    />
+  </FullScreenModal>
+{{/if}}
+{{log @workoutProgram.completed}}

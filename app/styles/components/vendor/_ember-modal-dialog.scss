@@ -3,3 +3,7 @@
   width: 100%;
   max-width: 600px;
 }
+
+.ember-modal-overlay{
+  z-index: 1000;
+}

@@ -9,6 +9,7 @@ export default class WorkoutProgramComponent extends Component {
   @service store;
   @service toast;
   @tracked showWorkoutCompleteDialog = false;
+  @tracked showWorkoutProgramCompleteDialog = false;
   @tracked selectedWorkoutDay = 1;
 
   constructor() {
@@ -105,7 +106,7 @@ export default class WorkoutProgramComponent extends Component {
     if (!workout.completed) {
 
       this.currentWorkout.completed = true;
-      this.showWorkoutCompleteDialog = true;
+      // this.showWorkoutCompleteDialog = true;
 
       for (const exercise of workout.exercises) {
         for (const exerciseSet of exercise.sets) {
@@ -115,9 +116,6 @@ export default class WorkoutProgramComponent extends Component {
             exercise: exercise.exercise
           }).then((results) => {
             return results.filter((lr) => {
-              console.log('filter lift records');
-              console.log('lr', lr.weightLifted);
-              console.log('es', exerciseSet.weightLifted);
               return  lr.weightLifted > exerciseSet.weightLifted
             });
           })
@@ -163,6 +161,7 @@ export default class WorkoutProgramComponent extends Component {
               achievedOn: new Date(),
             })
           }
+
         }
       }
 
@@ -181,22 +180,38 @@ export default class WorkoutProgramComponent extends Component {
         this.toast.success(msg);
       }
 
-      this.args.workoutProgram.save();
+      await this.args.workoutProgram.save()
+      this.showWorkoutCompleteDialog = true;
+    }
+
+    if (this.args.workoutProgram.progress === 100) {
+      return this.completeWorkoutProgram();
     }
   }
 
   @action
   onCloseWorkoutCompleteDialog() {
     this.showWorkoutCompleteDialog = false;
+
+    if (this.args.workoutProgram.completed) {
+      this.showWorkoutProgramCompleteDialog = true;
+    };
+  }
+
+  @action
+  onCloseWorkoutProgramCompleteDialog() {
+    this.showWorkoutProgramCompleteDialog = false;
   }
 
   @action
   async completeWorkoutProgram() {
+    const program = this.args.workoutProgram
 
-    this.currentWorkoutSession.completed = true;
-    this.args.workoutProgram.completed = true;
-    // this.showWorkoutProgramCompleteDialog = true;
-    alert()
+    program.completed = true;
+    program.completedOn = new Date();
+    program.isActive = false;
+
+    await program.save();
   }
 
   _findWorkoutSession(day) {

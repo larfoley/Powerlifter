@@ -1,15 +1,19 @@
 {{#if @notifications}}
+{{!-- <div class="flex flex--flex-end">
+  <Button @text="Mark All Read" />
+</div> --}}
+<br>
   <div class="card">
     <div class="card__body">
       <div class="card__list">
         {{#each @notifications as |notif|}}
-          <li class="card__list-item notification  {{if notif.isUnread "notification--is-unread"}}">
-            <LinkTo
-              @route={{notif.link.route}}
-            >
+          <li
+            class="card__list-item notification  {{if notif.isUnread "notification--is-unread"}}"
+            {{on 'click' (fn this.onClickNotification notif)}}
+          >
             <div class="media">
               <div class="media__asset">
-                <UserAvatar @icon="user" />
+                <UserAvatar />
               </div>
               <div class="media__body">
                 <div class="">
@@ -17,14 +21,15 @@
                   {{notif.text}}
                 </div>
                 <span class="notification__date">
-                  {{format-date notif.createdAt}}
+                  {{moment-from notif.createdAt}}
                 </span>
               </div>
             </div>
-          </LinkTo>
         </li>
       {{/each}}
       </div>
   </div>
   </div>
+  {{else}}
+  <ZeroStateMessage @icon="bell" @message="You have no notifications" />
 {{/if}}

@@ -1,4 +1,6 @@
-<Toolbar @title={{@model.username}} @backRoute="index"/>
+<Toolbar @title={{@model.username}} @backRoute="index" @actions={{ array
+  (hash icon="sign-out" route="sign-out")
+}}/>
 <div class="user-profile">
   <div
     class="user-profile__background"

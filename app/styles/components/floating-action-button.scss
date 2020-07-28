@@ -17,8 +17,8 @@
 
   animation: fadein 1s;
   position: fixed;
-  bottom: 90px;
-  right: 1em;
+  bottom: 110px;
+  right: 1.5em;
   z-index: 2;
 
   .button {
@@ -40,6 +40,14 @@
   @media screen and (max-width: $mobile-breakpoint) {
     height: 50px;
     width: 50px;
+
+    .button {
+      padding: 0;
+      width: 55px;
+      height: 55px;
+      display: flex;
+      justify-content: center;
+    }
 
     .button__icon {
       margin-right: 0;

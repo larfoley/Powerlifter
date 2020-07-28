@@ -1,5 +1,5 @@
 .app-layout {
-  max-width: 1200px;
+  max-width: 1250px;
   margin: 0 auto;
 
   &__main-container {
@@ -58,7 +58,7 @@
       height: 100vh;
       position: sticky;
       top: 0;
-      padding: 1em;
+      padding: 1em 0;
       border-right: none;
     }
 

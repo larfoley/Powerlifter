@@ -3,6 +3,7 @@ import { action } from '@ember/object';
 import { tracked } from '@glimmer/tracking';
 import { isPresent } from '@ember/utils';
 import { set } from '@ember/object';
+import defaultTheme from '../themes/default-theme';
 
 export default class LiftRecordsComponent extends Component {
   @tracked showSortModal = false;
@@ -10,6 +11,33 @@ export default class LiftRecordsComponent extends Component {
   @tracked selectedSortOption;
   @tracked filterOptions;
   @tracked selectedRep;
+
+  chartOptions = {
+    chart: {
+      type: 'bar'
+    },
+    title: {
+      text: 'Fruit Consumption'
+    },
+    xAxis: {
+      categories: ['Apples', 'Bananas', 'Oranges']
+    },
+    yAxis: {
+      title: {
+        text: 'Fruit eaten'
+      }
+    }
+  }
+
+  chartData = [{
+    name: 'Jane',
+    data: [1, 0, 4]
+  }, {
+    name: 'John',
+    data: [5, 7, 3]
+  }]
+
+  theme = defaultTheme;
 
   constructor() {
     super(...arguments);

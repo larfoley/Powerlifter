@@ -13,20 +13,50 @@
       {{outlet}}
     </div>
     <div class="app-layout__right-container">
-      <div class="h4">
-        Friends
-      </div>
-      <div class="card__list">
-        <div class="card__list-item">
-          Bob
+      {{#each @model as |friend|}}
+        <div class="card__list">
+          <div class="card__list-item media media--align-center">
+            <div class="media__asset">
+              <UserAvatar @user={{friend}} />
+            </div>
+            <div class="media__body">
+              {{friend.username}}
+            </div>
+          </div>
         </div>
-        <div class="card__list-item">
-          Bob
+        <div class="card__list">
+          <div class="card__list-item media media--align-center">
+            <div class="media__asset">
+              <UserAvatar @user={{friend}} />
+            </div>
+            <div class="media__body">
+              {{friend.username}}
+            </div>
+          </div>
         </div>
-        <div class="card__list-item">
-          Bob
+        <div class="card__list">
+          <div class="card__list-item media media--align-center">
+            <div class="media__asset">
+              <UserAvatar @user={{friend}} />
+            </div>
+            <div class="media__body">
+              {{friend.username}}
+            </div>
+          </div>
         </div>
-      </div>
+        <div class="card__list">
+          <div class="card__list-item media media--align-center">
+            <div class="media__asset">
+              <UserAvatar @user={{friend}} />
+            </div>
+            <div class="media__body">
+              <LinkTo @route="users.user" @model={{friend}} >
+                {{friend.username}}
+              </LinkTo>
+            </div>
+          </div>
+        </div>
+      {{/each}}
     </div>
   </div>
 {{/if}}

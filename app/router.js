@@ -25,8 +25,12 @@ Router.map(function() {
       });
       this.route('records', function() {
         this.route('new');
-        this.route('record', { path: '/:lift_record_id' });
+        this.route('record', { path: '/:lift_record_id' }, function() {
+          this.route('share');
+        });
         this.route('edit', { path: '/:lift_record_id/edit' });
+        this.route('delete');
+        this.route('share');
       });
     });
     this.route('new');
@@ -94,4 +98,5 @@ Router.map(function() {
       this.route('');
     });
   });
+  this.route('sign-out');
 });

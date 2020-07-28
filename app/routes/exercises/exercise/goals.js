@@ -4,6 +4,6 @@ export default class ExercisesExerciseGoalsRoute extends Route {
   model() {
     const exercise = this.modelFor('exercises.exercise').name;
 
-    return this.store.findAll('goal')
+    return this.store.query('goal', { exercise })
   }
 }

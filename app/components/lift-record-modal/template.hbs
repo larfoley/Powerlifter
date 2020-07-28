@@ -1,11 +1,21 @@
 <FullScreenModal @onClose={{action this.handleClose}}>
-<button type="button" name="button" {{on 'click' (fn this.shareRecord)}} >Share</button>
+  <div class="toolbar toolbar--sticky">
+    <div class="toolbar__container">
+      <h1 class="toolbar__title">
+        Lift Record
+      </h1>
+      <div class="toolbar__links">
+        <Icon @icon="share" @primary={{true}} {{on 'click' this.toggleConfirmShareModal}} />
+        <Icon @icon="trash" @primary={{true}} {{on 'click' this.toggleConfirmDeleteModal}} />
+      </div>
+    </div>
+  </div>
 <div class="masthead">
   <div class="masthead__container">
-    <h1 class="h1">{{@liftRecord.exercise.name}}</h1>
-    <p>{{@liftRecord.weightLifted}}kg for {{@liftRecord.reps}} Reps</p>
+    <div>{{@liftRecord.exercise.name}}</div>
+    <div class="h2">{{@liftRecord.weightLifted}}kg for {{@liftRecord.reps}} Reps</div>
     <div class="record">
-      <FaIcon @icon="medal" @size="3x" />
+      <FaIcon @icon="medal" @size="2x" @primary={{true}}/>
     </div>
   </div>
 </div>
@@ -20,3 +30,21 @@
   {{/if}}
 </div>
 </FullScreenModal>
+
+{{#if this.showConfirmShareModal}}
+  <ConfirmModal
+    @onCancel={{fn this.toggleConfirmShareModal}}
+    @onConfirm={{fn this.shareRecord @liftRecord}}
+    @title="Share Lift Record?"
+    @text="Lift record will be posted to your friend feed"
+  />
+{{/if}}
+
+{{#if this.showConfirmDeleteModal}}
+  <ConfirmModal
+    @onCancel={{fn this.toggleConfirmDeleteModal}}
+    @onConfirm={{fn this.deleteRecord @liftRecord}}
+    @title="Delete Lift Record?"
+    @text="are you sure you want ot delete this record?"
+  />
+{{/if}}

@@ -1,8 +1,11 @@
 <div class="content-container">
   <div class="flex flex--flex-end">
-    <LinkTo class="button primary-button" @route="exercises.exercise.goals.new">
-      <FaIcon @icon="plus" /> New Goal
-    </LinkTo>
+    <FloatingActionButton
+      @icon="plus"
+      @text="New Goal"
+      class="button primary-button"
+      @route="exercises.exercise.goals.new"
+    />
   </div>
   <Goals @goals={{@model}} />
   {{outlet}}

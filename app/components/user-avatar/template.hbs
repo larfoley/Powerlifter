@@ -9,5 +9,10 @@
       class="user-avatar user-avatar__status-icon user-avatar__status-icon--online"
       @icon="circle"
     />
+    {{else}}
+    <FaIcon
+      class="user-avatar user-avatar__status-icon user-avatar__status-icon--offline"
+      @icon="circle"
+    />
   {{/if}}
 </span>

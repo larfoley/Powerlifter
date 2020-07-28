@@ -5,5 +5,6 @@ export default class PostSerializer extends ApplicationSerializer.extend(Embedde
   attrs = {
     media: { embedded: 'always' },
     likes: { embedded: 'always' },
+    author: { embedded: 'always' },
   }
 }

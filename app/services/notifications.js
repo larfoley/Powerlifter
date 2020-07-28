@@ -16,8 +16,9 @@ export default class NotificationsService extends Service {
     return notifs;
   }
 
-  add(notification) {
-    this.notifications.pushObject(notification);
+  async add(notification) {
+    const notif = this.store.findRecord('notification', notification.id);
+    this.notifications.pushObject(notif);
   }
 
   get all() {
@@ -41,9 +42,9 @@ export default class NotificationsService extends Service {
   }
 
   @action
-  markAsRead(notification) {
+  async markAsRead(notification) {
     notification.isUnread = false;
-    notification.save();
+    return notification.save();
   }
 
   @action

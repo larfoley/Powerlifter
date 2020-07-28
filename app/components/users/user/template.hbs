@@ -37,7 +37,7 @@
           @text="Add"
           @icon="user-plus"
           @secondaryButton={{true}}
-          {{on 'click' (fn this.friends.sendFriendRequest @user)}}
+          {{on 'click' (fn this.sendFriendRequest @user)}}
           data-test-friend-request-button
         />
       {{/if}}

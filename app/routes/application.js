@@ -7,8 +7,14 @@ export default Route.extend(ApplicationRouteMixin, {
   notifications: service(),
   socketIOService: service('socket-io'),
   session: service(),
-  flashMessages: service(),
   toast: service(),
+  toast: service(),
+
+  model() {
+    if (this.session.authenticated) {
+      return this.store.findAll('friend');
+    }
+  },
 
   setUpWebSocket() {
     const authToken = this.session.data.authenticated.access_token;
@@ -25,11 +31,7 @@ export default Route.extend(ApplicationRouteMixin, {
     })
 
     socket.on(`notification/${this.currentUser.user.id}`, (data) => {
-      this.flashMessages.add({
-        message: data.text,
-        sticky: true,
-      });
-      this.notifications.add(data)
+      this.store.pushPayload('notification', data)
     })
 
     socket.on(`friends/${this.currentUser.user.id}`, (data) => {
@@ -40,7 +42,26 @@ export default Route.extend(ApplicationRouteMixin, {
       if (friend.isOnline) {
         this.toast.info(friend.username + " is now online");
       }
+    })
 
+    socket.on(`friend-request-recieved/${this.currentUser.user.id}`, (data) => {
+      this.store.pushPayload('friend-request', data);
+    })
+
+    socket.on(`friend-request-accepted/${this.currentUser.user.id}`, (data) => {
+      this.toast.success('You are now friends with ' + data.friendRequest.friend.username)
+
+      this.store.pushPayload('friend', {
+        friend: data.friendRequest.friend
+      })
+
+      console.log('push f', {
+        friend: data.friendRequest.friend
+      });
+    })
+
+    socket.on(`friend-request-declined/${this.currentUser.user.id}`, (data) => {
+      alert('New Friend declined')
     })
 
     socket.on(`post/${this.currentUser.user.id}`, (post) => {

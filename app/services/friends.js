@@ -10,7 +10,7 @@ export default class FriendsService extends Service {
   async cancelOrDeclineRequest(friendRequest) {
 
     try {
-      const userId = await friendRequest.user.id;
+      const userId = await friendRequest.id;
       const friend = await this.store.findRecord('user', userId);
 
       await friendRequest.destroyRecord();

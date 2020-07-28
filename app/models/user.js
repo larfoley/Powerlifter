@@ -26,4 +26,5 @@ export default class UserModel extends Model.extend(Validator) {
   @attr('string') profilePic;
   @hasMany('workout-program-template') workoutProgramTemplates;
   @hasMany('workout-program') workoutHistory;
+  @belongsTo('notification') notification;
 }

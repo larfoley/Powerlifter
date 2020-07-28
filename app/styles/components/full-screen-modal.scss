@@ -14,6 +14,10 @@
 
    &__container {
      background-color: $app-bg-color;
+
+     @media screen and (max-width: $mobile-breakpoint) {
+       height: 100vh;
+     }
    }
 
    @media screen and (min-width: $mobile-breakpoint) {

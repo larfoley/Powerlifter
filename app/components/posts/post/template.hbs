@@ -2,7 +2,7 @@
   <div class="card__header">
     <div class="media">
       <div class="media__asset">
-        <UserAvatar />
+        <UserAvatar @user={{@post.author}}/>
       </div>
       <div class="media__body">
         <h2 class="card__title">
@@ -45,7 +45,8 @@
       {{/if}}
     </div>
   {{/if}}
-  <div class="post__meta">
+  {{#if (or @post.likesCount @post.commentsCount)}}
+    <div class="post__meta">
     <div>
       {{#if @post.likesCount}}
         <div class="post__like-meta">
@@ -71,6 +72,7 @@
       {{/if}}
     </div>
   </div>
+  {{/if}}
   <div class="post__actions">
     <Button
       @icon="thumbs-up"
@@ -106,3 +108,4 @@
     </div>
   {{/if}}
 </div>
+{{log @post.author}}

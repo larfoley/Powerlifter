@@ -13,8 +13,10 @@ export default class PostFormComponent extends Component {
     super(...arguments);
 
     if (typeOf(this.args.post) !== "instance") {
+      const author = this.store.peekRecord('user', this.currentUser.user.id);
+      
       this.post = this.store.createRecord('post', {
-        author: this.currentUser.user
+        author: author
       });
     } else {
       this.post = this.args.post;

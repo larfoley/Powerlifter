@@ -20,7 +20,7 @@ module.exports = function(environment) {
     APP: {
       // Here you can pass flags/options to your application instance
       // when it is created
-      host: 'http://localhost:3000',
+      host: 'https://powerlifter-api.herokuapp.com',
     },
 
     googleFonts: [
@@ -61,7 +61,7 @@ module.exports = function(environment) {
   }
 
   if (environment === 'production') {
-    // here you can enable a production-specific feature
+    ENV.APP['host'] = 'https://powerlifter-api.herokuapp.com'
   }
 
   return ENV;

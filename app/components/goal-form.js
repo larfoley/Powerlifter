@@ -110,6 +110,8 @@ export default class GoalFormComponent extends Component {
       }
 
     } catch(error) {
+      console.error(error);
+      
       error.errors.forEach(err => {
         this.toast.info(err.detail);
       });

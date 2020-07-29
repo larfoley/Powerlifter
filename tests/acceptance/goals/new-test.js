@@ -56,16 +56,19 @@ module('Acceptance | goals/new', function(hooks) {
   });
 
   test('editing a goal', async function(assert) {
-    await authenticateSession();
-
     const goal = this.server.create('goal', {
-      exercise: 'Deadlift'
+      exercise: { name: 'Deadlift' },
+      reps: 1,
+      weight: 100,
+      dueDate: new Date()
     })
+
+    await authenticateSession();
 
     await editGoalPage.visit({ goal_id: goal.id});
 
     await editGoalPage.createOrEditGoalForm.submit();
 
-    assert.equal(currentURL(), `/goals/${goal.id}/edit`);
+    assert.equal(currentURL(), `/goals`);
   });
 });

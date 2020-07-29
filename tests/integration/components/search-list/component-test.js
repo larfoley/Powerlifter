@@ -13,14 +13,5 @@ module('Integration | Component | search-list', function(hooks) {
     await render(hbs`<SearchList />`);
 
     assert.equal(this.element.textContent.trim(), '');
-
-    // Template block usage:
-    await render(hbs`
-      <SearchList>
-        template block text
-      </SearchList>
-    `);
-
-    assert.equal(this.element.textContent.trim(), 'template block text');
   });
 });

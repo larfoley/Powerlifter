@@ -1,6 +1,9 @@
 import Route from '@ember/routing/route';
 import ApplicationRouteMixin from 'ember-simple-auth/mixins/application-route-mixin';
 import { inject as service } from '@ember/service';
+import ENV from '../config/environment';
+
+const { host } = ENV.APP;
 
 export default Route.extend(ApplicationRouteMixin, {
   currentUser: service(),
@@ -17,7 +20,7 @@ export default Route.extend(ApplicationRouteMixin, {
 
   setUpWebSocket() {
     const authToken = this.session.data.authenticated.access_token;
-    const socket = this.socketIOService.socketFor(`http://localhost:3000`, {
+    const socket = this.socketIOService.socketFor(host, {
       query: `auth_token=${authToken}`
     });
 

@@ -62,12 +62,9 @@ module.exports = function(environment) {
 
   if (environment === 'production') {
     // here you can enable a production-specific feature
-  }
 
-  ENV['ember-cli-mirage'] = {
-    trackRequests: true,
-    enabled: false
-  };
+    ENV.APP['host'] = 'https://powerlifter-api.herokuapp.com'
+  }
 
   return ENV;
 };

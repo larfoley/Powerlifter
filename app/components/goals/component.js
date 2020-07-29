@@ -11,7 +11,7 @@ export default class GoalsComponent extends Component {
     goals.pushObjects(this.goals.filterBy('isCompleted', false).sortBy('dueDate'))
     goals.pushObjects(this.goals.filterBy('isCompleted', true).sortBy('dueDate'))
 
-    return this.goals;
+    return goals;
   }
 
 }

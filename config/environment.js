@@ -64,10 +64,5 @@ module.exports = function(environment) {
     // here you can enable a production-specific feature
   }
 
-  ENV['ember-cli-mirage'] = {
-    trackRequests: true,
-    enabled: false
-  };
-
   return ENV;
 };

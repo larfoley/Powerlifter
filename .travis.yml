@@ -21,7 +21,7 @@ script:
   - npm test
 
 install:
-  npm install -g surge
+  npm install
 
 before_deploy:
   - npm run build

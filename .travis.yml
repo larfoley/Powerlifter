@@ -24,7 +24,7 @@ install:
   npm install
 
 before_deploy:
-  - npm run build
+  - ember build --environment=production
   - mv dist/index.html dist/200.html
 
 deploy:

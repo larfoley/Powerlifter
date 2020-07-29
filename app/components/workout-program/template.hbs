@@ -6,7 +6,7 @@
   @goToPreviousWorkout={{fn this.goToPreviousWorkout}}
   @completeWorkout={{fn this.completeWorkout}}
 />
-{{#unless (or @workoutProgram.completed @previewMode)}}
+{{#if (not (or @workoutProgram.completed @previewMode) )}}
   <div class="workout-program__header">
     {{#if @workoutProgram.name}}
       <div class="workout-program__sub-title">
@@ -30,7 +30,7 @@
       </div>
     </div>
   </div>
-{{/unless}}
+{{/if}}
 <div class="content-container">
   {{#if this.canFinishWorkoutSession}}
     <div class="flex flex--flex-end">

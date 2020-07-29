@@ -1,13 +1,13 @@
 import Component from '@glimmer/component';
 import { inject as service } from '@ember/service';
 import { action } from '@ember/object';
-import { typeOf } from '@ember/utils';
 import { tracked } from '@glimmer/tracking';
 
 export default class LiftRecordModalComponent extends Component {
   @service store;
   @service currentUser;
   @service toast;
+  @service router;
   @tracked showConfirmShareModal = false;
   @tracked showConfirmDeleteModal = false;
 
@@ -32,10 +32,11 @@ export default class LiftRecordModalComponent extends Component {
       await liftRecord.save();
 
       this.toast.success('Lift Record Shared');
-      this.router.redirectTo('exercises.exercise')
+      this.router.transitionTo('exercises.exercise.records')
 
     } catch (e) {
       liftRecord.rollbackAttributes();
+      console.error(e);
 
     } finally {
 
@@ -73,6 +74,6 @@ export default class LiftRecordModalComponent extends Component {
 
   @action
   handleClose() {
-
+    this.router.transitionTo('exercises.exercise.records')
   }
 }

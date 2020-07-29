@@ -1,10 +1,11 @@
 <div
   class="checkbox {{if this.value "checkbox--checked"}} {{if @disabled "checkbox--disabled"}}"
   {{on 'click' this.toggleValue}}
+  role="button"
 >
   <Icon
     @icon={{if this.value "check-square" "square"}}
     @prefix={{if this.value "fas" "far"}} class="checkbox__icon"
   />
-  <label class="checkbox__label">{{@label}}</label>
+  <div class="checkbox__label">{{@label}}</div>
 </div>

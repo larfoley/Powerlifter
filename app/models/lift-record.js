@@ -1,4 +1,4 @@
-import Model, { attr, belongsTo } from '@ember-data/model';
+import Model, { attr } from '@ember-data/model';
 import Validator from "ember-model-validator/mixins/object-validator";
 import { isPresent } from '@ember/utils';
 import { computed } from '@ember/object';

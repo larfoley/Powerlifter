@@ -12,11 +12,13 @@ export default class LiftRecordFormComponent extends Component {
   @service fileUploader;
   @tracked record;
   @tracked videoFile;
+  @tracked isNew = false;
 
   constructor() {
     super(...arguments);
 
     if (typeOf(this.args.record) !== "instance") {
+      this.isNew = true;
       this.record = this.store.createRecord('lift-record');
 
       if (this.args.selectedExercise) {
@@ -79,7 +81,6 @@ export default class LiftRecordFormComponent extends Component {
     try {
       if (this.videoFile) {
         const uploadedFile = await this.fileUploader.upload(this.videoFile);
-        console.log(uploadedFile);
 
         record.videoURL = uploadedFile.body.location;
       }
@@ -94,7 +95,7 @@ export default class LiftRecordFormComponent extends Component {
         }
       }
 
-      if (record.isNew) {
+      if (this.isNew) {
         this.toast.success('Record added');
       } else {
         this.toast.success('Record updated');
@@ -102,9 +103,7 @@ export default class LiftRecordFormComponent extends Component {
 
       if (typeOf(this.args.onCreateOrUpdate) === 'function') {
         this.args.onCreateOrUpdate();
-        console.log('arg');
       } else {
-        console.log('transition');
         this.router.transitionTo("exercises.exercise.records.record", record);
       }
 
@@ -120,22 +119,8 @@ export default class LiftRecordFormComponent extends Component {
   }
 
   @action
-  async setVideo(file) {
-    const url = await file.readAsDataURL();
+  setVideo(file) {
     this.videoFile = file;
-
-    // const mediaType = file.type.split('/')[0];
-    // const media = this.store.createRecord('file', { mediaType, url });
-    // const user = this.currentUser.user;
-    //
-    // const response = await this.fileUploader.upload(file);
-    //
-    // user.videoURL = response.body.location;
-    //
-    // await user.save();
-    //
-    // this.videoURL = response.body.location;
-
   }
 
   @action

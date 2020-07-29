@@ -10,6 +10,10 @@ export default class PostComponent extends Component {
 
   @tracked showingComments = false;
 
+  get postRoute() {
+    return this.args.postRoute || 'my-network.feed.post'
+  }
+
   get isCurrentUsersPost() {
     return this.args.post.author.username === this.currentUser.user.username;
   }
@@ -42,7 +46,7 @@ export default class PostComponent extends Component {
       await post.save();
 
     } catch (e) {
-      console.log(e);
+      console.error(e);
     }
   }
 
@@ -57,7 +61,7 @@ export default class PostComponent extends Component {
       await like.save();
 
     } catch (e) {
-      console.log(e);
+      console.error(e);
     }
   }
 
@@ -89,8 +93,10 @@ export default class PostComponent extends Component {
 
       await post.save();
 
+      this.toast.success('post deleted')
+
     } catch (e) {
-      console.log(e);
+      console.error(e);
     }
   }
 }

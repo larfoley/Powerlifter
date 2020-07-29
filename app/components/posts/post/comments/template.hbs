@@ -21,8 +21,8 @@
             <Icon @icon="ellipsis-h" @muted={{true}} />
           </dd.Trigger>
           <dd.Content>
-            <div class="dropdown-options">
-              <div class="dropdown-options__option" {{on 'click' (action deleteComment comment) }}>
+            <div class="menu">
+              <div role="button" class="menu__option" {{on 'click' (fn this.deleteComment comment) }}>
                 Delete comment
               </div>
             </div>
@@ -36,7 +36,7 @@
     {{#if this.isLoadingMoreComments}}
       <p>Loading comments...</p>
     {{else}}
-      <span {{on 'click' this.loadMoreComments}}>
+      <span role="button" {{on 'click' this.loadMoreComments}}>
         View More
       </span>
     {{/if}}

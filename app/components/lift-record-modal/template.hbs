@@ -1,15 +1,12 @@
 <FullScreenModal @onClose={{action this.handleClose}}>
-  <div class="toolbar toolbar--sticky">
-    <div class="toolbar__container">
-      <h1 class="toolbar__title">
-        Lift Record
-      </h1>
-      <div class="toolbar__links">
-        <Icon @icon="share" @primary={{true}} {{on 'click' this.toggleConfirmShareModal}} />
-        <Icon @icon="trash" @primary={{true}} {{on 'click' this.toggleConfirmDeleteModal}} />
-      </div>
-    </div>
-  </div>
+  <Toolbar
+    @title="Lift Record"
+    @backRoute="exercises.exercise.records"
+    @showCloseIcon={{true}}
+    @actions={{array
+      (hash icon="share" action=(fn this.toggleConfirmShareModal))
+    }}
+  />
 <div class="masthead">
   <div class="masthead__container">
     <div>{{@liftRecord.exercise.name}}</div>
@@ -36,7 +33,7 @@
     @onCancel={{fn this.toggleConfirmShareModal}}
     @onConfirm={{fn this.shareRecord @liftRecord}}
     @title="Share Lift Record?"
-    @text="Lift record will be posted to your friend feed"
+    @text="Lift record will be posted to your social media feed"
   />
 {{/if}}
 

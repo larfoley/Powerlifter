@@ -22,7 +22,7 @@
       <ul class="workout-complete-modal__results-list">
         {{#each @workout.personalBestsAchieved as |pb|}}
           <li class="workout-complete-modal__results-list-item">
-            {{capitalize pb.exercise.name}} {{pb.weight}} kgs for {{pb.reps}} reps
+            {{capitalize pb.exercise}} {{pb.weight}} kgs for {{pb.reps}} reps
           </li>
         {{/each}}
       </ul>

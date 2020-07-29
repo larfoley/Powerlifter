@@ -1,7 +1,4 @@
 {{#if @notifications}}
-{{!-- <div class="flex flex--flex-end">
-  <Button @text="Mark All Read" />
-</div> --}}
 <br>
   <div class="card">
     <div class="card__body">
@@ -10,6 +7,7 @@
           <li
             class="card__list-item notification  {{if notif.isUnread "notification--is-unread"}}"
             {{on 'click' (fn this.onClickNotification notif)}}
+            role="button"
           >
             <div class="media">
               <div class="media__asset">

@@ -4,6 +4,7 @@ import Validator from "ember-model-validator/mixins/object-validator";
 export default class PostModel extends Model.extend(Validator) {
   @belongsTo('user', { async: false }) author;
   @attr('string') actionText;
+  @attr('string') actionType;
   @attr('string') content;
   @hasMany('comment') comments;
   @attr('number', { defaultValue: 0 }) commentsCount;

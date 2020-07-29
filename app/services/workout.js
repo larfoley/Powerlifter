@@ -2,19 +2,18 @@ import Service, { inject as service } from '@ember/service';
 import { action } from '@ember/object';
 import { isPresent } from '@ember/utils';
 import { tracked } from '@glimmer/tracking';
+import { A } from '@ember/array';
 
 export default class WorkoutService extends Service {
   @service currentUser;
   @service store;
-
+  @tracked user;
   @tracked _currentWorkoutProgram;
 
   constructor() {
     super(...arguments);
 
-    this._currentWorkoutProgram = this.currentUser.user.workoutHistory.find((workout) => {
-      return workout.isActive;
-    })
+    this.user = this.currentUser.user;
   }
 
   get hasActiveWorkoutProgram() {
@@ -22,20 +21,46 @@ export default class WorkoutService extends Service {
   }
 
   get currentWorkoutProgram() {
-    return this._currentWorkoutProgram;
+    if (this._currentWorkoutProgram) {
+      return this._currentWorkoutProgram
+    }
+
+    if (this.user) {
+      return this.user.workoutHistory.find((workout) => {
+        return workout.isActive;
+      })
+    }
+
+    return null;
   }
 
-  set currentWorkoutProgram(newWorkoutProgram) {
-    this._currentWorkoutProgram = newWorkoutProgram;
+  set currentWorkoutProgram(program) {
+    this._currentWorkoutProgram = program;
+  }
+
+  get daysCompleted() {
+    const workoutSessions = A();
+    const weeks = this.workout.currentWorkoutProgram.weeks;
+
+    weeks.forEach((week) => {
+      week.workouts.forEach((workout) => {
+        workoutSessions.pushObject(workout);
+      });
+    });
+
+    return workoutSessions.filter((w) => w.completed).length
   }
 
   @action
   async activateProgram(workoutProgramTemplate) {
 
     if (this.hasActiveWorkoutProgram) {
+      const currentWorkoutProgram = this.currentWorkoutProgram;
+
       this.currentWorkoutProgram.isActive = false;
 
-      await this.currentWorkoutProgram.save();
+      await currentWorkoutProgram.save();
+
       this.currentWorkoutProgram = null;
     }
 
@@ -46,7 +71,7 @@ export default class WorkoutService extends Service {
 
     this._removeDirtyProps()
 
-    this._currentWorkoutProgram = workoutProgram;
+    this.currentWorkoutProgram = workoutProgram;
   }
 
   async _convertWorkoutProgramTemplateToWorkoutProgram(workoutProgramTemplate) {
@@ -59,30 +84,7 @@ export default class WorkoutService extends Service {
       user: this.currentUser.user,
     });
 
-    // const workoutProgramTemplateCopy = await workoutProgramTemplate.copy({ deep: false });
-    // const serializedWorkoutProgramTemplate = workoutProgramTemplateCopy.serialize();
     const serializedWorkoutProgramTemplate = workoutProgramTemplate.serialize();
-
-    // workoutProgramTemplateCopy.weeks.forEach((week) => {
-    //   week.workouts.forEach((workout) => {
-    //     if (workout) {
-    //       workout.unloadRecord()
-    //     }
-    //     if (workout) {
-    //       workout.exercises.forEach((exercise) => {
-    //         if (exercise) {
-    //           exercise.unloadRecord()
-    //         }
-    //         exercise.sets.forEach((workoutSet) => {
-    //           if (workoutSet) {
-    //             workoutSet.unloadRecord()
-    //           }
-    //         });
-    //       });
-    //     }
-    //   });
-    // });
-    // workoutProgramTemplateCopy.unloadRecord();
 
     serializedWorkoutProgramTemplate.weeks.forEach((week) => {
       const workoutProgramWeek = this.store.createRecord('workout-program-week', {

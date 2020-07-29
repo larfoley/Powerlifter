@@ -35,30 +35,30 @@
           {{#if action.route}}
             {{#if action.model}}
               <LinkTo @route={{action.route}} @model={{action.model}} class="toolbar__link" >
-                {{#if action.text}}
-                  <span class="u-bold">
-                    {{uppercase action.text}}
-                  </span>
-                {{/if}}
                 <Icon
                   class="toolbar__icon"
                   @icon={{action.icon}}
                   @primary={{true}}
                   @prefix={{if action.prefix action.prefix "fas"}}
                 />
-              </LinkTo>
-            {{else}}
-              <LinkTo @route={{action.route}} class="toolbar__link" >
                 {{#if action.text}}
-                  <span class="u-bold">
+                  <span class="toolbar__link-text">
                     {{uppercase action.text}}
                   </span>
                 {{/if}}
+              </LinkTo>
+            {{else}}
+              <LinkTo @route={{action.route}} class="toolbar__link" >
                 <Icon
                   class="toolbar__icon" @icon={{action.icon}}
                   @primary={{true}}
                   @prefix={{if action.prefix action.prefix "fas"}}
                 />
+                {{#if action.text}}
+                  <span class="toolbar__link-text">
+                    {{uppercase action.text}}
+                  </span>
+                {{/if}}
               </LinkTo>
             {{/if}}
           {{else}}

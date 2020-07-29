@@ -195,7 +195,7 @@ export default class WorkoutProgramComponent extends Component {
 
     if (this.args.workoutProgram.completed) {
       this.showWorkoutProgramCompleteDialog = true;
-    };
+    }
   }
 
   @action

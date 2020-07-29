@@ -34,7 +34,7 @@ export default class FindFriendsComponent extends Component {
       }
 
     } catch (error) {
-      console.log(error);
+      console.error(error);
       this.toast.error('Unable to search for friends');
 
     } finally {

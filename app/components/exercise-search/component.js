@@ -9,7 +9,7 @@ export default class ExerciseSearchComponent extends Component {
 
   get filteredExercises() {
     return this.args.exercises.filter((exercise) => {
-      return exercise.name.includes(this.searchTerm)
+      return exercise.name.toLowerCase().includes(this.searchTerm.toLowerCase());
     });
   }
 

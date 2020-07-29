@@ -15,7 +15,7 @@ export default class WorkoutProgramSetModel extends Model.extend(Copyable).exten
     const repsCompleted = parseInt(this.repsCompleted, 10);
     const targetReps = parseInt(this.targetReps, 10);
 
-    return (targetReps !== NaN && repsCompleted !== NaN) && (repsCompleted >= targetReps)
+    return (!isNaN(targetReps) && !isNaN(repsCompleted)) && (repsCompleted >= targetReps)
   }
 
   get isNotValid() {

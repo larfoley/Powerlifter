@@ -32,13 +32,16 @@ Router.map(function() {
         this.route('delete');
         this.route('share');
       });
+      this.route('charts');
     });
     this.route('new');
     this.route('records');
   });
   this.route('my-network', function() {
     this.route('search');
-    this.route('feed');
+    this.route('feed', function() {
+      this.route('post', { path: '/:post_id' });
+    });
     this.route('friend-requests');
     this.route('friends', function() {
       this.route('find');

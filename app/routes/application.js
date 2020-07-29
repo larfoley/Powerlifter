@@ -8,7 +8,6 @@ export default Route.extend(ApplicationRouteMixin, {
   socketIOService: service('socket-io'),
   session: service(),
   toast: service(),
-  toast: service(),
 
   model() {
     if (this.session.authenticated) {
@@ -37,7 +36,7 @@ export default Route.extend(ApplicationRouteMixin, {
     socket.on(`friends/${this.currentUser.user.id}`, (data) => {
       const friend = this.store.peekRecord('friend', data.friend._id);
 
-      friend.isOnline = data.friend.isOnline;
+      friend.isOnline = data.friend && data.friend.isOnline;
 
       if (friend.isOnline) {
         this.toast.info(friend.username + " is now online");
@@ -60,9 +59,9 @@ export default Route.extend(ApplicationRouteMixin, {
       });
     })
 
-    socket.on(`friend-request-declined/${this.currentUser.user.id}`, (data) => {
-      alert('New Friend declined')
-    })
+    // socket.on(`friend-request-declined/${this.currentUser.user.id}`, (data) => {
+    //   alert('New Friend declined')
+    // })
 
     socket.on(`post/${this.currentUser.user.id}`, (post) => {
       const payload = {

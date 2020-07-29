@@ -5,7 +5,7 @@
     @title="Select an Exercise"
     @backRoute="workout.new"
   />
-  <div class="box box--with-bottom-margin">
+  {{!-- <div class="box box--with-bottom-margin">
     <div class="card__body">
       <label for="">Category</label>
       <PowerSelect
@@ -19,11 +19,12 @@
         {{rep}}
       </PowerSelect>
     </div>
-  </div>
+  </div> --}}
   <ul class="list">
     {{#each this.model.exercises as |exercise|}}
       <li
-        {{on 'click' (fn selectExercise exercise)}}
+        role="button"
+        {{on 'click' (fn this.selectExercise exercise)}}
         class="list__item"
       >
       {{exercise.name}}

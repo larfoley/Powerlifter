@@ -2,6 +2,8 @@
   <div class="card-list">
     {{#each this.sortedPosts as |post|}}
       <Posts::Post @post={{post}} />
+    {{else}}
+      <ZeroSateMessage @message="No posts to show" @icon="newspaper" />
     {{/each}}
   </div>
 </div>

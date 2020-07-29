@@ -1,6 +1,6 @@
 <span class="user-avatar">
   {{#if @user.profilePic}}
-    <img src={{@user.profilePic}} alt="">
+    <img src={{@user.profilePic}} alt="profile pic">
   {{else}}
     <FaIcon @icon="user-circle" @size={{ if @size @size "2x"}} class="user-avatar" ...attributes/>
   {{/if}}

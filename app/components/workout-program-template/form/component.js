@@ -146,7 +146,6 @@ export default class WorkoutProgramFormComponent extends Component {
 
   @action
   async copyWeek(week) {
-    console.log('copy week');
     const weekCopy = await week.copy({ deep: true })
 
     weekCopy.week = this.weeks.lastObject.week + 1;
@@ -187,7 +186,6 @@ export default class WorkoutProgramFormComponent extends Component {
   @action
   addWorkoutProgramSet(workoutBlock) {
     const workoutProgramSet = this.store.createRecord('workout-set');
-    console.log('creating set from add');
 
     if (workoutBlock.sets.length > 0) {
       workoutProgramSet.targetReps = workoutBlock.sets.lastObject.targetReps;
@@ -206,7 +204,6 @@ export default class WorkoutProgramFormComponent extends Component {
 
   @action
   addWorkoutSession() {
-    console.log('add workout sesison');
     const workout = this.store.createRecord('workout');
 
     if (this.workoutSessions.length === 0) {
@@ -240,6 +237,7 @@ export default class WorkoutProgramFormComponent extends Component {
       await this.workoutProgram.save();
       this._removeDirtyProps()
       this.router.transitionTo('workout.my-programs');
+      this.toast.success('Workout Program Created')
 
     } catch (e) {
       console.error(e);

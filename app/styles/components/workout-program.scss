@@ -46,6 +46,11 @@
   &__progress {
     max-width: 500px;
     margin: auto;
+
+    &--left-align {
+      margin: 0;
+      max-width: none;
+    }
   }
 
   &__progress-outer-bar {

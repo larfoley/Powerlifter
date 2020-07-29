@@ -1,13 +1,14 @@
 import Route from './protected';
+import { inject as service } from '@ember/service';
 
 export default class HomeRoute extends Route {
-  async model() {
-    const posts = await this.store.findAll('post');
+  @service workout;
 
+  async model() {
     return {
-      posts: posts.sortBy('createdAt').reverse(),
-      personalBests: this.store.query('lift-record', { limit: 3, isPersonalBest: true }),
-      goals: this.store.query('goal', { limit: 3, isCompleted: false })
+      liftRecords: this.store.query('lift-record', { limit: 3 }),
+      goals: this.store.query('goal', { limit: 3, isCompleted: false }),
+      currentWorkoutProgram: this.workout.currentWorkoutProgram
     }
   }
 }

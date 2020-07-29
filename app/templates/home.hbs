@@ -1,31 +1,56 @@
-
-{{!-- <Toolbar @title="Home" />
-<div class="header">
-  <h2 class="header__title">Personal Bests</h2>
-  <ViewAllLink @route="index" />
-</div>
-<LiftRecords @records={{@model.personalBests}} @recordPath="records.record" />
-
-<div class="section">
-  <div class="header">
-    <h2 class="header__title">Goals</h2>
-    <ViewAllLink @route="index" />
-  </div>
-  <Goals @goals={{@model.goals}} />
-</div>
-
-<NewPostLink />
-<Posts @posts={{@model.posts}} /> --}}
 <Toolbar @title="Home" />
 <div class="content-container">
+  {{#if this.showCurrentWorkoutProgram}}
+  <div class="content-container__section">
+    <h2 class="h4">Current Workout Program</h2>
+    <div class="card">
+      <div class="card__body">
+        <div class="h5">
+          {{this.model.currentWorkoutProgram.name}}
+        </div>
+        <div class="workout-program__progress workout-program__progress--left-align">
+          <span class="text text--muted">Progress</span>
+          <div class="h3">
+            {{this.model.currentWorkoutProgram.progress}}% completed
+          </div>
+          <div class="workout-program__progress-outer-bar">
+            <div
+              class="workout-program__progress-inner-bar
+              workout-program__progress-inner-bar--value-{{this.model.currentWorkoutProgram.progress}}"
+              >
+            </div>
+          </div>
+        </div>
+        <br>
+        <Button @text="Continue" @primary={{true}} @route="workout.diary" />
+      </div>
+    </div>
+  </div>
+  {{/if}}
   <div class="content-container__section">
     <h2 class="h4">Active Goals</h2>
     <Goals @goals={{@model.goals}} />
   </div>
   <div class="content-container__section">
-    <h2 class="h4">Recent Personal Bests</h2>
-  </div>
-  <div class="content-container__section">
-    <h2 class="h4">Current Workout Program</h2>
+    <h2 class="h4">Recent Lift Records</h2>
+      {{#each @model.liftRecords as |record|}}
+      <div class="card">
+        <div class="card__body">
+          <div class="flex flex--space-between flex flex--align-center">
+            <div>
+              <div class="h5">{{record.exercise.name}}</div>
+              {{record.weightLifted}} kgs for {{record.reps}} Reps
+            </div>
+            <div>
+              <span class="text text--muted text--small">
+                {{due-date record.date 'MM-DD-YYYY'}}
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+      {{else}}
+      <ZeroStateMessage @message="You have not lift records" @icon="dumbbell"/>
+      {{/each}}
   </div>
 </div>

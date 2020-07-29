@@ -13,11 +13,7 @@ export default class ProfilePicComponent extends Component {
 
   @action
   async setProfilePic(file) {
-    const url = await file.readAsDataURL();
-    const mediaType = file.type.split('/')[0];
-    const media = this.store.createRecord('file', { mediaType, url });
     const user = this.currentUser.user;
-
     const response = await this.fileUploader.upload(file);
 
     user.profilePic = response.body.location;
@@ -27,5 +23,14 @@ export default class ProfilePicComponent extends Component {
     this.profilePic = response.body.location;
 
     this.toast.success('Profile picture updated');
+
+    const post = this.store.createRecord('post' , {
+      author: this.currentUser.user,
+      actionText: 'updated their profile pic',
+      actionType: 'upload-profile-pic',
+      content: 'New profile pic'
+    })
+
+    await post.save()
   }
 }

@@ -6,21 +6,19 @@ import { hbs } from 'ember-cli-htmlbars';
 module('Integration | Component | spinner', function(hooks) {
   setupRenderingTest(hooks);
 
-  test('it renders', async function(assert) {
-    // Set any properties with this.set('myProperty', 'value');
-    // Handle any actions with this.set('myAction', function(val) { ... });
+  test('loading', async function(assert) {
+    this.set('loading', true);
 
-    await render(hbs`<Spinner />`);
+    await render(hbs`<Spinner @loading=loading/>`);
 
-    assert.equal(this.element.textContent.trim(), '');
+    assert.equal(this.element.querySelectorAll('[data-test-spinner-icon]').length, 1, 'is spinning');
+  });
 
-    // Template block usage:
-    await render(hbs`
-      <Spinner>
-        template block text
-      </Spinner>
-    `);
+  test('not loading', async function(assert) {
+    this.set('loading', false);
 
-    assert.equal(this.element.textContent.trim(), 'template block text');
+    await render(hbs`<Spinner @loading=loading/>`);
+
+    assert.equal(this.element.querySelectorAll('[data-test-spinner-icon]').length, 0, 'not spinning');
   });
 });

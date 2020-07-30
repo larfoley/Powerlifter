@@ -91,5 +91,8 @@
   },
   "ember": {
     "edition": "octane"
+  },
+  "dependencies": {
+    "logrocket": "^1.0.10"
   }
 }

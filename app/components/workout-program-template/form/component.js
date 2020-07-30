@@ -10,6 +10,7 @@ export default class WorkoutProgramFormComponent extends Component {
   @service store;
   @service currentUser;
   @service router;
+  @service toast;
 
   @tracked showExerciseSelect = false;
   @tracked isInValid = true;

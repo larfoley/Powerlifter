@@ -1,6 +1,6 @@
 import Component from '@glimmer/component';
 import { tracked } from '@glimmer/tracking'
-import { action } from '@ember/object';
+import { action, set } from '@ember/object';
 import { A } from '@ember/array';
 import { isPresent } from '@ember/utils';
 import { inject as service } from '@ember/service';
@@ -93,20 +93,19 @@ export default class WorkoutProgramComponent extends Component {
 
   @action
   updateExerciseSet() {
-    console.log(0);
   }
 
   @action
   async completeWorkout() {
-    this.currentWorkout.goalsAchieved = []
-    this.currentWorkout.personalBestsAchieved = [];
+    set(this.currentWorkout, 'goalsAchieved', A())
+    set(this.currentWorkout, 'personalBestsAchieved', A())
 
     const workout = this.currentWorkout.serialize();
 
     if (!workout.completed) {
 
       this.currentWorkout.completed = true;
-      // this.showWorkoutCompleteDialog = true;
+      this.showWorkoutCompleteDialog = true;
 
       for (const exercise of workout.exercises) {
         for (const exerciseSet of exercise.sets) {
@@ -130,7 +129,7 @@ export default class WorkoutProgramComponent extends Component {
 
             await newLiftRecord.save();
 
-            this.currentWorkout.personalBestsAchieved.push({
+            this.currentWorkout.personalBestsAchieved.pushObject({
               exercise: newLiftRecord.exercise.name,
               reps: newLiftRecord.reps,
               weight: newLiftRecord.weightLifted,
@@ -154,7 +153,7 @@ export default class WorkoutProgramComponent extends Component {
 
             await goal.save();
 
-            this.currentWorkout.goalsAchieved.push({
+            this.currentWorkout.goalsAchieved.pushObject({
               exercise: goal.exercise.name,
               reps: goal.reps,
               weight: goal.weight,
@@ -181,7 +180,6 @@ export default class WorkoutProgramComponent extends Component {
       }
 
       await this.args.workoutProgram.save()
-      this.showWorkoutCompleteDialog = true;
     }
 
     if (this.args.workoutProgram.progress === 100) {

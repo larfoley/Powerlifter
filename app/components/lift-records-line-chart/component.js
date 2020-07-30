@@ -8,25 +8,42 @@ import { tracked } from '@glimmer/tracking';
 
 export default class LiftRecordsLineChartComponent extends Component {
   @tracked _year;
+  @tracked liftRecords;
+
+  constructor() {
+    super(...arguments)
+    this.liftRecords = this.args.liftRecords
+  }
 
   get year() {
     return this._year || new Date().getFullYear();
   }
 
-  get chartOptions() {
+  get exerciseName() {
+    if (this.liftRecords) {
+      return this.liftRecords.firstObject.exercise.name;
+    }
+  }
+
+  generateChartData(liftRecords, reps) {
+    const liftRecordsLimit = 15;
+
     const series = [{
-      data: []
+      data: [],
+      name: 'Date lift record was achieved'
     }]
 
     const xAxis = {
       categories: [],
-      label: 'foo'
     }
 
+    if (liftRecords.length > liftRecordsLimit) {
+      liftRecords = liftRecords.slice(liftRecords.length - liftRecordsLimit)
+    }
 
-    this.args.liftRecords.filter((item) => {
-      return new Date(item.date).getFullYear() === this.year;
-    }).forEach((item) => {
+    liftRecords = liftRecords.filterBy('reps', reps);
+
+    liftRecords.forEach((item) => {
       xAxis.categories.push(new Date(item.date).toLocaleDateString())
       series[0].data.push(item.weightLifted)
     });
@@ -36,13 +53,27 @@ export default class LiftRecordsLineChartComponent extends Component {
         type: 'line'
       },
       title: {
-        text: "Most weight lifted"
+        text: `${reps} Rep Max Prgression`
       },
       subtitle: {
-         text: 'When resizing the window or the frame, the chart should resize'
+         text: this.exerciseName
       },
       xAxis,
       series
     }
+  }
+
+  get charts() {
+    const charts = [];
+
+    for (var i = 1; i <= 3; i++) {
+      charts.push(this.generateChartData(this.liftRecords, i))
+    }
+
+    return charts;
+  }
+
+  get showCharts() {
+    return this.charts.some(chart => chart.xAxis.categories.length > 1);
   }
 }

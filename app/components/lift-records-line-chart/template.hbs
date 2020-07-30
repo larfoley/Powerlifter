@@ -1,5 +1,13 @@
-<div class="card">
-  <div class="card__body">
-    <HighCharts @mode={{this.mode}} @chartOptions={{this.chartOptions}} />
-  </div>
-</div>
+{{#if this.showCharts}}
+  {{#each this.charts as |chartOptions|}}
+    {{#if (gt chartOptions.xAxis.categories.length 1)}}
+      <div class="card">
+        <div class="card__body">
+          <HighCharts @chartOptions={{chartOptions}} />
+        </div>
+      </div>
+    {{/if}}
+  {{/each}}
+{{else}}
+  <ZeroStateMessage @message="Not enough data to show chart" />
+{{/if}}

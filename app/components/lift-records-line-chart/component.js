@@ -23,6 +23,8 @@ export default class LiftRecordsLineChartComponent extends Component {
     if (this.liftRecords) {
       return this.liftRecords.firstObject.exercise.name;
     }
+
+    return null
   }
 
   generateChartData(liftRecords, reps) {

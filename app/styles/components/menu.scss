@@ -15,7 +15,7 @@
     display: block;
 
     &:hover {
-      background-color: #00000008;
+      background-color: $input-bg-color;
       cursor: pointer
     }
   }

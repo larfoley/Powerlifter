@@ -1,6 +1,5 @@
 import Component from '@glimmer/component';
 import { sort } from '@ember/object/computed';
-import { set } from '@ember/object';
 import { action } from '@ember/object';
 import { tracked } from '@glimmer/tracking';
 import { inject as service } from '@ember/service';
@@ -53,7 +52,7 @@ export default class PostsComponent extends Component {
   }
 
   get noPosts() {
-    this.posts.length === 0 && !this.isLoadingMorePosts;
+    return this.posts.length === 0 && !this.isLoadingMorePosts;
   }
 
   get shouldFetchMorePosts() {

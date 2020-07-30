@@ -12,7 +12,7 @@ export default class LiftRecordsLineChartComponent extends Component {
 
   constructor() {
     super(...arguments)
-    this.liftRecords = this.args.liftRecords
+    this.liftRecords = this.args.liftRecords.sortBy('date').reverse()
   }
 
   get year() {

@@ -7,7 +7,6 @@ export default class PostCommentsComponent extends Component {
   @service store;
   @service currentUser;
   @service toast;
-
   @tracked commentContent = "";
   @tracked isLoadingMoreComments = false;
 

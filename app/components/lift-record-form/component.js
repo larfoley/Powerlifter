@@ -101,6 +101,8 @@ export default class LiftRecordFormComponent extends Component {
         this.toast.success('Record updated');
       }
 
+      await this.args.records.update();
+
       if (typeOf(this.args.onCreateOrUpdate) === 'function') {
         this.args.onCreateOrUpdate();
       } else {

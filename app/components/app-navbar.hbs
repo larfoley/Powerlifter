@@ -11,7 +11,7 @@
       Exercises
     </small>
   </LinkTo>
-  <LinkTo @route="goals" class="app-navbar__link" data-test-goals-link>
+  <LinkTo @route="goals" class="app-navbar__link app-navbar__link--hide-on-mobile" data-test-goals-link>
     <FaIcon class="app-navbar__icon" @icon="medal" />
     <small class="app-navbar__text">
       Goals
@@ -23,7 +23,7 @@
       Workout
     </small>
   </LinkTo>
-  <LinkTo @route="notifications" class="app-navbar__link" data-test-notifications-link>
+  <LinkTo @route="notifications" class="app-navbar__link app-navbar__link--hide-on-mobile" data-test-notifications-link>
     {{#if this.notifications.hasNewNotifications}}
       <span class="badge__container">
         <FaIcon class="app-navbar__icon" @icon="bell"/>
@@ -33,7 +33,7 @@
       <FaIcon class="app-navbar__icon" @icon="bell"/>
     {{/if}}
     <small class="app-navbar__text">
-      Notifs
+      Notifications
     </small>
   </LinkTo>
   <LinkTo @route="my-network" class="app-navbar__link" data-test-my-network-link>
@@ -42,16 +42,16 @@
       Community
     </small>
   </LinkTo>
-  <LinkTo @route="profile" class="app-navbar__link" data-test-my-network-link>
+  <LinkTo @route="profile" class="app-navbar__link app-navbar__link--hide-on-mobile" data-test-my-network-link>
     <FaIcon class="app-navbar__icon" @icon="user"/>
     <small class="app-navbar__text">
       Profile
     </small>
   </LinkTo>
-  {{!-- <LinkTo @route="more" class="app-navbar__link" data-test-goals-link>
+  <LinkTo @route="more" class="app-navbar__link app-navbar__link--hide-on-desktop" data-test-goals-link>
     <FaIcon class="app-navbar__icon" @icon="ellipsis-h"/>
     <small class="app-navbar__text">
       More
     </small>
-  </LinkTo> --}}
+  </LinkTo>
 </div>

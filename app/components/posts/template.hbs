@@ -1,9 +1,11 @@
 <div class="box box--transparent">
-  <div class="card-list">
+  <div class="card-list" {{did-insert this.addScrolledToBottomListener}}>
     {{#each this.sortedPosts as |post|}}
       <Posts::Post @post={{post}} />
-    {{else}}
-      <ZeroStateMessage @message="No posts to show" @icon="newspaper" />
     {{/each}}
+    {{#if this.noPosts}}
+      <ZeroStateMessage @message="No posts to show" @icon="newspaper" />
+    {{/if}}
   </div>
+  <Spinner @loading={{this.isLoadingMorePosts}}/>
 </div>

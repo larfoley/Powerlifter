@@ -1,26 +1,16 @@
 .app-navbar {
-  // background-color: $app-navbar-bg-color;
   background-color: white;
   display: flex;
   width: 100%;
-  // color: $app-navbar-text-color;
-  // position: fixed;
-  // bottom: 0;
-  // left: 0;
-  // border-top: 1px solid #e6ecf0;
 
   @media screen and (min-width: $navbar-breakpoint) {
-    // width: $app-navbar-width;
-    // top: 0;
     flex-direction: column;
     position: static;
-    // padding-top: 1em;
-    // border-right: 1px solid #e6ecf0;
     border-top: none;
   }
 
   &__link {
-    font-size: 21px;
+    font-size: 19px;
     height: 75px;
     display: flex;
     flex: auto;
@@ -28,26 +18,25 @@
     align-items: center;
     justify-content: center;
     text-decoration: none;
-    // color: $app-navbar-text-color;
     position: relative;
 
-    &.active {
-      // color: white;
+    &--hide-on-mobile {
+      display: none;
+    }
 
+    &.active {
       @media screen and (min-width: $navbar-breakpoint) {
-        // background-color: $primary-color;
         color: $primary-color;
       }
-
     }
 
     &:hover:not(.active) {
-      // color: $primary-color;
       background-color: lighten($primary-color, 40%);
       background-color: #eee;
     }
 
     @media screen and (min-width: $navbar-breakpoint) {
+      display: flex;
       flex: initial;
       justify-content: flex-start;
       flex-direction: row;
@@ -58,17 +47,22 @@
       // color: white;
       padding: 1em;
       height: 0;
+
+      &--hide-on-desktop {
+        display: none;
+      }
     }
   }
 
   &__text {
     margin-top: 3px;
     font-size: 14px;
+    font-size: 13px;
     font-weight: bold;
 
     @media screen and (min-width: $navbar-breakpoint) {
       position: absolute;
-      left: 70px;
+      left: 60px;
       top: 7px;
       font-size: 1rem;
     }

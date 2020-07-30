@@ -1,20 +1,4 @@
-@keyframes fadein {
-    from { opacity: 0; }
-    to   { opacity: 1; }
-}
-
-@-moz-keyframes fadein {
-    from { opacity: 0; }
-    to   { opacity: 1; }
-}
-
-@-webkit-keyframes fadein {
-    from { opacity: 0; }
-    to   { opacity: 1; }
-}
-
 .floating-action-button {
-
   animation: fadein 1s;
   position: fixed;
   bottom: 110px;
@@ -31,6 +15,7 @@
 
   @media screen and (min-width: $mobile-breakpoint) {
     position: static;
+    z-index: 1;
 
     .button span {
       display: inline;

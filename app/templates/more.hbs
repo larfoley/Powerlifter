@@ -1,44 +1,53 @@
-<AppNavbar />
-<PageContainer>
-  <div class="list card">
-    <LinkTo
-      @route="index"
-      class="notification list__item"
-    >
-      <div class="media">
-        <div class="media__asset">
-          <FaIcon @icon="cog" />
+<FullScreenModal>
+  <Toolbar @title="Menu" />
+  <div class="content-container">
+    <div class="card">
+      <div class="card__body">
+        <div class="card__list">
+          <div class="card__list-item">
+            <LinkTo
+            @route="profile"
+            >
+            <div class="media">
+              <div class="media__asset">
+                <FaIcon @icon="user" />
+              </div>
+              <div class="media__body">
+                Profile
+              </div>
+            </div>
+          </LinkTo>
         </div>
-        <div class="media__body">
-          Settings
+        <div class="card__list-item">
+          <LinkTo
+          @route="goals"
+          >
+          <div class="media">
+            <div class="media__asset">
+              <FaIcon @icon="bell" />
+            </div>
+            <div class="media__body">
+              Notifications
+            </div>
+          </div>
+        </LinkTo>
+      </div>
+      <div class="card__list-item">
+        <LinkTo
+        @route="sign-out"
+        >
+        <div class="media">
+          <div class="media__asset">
+            <FaIcon @icon="sign-out-alt" />
+          </div>
+          <div class="media__body">
+            Sign out
+          </div>
         </div>
-      </div>
-  </LinkTo>
-  <LinkTo
-    @route="index"
-    class="notification list__item"
-  >
-    <div class="media">
-      <div class="media__asset">
-        <FaIcon @icon="user" />
-      </div>
-      <div class="media__body">
-        Account
+      </LinkTo>
+    </div>
+  </div>
       </div>
     </div>
-  </LinkTo>
-  <LinkTo
-    @route="index"
-    class="notification list__item"
-  >
-    <div class="media">
-      <div class="media__asset">
-        <FaIcon @icon="plus" />
-      </div>
-      <div class="media__body">
-        Help
-      </div>
-    </div>
-  </LinkTo>
-</div>
-</PageContainer>
+  </div>
+</FullScreenModal>

@@ -12,6 +12,7 @@
     display: flex;
     align-items: center;
     @include container;
+    width: 93%
   }
 
   &__title {

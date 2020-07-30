@@ -15,9 +15,7 @@ module('Integration | Component | spinner', function(hooks) {
   });
 
   test('not loading', async function(assert) {
-    this.set('loading', false);
-
-    await render(hbs`<Spinner @loading=loading/>`);
+    await render(hbs`<Spinner />`);
 
     assert.equal(this.element.querySelectorAll('[data-test-spinner-icon]').length, 0, 'not spinning');
   });

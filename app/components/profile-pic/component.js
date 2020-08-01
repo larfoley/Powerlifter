@@ -9,7 +9,9 @@ export default class ProfilePicComponent extends Component {
   @service currentUser;
   @service toast;
 
-  @tracked profilePic = this.currentUser.user.profilePic;
+  get profilePic() {
+    return this.currentUser.user ? this.currentUser.user.profilePic : ''
+  };
 
   @action
   async setProfilePic(file) {
@@ -19,8 +21,6 @@ export default class ProfilePicComponent extends Component {
     user.profilePic = response.body.location;
 
     await user.save();
-
-    this.profilePic = response.body.location;
 
     this.toast.success('Profile picture updated');
 

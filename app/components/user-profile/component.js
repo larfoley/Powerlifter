@@ -5,7 +5,7 @@ export default class UserProfileComponent extends Component {
   @service currentUser;
 
   get coverPhoto() {
-    return this.currentUser.user.coverPhoto;
+    return this.currentUser.user ? this.currentUser.user.coverPhoto : '';
   }
 
   get coverPhotoStyle() {

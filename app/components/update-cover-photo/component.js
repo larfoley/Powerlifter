@@ -11,14 +11,6 @@ export default class UpdateCoverPhotoComponent extends Component {
   @service toast;
   @tracked selectedCoverPhoto;
 
-  get coverPhoto() {
-    return this.currentUser.user.coverPhoto;
-  }
-
-  get coverPhotoStyle() {
-    return this.coverPhoto ? `url(${this.coverPhoto})` : '';
-  }
-
   @action
   async updateCoverPhoto() {
     if (this.selectedCoverPhoto) {

@@ -23,6 +23,8 @@ Router.map(function() {
         this.route('new');
         this.route('edit', { path: '/:goal_id/edit' });
       });
+      this.route('charts', function() {
+      });
       this.route('records', function() {
         this.route('new');
         this.route('record', { path: '/:lift_record_id' }, function() {

@@ -1,5 +1,5 @@
 <div class="post__comments">
-  {{#each @comments as |comment|}}
+  {{#each this.sortedComments as |comment|}}
     <div class="media">
       <div class="media__asset">
         <UserAvatar class="post-comments__user-avatar"/>
@@ -7,9 +7,7 @@
       <div class="media__body">
         <div class="post-comments__comment">
           <div class="post-comments__comment-author">
-            <LinkTo @route="users.user" @model={{comment.author.username}} >
-              {{comment.author.username}}
-            </LinkTo>
+            {{comment.author.username}}
           </div>
           {{comment.content}}
         </div>

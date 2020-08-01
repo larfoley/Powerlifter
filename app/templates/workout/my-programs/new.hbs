@@ -1,14 +1,8 @@
+<Toolbar
+  @title="New Workout Program"
+  @backRoute="workout.my-programs"
+/>
+<WorkoutProgramTemplate::Form
+  @exercises={{@model}}
+/>
 {{outlet}}
-<FullScreenModal
-  @onClose={{action this.transitionToRoute "workout.my-programs"}}
-  @closeOnClickOverlay={{false}}
->
-    <Toolbar
-      @title="New Workout Program"
-      @backRoute="workout.my-programs"
-      @showCloseIcon={{true}}
-    />
-      <WorkoutProgramTemplate::Form
-        @exercises={{@model}}
-      />
-</FullScreenModal>

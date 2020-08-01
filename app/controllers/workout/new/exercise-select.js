@@ -20,6 +20,6 @@ export default class WorkoutMyProgramsNewExerciseSelectController extends Contro
 
     workoutSession.exercises.pushObject(workoutBlock);
 
-    this.transitionToRoute('workout.my-programs.new');
+    this.transitionToRoute('workout.new');
   }
 }

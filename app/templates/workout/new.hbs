@@ -1,22 +1,9 @@
 <Toolbar
-  @title="Workout"
-  @tabs={{ array
-    (hash label="Diary" route="workout.diary")
-    (hash label="My Programs" route="workout.my-programs")
-    (hash label="History" route="workout.history")
-  }}
+  @title="New Workout Program"
+  @backRoute="workout.diary"
+  @showCloseIcon={{true}}
+/>
+<WorkoutProgramTemplate::Form
+  @exercises={{@model}}
 />
 {{outlet}}
-<FullScreenModal
-  @onClose={{action this.transitionToRoute "workout.diary"}}
-  @closeOnClickOverlay={{false}}
->
-    <Toolbar
-      @title="New Workout Program"
-      @backRoute="workout.diary"
-      @showCloseIcon={{true}}
-    />
-      <WorkoutProgramTemplate::Form
-        @exercises={{@model}}
-      />
-</FullScreenModal>

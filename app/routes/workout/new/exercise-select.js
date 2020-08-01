@@ -14,6 +14,6 @@ export default class WorkoutMyProgramsNewWeekRoute extends Route {
       })
     }
 
-    this.transitionTo('workout.my-programs.new');
+    this.transitionTo('workout.new');
   }
 }

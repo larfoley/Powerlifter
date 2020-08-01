@@ -24,6 +24,7 @@ export default class UserModel extends Model.extend(Validator) {
   @attr('boolean', { defaultValue: false} ) isFriend;
   @attr('boolean', { defaultValue: false} ) isOnline;
   @attr('string') profilePic;
+  @attr('string') coverPhoto;
   @hasMany('workout-program-template') workoutProgramTemplates;
   @hasMany('workout-program') workoutHistory;
   @belongsTo('notification') notification;

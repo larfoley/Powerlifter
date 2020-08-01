@@ -73,6 +73,7 @@
     "ember-simple-auth": "^2.1.1",
     "ember-sinon-qunit": "^4.0.1",
     "ember-source": "~3.17.0",
+    "ember-style-modifier": "^0.5.0",
     "ember-template-lint": "^2.4.0",
     "ember-test-selectors": "^3.0.0",
     "ember-toastr": "^2.0.1",

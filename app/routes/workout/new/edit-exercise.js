@@ -13,6 +13,6 @@ export default class WorkoutMyProgramsNewEditExerciseRoute extends Route {
       })
     }
 
-    this.transitionTo('workout.my-programs.new');
+    this.transitionTo('workout.new');
   }
 }

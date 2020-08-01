@@ -15,7 +15,7 @@ Router.map(function() {
 
   this.route('posts', function() {
     this.route('new');
-    this.route('post');
+    this.route('post', { path: '/:post_id' });
   });
   this.route('exercises', function() {
     this.route('exercise', { path: '/:exercise_id' }, function() {
@@ -32,7 +32,6 @@ Router.map(function() {
         this.route('delete');
         this.route('share');
       });
-      this.route('charts');
     });
     this.route('new');
     this.route('records');
@@ -46,8 +45,6 @@ Router.map(function() {
     this.route('friends', function() {
       this.route('find');
     });
-
-    this.route('posts', function() {});
   });
   this.route('goals',  function() {
     this.route('new');
@@ -64,14 +61,13 @@ Router.map(function() {
   this.route('more');
   this.route('friends', function() {});
 
-  this.route('users', function() {
-    this.route('user', { path: '/:username' });
-  });
+  this.route('users', function() {});
   this.route('file-upload');
   this.route('profile', function() {
     this.route('posts');
     this.route('friends');
     this.route('programs');
+    this.route('update-cover-photo');
   });
   this.route('current-program');
 
@@ -79,10 +75,7 @@ Router.map(function() {
     this.route('diary', function() {});
     this.route('new', function() {
       this.route('exercise-select');
-
-      // this.route('workout', function() {
-      //   this.route('exercise-select', { path: '/exercise-select/:workout_session_id' });
-      // });
+      this.route('edit-exercise');
     });
     this.route('my-programs', function() {
       this.route('my-program', { path: '/:workout_program_id' });
@@ -96,10 +89,5 @@ Router.map(function() {
     this.route('history');
   });
 
-  this.route('my-programs', function() {
-    this.route('new', function() {
-      this.route('');
-    });
-  });
   this.route('sign-out');
 });

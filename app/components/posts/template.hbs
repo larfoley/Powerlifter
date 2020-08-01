@@ -1,5 +1,5 @@
 <div class="box box--transparent">
-  <div class="card-list" {{did-insert this.addScrolledToBottomListener}}>
+  <div class="card-list" >
     {{#each this.sortedPosts as |post|}}
       <Posts::Post @post={{post}} />
     {{/each}}
@@ -7,5 +7,9 @@
       <ZeroStateMessage @message="No posts to show" @icon="newspaper" />
     {{/if}}
   </div>
-  <Spinner @loading={{this.isLoadingMorePosts}}/>
+  {{#if this.isLoadingMorePosts}}
+    <div class="spinner">
+      <FaIcon @icon="spinner" data-test-spinner-icon/>
+    </div>
+  {{/if}}
 </div>

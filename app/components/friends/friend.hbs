@@ -14,7 +14,7 @@
       </dd.Trigger>
       <dd.Content>
         <div class="menu">
-          <div class="menu__item" {{fn @onRemoveFriend dd @friend }} role="button">
+          <div class="menu__item" {{on 'click' (fn @onRemoveFriend dd @friend) }} role="button">
             <FaIcon @icon="trash-alt" @prefix="far"/> Remove friend
           </div>
         </div>

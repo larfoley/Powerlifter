@@ -6,9 +6,7 @@
       </div>
       <div class="media__body">
         <h2 class="card__title">
-          <LinkTo @route="users.user" @model={{@post.author}}>
-            {{@post.author.username}} <span class="text text--muted">{{ @post.actionText}}</span>
-          </LinkTo>
+          {{@post.author.username}} <span class="text text--muted">{{@post.actionText}}</span>
         </h2>
         <h3 class="card__sub-title">{{moment-from @post.createdAt}}</h3>
       </div>
@@ -33,10 +31,20 @@
   <div class="card__body">
     <div class="text">
       <LinkTo @route={{this.postRoute}} @model={{@post}}>
+        <p>{{@post.content}}</p>
         {{#if (eq @post.actionType "upload-profile-pic")}}
-          <img src={{@post.author.profilePic}} class="profile-img-post" alt="profile pic" />
+          <img
+            src={{@post.author.profilePic}}
+            class="profile-img-post"
+            alt="profile pic"
+          />
         {{else}}
-          <p>{{@post.content}}</p>
+          {{#if (eq @post.actionType "upload-cover-photo")}}
+            <img
+              src={{@post.author.coverPhoto}}
+              alt="profile background"
+            />
+          {{/if}}
         {{/if}}
       </LinkTo>
     </div>
@@ -96,7 +104,7 @@
   </div>
   {{#if this.showingComments}}
     <div class="card__footer">
-      <form {{on "submit" this.postComment}}>
+      <Form @onSubmit={{this.postComment}}>
         <div class="media">
           <div class="media__asset">
             <UserAvatar class="post-comments__user-avatar" @user={{@post.author}} />
@@ -109,7 +117,7 @@
             />
           </div>
         </div>
-      </form>
+      </Form>
       <Posts::Post::Comments @comments={{@post.comments}} @post={{@post}} />
     </div>
   {{/if}}

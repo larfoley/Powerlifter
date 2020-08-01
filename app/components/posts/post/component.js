@@ -7,11 +7,12 @@ export default class PostComponent extends Component {
   @service currentUser;
   @service store;
   @service flashMessages;
-
+  @service toast;
+  @tracked commentContent = ""
   @tracked showingComments = false;
 
   get postRoute() {
-    return this.args.postRoute || 'my-network.feed.post'
+    return this.args.postRoute || 'posts.post'
   }
 
   get isCurrentUsersPost() {
@@ -66,8 +67,7 @@ export default class PostComponent extends Component {
   }
 
   @action
-  async postComment(e) {
-    e.preventDefault();
+  async postComment() {
     const post = this.args.post;
 
     const comment = this.store.createRecord('comment', {
@@ -79,6 +79,7 @@ export default class PostComponent extends Component {
     try {
       await comment.save()
       this.commentContent = "";
+      comment.isCurrentUsersComment = true;
 
     } catch (e) {
       comment.rollbackAttributes();
@@ -92,6 +93,8 @@ export default class PostComponent extends Component {
       post.deleteRecord();
 
       await post.save();
+
+      post.refresh()
 
       this.toast.success('post deleted')
 

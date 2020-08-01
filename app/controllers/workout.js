@@ -5,7 +5,8 @@ export default class WorkoutController extends Controller {
   @service router;
 
   get showNavbar() {
-    return this.router.currentRouteName === "workout.diary";
+    return [
+      'workout.diary', 'workout.my-programs.index', 'workout.history'
+    ].includes(this.router.currentRouteName);
   }
-
 }

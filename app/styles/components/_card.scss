@@ -1,12 +1,13 @@
 .card {
   background: #fff;
   border-radius: $card-border-radius;
-  // box-shadow: 0 2px 0 rgba(0,0,0,0.06);
   box-shadow: $card-bod-shadow;
   margin-bottom: 1em;
-  // &--with-bottom-margin {
-  //   margin-bottom: 2em;
-  // }
+
+  &--flat {
+    border-radius: 0;
+    box-shadow: none;
+  }
 
   &__title {
     margin: 0;

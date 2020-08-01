@@ -1,0 +1,32 @@
+<Toolbar @title="Profile" @backRoute="index" @actions={{ array
+  (hash icon="sign-out-alt" route="sign-out" text="Sign out")
+}}/>
+<div class="user-profile">
+  <div
+    class="user-profile__background"
+    {{style
+      backgroundImage=this.coverPhotoStyle
+    }}
+  >
+    <div class="user-profile__pic">
+      <ProfilePic @user={{@user}}/>
+      <h3>{{@user.username}}</h3>
+    </div>
+    <Button
+      @text={{if @user.coverPhoto "Update Cover Photo" "Add Cover Photo"}}
+      @route="profile.update-cover-photo"
+      @icon="camera"
+      class="user-profile__edit-bg-button"
+    />
+  </div>
+  <div class="flex flex--flex-end user-profile__banner">
+    <div>
+      {{!-- <Button @text="Add Friend" @icon="user-plus" @secondary={{true}} /> --}}
+    </div>
+  </div>
+  <Toolbar @tabs={{ array
+    (hash label="Posts" route="profile.posts")
+    (hash label="Friends" route="profile.friends")
+    (hash label="Programs" route="profile.programs")
+  }}/>
+</div>

@@ -10,6 +10,6 @@ export default class WorkoutMyProgramsNewEditExerciseController extends Controll
   editExercise(workoutBlock, exercise) {
     workoutBlock.exercise = exercise.name;
 
-    this.transitionToRoute('workout.my-programs.new');
+    this.transitionToRoute('workout.new');
   }
 }

@@ -19,7 +19,11 @@ export default class ExerciseSearchComponent extends Component {
   }
 
   @action
-  goToExercise(exercise) {
-    this.router.transitionTo('exercises.exercise', exercise);
+  selectExercise(exercise) {
+    if (this.args.onSelect) {
+      this.args.onSelect(exercise);
+    } else {
+      this.router.transitionTo('exercises.exercise', exercise);
+    }
   }
 }

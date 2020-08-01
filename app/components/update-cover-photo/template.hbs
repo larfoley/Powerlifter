@@ -1,0 +1,31 @@
+<ModalDialog @translucentOverlay={{true}}>
+  <div class="box">
+    <h3>Update Cover Photo</h3>
+    <FileUpload
+    @name="avatar"
+    @onfileadd={{fn this.selectCoverPhoto}}
+    @accept="image/*"
+    >
+    <span class="button">
+      <FaIcon @icon="camera" />
+      {{#if this.selectedCoverPhoto}}
+        {{this.selectedCoverPhoto.name}}
+      {{else}}
+        {{#if this.currentUser.user.coverPhoto}}
+          Update Cover Photo
+        {{else}}
+          Add Cover Photo
+        {{/if}}
+      {{/if}}
+    </span>
+  </FileUpload>
+  <div class="card__section">
+    <div class="flex flex--flex-end">
+      {{#if this.selectedCoverPhoto}}
+        <Button @text="Save Photo" {{on 'click' this.updateCoverPhoto}} @primary={{true}} />
+      {{/if}}
+      <Button @text="Cancel" {{on 'click' this.cancel}} @secondary={{true}} />
+    </div>
+  </div>
+  </div>
+</ModalDialog>

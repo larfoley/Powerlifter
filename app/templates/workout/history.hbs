@@ -1,11 +1,3 @@
-<Toolbar
-  @title="Workout"
-  @tabs={{ array
-    (hash label="Diary" route="workout.diary")
-    (hash label="My Programs" route="workout.my-programs")
-    (hash label="History" route="workout.history")
-  }}
-/>
 <div class="content-container">
   <WorkoutProgram::History @workoutHistory={{@model}} />
 </div>

@@ -1,11 +1,13 @@
-<div class="card">
-  {{#if @friendRequests.length}}
+{{#if @friendRequests.length}}
+  <div class="card">
     <ul class="card__list" data-test-user-list>
       {{#each @friendRequests as |fr|}}
-      <div class="card__list-item" data-test-user-card>
-        <FriendRequests::FriendRequest @friendRequest={{fr}} />
-      </div>
+        <div class="card__list-item" data-test-user-card>
+          <FriendRequests::FriendRequest @friendRequest={{fr}} />
+        </div>
       {{/each}}
     </ul>
-  {{/if}}
-</div>
+  </div>
+{{else}}
+  <ZeroStateMessage @message="You have not friend requests" @icon="users" />
+{{/if}}

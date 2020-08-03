@@ -1,42 +1,39 @@
 <form data-test-sign-up>
   <h2 class="u-center-text u-bolder">Sign Up</h2>
-  <InputField
+  <Form::Field
     @label="Username"
-    @errors={{this.goal.errors.username}}
+    @errors={{@user.errors.username}}
   >
     <TextInput
       @value={{@user.username}}
       @label="Username"
-      @errors={{@user.errors.username}}
       @icon="user"
       data-test-username
     />
-  </InputField>
-  <InputField
+  </Form::Field>
+  <Form::Field
     @label="Email"
-    @errors={{this.goal.errors.email}}
+    @errors={{@user.errors.email}}
   >
     <TextInput
       @value={{@user.email}}
       @label="Email"
-      @errors={{@user.errors.email}}
       data-test-email
       @icon="envelope"
     />
-  </InputField>
-  <InputField
+  </Form::Field>
+  <Form::Field
     @label="Password"
-    @errors={{this.goal.errors.password}}
+    @errors={{@user.errors.password}}
   >
     <TextInput
       type="password"
       @value={{@user.password}}
       @label="Password"
-      @errors={{@user.errors.password}}
       @icon="lock"
       data-test-password
     />
-  </InputField>
+  </Form::Field>
   <p>
     <Button
       @submit={{true}}
@@ -51,3 +48,4 @@
     Already have an account ? <LinkTo @route="sign-in">Sign In</LinkTo>
   </p>
 </form>
+{{log @user.errors.password}}

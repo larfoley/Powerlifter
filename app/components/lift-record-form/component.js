@@ -79,12 +79,6 @@ export default class LiftRecordFormComponent extends Component {
     }
 
     try {
-      if (this.videoFile) {
-        const uploadedFile = await this.fileUploader.upload(this.videoFile);
-
-        record.videoURL = uploadedFile.body.location;
-      }
-
       await record.save();
 
       for (const goal of goalsToComplete) {
@@ -107,6 +101,23 @@ export default class LiftRecordFormComponent extends Component {
         this.args.onCreateOrUpdate();
       } else {
         this.router.transitionTo("exercises.exercise.records.record", record);
+      }
+
+      if (this.videoFile) {
+        this.toast.info("Uploading video...", "", {
+          hideDuration: 200000,
+          progressBar: false
+        });
+
+        const uploadedFile = await this.fileUploader.upload(this.videoFile);
+
+        record.videoURL = uploadedFile.body.location;
+
+        await record.save()
+
+        this.toast.remove()
+        this.toast.clear();
+        this.toast.success('Upload complete');
       }
 
     } catch(e) {

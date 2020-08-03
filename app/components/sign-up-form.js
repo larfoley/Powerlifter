@@ -18,6 +18,7 @@ export default class SignUpComponent extends Component {
         this.router.transitionTo('sign-in')
 
       } catch (error) {
+        console.log(error);
         if (user.isValid) {
           error.errors.forEach((err) => {
             toast.error(err.detail);

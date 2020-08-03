@@ -15,7 +15,9 @@
 /**
  * @type {Cypress.PluginConfig}
  */
-// module.exports = () => {
+ /* eslint no-undef: "off" */
+ /* eslint no-unused-vars: "off" */
+module.exports = (on, config) => {
   // `on` is used to hook into various events Cypress emits
   // `config` is the resolved Cypress config
-// }
+}

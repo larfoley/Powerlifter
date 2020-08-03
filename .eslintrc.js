@@ -1,6 +1,13 @@
 'use strict';
 
 module.exports = {
+  "globals": {
+    "cy": true,
+    "before": true,
+    "after": true,
+    "it": true,
+    "describe": true
+  },
   root: true,
   parser: 'babel-eslint',
   parserOptions: {

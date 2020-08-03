@@ -1,3 +1,4 @@
+ /* eslint no-undef: "off" */
 Cypress.Commands.add("login", () => {
   cy.request({
       url: 'http://localhost:3000/token',

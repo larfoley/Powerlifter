@@ -61,6 +61,7 @@ export default class PostsComponent extends Component {
 
   @action
   async loadMorePosts() {
+    console.log('loead');
     if (this.shouldFetchMorePosts) {
 
       this.isLoadingMorePosts = true;

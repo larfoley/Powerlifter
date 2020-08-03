@@ -1,4 +1,4 @@
-<div class="box box--transparent">
+<div class="box box--transparent" {{did-insert this.addScrolledToBottomListener}}>
   <div class="card-list" >
     {{#each this.sortedPosts as |post|}}
       <Posts::Post @post={{post}} />

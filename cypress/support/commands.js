@@ -1,4 +1,4 @@
-Cypress.Commands.add("login", (email, password) => {
+Cypress.Commands.add("login", () => {
   cy.request({
       url: 'http://localhost:3000/token',
       method: 'POST',
@@ -8,4 +8,5 @@ Cypress.Commands.add("login", (email, password) => {
         grant_type: 'password'
       }
     })
+    .its('body')
 })

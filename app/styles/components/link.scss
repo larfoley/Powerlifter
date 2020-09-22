@@ -1,12 +1,11 @@
 .link {
+  text-transform: uppercase;
+  color: $primary-color;
+  font-weight: bold;
 
   &:hover {
     text-decoration: underline;
     cursor: pointer;
-  }
-
-  &--primary {
-    color: $primary-color;
   }
 
   &--center {

@@ -44,6 +44,7 @@ export default class FindFriendsComponent extends Component {
 
   @action
   debounceFindFriends(userSearchTerm) {
+    console.log('debounce');
     this.noUsersFound = false;
     this.users.removeObjects(this.users);
 

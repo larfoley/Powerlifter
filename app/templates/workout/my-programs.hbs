@@ -1,5 +1,6 @@
+
 <div class="content-container">
-  <div class="content-container__section">
+  <div class="flex flex--flex-end">
     <Button
       @route="workout.new"
       @text="New Program"
@@ -7,8 +8,45 @@
       @icon="plus"
     />
   </div>
+  <div class="content-container__section">
+    <h2 class="h4">Current Program</h2>
+    <div class="card">
+      <div class="card__body">
+        <div class="h5">
+          {{this.model.currentWorkoutProgram.name}}
+        </div>
+        <div class="workout-program__progress workout-program__progress--left-align">
+          <span class="text text--muted">Progress</span>
+          <div class="h3">
+            {{this.model.currentWorkoutProgram.progress}}% completed
+          </div>
+          <div class="workout-program__progress-outer-bar">
+            <div
+              class="workout-program__progress-inner-bar
+              workout-program__progress-inner-bar--value-{{this.model.currentWorkoutProgram.progress}}"
+              >
+            </div>
+          </div>
+        </div>
+        <br>
+        <div class="flex flex--flex-end">
+          <Button @icon="share-square" @text="Continue" @secondary={{false}} @route="workout.diary" />
+          <Button @text="Cancel" @route="workout.diary"  />
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="u-display--flex u-justify-content--space-between">
+    <h4>Your Programs</h4>
+    <TextLink @route="index" @text="See All" @primary={{true}} />
+  </div>
   {{#if @model}}
+  <div class="test">
     <WorkoutProgramTemplate::List @workoutPrograms={{@model}} />
+    <WorkoutProgramTemplate::List @workoutPrograms={{@model}} />
+    <WorkoutProgramTemplate::List @workoutPrograms={{@model}} />
+  </div>
   {{else}}
     <ZeroStateMessage @message="You have not created any workout porgrams" @icon="clipboard-list"/>
   {{/if}}

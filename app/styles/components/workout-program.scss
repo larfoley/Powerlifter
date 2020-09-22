@@ -25,8 +25,9 @@
   }
 
   &__header {
-    @extend .box;
-    padding: 2em 0 !important;
+    @extend .card;
+    padding: 2em 0;
+    margin-bottom: 2em;
   }
 
   &__title {
@@ -62,7 +63,7 @@
 
   &__progress-inner-bar {
     height: 100%;
-    background: #ff7675;
+    background: $primary-color;
     width: attr(data-progress);
     border-radius: 50px;
 
@@ -80,8 +81,8 @@
   }
 
   &__set-header-primary-label {
-    border-right: 2px solid black;
-    padding-right: .5em;
+    // border-right: 2px solid black;
+    // padding-right: .5em;
   }
 
   &__set-header-secondary-label {
@@ -91,7 +92,7 @@
 
   &__set-row {
     display: grid;
-    grid-template-columns: 110px  110px 1fr;
+    grid-template-columns: 30px 1fr 1fr 30px;
     gap: 2px 1rem;
     align-items: center;
 

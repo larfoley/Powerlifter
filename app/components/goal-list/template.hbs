@@ -1,6 +1,6 @@
 <ul class="list box--with-margin" data-test-goals-list>
   {{#each this.sortedGoals as |goal|}}
-    <Goals::Goal @goal={{goal}} />
+    <GoalList::Goal @goal={{goal}} />
   {{else}}
     <ZeroStateMessage @icon="medal" @message="You have not set any goals" />
   {{/each}}

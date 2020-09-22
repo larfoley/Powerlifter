@@ -3,6 +3,7 @@
   {{on 'click' this.toggleValue}}
   role="button"
 >
+  <input type="checkbox" value={{this.value}} hidden>
   <Icon
     @icon={{if this.value "check-square" "square"}}
     @prefix={{if this.value "fas" "far"}} class="checkbox__icon"

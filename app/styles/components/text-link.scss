@@ -1,4 +1,11 @@
 .text-link {
-  color: $link-color;
-  text-transform: uppercase;
+  text-transform: capitalize;
+
+  &:hover {
+    text-decoration: underline;
+  }
+
+  &--primary {
+    color: $primary-color;
+  }
 }

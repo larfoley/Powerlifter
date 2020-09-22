@@ -8,6 +8,9 @@ module.exports = function(defaults) {
       patterns: [
         '/(.+)'
       ],
+    },
+    'ember-service-worker': {
+      enabled: EmberApp.env() === 'production'
     }
   });
 

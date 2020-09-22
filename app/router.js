@@ -53,6 +53,8 @@ Router.map(function() {
     this.route('goal', { path: '/:goal_id' });
     this.route('edit', { path: '/:goal_id/edit' });
     this.route('delete', { path: '/:goal_id/delete' });
+    this.route('due');
+    this.route('completed');
   });
   this.route('records', function() {
     this.route('new');

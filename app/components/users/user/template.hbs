@@ -10,33 +10,33 @@
       {{#if @user.isFriend}}
         <Button
           @text="Friends"
-          @primaryButton={{true}}
+          @primary={{true}}
           data-test-is-friend-button
         />
       {{else if @user.friendRequestSent}}
         <Button
           @text="Request Sent"
           class="button request-sent"
-          @primaryButton={{true}}
+          @primary={{true}}
           {{on 'click' (fn this.friends.cancelOrDeclineRequest @user.id )}}
         />
       {{else if @user.friendRequestRecieved}}
         <Button
           @text="Confirm"
           {{on 'click' (fn this.friends.acceptFriendRequest @userfriendRequest)}}
-          @primaryButton={{true}}
+          @primary={{true}}
           data-test-accept-friend-request-button
         />
         <Button
           @text="Decline"
           {{on 'click' (fn this.friends.removeFriend @user)}}
-          @secondaryButton={{true}}
+          @secondary={{true}}
         />
       {{else}}
         <Button
           @text="Add"
           @icon="user-plus"
-          @secondaryButton={{true}}
+          @secondary={{true}}
           {{on 'click' (fn this.sendFriendRequest @user)}}
           data-test-friend-request-button
         />

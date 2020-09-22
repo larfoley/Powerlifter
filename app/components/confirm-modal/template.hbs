@@ -14,7 +14,7 @@
       {{yield}}
     </div>
   <div>
-    <Button @primary={{true}} {{action this.onConfirm}} @text="Yes" />
-    <Button @secondary={{true}} {{action this.onCancel}} @text="No" />
+    <Button @primary={{true}} {{action this.onConfirm}} @text="Yes" data-test-confirm-yes />
+    <Button @secondary={{true}} {{action this.onCancel}} @text="No" data-test-confirm-no />
   </div>
 </ModalDialog>

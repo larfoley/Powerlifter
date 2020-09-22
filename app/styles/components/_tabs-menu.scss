@@ -18,7 +18,7 @@
     display: inline-block;
     text-decoration: none;
     text-transform: capitalize;
-    padding: 0.6rem 1rem;
+    padding: 0.8rem 1rem;
     flex-grow: 1;
     text-align: center;
     transition: 0.3s;
@@ -29,8 +29,8 @@
     }
 
     &:hover {
-      background-color: #eee;
-      border-color: #eee;
+      background-color: lighten($primary-color, 25%);
+      border-color: lighten($primary-color, 25%);
     }
 
     @media screen and (min-width: $mobile-breakpoint) {

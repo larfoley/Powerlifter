@@ -1,7 +1,7 @@
 <div>
   {{#each @workoutPrograms as |program|}}
     <div class="card">
-      <div class="card__header">
+      {{!-- <div class="card__header">
         <div class="flex flex--space-between">
           <div class="">
             <div class="h3">{{program.name}}</div>
@@ -14,34 +14,38 @@
             />
           </div>
         </div>
+      </div> --}}
+      <div class="bg">
       </div>
       <div class="card__body">
-        <div class="h5">Duration</div>
-        <p>{{program.duration}} Weeks</p>
-        <div class="h5">Exercises</div>
-        <ul class="inline-list">
+        {{!-- <h4 class="h4">Blaster City</h4> --}}
+        {{!-- <div class="h6">Duration</div>
+        <p>{{program.duration}} Weeks</p> --}}
+        <div class="h6">Exercises</div>
+        {{!-- <ul class="inline-list"> --}}
           {{#each program.exercises as |exercise|}}
-            <li class="inline-list__item">
-              <span class="chip">{{exercise}}</span>
-            </li>
+            {{!-- <li class="inline-list__item"> --}}
+              <span class="text">{{exercise}},</span>
+            {{!-- </li> --}}
           {{/each}}
-        </ul>
+        {{!-- </ul> --}}
       </div>
       <div class="card__footer">
-        <Button
-          @text="Start Program"
-          @secondary={{true}}
-          {{on 'click' (if this.workout.hasActiveWorkoutProgram
-              (fn this.showActivateProgramConfirmDialog program)
-              (fn this.activateProgram program)
-            )
-          }}
-        />
-        <Button
-          @text="Preview" @secondary={{true}}
-          @route="workout.my-programs.my-program"
-          @model={{program}}
-        />
+        <div class="u-display--flex u-justify-content--flex-end">
+          <Button
+            @text="Start"
+            {{on 'click' (if this.workout.hasActiveWorkoutProgram
+                (fn this.showActivateProgramConfirmDialog program)
+                (fn this.activateProgram program)
+              )
+            }}
+          />
+          <Button
+            @text="Preview"
+            @route="workout.my-programs.my-program"
+            @model={{program}}
+          />
+        </div>
       </div>
     </div>
   {{/each}}

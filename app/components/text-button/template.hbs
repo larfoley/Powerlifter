@@ -1,0 +1,9 @@
+<button
+  class="text-button {{if @primary "text-button--primary"}}"
+  ...attributes
+>
+  {{#if @text}}
+    {{@text}}
+  {{/if}}
+  {{yield}}
+</button>

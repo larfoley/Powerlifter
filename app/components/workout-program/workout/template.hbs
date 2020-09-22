@@ -4,7 +4,7 @@
       Exercise {{increment index}} - {{workoutBlock.exercise}}
     </div>
     <p>{{workoutBlock.note}}</p>
-    <WorkoutBlock
+    <WorkoutProgram::Workout::ExerciseBlock
       @workoutBlock={{workoutBlock}}
       @onUpdateExerciseSet={{fn @onUpdateExerciseSet}}
       @onToggleExerciseSetCompleted={{fn @onToggleExerciseSetCompleted}}

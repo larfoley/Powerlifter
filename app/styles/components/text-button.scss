@@ -1,0 +1,13 @@
+.text-button {
+  @extend .button;
+
+  background-color: transparent;
+
+  &--primary {
+    color: $primary-color;
+    
+    &:hover {
+
+    }
+  }
+}

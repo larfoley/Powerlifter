@@ -63,3 +63,43 @@
 .u-star {
   color: #f1c40f
 }
+
+.u-sticky-bottom {
+  position: sticky;
+  bottom: 0
+}
+
+// .u {
+//   &-display {
+//     &--flex {
+//       display: flex;
+//     }
+//   }
+// }
+
+.u-display--flex {
+  display: flex;
+}
+
+.u-justify-content--flex-end {
+  justify-content: flex-end;
+}
+
+.u-justify-content--space-between {
+  justify-content: space-between;
+}
+
+.bg {
+  background-image: url('https://images.unsplash.com/photo-1581009137042-c552e485697a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80');
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  height: 160px;
+  background-size: cover;
+  background-position: center;
+}
+
+.test {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 1em;
+}

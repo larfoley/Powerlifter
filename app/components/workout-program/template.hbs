@@ -5,52 +5,66 @@
   @goToNextWorkout={{fn this.goToNextWorkout}}
   @goToPreviousWorkout={{fn this.goToPreviousWorkout}}
   @completeWorkout={{fn this.completeWorkout}}
+  @totalWeeks={{this.totalWeeks}}
 />
-{{#if (not (or @workoutProgram.completed @previewMode) )}}
+<div class="content-container">
+  {{#if (not (or @workoutProgram.completed @previewMode) )}}
   <div class="workout-program__header">
     {{#if @workoutProgram.name}}
-      <div class="workout-program__sub-title">
-        Program
-      </div>
-      <div class="workout-program__title">
-        <div>{{capitalize @workoutProgram.name}}</div>
-      </div>
-    {{/if}}
-    <div class="workout-program__progress">
-      <span class="text text--muted">Progress</span>
+    {{!-- <div class="workout-program__sub-title">
+    Program
+  </div>
+  <div class="workout-program__title">
+  <div>{{capitalize @workoutProgram.name}}</div>
+</div> --}}
+{{/if}}
+<div class="workout-program__progress">
+  <div class="flex flex--space-between">
+    <div class="">
+      {{!-- <span class="text text--muted">Progress</span>
+      --}}
       <div class="h3">
-        {{@workoutProgram.progress}}% completed
+        53 Days left
       </div>
-      <div class="workout-program__progress-outer-bar">
-        <div
-          class="workout-program__progress-inner-bar
-          workout-program__progress-inner-bar--value-{{@workoutProgram.progress}}"
-          >
-        </div>
-      </div>
+    </div>
+    <div class="h3">
+      {{@workoutProgram.progress}}%
     </div>
   </div>
+  <div class="workout-program__progress-outer-bar">
+    <div
+    class="workout-program__progress-inner-bar
+    workout-program__progress-inner-bar--value-{{@workoutProgram.progress}}"
+    >
+  </div>
+</div>
+</div>
+</div>
 {{/if}}
-<div class="content-container">
-  {{#if this.canFinishWorkoutSession}}
-    <div class="flex flex--flex-end">
-      {{#if this.canFinishWorkoutProgram}}
-        <Button
-          @icon="check"
-          @primary={{true}}
-          @text="Finish Workout"
-          {{action this.completeWorkoutSession}}
-        />
-      {{/if}}
-    </div>
-  {{/if}}
-  <WorkoutProgram::WorkoutSession
-    @workout={{this.currentWorkout}}
-    @onToggleExerciseSetCompleted={{action this.toggleExerciseSetCompleted}}
-    @onUpdateExerciseSet={{action this.updateExerciseSet}}
-    @completeWorkout={{fn this.completeWorkout}}
-    @previewMode={{@previewMode}}
+{{#if this.canFinishWorkoutSession}}
+<div class="flex flex--flex-end">
+  {{#if this.canFinishWorkoutProgram}}
+  <Button
+    @icon="check"
+    @primary={{true}}
+    @text="Finish Workout"
+    {{action this.completeWorkoutSession}}
   />
+  {{/if}}
+</div>
+{{/if}}
+<WorkoutProgram::Workout
+  @workout={{this.currentWorkout}}
+  @onToggleExerciseSetCompleted={{action this.toggleExerciseSetCompleted}}
+  @onUpdateExerciseSet={{action this.updateExerciseSet}}
+  @completeWorkout={{fn this.completeWorkout}}
+  @previewMode={{@previewMode}}
+/>
+</div>
+<div class="card u-sticky-bottom">
+  <div class="card__body">
+    <h3>Current Program</h3>
+  </div>
 </div>
 {{#if this.showWorkoutCompleteDialog}}
   <WorkoutProgram::WorkoutCompleteDialog

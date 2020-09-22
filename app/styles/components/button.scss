@@ -3,7 +3,6 @@
   border: none;
   transition: .2s;
   // display: flex;
-  display: inline-block;
   align-items: center;
   text-transform: capitalize;
   padding: .7em 1.1em;
@@ -16,6 +15,8 @@
   outline: none;
   min-width: 80px;
   font-size: 13px;
+  color: black;
+  min-width: 118px;
 
   & ~ .button {
     margin-left: 5px;
@@ -36,7 +37,7 @@
   }
 
   &__icon {
-    margin-right: .2em;
+    margin-right: 5px;
     vertical-align: middle;
   }
 
@@ -54,13 +55,22 @@
   &:focus {
     box-shadow: 0 0 0 2pt $focus-color;
   }
-}
 
-.text-button {
-  @extend .button;
+  &:active {
+    box-shadow: 0 0 0 0;
+  }
 
-  color: $primary-color;
-  background-color: transparent;
+  &--primary {
+    @extend .button;
+
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
+    color: white;
+    background-color: $primary-color;
+
+    &:hover {
+      background-color: darken($primary-color, 5%);
+    }
+  }
 }
 
 .outlined-button, .secondary-button {
@@ -76,19 +86,7 @@
   }
 }
 
-.primary-button {
-  @extend .button;
 
-  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
-  color: white;
-  background-color: $primary-color;
-
-  &:hover {
-    background-color: darken($primary-color, 5%);
-  }
-
-
-}
 
 .rounded-button {
   @extend .button;

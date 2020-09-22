@@ -1,56 +1,78 @@
 <Toolbar @title="Home" />
 <div class="content-container">
   {{#if this.showCurrentWorkoutProgram}}
-  <div class="content-container__section">
-    <h2 class="h4">Current Workout Program</h2>
-    <div class="card">
-      <div class="card__body">
-        <div class="h5">
-          {{this.model.currentWorkoutProgram.name}}
-        </div>
-        <div class="workout-program__progress workout-program__progress--left-align">
-          <span class="text text--muted">Progress</span>
-          <div class="h3">
-            {{this.model.currentWorkoutProgram.progress}}% completed
+    <div class="content-container__section">
+      <h2 class="h4">Current Workout Program</h2>
+      <div class="card">
+        <div class="card__body">
+          <div class="h5">
+            {{this.model.currentWorkoutProgram.name}}
           </div>
-          <div class="workout-program__progress-outer-bar">
-            <div
-              class="workout-program__progress-inner-bar
-              workout-program__progress-inner-bar--value-{{this.model.currentWorkoutProgram.progress}}"
-              >
+          <div class="workout-program__progress workout-program__progress--left-align">
+            <span class="text text--muted">Progress</span>
+            <div class="h3">
+              {{this.model.currentWorkoutProgram.progress}}% completed
+            </div>
+            <div class="workout-program__progress-outer-bar">
+              <div
+                class="workout-program__progress-inner-bar
+                workout-program__progress-inner-bar--value-{{this.model.currentWorkoutProgram.progress}}"
+                >
+              </div>
             </div>
           </div>
+          <br>
+          <Button @text="Continue" @primary={{true}} @route="workout.diary" />
         </div>
-        <br>
-        <Button @text="Continue" @primary={{true}} @route="workout.diary" />
       </div>
     </div>
-  </div>
   {{/if}}
   <div class="content-container__section">
     <h2 class="h4">Active Goals</h2>
-    <Goals @goals={{@model.goals}} />
+    <GoalList @goals={{@model.goals}} />
+    {{#if @model.goals.length}}
+      <LinkTo @route="goals" class="link">
+        View All
+      </LinkTo>
+    {{/if}}
   </div>
   <div class="content-container__section">
-    <h2 class="h4">Recent Lift Records</h2>
-      {{#each @model.liftRecords as |record|}}
+    <div class="flex flex--space-between">
+      <h2 class="h4">Recent Lift Records</h2>
+      <Button @icon="plus" @text="New Record" />
+    </div>
+    <br>
+    {{#each @model.liftRecords as |record|}}
       <div class="card">
+        {{!-- <FaIcon @icon="medal" /> --}}
         <div class="card__body">
-          <div class="flex flex--space-between flex flex--align-center">
-            <div>
-              <div class="h5">{{record.exercise.name}}</div>
-              {{record.weightLifted}} kgs for {{record.reps}} Reps
+          <div class="media media--align-center">
+            <div class="media__asset text text--primary">
+              <FaIcon @icon="medal" @size="3x" />
             </div>
-            <div>
-              <span class="text text--muted text--small">
-                {{due-date record.date 'MM-DD-YYYY'}}
-              </span>
+            <div class="media__body">
+              <div class="flex flex--space-between flex flex--align-center">
+                <div>
+                  {{record.exercise.name}}
+                  <div class="h5">
+                    {{record.weightLifted}} kgs for {{record.reps}} Reps
+                  </div>
+                  <span class="text text--muted text--small">
+                    {{due-date record.date 'MM-DD-YYYY'}}
+                  </span>
+                </div>
+                <div>
+                  <span class="text text--muted text--small">
+                    {{!-- {{due-date record.date 'MM-DD-YYYY'}} --}}
+                  </span>
+                </div>
+              </div>
             </div>
           </div>
         </div>
       </div>
       {{else}}
-      <ZeroStateMessage @message="You have not lift records" @icon="dumbbell"/>
+        <ZeroStateMessage @message="You have not lift records" @icon="dumbbell"/>
       {{/each}}
   </div>
 </div>

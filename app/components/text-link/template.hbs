@@ -1,0 +1,12 @@
+<LinkTo
+  @route={{@route}}
+  @model={{@model}}
+  @query={{@query}}
+  class="text-link {{if @primary "text-link--primary"}}"
+  ...attributes
+>
+  {{#if @text}}
+    {{@text}}
+  {{/if}}
+  {{yield}}
+</LinkTo>

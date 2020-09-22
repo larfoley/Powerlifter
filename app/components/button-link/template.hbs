@@ -1,0 +1,15 @@
+<LinkTo
+  @route={{@route}}
+  @model={{this.modelOrModels}}
+  @query={{@query}}
+  class="button-link {{if @primary "button-link--primary"}}"
+  ...attributes
+>
+  {{#if @text}}
+    {{#if @icon}}
+      <FaIcon @icon={{@icon}} @prefix={{if @prefix @prefix "fas"}}/>
+    {{/if}}
+    {{@text}}
+  {{/if}}
+  {{yield}}
+</LinkTo>

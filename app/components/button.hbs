@@ -1,99 +1,25 @@
-{{#if @route}}
-  {{#if @model}}
-  <LinkTo
-    @route={{@route}}
-    @model={{@model}}
-    @query={{@query}}
-    class="button
-      {{if @primaryButton "primary-button"}}
-      {{if @primary "primary-button"}}
-      {{if @transparent "transparent-button"}}
-      {{if @secondaryButton "secondary-button"}}
-      {{if @secondary "secondary-button"}}
-      {{if @textButton "text-button"}}
-      {{if @outlinedButton "outlined-button"}}
-      {{if @roundedButton "rounded-button"}}
-      {{if @iconButton "icon-button"}}
-      {{if @fullWidth "button--full-width"}}
-      {{if @noBorder "button--no-border"}}
-      "
-    ...attributes
-  >
-    {{#if @text}}
-      {{#if @icon}}
-        <FaIcon class="button__icon" @icon={{@icon}} @prefix={{if @prefix @prefix "fas"}}/>
-      {{/if}}
-      <span class="button__text">
-        {{@text}}
-      </span>
-    {{else}}
-      {{#if @icon}}
-        <FaIcon @icon={{@icon}} @prefix={{if @prefix @prefix "fas"}}/>
-      {{/if}}
+<button
+  type={{if @submit "submit" "button"}}
+  class="button
+    {{if @primary "button--primary"}}
+    {{if @secondary "secondary-button"}}
+    {{if @iconButton "icon-button"}}
+    {{if @fullWidth "button--full-width"}}
+    {{if @noBorder "button--no-border"}}
+    {{if @transparent "transparent-button"}}
+    "
+  ...attributes
+>
+  {{#if @text}}
+    {{#if @icon}}
+      <FaIcon class="button__icon" @icon={{@icon}} @prefix={{if @prefix @prefix "fas"}}/>
     {{/if}}
-  </LinkTo>
+    <span class="button__text">
+      {{@text}}
+    </span>
   {{else}}
-  <LinkTo
-    @route={{@route}}
-    @query={{@query}}
-    class="button
-      {{if @primaryButton "primary-button"}}
-      {{if @primary "primary-button"}}
-      {{if @transparent "transparent-button"}}
-      {{if @secondaryButton "secondary-button"}}
-      {{if @secondary "secondary-button"}}
-      {{if @textButton "text-button"}}
-      {{if @outlinedButton "outlined-button"}}
-      {{if @roundedButton "rounded-button"}}
-      {{if @iconButton "icon-button"}}
-      {{if @fullWidth "button--full-width"}}
-      {{if @noBorder "button--no-border"}}
-      "
-    ...attributes
-  >
-    {{#if @text}}
-      {{#if @icon}}
-        <FaIcon class="button__icon" @icon={{@icon}} @prefix={{if @prefix @prefix "fas"}}/>
-      {{/if}}
-      <span class="button__text">
-        {{@text}}
-      </span>
-    {{else}}
-      {{#if @icon}}
-        <FaIcon @icon={{@icon}} @prefix={{if @prefix @prefix "fas"}}/>
-      {{/if}}
+    {{#if @icon}}
+      <FaIcon @icon={{@icon}} @prefix={{if @prefix @prefix "fas"}}/>
     {{/if}}
-  </LinkTo>
   {{/if}}
-{{else}}
-  <button
-    type={{if @submit "submit" "button"}}
-    class="button
-      {{if @primaryButton "primary-button"}}
-      {{if @primary "primary-button"}}
-      {{if @secondaryButton "secondary-button"}}
-      {{if @secondary "secondary-button"}}
-      {{if @textButton "text-button"}}
-      {{if @outlinedButton "outlined-button"}}
-      {{if @roundedButton "rounded-button"}}
-      {{if @iconButton "icon-button"}}
-      {{if @fullWidth "button--full-width"}}
-      {{if @noBorder "button--no-border"}}
-      {{if @transparent "transparent-button"}}
-      "
-    ...attributes
-  >
-    {{#if @text}}
-      {{#if @icon}}
-        <FaIcon class="button__icon" @icon={{@icon}} @prefix={{if @prefix @prefix "fas"}}/>
-      {{/if}}
-      <span class="button__text">
-        {{@text}}
-      </span>
-    {{else}}
-      {{#if @icon}}
-        <FaIcon @icon={{@icon}} @prefix={{if @prefix @prefix "fas"}}/>
-      {{/if}}
-    {{/if}}
-  </button>
-{{/if}}
+</button>

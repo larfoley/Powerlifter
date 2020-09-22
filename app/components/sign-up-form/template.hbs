@@ -2,10 +2,10 @@
   <h2 class="u-center-text u-bolder">Sign Up</h2>
   <Form::Field
     @label="Username"
-    @errors={{@user.errors.username}}
+    @errors={{this.user.errors.username}}
   >
     <TextInput
-      @value={{@user.username}}
+      @value={{this.user.username}}
       @label="Username"
       @icon="user"
       data-test-username
@@ -13,10 +13,10 @@
   </Form::Field>
   <Form::Field
     @label="Email"
-    @errors={{@user.errors.email}}
+    @errors={{this.user.errors.email}}
   >
     <TextInput
-      @value={{@user.email}}
+      @value={{this.user.email}}
       @label="Email"
       data-test-email
       @icon="envelope"
@@ -24,11 +24,11 @@
   </Form::Field>
   <Form::Field
     @label="Password"
-    @errors={{@user.errors.password}}
+    @errors={{this.user.errors.password}}
   >
     <TextInput
       type="password"
-      @value={{@user.password}}
+      @value={{this.user.password}}
       @label="Password"
       @icon="lock"
       data-test-password
@@ -37,7 +37,7 @@
   <p>
     <Button
       @submit={{true}}
-      @primaryButton={{true}}
+      @primary={{true}}
       @icon="paper-plane"
       data-test-submit-button
       @text="Sign Up"

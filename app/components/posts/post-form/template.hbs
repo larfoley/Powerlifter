@@ -46,8 +46,8 @@
         </div>
       </div>
       <div class="row">
-        <Button @text="Post" @submit={{true}} @primaryButton={{true}} disabled={{this.isInValid}}/>
-        <Button @text="Cancel" @submit={{true}} @secondaryButton={{true}} @route="my-network" />
+        <Button @text="Post" @submit={{true}} @primary={{true}} disabled={{this.isInValid}}/>
+        <ButtonLink @text="Cancel" @secondary={{true}} @route="my-network" />
       </div>
     </div>
   </div>

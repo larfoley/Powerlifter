@@ -1,16 +1,23 @@
 import Component from '@glimmer/component';
 import { action } from '@ember/object';
 import { typeOf } from '@ember/utils';
+import { tracked } from '@glimmer/tracking';
 
 export default class FormComponent extends Component {
+  @tracked isSubmiting = false;
+
   @action
-  handleSubmit(e) {
+  async handleSubmit(e) {
     e.preventDefault()
 
-    const submitHandler = this.args.onSubmit;
+    const onSubmit = this.args.onSubmit;
 
-    if (typeOf(submitHandler) === "function") {
-      submitHandler();
+    if (typeOf(onSubmit) === "function") {
+      isSubmiting = true;
+
+      await onSubmit();
+
+      isSubmiting = false;
     }
   }
 }

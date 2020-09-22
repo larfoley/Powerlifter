@@ -29,6 +29,10 @@ export default class WorkoutProgramComponent extends Component {
     })
   }
 
+  get totalWeeks() {
+    return this.args.workoutProgram.weeks.length;
+  }
+
   get workoutSessions() {
     const workoutSessions = A();
     const weeks = this.args.workoutProgram.weeks;

@@ -68,21 +68,28 @@
       </div>
     </div>
     {{else}}
-      {{#each @exerciseSets as |exerciseSet index|}}
-      <div class="card">
-        <div class="card__body">
+    <div class="card">
+      <div class="card__body">
+        <h3>Exercise Block 1 - Superset</h3>
         <div class="workout-program__set-header">
           <span class="workout-program__set-header-primary-label">
-            Set {{increment index}}
-          </span>
-          <span class="workout-program__set-header-secondary-label">
-            {{exerciseSet.targetReps}} Reps
+            Squat
           </span>
         </div>
+      <div class="workout-program__set-row">
+        <div class="">
+          Set
+        </div>
+        <label>Weight (Kgs)</label>
+        <label>Reps</label>
+        <div class="">
+          Done
+        </div>
+      </div>
+      {{#each @exerciseSets as |exerciseSet index|}}
         <div class="workout-program__set-row {{if exerciseSet.completed "workout-program__set-row--completed"}}">
-          <label>Weight (Kgs)</label>
-          <label>Reps</label>
           <div class="">
+            {{increment index}}
           </div>
           <div>
             <TextInput
@@ -108,8 +115,53 @@
             />
           </div>
         </div>
+    {{/each}}
+    <div class="workout-program__set-header">
+      <span class="workout-program__set-header-primary-label">
+        Squat
+      </span>
+    </div>
+  <div class="workout-program__set-row">
+    <div class="">
+      Set
+    </div>
+    <label>Weight (Kgs)</label>
+    <label>Reps</label>
+    <div class="">
+      Done
+    </div>
+  </div>
+  {{#each @exerciseSets as |exerciseSet index|}}
+    <div class="workout-program__set-row {{if exerciseSet.completed "workout-program__set-row--completed"}}">
+      <div class="">
+        {{increment index}}
+      </div>
+      <div>
+        <TextInput
+          @value={{exerciseSet.weightLifted}}
+          type="number"
+          @inline={{true}}
+          @disabled={{exerciseSet.completed}}
+        />
+      </div>
+      <div>
+        <TextInput
+          @value={{exerciseSet.repsCompleted}}
+          type="number"
+          @inline={{true}}
+          @disabled={{exerciseSet.completed}}
+        />
+      </div>
+      <div class="">
+        <Checkbox
+          @value={{exerciseSet.completed}}
+          @onChange={{fn @onToggleExerciseSetCompleted exerciseSet}}
+          @disabled={{exerciseSet.isNotValid}}
+        />
       </div>
     </div>
-    {{/each}}
+{{/each}}
+    </div>
+  </div>
   {{/if}}
 </div>

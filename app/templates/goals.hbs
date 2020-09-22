@@ -3,9 +3,11 @@
   @actions={{array
     (hash icon="plus" route="goals.new")
   }}
->
-</Toolbar>
+  @tabs={{ array
+    (hash label="Due" route="goals.due")
+    (hash label="Completed" route="goals.completed")
+  }}
+/>
 <div class="content-container">
-  <Goals @goals={{@model}} />
+  {{outlet}}
 </div>
-{{outlet}}

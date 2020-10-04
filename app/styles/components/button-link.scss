@@ -1,7 +1,12 @@
 .button-link {
   @extend .button;
+  display: inline-block;
 
   &--primary {
     @extend .button--primary;
+  }
+
+  &--secondary {
+    @extend .button--secondary;
   }
 }

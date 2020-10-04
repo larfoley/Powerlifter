@@ -1,0 +1,30 @@
+
+<div class="content-container">
+  <div class="flex flex--flex-end">
+    <ButtonLink
+      @route="workout.programs.new"
+      @text="New Program"
+      @primary={{true}}
+      @icon="plus"
+    />
+  </div>
+  <div class="content-container__section">
+    {{#if @model.activeProgram}}
+      <h2 class="h4">Current Program</h2>
+      <CurrentWorkoutProgram @program={{@model.activeProgram}} />
+    {{/if}}
+  </div>
+
+  <div class="u-display--flex u-justify-content--space-between">
+    <h4>Your Programs</h4>
+    <TextLink @route="index" @text="See All" @primary={{true}} />
+  </div>
+  {{#if @model}}
+  <div class="test">
+    <WorkoutProgramTemplate::List @workoutPrograms={{@model.programs}} />
+  </div>
+  {{else}}
+    <ZeroStateMessage @message="You have not created any workout porgrams" @icon="clipboard-list"/>
+  {{/if}}
+</div>
+{{outlet}}

@@ -61,11 +61,6 @@
   @previewMode={{@previewMode}}
 />
 </div>
-<div class="card u-sticky-bottom">
-  <div class="card__body">
-    <h3>Current Program</h3>
-  </div>
-</div>
 {{#if this.showWorkoutCompleteDialog}}
   <WorkoutProgram::WorkoutCompleteDialog
     @onClose={{fn this.onCloseWorkoutCompleteDialog}}

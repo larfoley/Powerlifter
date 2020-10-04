@@ -6,7 +6,7 @@ export default class WorkoutController extends Controller {
 
   get showNavbar() {
     return [
-      'workout.diary', 'workout.my-programs.index', 'workout.history'
+      'workout.diary', 'workout.programs.index', 'workout.history'
     ].includes(this.router.currentRouteName);
   }
 }

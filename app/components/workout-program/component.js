@@ -15,7 +15,7 @@ export default class WorkoutProgramComponent extends Component {
   constructor() {
     super(...arguments);
 
-    for (var workout of this.workoutSessions) {
+    for (const workout of this.workoutSessions) {
       if (!workout.completed) {
         this.selectedWorkoutDay = workout.day;
         break;

@@ -31,6 +31,29 @@
       </ul>
     </div>
     <div class="content-container__section">
+        <div class="h5">Days</div>
+        <ul class="inline-list">
+          {{#each this.weeks as |week index|}}
+            <li class="inline-list__item">
+              <Button
+                @text="Day {{week.week}}"
+                @primary={{equals index this.selectedWeekIndex}}
+                {{action  this.selectWeek index}}
+              />
+              <EmberPopover @event="hover">
+                <Icon @icon="trash-alt" @prefix="far" {{action this.removeWeek index}} @tooltip="Delete Week"/>
+                {{#if week.workouts.length}}
+                  <Icon @icon="copy" @prefix="far" {{action this.copyWeek week}} @tooltip="Copy Week" />
+                {{/if}}
+              </EmberPopover>
+          </li>
+        {{/each}}
+        <li class="inline-list__item u-relative">
+          <Button @text="Add Week" @transparent={{true}} @icon="plus" {{action this.addWeek}}/>
+        </li>
+      </ul>
+    </div>
+    <div class="content-container__section">
       {{#each this.workoutSessions as |workout|}}
         <div class="flex flex--space-between">
           <div>
@@ -67,7 +90,7 @@
             </div>
             {{/each}}
           <div class="workout-program__add-exercise-button">
-            <Button
+            <ButtonLink
               @secondary={{true}}
               @noBorder={{true}}
               @text="Add Exercise"

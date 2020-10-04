@@ -16,36 +16,32 @@
         </div>
       </div> --}}
       <div class="bg">
+        <h3>Blaster City</h3>
       </div>
       <div class="card__body">
         {{!-- <h4 class="h4">Blaster City</h4> --}}
         {{!-- <div class="h6">Duration</div>
         <p>{{program.duration}} Weeks</p> --}}
-        <div class="h6">Exercises</div>
+        <div class="h6">{{program.name}}</div>
         {{!-- <ul class="inline-list"> --}}
           {{#each program.exercises as |exercise|}}
             {{!-- <li class="inline-list__item"> --}}
-              <span class="text">{{exercise}},</span>
+              {{!-- <span class="text">{{exercise}},</span> --}}
             {{!-- </li> --}}
           {{/each}}
         {{!-- </ul> --}}
       </div>
       <div class="card__footer">
-        <div class="u-display--flex u-justify-content--flex-end">
-          <Button
-            @text="Start"
-            {{on 'click' (if this.workout.hasActiveWorkoutProgram
-                (fn this.showActivateProgramConfirmDialog program)
-                (fn this.activateProgram program)
-              )
-            }}
-          />
-          <Button
-            @text="Preview"
-            @route="workout.my-programs.my-program"
-            @model={{program}}
-          />
-        </div>
+        <Button
+          @text="Start"
+          {{on 'click' (if this.workout.hasActiveWorkoutProgram
+              (fn this.showActivateProgramConfirmDialog program)
+              (fn this.activateProgram program)
+            )
+          }}
+          @fullWidth={{true}}
+          @secondary={{true}}
+        />
       </div>
     </div>
   {{/each}}

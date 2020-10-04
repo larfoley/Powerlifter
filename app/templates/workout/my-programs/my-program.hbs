@@ -1,9 +1,0 @@
-<FullScreenModal
-  @onClose={{action this.transitionToRoute "workout.my-programs"}}
->
-  <Toolbar
-    @title={{@model.name}}
-    @backRoute="workout.my-programs"
-  />
-  <WorkoutProgram @previewMode={{true}} @workoutProgram={{@model}} />
-</FullScreenModal>

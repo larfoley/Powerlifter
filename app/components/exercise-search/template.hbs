@@ -11,7 +11,12 @@
       <ul class="card__list">
         {{#each this.filteredExercises as |exercise index|}}
           <li tabindex={{index}} role="button" class="card__list-item" {{on 'click' (fn this.selectExercise exercise)}}>
-            {{exercise.name}}
+            <div class="flex flex--space-between flex--align-items-center">
+              <span>
+                {{exercise.name}}
+              </span>
+              <Icon @icon="check" @primary={{true}} />
+            </div>
           </li>
         {{else}}
           <p>No exercises found</p>

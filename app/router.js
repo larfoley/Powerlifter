@@ -81,14 +81,15 @@ Router.map(function() {
       this.route('exercise-select');
       this.route('edit-exercise');
     });
-    this.route('my-programs', function() {
-      this.route('my-program', { path: '/:workout_program_id' });
+    this.route('programs', function() {
+      this.route('program', { path: '/:workout_program_id' });
 
       this.route('new', function() {
         this.route('week', { path: '/:week' });
         this.route('exercise-select');
         this.route('edit-exercise');
       });
+      this.route('active');
     });
     this.route('history');
   });

@@ -25,9 +25,9 @@ export default class WorkoutProgramFormComponent extends Component {
       this.workoutProgram = this.store.createRecord('workout-program-template');
       this.workoutProgram.user = this.currentUser.user;
 
-      // const firstWeek = this.store.createRecord('workout-program-week', {
-      //   week: 1,
-      // })
+      const firstWeek = this.store.createRecord('workout-program-week', {
+        week: 1,
+      })
 
       // const firstWorkoutSession = this.store.createRecord('workout', {
       //   day: 1,
@@ -39,7 +39,7 @@ export default class WorkoutProgramFormComponent extends Component {
       //
       // firstWeek.workouts.pushObject(firstWorkoutSession);
 
-      // this.workoutProgram.weeks.pushObject(firstWeek);
+      this.workoutProgram.weeks.pushObject(firstWeek);
 
     } else {
       this.workoutProgram = this.args.record;
@@ -237,7 +237,7 @@ export default class WorkoutProgramFormComponent extends Component {
     try {
       await this.workoutProgram.save();
       this._removeDirtyProps()
-      this.router.transitionTo('workout.my-programs');
+      this.router.transitionTo('workout.programs');
       this.toast.success('Workout Program Created')
 
     } catch (e) {

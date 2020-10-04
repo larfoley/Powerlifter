@@ -1,9 +1,42 @@
-<Toolbar
+{{!-- <Toolbar
   @title="Community"
   @tabs={{ array
     (hash label="Feed" route="my-network.feed")
     (hash label="Friends" route="my-network.friends")
     (hash label="Requests" route="my-network.friend-requests")
   }}
-/>
+/> --}}
+<div class="toolbar {{if this.sticky "toolbar--sticky"}}">
+  <div class="toolbar__container">
+    <h1 class="toolbar__title">
+      Community
+    </h1>
+    <div class="toolbar__links">
+      <LinkTo @route={{home}} class="toolbar__link" >
+        <Icon
+          class="toolbar__icon"
+          @icon="comments"
+          @prefix="far"
+        />
+        {{!-- <span class="toolbar__link-text">
+          {{uppercase 'foo'}}
+        </span> --}}
+      </LinkTo>
+      <LinkTo @route={{home}} class="toolbar__link" >
+        <Icon
+          class="toolbar__icon"
+          @icon="user-plus"
+        />
+        {{!-- <span class="toolbar__link-text">
+          {{uppercase 'foo'}}
+        </span> --}}
+      </LinkTo>
+    </div>
+  </div>
+  <Tabs @tabs={{ array
+    (hash label="Feed" route="my-network.feed")
+    (hash label="Friends" route="my-network.friends")
+    (hash label="Requests" route="my-network.friend-requests")
+  }}/>
+</div>
 {{outlet}}

@@ -1,10 +1,11 @@
 import Route from '@ember/routing/route';
 import { inject as service } from '@ember/service';
 
-export default class WorkoutMyProgramsRoute extends Route {
+export default class WorkoutProgramsActiveRoute extends Route {
   @service currentUser;
+  @service workout;
 
   model() {
-    return this.currentUser.user.workoutProgramTemplates;
+    return this.workout.currentWorkoutProgram;
   }
 }

@@ -1,0 +1,22 @@
+<div class="card">
+  <div class="card__body">
+    <div class="h5">
+      {{@program.name}}
+    </div>
+    <div class="workout-program__progress workout-program__progress--left-align">
+      <span class="text text--muted">Progress</span>
+      <div class="h3">
+        {{@program.progress}}% completed
+      </div>
+      <div class="workout-program__progress-outer-bar">
+        <div
+          class="workout-program__progress-inner-bar
+          workout-program__progress-inner-bar--value-{{this.program.progress}}"
+          >
+        </div>
+      </div>
+    </div>
+    <br>
+    <ButtonLink @text="Continue" @secondary={{true}} @route="workout.programs.active" />
+  </div>
+</div>

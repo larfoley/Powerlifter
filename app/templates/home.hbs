@@ -3,28 +3,7 @@
   {{#if this.showCurrentWorkoutProgram}}
     <div class="content-container__section">
       <h2 class="h4">Current Workout Program</h2>
-      <div class="card">
-        <div class="card__body">
-          <div class="h5">
-            {{this.model.currentWorkoutProgram.name}}
-          </div>
-          <div class="workout-program__progress workout-program__progress--left-align">
-            <span class="text text--muted">Progress</span>
-            <div class="h3">
-              {{this.model.currentWorkoutProgram.progress}}% completed
-            </div>
-            <div class="workout-program__progress-outer-bar">
-              <div
-                class="workout-program__progress-inner-bar
-                workout-program__progress-inner-bar--value-{{this.model.currentWorkoutProgram.progress}}"
-                >
-              </div>
-            </div>
-          </div>
-          <br>
-          <Button @text="Continue" @primary={{true}} @route="workout.diary" />
-        </div>
-      </div>
+      <CurrentWorkoutProgram @program={{@model.currentWorkoutProgram}} />
     </div>
   {{/if}}
   <div class="content-container__section">
